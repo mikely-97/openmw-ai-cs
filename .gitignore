@@ -1,0 +1,40 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.so
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# Test caches
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Type checker / linter caches
+.mypy_cache/
+.ruff_cache/
+
+# SQLite databases (generated output — not source)
+*.db
+*.sqlite3
+
+# Editor files
+.idea/
+*.swp
+*~
+.DS_Store
+
+# Local Claude Code permission settings (user-specific, not project config)
+.claude/settings.local.json
