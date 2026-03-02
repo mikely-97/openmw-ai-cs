@@ -1,0 +1,49 @@
+[tool.poetry]
+name = "openmw-asset-forge"
+version = "0.1.0"
+description = "AI-powered asset generation pipeline for OpenMW mods (SD + Hunyuan3D + AudioCraft + Claude)"
+authors = []
+license = "MIT"
+readme = "README.md"
+packages = [{include = "forge"}]
+
+[tool.poetry.dependencies]
+python = ">=3.10"
+anthropic = ">=0.40"
+typer = {extras = ["all"], version = ">=0.12"}
+pydantic = ">=2.7"
+pydantic-settings = ">=2.3"
+httpx = ">=0.27"
+pillow = ">=10.0"
+numpy = ">=1.26"
+rich = ">=13.7"
+gradio-client = ">=1.3"
+
+# Audio generation — install with: poetry install -E audio
+# Requires PyTorch with CUDA. Install torch first:
+#   pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu121
+torch       = {version = ">=2.1", optional = true}
+torchaudio  = {version = ">=2.1", optional = true}
+audiocraft  = {version = ">=1.3", optional = true}
+
+[tool.poetry.extras]
+audio = ["torch", "torchaudio", "audiocraft"]
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=8.2"
+pytest-asyncio = ">=0.23"
+ruff = ">=0.4"
+
+[tool.poetry.scripts]
+forge = "forge.cli:app"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry-core.masonry.api"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"

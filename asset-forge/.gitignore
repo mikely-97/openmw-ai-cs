@@ -1,0 +1,47 @@
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.venv/
+venv/
+env/
+
+# Poetry
+poetry.lock
+
+# Output artifacts
+output/
+*.dae
+*.glb
+*.obj
+*.wav
+*.png
+*.dds
+
+# Models & weights (large files)
+models/
+weights/
+*.ckpt
+*.safetensors
+*.pt
+*.pth
+
+# Env
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Misc
+.DS_Store
+*.log
