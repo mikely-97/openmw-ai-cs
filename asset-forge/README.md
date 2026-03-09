@@ -40,6 +40,86 @@ See [docs/architecture.md](docs/architecture.md) for the full data-flow diagram.
 
 ---
 
+## Claude Code — autonomous game generation
+
+Asset Forge is designed to be driven by **Claude Code** operating as an
+autonomous software agent. Rather than running individual `forge generate`
+commands yourself, Claude Code can orchestrate the entire game-development
+pipeline end-to-end:
+
+```
+Claude Code (agent)
+  │
+  ├─ Designs game concept → writes JSON record files
+  │   (FACT, RACE, CLAS, SPEL, WEAP, NPC_, CELL, … all 39 omwtools types)
+  │
+  ├─ forge plan TYPE "description"     ← produces AssetPlan JSON per object
+  │
+  ├─ forge generate TYPE "description" ← produces mesh/texture/icon/sounds
+  │
+  ├─ omw import records/*.json         ← loads records into SQLite
+  │
+  ├─ omw validate                      ← checks referential integrity
+  │
+  └─ omw write → game.omwgame          ← emits binary content file
+```
+
+### Demo: Jungle Troll Tribes
+
+The `games/jungle_troll_tribes/` directory in this repository was created
+entirely by Claude Code in a single session, without any manual authoring:
+
+- **113 records** across **31 record types** (FACT, RACE, CLAS, GLOB, SPEL,
+  ENCH, WEAP, ARMO, CLOT, INGR, ALCH, MISC, BOOK, STAT, ACTI, CONT, LIGH,
+  DOOR, CREA, NPC_, SOUN, SNDG, REGN, LEVC, LEVI, DIAL, INFO, SCPT, CELL,
+  SKIL, MGEF)
+- **Four troll tribes** with distinct factions, classes, spells, and AI
+- **Full cell layout** — exterior jungle map + interior Elder's Hut
+- **Survival scripts** tracking hunger/warmth globals
+- **Levelled lists, dialogue, region weather, sound generators**
+
+Claude Code wrote all 16 record JSON files, the `build.sh` pipeline script,
+and (when SD + Hunyuan3D are running) will generate `forge plan` asset bundles
+for every static object, weapon, creature, and NPC in the mod.
+
+### Running the demo
+
+```bash
+cd games/jungle_troll_tribes
+bash build.sh
+```
+
+This produces `jungle_troll_tribes.omwgame` — a self-contained OpenMW game
+file (no Morrowind.esm required). Configure OpenMW with:
+
+```ini
+# openmw.cfg
+content=jungle_troll_tribes.omwgame
+```
+
+### Driving forge from Claude Code
+
+To have Claude Code generate an asset and import it:
+
+```bash
+# Claude Code runs:
+forge plan WEAP "A crude bone club made from a large femur"
+# → asset_plans/WEAP_bone_club.json  (AssetPlan, no services needed)
+
+forge generate WEAP "A crude bone club made from a large femur"
+# → output/bone_club/{bone_club.dae, bone_club_d.png, bone_club.png, manifest.json}
+
+omw --db game.db import output/bone_club/manifest.json --mod-id 1
+omw --db game.db write --output game.omwgame --mod-id 1
+```
+
+`forge plan` works without SD, Hunyuan3D, or AudioCraft — Claude produces the
+full `AssetPlan` (prompts, ESM field defaults, audio specs) as structured JSON.
+This is useful for Claude Code to pre-plan all assets before any generation
+services are available.
+
+---
+
 ## Record types
 
 Asset Forge knows about 19 record types drawn from the ESM game-data format.

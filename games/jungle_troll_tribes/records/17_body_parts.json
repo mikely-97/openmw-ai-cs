@@ -1,0 +1,57 @@
+[
+  {
+    "rec_type": "BODY",
+    "record_id": "jtt_troll_head",
+    "mesh": "jtt/troll_head.dae",
+    "name": "troll",
+    "part_index": 0,
+    "vampire": 0,
+    "part_flags": 0,
+    "part_type": 0,
+    "flags": 0
+  },
+  {
+    "rec_type": "BODY",
+    "record_id": "jtt_troll_chest",
+    "mesh": "jtt/troll_body.dae",
+    "name": "troll",
+    "part_index": 3,
+    "vampire": 0,
+    "part_flags": 0,
+    "part_type": 0,
+    "flags": 0
+  },
+  {
+    "rec_type": "BODY",
+    "record_id": "jtt_troll_groin",
+    "mesh": "jtt/troll_legs.dae",
+    "name": "troll",
+    "part_index": 4,
+    "vampire": 0,
+    "part_flags": 0,
+    "part_type": 0,
+    "flags": 0
+  },
+  {
+    "rec_type": "BODY",
+    "record_id": "jtt_troll_rhand",
+    "mesh": "jtt/troll_hands.dae",
+    "name": "troll",
+    "part_index": 6,
+    "vampire": 0,
+    "part_flags": 0,
+    "part_type": 0,
+    "flags": 0
+  },
+  {
+    "rec_type": "BODY",
+    "record_id": "jtt_troll_lhand",
+    "mesh": "jtt/troll_hands.dae",
+    "name": "troll",
+    "part_index": 7,
+    "vampire": 0,
+    "part_flags": 0,
+    "part_type": 0,
+    "flags": 0
+  }
+]

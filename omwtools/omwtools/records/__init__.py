@@ -22,6 +22,7 @@ from omwtools.records.book import Book
 from omwtools.records.misc_ import MiscItem, Lockpick, Probe, RepairItem, Apparatus
 from omwtools.records.ligh import Light
 from omwtools.records.door import Door, Activator, Static
+from omwtools.records.body import BodyPart
 from omwtools.records.cont import Container
 from omwtools.records.dial import Dialogue, DialogueInfo
 from omwtools.records.race import Race, Birthsign
@@ -61,6 +62,7 @@ RECORD_REGISTRY: dict[bytes, type[BaseRecord]] = {
     b"REPA": RepairItem,
     b"APPA": Apparatus,
     b"LIGH": Light,
+    b"BODY": BodyPart,
     b"DOOR": Door,
     b"ACTI": Activator,
     b"STAT": Static,
@@ -125,6 +127,7 @@ __all__ = [
     "RepairItem",
     "Apparatus",
     "Light",
+    "BodyPart",
     "Door",
     "Activator",
     "Static",

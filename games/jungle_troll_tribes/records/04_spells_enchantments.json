@@ -1,0 +1,191 @@
+[
+  {
+    "rec_type": "SPEL",
+    "record_id": "jtt_troll_regen",
+    "name": "Troll Regeneration",
+    "spell_type": 1,
+    "cost": 0,
+    "spell_flags": 6,
+    "effects": [
+      {
+        "effect_id": 0,
+        "skill": -1,
+        "attribute": -1,
+        "range": 0,
+        "area": 0,
+        "duration": 2,
+        "mmin": 3,
+        "mmax": 3
+      }
+    ],
+    "flags": 0
+  },
+  {
+    "rec_type": "SPEL",
+    "record_id": "jtt_voodoo_hex",
+    "name": "Voodoo Hex",
+    "spell_type": 0,
+    "cost": 20,
+    "spell_flags": 0,
+    "effects": [
+      {
+        "effect_id": 25,
+        "skill": -1,
+        "attribute": -1,
+        "range": 1,
+        "area": 0,
+        "duration": 10,
+        "mmin": 5,
+        "mmax": 15
+      }
+    ],
+    "flags": 0
+  },
+  {
+    "rec_type": "SPEL",
+    "record_id": "jtt_blood_frenzy",
+    "name": "Blood Frenzy",
+    "spell_type": 1,
+    "cost": 0,
+    "spell_flags": 6,
+    "effects": [
+      {
+        "effect_id": 17,
+        "skill": -1,
+        "attribute": 0,
+        "range": 0,
+        "area": 0,
+        "duration": 30,
+        "mmin": 10,
+        "mmax": 20
+      }
+    ],
+    "flags": 0
+  },
+  {
+    "rec_type": "SPEL",
+    "record_id": "jtt_shadow_step",
+    "name": "Shadow Step",
+    "spell_type": 0,
+    "cost": 25,
+    "spell_flags": 0,
+    "effects": [
+      {
+        "effect_id": 36,
+        "skill": -1,
+        "attribute": -1,
+        "range": 0,
+        "area": 0,
+        "duration": 30,
+        "mmin": 1,
+        "mmax": 1
+      }
+    ],
+    "flags": 0
+  },
+  {
+    "rec_type": "SPEL",
+    "record_id": "jtt_jungle_call",
+    "name": "Jungle Call",
+    "spell_type": 0,
+    "cost": 40,
+    "spell_flags": 0,
+    "effects": [
+      {
+        "effect_id": 14,
+        "skill": -1,
+        "attribute": -1,
+        "range": 2,
+        "area": 300,
+        "duration": 0,
+        "mmin": 15,
+        "mmax": 30
+      }
+    ],
+    "flags": 0
+  },
+  {
+    "rec_type": "SPEL",
+    "record_id": "jtt_serpent_curse",
+    "name": "Serpent's Curse",
+    "spell_type": 0,
+    "cost": 15,
+    "spell_flags": 0,
+    "effects": [
+      {
+        "effect_id": 17,
+        "skill": -1,
+        "attribute": 0,
+        "range": 1,
+        "area": 0,
+        "duration": 20,
+        "mmin": 8,
+        "mmax": 12
+      }
+    ],
+    "flags": 0
+  },
+  {
+    "rec_type": "ENCH",
+    "record_id": "jtt_ench_voodoo_blade",
+    "ench_type": 1,
+    "cost": 15,
+    "charge": 300,
+    "ench_flags": 0,
+    "effects": [
+      {
+        "effect_id": 25,
+        "skill": -1,
+        "attribute": -1,
+        "range": 1,
+        "area": 0,
+        "duration": 5,
+        "mmin": 3,
+        "mmax": 8
+      }
+    ],
+    "flags": 0
+  },
+  {
+    "rec_type": "ENCH",
+    "record_id": "jtt_ench_war_drum",
+    "ench_type": 2,
+    "cost": 30,
+    "charge": 200,
+    "ench_flags": 0,
+    "effects": [
+      {
+        "effect_id": 17,
+        "skill": -1,
+        "attribute": 0,
+        "range": 0,
+        "area": 0,
+        "duration": 60,
+        "mmin": 15,
+        "mmax": 15
+      }
+    ],
+    "flags": 0
+  },
+  {
+    "rec_type": "ENCH",
+    "record_id": "jtt_ench_shaman_staff",
+    "ench_type": 3,
+    "cost": 8,
+    "charge": 1000,
+    "ench_flags": 1,
+    "effects": [
+      {
+        "effect_id": 0,
+        "skill": -1,
+        "attribute": -1,
+        "range": 0,
+        "area": 0,
+        "duration": 0,
+        "mmin": 1,
+        "mmax": 1
+      }
+    ],
+    "flags": 0
+  }
+]

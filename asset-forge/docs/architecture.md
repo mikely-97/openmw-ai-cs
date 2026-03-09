@@ -181,3 +181,77 @@ because it shares a compatible torch version with the rest of the project.
 3. Update the orchestrator system prompt section in `orchestrator.py`
    (it is regenerated from `ASSET_REQUIREMENTS` automatically).
 4. That's it — the pipeline handles it without further changes.
+
+---
+
+## Integration with omwtools
+
+Asset Forge is one half of a two-tool pipeline. The other half is
+**omwtools** — a Python library and CLI that reads and writes OpenMW binary
+content files (`.omwgame`, `.omwaddon`, `.esp`) via a SQLite intermediary.
+
+```
+Asset Forge                          omwtools
+───────────────────────────────      ──────────────────────────────────
+forge plan   TYPE "desc"       →     (no interaction — plan only)
+forge generate TYPE "desc"     →     output/object/manifest.json
+                                          │
+                                     omw import manifest.json
+                                          │ (also import record JSON files)
+                                     omw validate
+                                          │
+                                     omw write → game.omwgame
+```
+
+### manifest.json → omw import
+
+The `manifest.json` produced by `forge generate` contains an `esm_defaults`
+block that maps directly to omwtools record fields:
+
+```json
+{
+  "object_type": "WEAP",
+  "esm_defaults": {
+    "display_name": "Bone Club",
+    "weight": 4.0,
+    "value": 15,
+    "extras": { "weap_type": 3, "chop_min": 3, "chop_max": 10 }
+  },
+  "openmw_paths": {
+    "mModel": "meshes/forge/bone_club.dae"
+  }
+}
+```
+
+`omw import` reads this file and upserts a `WEAP` record into the SQLite
+database, ready to be written into the binary content file.
+
+### Claude Code as orchestrator
+
+When running inside **Claude Code** (the Anthropic AI coding agent), the
+entire pipeline is fully autonomous:
+
+1. Claude Code designs the game concept and writes record JSON files for all
+   non-asset record types (FACT, RACE, SPEL, NPC_, CELL, DIAL, SCPT, …)
+2. Claude Code calls `forge plan` for each asset-bearing object to get
+   the `AssetPlan` (works without SD/Hunyuan3D/AudioCraft)
+3. When generation services are available, Claude Code calls `forge generate`
+4. Claude Code calls `omw import` + `omw write` to emit the final binary
+5. Claude Code runs `omw validate` and iterates on any errors
+
+The `games/jungle_troll_tribes/` demo was produced this way — 113 records
+across 31 types, written entirely by Claude Code in one session.
+
+### Bootstrap requirement
+
+Before `omw import` can run, the SQLite database must have a `mods` table
+entry for the target mod. Use `omw query` to create it:
+
+```bash
+omw --db game.db query "INSERT INTO mods (id, filename, file_type, \
+  format_version, author, description, record_count) \
+  VALUES (1, 'game.omwgame', 0, 0, 'Author', 'Description', 100)"
+```
+
+`file_type=0` → `.omwgame` (standalone game, no masters required)
+`file_type=1` → `.omwaddon` (plugin, must reference a master game file)

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 3.0.0 commit date:2021-12-02, commit time:18:35, hash:f1cca3055776</authoring_tool>
+    </contributor>
+    <created>2026-03-09T16:25:45</created>
+    <modified>2026-03-09T16:25:45</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="dagger_grip-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.4 0.2 0.06 1</color>
+            </diffuse>
+            <reflectivity>
+              <float sid="specular">0.5</float>
+            </reflectivity>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="dagger_blade-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.46 0.44 0.52 1</color>
+            </diffuse>
+            <reflectivity>
+              <float sid="specular">0.5</float>
+            </reflectivity>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images/>
+  <library_materials>
+    <material id="dagger_grip-material" name="dagger_grip">
+      <instance_effect url="#dagger_grip-effect"/>
+    </material>
+    <material id="dagger_blade-material" name="dagger_blade">
+      <instance_effect url="#dagger_blade-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="Cylinder_025-mesh" name="Cylinder.025">
+      <mesh>
+        <source id="Cylinder_025-mesh-positions">
+          <float_array id="Cylinder_025-mesh-positions-array" count="36">0 6 -12.5 0 6 12.5 5.196153 3 -12.5 5.196153 3 12.5 5.196152 -3 -12.5 5.196152 -3 12.5 -5.24537e-7 -6 -12.5 -5.24537e-7 -6 12.5 -5.196153 -3 -12.5 -5.196153 -3 12.5 -5.196153 3 -12.5 -5.196153 3 12.5</float_array>
+          <technique_common>
+            <accessor source="#Cylinder_025-mesh-positions-array" count="12" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cylinder_025-mesh-normals">
+          <float_array id="Cylinder_025-mesh-normals-array" count="45">0.5 0.8660254 0 1 0 0 0.4999999 -0.8660255 0 -0.5000001 -0.8660253 0 2.44713e-7 0 1 -1 0 0 -0.5000001 0.8660254 0 0 0 -1 1 -2.03451e-7 0 -0.5000001 -0.8660254 0 -2.44713e-7 0 1 -4.89426e-7 0 1 0 0 1 4.89426e-7 0 -1 -4.89426e-7 0 -1</float_array>
+          <technique_common>
+            <accessor source="#Cylinder_025-mesh-normals-array" count="15" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cylinder_025-mesh-map-0">
+          <float_array id="Cylinder_025-mesh-map-0-array" count="120">1 1 0.8333333 0.5 1 0.5 0.8333333 1 0.6666666 0.5 0.8333333 0.5 0.6666666 1 0.5 0.5 0.6666666 0.5 0.5 1 0.3333333 0.5 0.5 0.5 0.25 0.00999999 0.4578461 0.1299999 0.25 0.49 0.3333333 1 0.1666666 0.5 0.3333333 0.5 0.1666666 1 0 0.5 0.1666666 0.5 0.9578461 0.37 0.75 0.00999999 0.5421539 0.37 1 1 0.8333333 1 0.8333333 0.5 0.8333333 1 0.6666666 1 0.6666666 0.5 0.6666666 1 0.5 1 0.5 0.5 0.5 1 0.3333333 1 0.3333333 0.5 0.4578461 0.1299999 0.4578461 0.37 0.25 0.49 0.25 0.49 0.04215389 0.37 0.04215389 0.13 0.04215389 0.13 0.25 0.00999999 0.25 0.49 0.3333333 1 0.1666666 1 0.1666666 0.5 0.1666666 1 0 1 0 0.5 0.5421539 0.37 0.75 0.49 0.9578461 0.37 0.9578461 0.37 0.9578461 0.1299999 0.75 0.00999999 0.75 0.00999999 0.5421539 0.13 0.5421539 0.37</float_array>
+          <technique_common>
+            <accessor source="#Cylinder_025-mesh-map-0-array" count="60" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cylinder_025-mesh-vertices">
+          <input semantic="POSITION" source="#Cylinder_025-mesh-positions"/>
+        </vertices>
+        <triangles material="dagger_grip-material" count="20">
+          <input semantic="VERTEX" source="#Cylinder_025-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cylinder_025-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cylinder_025-mesh-map-0" offset="2" set="0"/>
+          <p>1 0 0 2 0 1 0 0 2 3 1 3 4 1 4 2 1 5 5 2 6 6 2 7 4 2 8 7 3 9 8 3 10 6 3 11 7 4 12 5 4 13 1 4 14 9 5 15 10 5 16 8 5 17 11 6 18 0 6 19 10 6 20 2 7 21 6 7 22 10 7 23 1 0 24 3 0 25 2 0 26 3 8 27 5 8 28 4 8 29 5 2 30 7 2 31 6 2 32 7 9 33 9 9 34 8 9 35 5 10 36 3 10 37 1 10 38 1 11 39 11 11 40 9 11 41 9 12 42 7 12 43 1 12 44 9 5 45 11 5 46 10 5 47 11 6 48 1 6 49 0 6 50 10 7 51 0 7 52 2 7 53 2 13 54 4 13 55 6 13 56 6 14 57 8 14 58 10 14 59</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Cone_006-mesh" name="Cone.006">
+      <mesh>
+        <source id="Cone_006-mesh-positions">
+          <float_array id="Cone_006-mesh-positions-array" count="24">0 7 -25 0 1 25 7 -3.0598e-7 -25 1 0 25 -6.11959e-7 -7 -25 0 -1 25 -7 0 -25 -1 0 25</float_array>
+          <technique_common>
+            <accessor source="#Cone_006-mesh-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cone_006-mesh-normals">
+          <float_array id="Cone_006-mesh-normals-array" count="27">0.7045749 0.7045748 0.08454895 0.7045748 -0.704575 0.08454895 1.90735e-6 0 1 -0.704575 -0.7045749 0.08454895 -0.7045749 0.7045749 0.08454895 0 0 -1 0.7045749 0.7045749 0.08454895 0 0 1 -0.7045749 -0.7045749 0.08454895</float_array>
+          <technique_common>
+            <accessor source="#Cone_006-mesh-normals-array" count="9" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cone_006-mesh-map-0">
+          <float_array id="Cone_006-mesh-map-0-array" count="72">1 1 0.75 0.5 1 0.5 0.75 1 0.5 0.5 0.75 0.5 0.25 0.49 0.25 0.00999999 0.49 0.25 0.5 1 0.25 0.5 0.5 0.5 0.25 1 0 0.5 0.25 0.5 0.99 0.25 0.51 0.25 0.75 0.49 1 1 0.75 1 0.75 0.5 0.75 1 0.5 1 0.5 0.5 0.25 0.49 0.00999999 0.25 0.25 0.00999999 0.5 1 0.25 1 0.25 0.5 0.25 1 0 1 0 0.5 0.99 0.25 0.75 0.00999999 0.51 0.25</float_array>
+          <technique_common>
+            <accessor source="#Cone_006-mesh-map-0-array" count="36" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cone_006-mesh-vertices">
+          <input semantic="POSITION" source="#Cone_006-mesh-positions"/>
+        </vertices>
+        <triangles material="dagger_blade-material" count="12">
+          <input semantic="VERTEX" source="#Cone_006-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cone_006-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cone_006-mesh-map-0" offset="2" set="0"/>
+          <p>1 0 0 2 0 1 0 0 2 3 1 3 4 1 4 2 1 5 1 2 6 5 2 7 3 2 8 5 3 9 6 3 10 4 3 11 7 4 12 0 4 13 6 4 14 2 5 15 6 5 16 0 5 17 1 6 18 3 6 19 2 6 20 3 1 21 5 1 22 4 1 23 1 7 24 7 7 25 5 7 26 5 8 27 7 8 28 6 8 29 7 4 30 1 4 31 0 4 32 2 5 33 4 5 34 6 5 35</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="Cylinder" name="Cylinder" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 10 0 0 0 1</matrix>
+        <instance_geometry url="#Cylinder_025-mesh" name="Cylinder">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="dagger_grip-material" target="#dagger_grip-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Cone" name="Cone" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 40 0 0 0 1</matrix>
+        <instance_geometry url="#Cone_006-mesh" name="Cone">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="dagger_blade-material" target="#dagger_blade-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

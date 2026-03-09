@@ -43,10 +43,10 @@ from omwtools.io.refid import (
 )
 from omwtools.records.base import BaseRecord, RawRecord
 
-# INFO DATA: int32 type + int32 disp_index + int32 rank +
-#            int8 gender + int8 pcrank + int16 padding
-INFO_DATA_FMT = "<iiibBh"
-INFO_DATA_SIZE = struct.calcsize(INFO_DATA_FMT)  # 12 (3×4 + 1 + 1 + 2)
+# INFO DATA: int32 type + int32 disposition + int8 rank +
+#            int8 gender + int8 pc_rank + int8 padding = 12 bytes
+INFO_DATA_FMT = "<iibbbB"
+INFO_DATA_SIZE = struct.calcsize(INFO_DATA_FMT)  # 12 (2×4 + 4×1)
 
 
 @dataclass
@@ -245,14 +245,19 @@ class DialogueInfo(BaseRecord):
             data = encode_refid_to_subrecord(ref, format_version)
             out.extend(pack_subrec_header(tag, len(data)) + data)
 
+        def add_cstr_always(tag: bytes, s: str) -> None:
+            """Write subrecord even when s is empty (required for PNAM/NNAM)."""
+            d = encode_cstring(s)
+            out.extend(pack_subrec_header(tag, len(d)) + d)
+
         add_cstr(b"INAM", self.record_id)
-        add_cstr(b"PNAM", self.prev_id)
-        add_cstr(b"NNAM", self.next_id)
+        add_cstr_always(b"PNAM", self.prev_id)
+        add_cstr_always(b"NNAM", self.next_id)
 
         out += pack_subrec_header(b"DATA", INFO_DATA_SIZE)
         out += struct.pack(INFO_DATA_FMT,
                            self.info_type, self.disp_index, self.rank,
-                           self.gender & 0xFF, self.pc_rank & 0xFF, 0)
+                           self.gender, self.pc_rank, 0)
 
         add_refid(b"ONAM", self.actor)
         add_refid(b"RNAM", self.race)

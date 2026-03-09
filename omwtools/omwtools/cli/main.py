@@ -171,6 +171,7 @@ def main(argv: list[str] | None = None) -> None:
     elif cmd == "query":
         try:
             rows = conn.execute(args.sql, args.params).fetchall()
+            conn.commit()
             _out([dict(r) for r in rows], args.json)
         except Exception as e:
             _err(str(e), type(e).__name__)

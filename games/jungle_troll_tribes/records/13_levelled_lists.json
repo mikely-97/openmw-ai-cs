@@ -1,0 +1,76 @@
+[
+  {
+    "rec_type": "LEVC",
+    "record_id": "jtt_wild_creatures",
+    "lev_flags": 1,
+    "chance_none": 20,
+    "entries": [
+      {"item": "jtt_jungle_boar",    "level": 1},
+      {"item": "jtt_jungle_boar",    "level": 2},
+      {"item": "jtt_giant_spider",   "level": 2},
+      {"item": "jtt_giant_spider",   "level": 4},
+      {"item": "jtt_jungle_panther", "level": 5},
+      {"item": "jtt_jungle_panther", "level": 7},
+      {"item": "jtt_jungle_croc",    "level": 6},
+      {"item": "jtt_jungle_croc",    "level": 9}
+    ],
+    "flags": 0
+  },
+  {
+    "rec_type": "LEVC",
+    "record_id": "jtt_hostile_trolls",
+    "lev_flags": 0,
+    "chance_none": 15,
+    "entries": [
+      {"item": "jtt_blood_berserker", "level": 5},
+      {"item": "jtt_shadow_hexer",    "level": 4},
+      {"item": "jtt_forest_warrior",  "level": 3}
+    ],
+    "flags": 0
+  },
+  {
+    "rec_type": "LEVI",
+    "record_id": "jtt_tribal_loot_low",
+    "lev_flags": 0,
+    "chance_none": 10,
+    "entries": [
+      {"item": "jtt_shell_token",   "level": 1},
+      {"item": "jtt_jungle_berry",  "level": 1},
+      {"item": "jtt_jungle_root",   "level": 1},
+      {"item": "jtt_bird_feather",  "level": 1},
+      {"item": "jtt_bone_club",     "level": 2},
+      {"item": "jtt_flint_dagger",  "level": 2}
+    ],
+    "flags": 0
+  },
+  {
+    "rec_type": "LEVI",
+    "record_id": "jtt_tribal_loot_mid",
+    "lev_flags": 0,
+    "chance_none": 10,
+    "entries": [
+      {"item": "jtt_tribal_brew",   "level": 3},
+      {"item": "jtt_stone_hatchet", "level": 3},
+      {"item": "jtt_bone_shield",   "level": 3},
+      {"item": "jtt_vine_whip",     "level": 4},
+      {"item": "jtt_hunters_tonic", "level": 4},
+      {"item": "jtt_hide_cuirass",  "level": 5}
+    ],
+    "flags": 0
+  },
+  {
+    "rec_type": "LEVI",
+    "record_id": "jtt_tribal_loot_high",
+    "lev_flags": 0,
+    "chance_none": 10,
+    "entries": [
+      {"item": "jtt_obsidian_spear",  "level": 5},
+      {"item": "jtt_voodoo_potion",   "level": 5},
+      {"item": "jtt_war_maul",        "level": 6},
+      {"item": "jtt_berserker_blood", "level": 6},
+      {"item": "jtt_troll_idol",      "level": 7},
+      {"item": "jtt_bone_necklace",   "level": 8}
+    ],
+    "flags": 0
+  }
+]

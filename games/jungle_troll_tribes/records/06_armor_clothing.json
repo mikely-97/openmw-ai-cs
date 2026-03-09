@@ -1,0 +1,129 @@
+[
+  {
+    "rec_type": "ARMO",
+    "record_id": "jtt_bone_shield",
+    "name": "Bone Shield",
+    "mesh": "jtt\\bone_shield.dae",
+    "armo_type": 9,
+    "weight": 8.0,
+    "value": 40,
+    "health": 300,
+    "enchant_pts": 25,
+    "armour_rating": 10,
+    "script": "",
+    "icon": "icons\\jtt\\bone_shield.png",
+    "parts": [
+      {"index": 9, "male": "", "female": ""}
+    ],
+    "enchantment": "",
+    "flags": 0
+  },
+  {
+    "rec_type": "ARMO",
+    "record_id": "jtt_hide_cuirass",
+    "name": "Hide Cuirass",
+    "mesh": "jtt\\hide_cuirass.dae",
+    "armo_type": 2,
+    "weight": 12.0,
+    "value": 60,
+    "health": 400,
+    "enchant_pts": 30,
+    "armour_rating": 12,
+    "script": "",
+    "icon": "icons\\jtt\\hide_cuirass.png",
+    "parts": [
+      {"index": 2, "male": "", "female": ""}
+    ],
+    "enchantment": "",
+    "flags": 0
+  },
+  {
+    "rec_type": "ARMO",
+    "record_id": "jtt_bone_helm",
+    "name": "Bone Helmet",
+    "mesh": "jtt\\bone_helm.dae",
+    "armo_type": 0,
+    "weight": 5.0,
+    "value": 35,
+    "health": 250,
+    "enchant_pts": 15,
+    "armour_rating": 8,
+    "script": "",
+    "icon": "icons\\jtt\\bone_helm.png",
+    "parts": [
+      {"index": 0, "male": "", "female": ""}
+    ],
+    "enchantment": "",
+    "flags": 0
+  },
+  {
+    "rec_type": "ARMO",
+    "record_id": "jtt_bark_pauldron",
+    "name": "Bark Pauldron",
+    "mesh": "jtt\\bark_pauldron.dae",
+    "armo_type": 22,
+    "weight": 3.5,
+    "value": 20,
+    "health": 200,
+    "enchant_pts": 10,
+    "armour_rating": 6,
+    "script": "",
+    "icon": "icons\\jtt\\bark_pauldron.png",
+    "parts": [
+      {"index": 22, "male": "", "female": ""}
+    ],
+    "enchantment": "",
+    "flags": 0
+  },
+  {
+    "rec_type": "CLOT",
+    "record_id": "jtt_tribal_loincloth",
+    "name": "Tribal Loincloth",
+    "mesh": "jtt\\tribal_loincloth.dae",
+    "clot_type": 0,
+    "weight": 1.0,
+    "value": 10,
+    "enchant_pts": 5,
+    "script": "",
+    "icon": "icons\\jtt\\tribal_loincloth.png",
+    "parts": [
+      {"index": 0, "male": "", "female": ""}
+    ],
+    "enchantment": "",
+    "flags": 0
+  },
+  {
+    "rec_type": "CLOT",
+    "record_id": "jtt_shaman_robe",
+    "name": "Shaman's Robe",
+    "mesh": "jtt\\shaman_robe.dae",
+    "clot_type": 4,
+    "weight": 3.0,
+    "value": 80,
+    "enchant_pts": 50,
+    "script": "",
+    "icon": "icons\\jtt\\shaman_robe.png",
+    "parts": [
+      {"index": 4, "male": "", "female": ""}
+    ],
+    "enchantment": "",
+    "flags": 0
+  },
+  {
+    "rec_type": "CLOT",
+    "record_id": "jtt_bone_necklace",
+    "name": "Bone Necklace",
+    "mesh": "jtt\\bone_necklace.dae",
+    "clot_type": 9,
+    "weight": 0.5,
+    "value": 120,
+    "enchant_pts": 60,
+    "script": "",
+    "icon": "icons\\jtt\\bone_necklace.png",
+    "parts": [
+      {"index": 9, "male": "", "female": ""}
+    ],
+    "enchantment": "jtt_ench_shaman_staff",
+    "flags": 0
+  }
+]

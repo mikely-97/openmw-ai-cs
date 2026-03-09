@@ -66,23 +66,45 @@ def write_mod(
             b"TES3", header_bytes, unknown=0, flags=0
         )
 
-        # Write all records in order
-        for row in conn.execute(
-            "SELECT * FROM records WHERE mod_id=? ORDER BY sort_order",
-            (mod_id,),
-        ):
+        # INFO records must appear immediately after their parent DIAL with no
+        # other record types in between.  We handle this by: (a) skipping INFO
+        # rows in the main loop, and (b) when a DIAL row is encountered, first
+        # writing the DIAL then writing all its INFOs inline.
+        def _write_row(row: sqlite3.Row) -> None:
             rt = row["rec_type"].encode("ascii")[:4]
             raw_blob = row["raw_blob"]
-
             if raw_blob is not None:
-                # Unknown record — use raw blob
                 writer.write_record(rt, raw_blob, unknown=0, flags=row["flags"])
             else:
-                # Typed record — reconstruct from satellite tables
                 record = _load_typed_record(conn, row, format_version)
                 if record is not None:
                     encoded = record.encode_subrecords(format_version)
                     writer.write_record(rt, encoded, unknown=0, flags=row["flags"])
+
+        for row in conn.execute(
+            "SELECT * FROM records WHERE mod_id=? ORDER BY sort_order",
+            (mod_id,),
+        ):
+            if row["rec_type"] == "INFO":
+                # Written inline after its parent DIAL — skip in main loop.
+                continue
+
+            _write_row(row)
+
+            if row["rec_type"] == "DIAL":
+                # Immediately write all INFO records for this DIAL topic,
+                # ordered by their sort_order so the chain is preserved.
+                dial_topic = row["record_id_text"]
+                for info_row in conn.execute(
+                    """
+                    SELECT r.* FROM records r
+                    JOIN dialogue_infos di ON di.record_id = r.id
+                    WHERE r.mod_id = ? AND di.dial_topic = ?
+                    ORDER BY r.sort_order
+                    """,
+                    (mod_id, dial_topic),
+                ):
+                    _write_row(info_row)
 
     print(f"Written {record_count} records to {out}")
 

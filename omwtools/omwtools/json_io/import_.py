@@ -38,6 +38,12 @@ def import_records_from_json(
         if not rec_type_str:
             continue
 
+        # TES3 is the file header — its metadata is already stored in the mods
+        # table and written by `omw write`. Importing it as a typed record would
+        # produce a duplicate TES3 in the file body, which OpenMW rejects.
+        if rec_type_str == "TES3":
+            continue
+
         rec_type = rec_type_str.encode("ascii")[:4]
         cls = RECORD_REGISTRY.get(rec_type)
 

@@ -99,6 +99,12 @@ class MiscItem(BaseRecord):
             d = encode_cstring(s)
             out.extend(pack_subrec_header(tag, len(d)) + d)
 
+        def add_refid_opt(tag: bytes, ref: RefId) -> None:
+            if isinstance(ref, EmptyRefId):
+                return
+            data = encode_refid_to_subrecord(ref, format_version)
+            out.extend(pack_subrec_header(tag, len(data)) + data)
+
         add_refid(b"NAME", self.record_id)
         if self.mesh:
             add_cstr(b"MODL", self.mesh)
@@ -106,10 +112,11 @@ class MiscItem(BaseRecord):
             add_cstr(b"FNAM", self.name)
         out += pack_subrec_header(b"MCDT", MCDT_SIZE)
         out += struct.pack(MCDT_FMT, self.weight, self.value, self.unknown2)
-        add_refid(b"SCRI", self.script)
+        add_refid_opt(b"SCRI", self.script)
         if self.icon:
             add_cstr(b"ITEX", self.icon)
-        add_refid(b"ENAM", self.enchantment)
+        # MISC records do not support ENAM in OpenMW — enchantment effects must
+        # be driven by script instead. Do not write ENAM.
         return bytes(out)
 
     def to_dict(self) -> dict[str, Any]:
@@ -195,6 +202,12 @@ def _simple_item(rec_type: bytes, data_tag: bytes, data_fmt: str, data_size: int
                 d = encode_cstring(s)
                 out.extend(pack_subrec_header(tag, len(d)) + d)
 
+            def add_refid_opt(tag: bytes, ref: RefId) -> None:
+                if isinstance(ref, EmptyRefId):
+                    return
+                data = encode_refid_to_subrecord(ref, format_version)
+                out.extend(pack_subrec_header(tag, len(data)) + data)
+
             add_refid(b"NAME", self.record_id)
             if self.mesh:
                 add_cstr(b"MODL", self.mesh)
@@ -202,7 +215,7 @@ def _simple_item(rec_type: bytes, data_tag: bytes, data_fmt: str, data_size: int
                 add_cstr(b"FNAM", self.name)
             vals = tuple(getattr(self, fn) for fn in fnames)
             out += pack_subrec_header(data_tag, data_size) + struct.pack(data_fmt, *vals)
-            add_refid(b"SCRI", self.script)
+            add_refid_opt(b"SCRI", self.script)
             if self.icon:
                 add_cstr(b"ITEX", self.icon)
             return bytes(out)

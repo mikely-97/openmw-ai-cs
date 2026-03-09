@@ -1,0 +1,105 @@
+[
+  {
+    "rec_type": "TES3",
+    "format_version": 0,
+    "esm_version": 1.3,
+    "file_type": 0,
+    "author": "Tribal Council",
+    "description": "Jungle Troll Tribes - Four troll tribes vie for dominance on a jungle island. Gather resources, forge weapons, cast voodoo, and crush your enemies. For OpenMW.",
+    "record_count": 90,
+    "masters": [],
+    "flags": 0
+  },
+  {
+    "rec_type": "FACT",
+    "record_id": "forest_trolls",
+    "name": "Forest Trolls",
+    "rank_names": ["Scout", "Ranger", "Warden", "Stalker", "Elder"],
+    "attr1": 3,
+    "attr2": 4,
+    "ranks": [
+      {"attr1_req": 0,  "attr2_req": 0,  "skill1_req": 0,  "skill2_req": 0,  "faction_req": 0},
+      {"attr1_req": 30, "attr2_req": 30, "skill1_req": 10, "skill2_req": 10, "faction_req": 0},
+      {"attr1_req": 40, "attr2_req": 40, "skill1_req": 20, "skill2_req": 20, "faction_req": 0},
+      {"attr1_req": 50, "attr2_req": 50, "skill1_req": 30, "skill2_req": 30, "faction_req": 0},
+      {"attr1_req": 60, "attr2_req": 60, "skill1_req": 40, "skill2_req": 40, "faction_req": 0}
+    ],
+    "skill_ids": [19, 23, 17, -1, -1, -1, -1],
+    "fact_flags": 0,
+    "reactions": [
+      {"faction": "river_trolls",  "value": -10},
+      {"faction": "blood_trolls",  "value": -30},
+      {"faction": "shadow_trolls", "value": -20}
+    ],
+    "flags": 0
+  },
+  {
+    "rec_type": "FACT",
+    "record_id": "river_trolls",
+    "name": "River Trolls",
+    "rank_names": ["Fisher", "Trader", "Defender", "Guardian", "Chieftain"],
+    "attr1": 5,
+    "attr2": 6,
+    "ranks": [
+      {"attr1_req": 0,  "attr2_req": 0,  "skill1_req": 0,  "skill2_req": 0,  "faction_req": 0},
+      {"attr1_req": 30, "attr2_req": 30, "skill1_req": 10, "skill2_req": 10, "faction_req": 0},
+      {"attr1_req": 40, "attr2_req": 40, "skill1_req": 20, "skill2_req": 20, "faction_req": 0},
+      {"attr1_req": 50, "attr2_req": 50, "skill1_req": 30, "skill2_req": 30, "faction_req": 0},
+      {"attr1_req": 60, "attr2_req": 60, "skill1_req": 40, "skill2_req": 40, "faction_req": 0}
+    ],
+    "skill_ids": [0, 8, 16, -1, -1, -1, -1],
+    "fact_flags": 0,
+    "reactions": [
+      {"faction": "forest_trolls", "value": -10},
+      {"faction": "blood_trolls",  "value": -20},
+      {"faction": "shadow_trolls", "value": -15}
+    ],
+    "flags": 0
+  },
+  {
+    "rec_type": "FACT",
+    "record_id": "blood_trolls",
+    "name": "Blood Trolls",
+    "rank_names": ["Savage", "Warrior", "Berserker", "Warlord", "Bloodchief"],
+    "attr1": 0,
+    "attr2": 5,
+    "ranks": [
+      {"attr1_req": 0,  "attr2_req": 0,  "skill1_req": 0,  "skill2_req": 0,  "faction_req": 0},
+      {"attr1_req": 35, "attr2_req": 35, "skill1_req": 15, "skill2_req": 10, "faction_req": 0},
+      {"attr1_req": 45, "attr2_req": 45, "skill1_req": 25, "skill2_req": 20, "faction_req": 0},
+      {"attr1_req": 55, "attr2_req": 55, "skill1_req": 35, "skill2_req": 30, "faction_req": 0},
+      {"attr1_req": 65, "attr2_req": 65, "skill1_req": 45, "skill2_req": 40, "faction_req": 0}
+    ],
+    "skill_ids": [4, 8, 17, -1, -1, -1, -1],
+    "fact_flags": 0,
+    "reactions": [
+      {"faction": "forest_trolls", "value": -30},
+      {"faction": "river_trolls",  "value": -20},
+      {"faction": "shadow_trolls", "value": -10}
+    ],
+    "flags": 0
+  },
+  {
+    "rec_type": "FACT",
+    "record_id": "shadow_trolls",
+    "name": "Shadow Trolls",
+    "rank_names": ["Novice", "Hexer", "Voodooist", "Spiritcaller", "Dark Elder"],
+    "attr1": 1,
+    "attr2": 2,
+    "ranks": [
+      {"attr1_req": 0,  "attr2_req": 0,  "skill1_req": 0,  "skill2_req": 0,  "faction_req": 0},
+      {"attr1_req": 30, "attr2_req": 30, "skill1_req": 10, "skill2_req": 10, "faction_req": 0},
+      {"attr1_req": 40, "attr2_req": 40, "skill1_req": 20, "skill2_req": 20, "faction_req": 0},
+      {"attr1_req": 50, "attr2_req": 50, "skill1_req": 30, "skill2_req": 30, "faction_req": 0},
+      {"attr1_req": 60, "attr2_req": 60, "skill1_req": 40, "skill2_req": 40, "faction_req": 0}
+    ],
+    "skill_ids": [14, 10, 16, -1, -1, -1, -1],
+    "fact_flags": 0,
+    "reactions": [
+      {"faction": "forest_trolls", "value": -20},
+      {"faction": "river_trolls",  "value": -15},
+      {"faction": "blood_trolls",  "value": -10}
+    ],
+    "flags": 0
+  }
+]

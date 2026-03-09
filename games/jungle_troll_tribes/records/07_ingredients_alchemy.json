@@ -1,0 +1,212 @@
+[
+  {
+    "rec_type": "INGR",
+    "record_id": "jtt_jungle_berry",
+    "name": "Jungle Berry",
+    "mesh": "jtt\\jungle_berry.dae",
+    "weight": 0.1,
+    "value": 5,
+    "effect_ids":    [0,  27, -1, -1],
+    "skill_ids":     [-1, -1, -1, -1],
+    "attribute_ids": [-1, -1, -1, -1],
+    "script": "",
+    "icon": "icons\\jtt\\jungle_berry.png",
+    "flags": 0
+  },
+  {
+    "rec_type": "INGR",
+    "record_id": "jtt_jungle_mushroom",
+    "name": "Glowing Mushroom",
+    "mesh": "jtt\\jungle_mushroom.dae",
+    "weight": 0.2,
+    "value": 15,
+    "effect_ids":    [0,  25, -1, -1],
+    "skill_ids":     [-1, -1, -1, -1],
+    "attribute_ids": [-1, -1, -1, -1],
+    "script": "",
+    "icon": "icons\\jtt\\jungle_mushroom.png",
+    "flags": 0
+  },
+  {
+    "rec_type": "INGR",
+    "record_id": "jtt_jungle_root",
+    "name": "Jungle Root",
+    "mesh": "jtt\\jungle_root.dae",
+    "weight": 0.3,
+    "value": 8,
+    "effect_ids":    [27, 0,  -1, -1],
+    "skill_ids":     [-1, -1, -1, -1],
+    "attribute_ids": [-1, -1, -1, -1],
+    "script": "",
+    "icon": "icons\\jtt\\jungle_root.png",
+    "flags": 0
+  },
+  {
+    "rec_type": "INGR",
+    "record_id": "jtt_croc_scale",
+    "name": "Crocodile Scale",
+    "mesh": "jtt\\croc_scale.dae",
+    "weight": 0.5,
+    "value": 20,
+    "effect_ids":    [3, 25, -1, -1],
+    "skill_ids":     [-1, -1, -1, -1],
+    "attribute_ids": [-1, -1, -1, -1],
+    "script": "",
+    "icon": "icons\\jtt\\croc_scale.png",
+    "flags": 0
+  },
+  {
+    "rec_type": "INGR",
+    "record_id": "jtt_panther_fang",
+    "name": "Panther Fang",
+    "mesh": "jtt\\panther_fang.dae",
+    "weight": 0.3,
+    "value": 30,
+    "effect_ids":    [17, 14, -1, -1],
+    "skill_ids":     [-1, -1, -1, -1],
+    "attribute_ids": [0, -1, -1, -1],
+    "script": "",
+    "icon": "icons\\jtt\\panther_fang.png",
+    "flags": 0
+  },
+  {
+    "rec_type": "INGR",
+    "record_id": "jtt_bird_feather",
+    "name": "Bird Feather",
+    "mesh": "jtt\\bird_feather.dae",
+    "weight": 0.05,
+    "value": 4,
+    "effect_ids":    [8, 9, -1, -1],
+    "skill_ids":     [-1, -1, -1, -1],
+    "attribute_ids": [-1, -1, -1, -1],
+    "script": "",
+    "icon": "icons\\jtt\\bird_feather.png",
+    "flags": 0
+  },
+  {
+    "rec_type": "ALCH",
+    "record_id": "jtt_tribal_brew",
+    "name": "Tribal Brew",
+    "mesh": "jtt\\tribal_brew.dae",
+    "icon": "icons\\jtt\\tribal_brew.png",
+    "script": "",
+    "weight": 0.5,
+    "value": 30,
+    "auto_calc": 0,
+    "effects": [
+      {
+        "effect_id": 0,
+        "skill": -1,
+        "attribute": -1,
+        "range": 0,
+        "area": 0,
+        "duration": 5,
+        "mmin": 15,
+        "mmax": 25
+      },
+      {
+        "effect_id": 27,
+        "skill": -1,
+        "attribute": -1,
+        "range": 0,
+        "area": 0,
+        "duration": 0,
+        "mmin": 30,
+        "mmax": 40
+      }
+    ],
+    "flags": 0
+  },
+  {
+    "rec_type": "ALCH",
+    "record_id": "jtt_voodoo_potion",
+    "name": "Voodoo Potion",
+    "mesh": "jtt\\voodoo_potion.dae",
+    "icon": "icons\\jtt\\voodoo_potion.png",
+    "script": "",
+    "weight": 0.4,
+    "value": 50,
+    "auto_calc": 0,
+    "effects": [
+      {
+        "effect_id": 25,
+        "skill": -1,
+        "attribute": -1,
+        "range": 1,
+        "area": 0,
+        "duration": 15,
+        "mmin": 8,
+        "mmax": 20
+      }
+    ],
+    "flags": 0
+  },
+  {
+    "rec_type": "ALCH",
+    "record_id": "jtt_hunters_tonic",
+    "name": "Hunter's Tonic",
+    "mesh": "jtt\\hunters_tonic.dae",
+    "icon": "icons\\jtt\\hunters_tonic.png",
+    "script": "",
+    "weight": 0.4,
+    "value": 40,
+    "auto_calc": 0,
+    "effects": [
+      {
+        "effect_id": 17,
+        "skill": -1,
+        "attribute": 3,
+        "range": 0,
+        "area": 0,
+        "duration": 60,
+        "mmin": 10,
+        "mmax": 15
+      },
+      {
+        "effect_id": 17,
+        "skill": -1,
+        "attribute": 4,
+        "range": 0,
+        "area": 0,
+        "duration": 60,
+        "mmin": 10,
+        "mmax": 15
+      }
+    ],
+    "flags": 0
+  },
+  {
+    "rec_type": "ALCH",
+    "record_id": "jtt_berserker_blood",
+    "name": "Berserker's Blood",
+    "mesh": "jtt\\berserker_blood.dae",
+    "icon": "icons\\jtt\\berserker_blood.png",
+    "script": "",
+    "weight": 0.5,
+    "value": 60,
+    "auto_calc": 0,
+    "effects": [
+      {
+        "effect_id": 17,
+        "skill": -1,
+        "attribute": 0,
+        "range": 0,
+        "area": 0,
+        "duration": 45,
+        "mmin": 15,
+        "mmax": 20
+      },
+      {
+        "effect_id": 17,
+        "skill": -1,
+        "attribute": 5,
+        "range": 0,
+        "area": 0,
+        "duration": 45,
+        "mmin": 15,
+        "mmax": 20
+      }
+    ],
+    "flags": 0
+  }
+]

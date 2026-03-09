@@ -1,0 +1,102 @@
+[
+  {
+    "rec_type": "GLOB",
+    "record_id": "dayspassed",
+    "var_type": "l",
+    "value": 1.0,
+    "flags": 0,
+    "_record_id": "dayspassed",
+    "_sort_order": 0,
+    "_mod_id": 1
+  },
+  {
+    "rec_type": "GLOB",
+    "record_id": "pcwerewolf",
+    "var_type": "l",
+    "value": 0.0,
+    "flags": 0,
+    "_record_id": "pcwerewolf",
+    "_sort_order": 1,
+    "_mod_id": 1
+  },
+  {
+    "rec_type": "GLOB",
+    "record_id": "pcyear",
+    "var_type": "l",
+    "value": 0.0,
+    "flags": 0,
+    "_record_id": "pcyear",
+    "_sort_order": 2,
+    "_mod_id": 1
+  },
+  {
+    "rec_type": "GLOB",
+    "record_id": "day",
+    "var_type": "l",
+    "value": 1.0,
+    "flags": 0,
+    "_record_id": "day",
+    "_sort_order": 3,
+    "_mod_id": 1
+  },
+  {
+    "rec_type": "GLOB",
+    "record_id": "gamehour",
+    "var_type": "f",
+    "value": 8.0,
+    "flags": 0,
+    "_record_id": "gamehour",
+    "_sort_order": 4,
+    "_mod_id": 1
+  },
+  {
+    "rec_type": "GLOB",
+    "record_id": "month",
+    "var_type": "l",
+    "value": 0.0,
+    "flags": 0,
+    "_record_id": "month",
+    "_sort_order": 5,
+    "_mod_id": 1
+  },
+  {
+    "rec_type": "GLOB",
+    "record_id": "pcrace",
+    "var_type": "l",
+    "value": 0.0,
+    "flags": 0,
+    "_record_id": "pcrace",
+    "_sort_order": 6,
+    "_mod_id": 1
+  },
+  {
+    "rec_type": "GLOB",
+    "record_id": "pcvampire",
+    "var_type": "l",
+    "value": 0.0,
+    "flags": 0,
+    "_record_id": "pcvampire",
+    "_sort_order": 7,
+    "_mod_id": 1
+  },
+  {
+    "rec_type": "GLOB",
+    "record_id": "chargenstate",
+    "var_type": "f",
+    "value": 1.0,
+    "flags": 0,
+    "_record_id": "chargenstate",
+    "_sort_order": 8,
+    "_mod_id": 1
+  },
+  {
+    "rec_type": "GLOB",
+    "record_id": "random100",
+    "var_type": "s",
+    "value": 0.0,
+    "flags": 0,
+    "_record_id": "random100",
+    "_sort_order": 9,
+    "_mod_id": 1
+  }
+]
