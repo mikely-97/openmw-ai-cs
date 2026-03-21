@@ -1,4 +1,5 @@
 [
+  {"rec_type":"ACTI","record_id":"jtt_fast_travel","name":"Jungle Portal","mesh":"jtt\\totem_pole.dae","script":"JTT_FastTravel","flags":0},
   {"rec_type":"STAT","record_id":"VFX_DefaultHit", "mesh":"","flags":0},
   {"rec_type":"STAT","record_id":"VFX_DefaultCast","mesh":"","flags":0},
   {"rec_type":"STAT","record_id":"VFX_DefaultArea","mesh":"","flags":0},

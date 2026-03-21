@@ -101,6 +101,16 @@
   },
   {
     "rec_type": "SCPT",
+    "script_name": "JTT_FastTravel",
+    "num_shorts": 2, "num_longs": 0, "num_floats": 0,
+    "local_vars": ["State", "Button"],
+    "bytecode_hex": "",
+    "source_text": "Begin JTT_FastTravel\n\nshort State\nshort Button\n\nif ( OnActivate == 1 )\n    if ( State == 0 )\n        MessageBox \"Jungle Portal\" \"Base Camp (0,0)\" \"East Jungle (1,0)\" \"North Ridge (0,1)\" \"West Shore (-1,0)\" \"South Marsh (0,-1)\" \"Close\"\n        set State to 1\n    endif\nendif\n\nif ( State == 1 )\n    set Button to GetButtonPressed\n    if ( Button == -1 )\n        return\n    endif\n    if ( Button == 0 )\n        player->Position 4000 4000 220 0\n    endif\n    if ( Button == 1 )\n        player->Position 12500 4000 220 0\n    endif\n    if ( Button == 2 )\n        player->Position 4000 12500 220 0\n    endif\n    if ( Button == 3 )\n        player->Position -4000 4000 220 0\n    endif\n    if ( Button == 4 )\n        player->Position 4000 -4000 220 0\n    endif\n    set State to 0\nendif\n\nEnd JTT_FastTravel\n",
+    "has_scdt": false,
+    "flags": 0
+  },
+  {
+    "rec_type": "SCPT",
     "script_name": "JTT_TribalDrum",
     "num_shorts": 1, "num_longs": 0, "num_floats": 0,
     "local_vars": ["Activated"],

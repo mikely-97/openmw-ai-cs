@@ -6,7 +6,7 @@
     "grid_x": 0,
     "grid_y": 0,
     "region": "jungle_isle_region",
-    "ref_num_counter": 54,
+    "ref_num_counter": 55,
     "water_height": null,
     "flags": 0,
     "refs": [
@@ -1401,6 +1401,35 @@
         "dest_pos": null,
         "dest_rot": null,
         "dest_cell": ""
+      },
+      {
+        "ref_num": 55,
+        "object_id": "jtt_fast_travel",
+        "scale": 1.2,
+        "pos": [
+          4300.0,
+          3800.0,
+          200.0
+        ],
+        "rot": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "is_deleted": false,
+        "is_blocked": false,
+        "soul": "",
+        "owner": "",
+        "owner_rank": -1,
+        "owner_global": "",
+        "key_id": "",
+        "trap_id": "",
+        "enchant_charge": -1.0,
+        "charge_int": -1,
+        "lock_level": 0.0,
+        "dest_pos": null,
+        "dest_rot": null,
+        "dest_cell": ""
       }
     ]
   },
@@ -1411,7 +1440,7 @@
     "grid_x": 1,
     "grid_y": 0,
     "region": "jungle_isle_region",
-    "ref_num_counter": 15,
+    "ref_num_counter": 16,
     "water_height": null,
     "flags": 0,
     "refs": [
@@ -1849,6 +1878,35 @@
         "dest_pos": null,
         "dest_rot": null,
         "dest_cell": ""
+      },
+      {
+        "ref_num": 16,
+        "object_id": "jtt_fast_travel",
+        "scale": 1.2,
+        "pos": [
+          11692.0,
+          3500.0,
+          200.0
+        ],
+        "rot": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "is_deleted": false,
+        "is_blocked": false,
+        "soul": "",
+        "owner": "",
+        "owner_rank": -1,
+        "owner_global": "",
+        "key_id": "",
+        "trap_id": "",
+        "enchant_charge": -1.0,
+        "charge_int": -1,
+        "lock_level": 0.0,
+        "dest_pos": null,
+        "dest_rot": null,
+        "dest_cell": ""
       }
     ]
   },
@@ -1859,7 +1917,7 @@
     "grid_x": 0,
     "grid_y": 1,
     "region": "jungle_isle_region",
-    "ref_num_counter": 12,
+    "ref_num_counter": 13,
     "water_height": null,
     "flags": 0,
     "refs": [
@@ -2210,6 +2268,35 @@
         "dest_pos": null,
         "dest_rot": null,
         "dest_cell": ""
+      },
+      {
+        "ref_num": 13,
+        "object_id": "jtt_fast_travel",
+        "scale": 1.2,
+        "pos": [
+          3500.0,
+          11692.0,
+          200.0
+        ],
+        "rot": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "is_deleted": false,
+        "is_blocked": false,
+        "soul": "",
+        "owner": "",
+        "owner_rank": -1,
+        "owner_global": "",
+        "key_id": "",
+        "trap_id": "",
+        "enchant_charge": -1.0,
+        "charge_int": -1,
+        "lock_level": 0.0,
+        "dest_pos": null,
+        "dest_rot": null,
+        "dest_cell": ""
       }
     ]
   },
@@ -2220,7 +2307,7 @@
     "grid_x": -1,
     "grid_y": 0,
     "region": "jungle_isle_region",
-    "ref_num_counter": 12,
+    "ref_num_counter": 13,
     "water_height": null,
     "flags": 0,
     "refs": [
@@ -2571,6 +2658,35 @@
         "dest_pos": null,
         "dest_rot": null,
         "dest_cell": ""
+      },
+      {
+        "ref_num": 13,
+        "object_id": "jtt_fast_travel",
+        "scale": 1.2,
+        "pos": [
+          -4192.0,
+          3500.0,
+          200.0
+        ],
+        "rot": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "is_deleted": false,
+        "is_blocked": false,
+        "soul": "",
+        "owner": "",
+        "owner_rank": -1,
+        "owner_global": "",
+        "key_id": "",
+        "trap_id": "",
+        "enchant_charge": -1.0,
+        "charge_int": -1,
+        "lock_level": 0.0,
+        "dest_pos": null,
+        "dest_rot": null,
+        "dest_cell": ""
       }
     ]
   },
@@ -2581,7 +2697,7 @@
     "grid_x": 0,
     "grid_y": -1,
     "region": "jungle_isle_region",
-    "ref_num_counter": 12,
+    "ref_num_counter": 13,
     "water_height": null,
     "flags": 0,
     "refs": [
@@ -2911,6 +3027,35 @@
         "pos": [
           3200.0,
           -2192.0,
+          200.0
+        ],
+        "rot": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "is_deleted": false,
+        "is_blocked": false,
+        "soul": "",
+        "owner": "",
+        "owner_rank": -1,
+        "owner_global": "",
+        "key_id": "",
+        "trap_id": "",
+        "enchant_charge": -1.0,
+        "charge_int": -1,
+        "lock_level": 0.0,
+        "dest_pos": null,
+        "dest_rot": null,
+        "dest_cell": ""
+      },
+      {
+        "ref_num": 13,
+        "object_id": "jtt_fast_travel",
+        "scale": 1.2,
+        "pos": [
+          3500.0,
+          -4192.0,
           200.0
         ],
         "rot": [
