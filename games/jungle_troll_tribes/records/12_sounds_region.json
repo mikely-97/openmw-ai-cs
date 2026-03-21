@@ -2,7 +2,7 @@
   {
     "rec_type": "SOUN",
     "record_id": "jtt_drum_beat",
-    "filename": "Sound\\jtt\\drum_beat.wav",
+    "filename": "jtt\\drum_beat.wav",
     "volume": 128,
     "min_range": 0,
     "max_range": 200,
@@ -11,7 +11,7 @@
   {
     "rec_type": "SOUN",
     "record_id": "jtt_jungle_amb",
-    "filename": "Sound\\jtt\\jungle_amb.wav",
+    "filename": "jtt\\jungle_amb.wav",
     "volume": 80,
     "min_range": 0,
     "max_range": 255,
@@ -20,7 +20,7 @@
   {
     "rec_type": "SOUN",
     "record_id": "jtt_troll_roar",
-    "filename": "Sound\\jtt\\troll_roar.wav",
+    "filename": "jtt\\troll_roar.wav",
     "volume": 200,
     "min_range": 0,
     "max_range": 150,

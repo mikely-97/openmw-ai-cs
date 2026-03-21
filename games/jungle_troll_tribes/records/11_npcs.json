@@ -52,10 +52,10 @@
     ],
     "spells": [],
     "ai_data": {
-      "hello": 50,
-      "fight": 70,
+      "hello": 0,
+      "fight": 0,
       "flee": 20,
-      "alarm": 80,
+      "alarm": 0,
       "services": 0
     },
     "ai_packages": [
@@ -93,10 +93,10 @@
     ],
     "spells": ["jtt_voodoo_hex", "jtt_shadow_step"],
     "ai_data": {
-      "hello": 70,
-      "fight": 40,
+      "hello": 0,
+      "fight": 0,
       "flee": 40,
-      "alarm": 70,
+      "alarm": 0,
       "services": 129
     },
     "ai_packages": [
@@ -132,10 +132,10 @@
     ],
     "spells": [],
     "ai_data": {
-      "hello": 80,
-      "fight": 30,
+      "hello": 0,
+      "fight": 0,
       "flee": 40,
-      "alarm": 60,
+      "alarm": 0,
       "services": 1
     },
     "ai_packages": [
@@ -172,10 +172,10 @@
     ],
     "spells": [],
     "ai_data": {
-      "hello": 50,
-      "fight": 60,
+      "hello": 0,
+      "fight": 0,
       "flee": 20,
-      "alarm": 80,
+      "alarm": 0,
       "services": 0
     },
     "ai_packages": [
@@ -211,10 +211,10 @@
     ],
     "spells": ["jtt_blood_frenzy"],
     "ai_data": {
-      "hello": 20,
-      "fight": 90,
+      "hello": 0,
+      "fight": 0,
       "flee": 5,
-      "alarm": 100,
+      "alarm": 0,
       "services": 0
     },
     "ai_packages": [
@@ -251,10 +251,10 @@
     ],
     "spells": ["jtt_voodoo_hex", "jtt_shadow_step", "jtt_serpent_curse"],
     "ai_data": {
-      "hello": 40,
-      "fight": 50,
+      "hello": 0,
+      "fight": 0,
       "flee": 30,
-      "alarm": 70,
+      "alarm": 0,
       "services": 0
     },
     "ai_packages": [
@@ -274,7 +274,7 @@
     "head": "",
     "hair": "",
     "script": "",
-    "npc_flags": 18,
+    "npc_flags": 16,
     "npdt_autocalc": {
       "level": 15,
       "disposition": 80,
@@ -293,10 +293,10 @@
     ],
     "spells": ["jtt_voodoo_hex", "jtt_shadow_step", "jtt_jungle_call", "jtt_troll_regen"],
     "ai_data": {
-      "hello": 80,
-      "fight": 10,
+      "hello": 0,
+      "fight": 0,
       "flee": 60,
-      "alarm": 50,
+      "alarm": 0,
       "services": 129
     },
     "ai_packages": [
@@ -332,10 +332,10 @@
     ],
     "spells": ["jtt_troll_regen"],
     "ai_data": {
-      "hello": 50,
-      "fight": 30,
+      "hello": 0,
+      "fight": 0,
       "flee": 30,
-      "alarm": 50,
+      "alarm": 0,
       "services": 0
     },
     "ai_packages": [],

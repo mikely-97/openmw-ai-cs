@@ -737,6 +737,21 @@ def mk_troll_head():
     export("troll_head.dae")
 
 
+def mk_troll_hair():
+    """Troll wild dreadlocks — used as BODY part hair (1)."""
+    clear()
+    m_hair = mat("troll_hair_h", 0.08, 0.30, 0.10)
+    # Wild dreadlocks cluster
+    for (hx, hy, ha) in [(0, 5, 0), (-8, 4, -0.3), (8, 4, 0.3),
+                          (-5, 6, -0.5), (5, 6, 0.5), (0, 7, 0.2),
+                          (-10, 2, -0.4), (10, 2, 0.4)]:
+        bpy.ops.mesh.primitive_cylinder_add(vertices=4, radius=3, depth=22,
+                                             location=(hx, hy, 14),
+                                             rotation=(ha, 0, 0))
+        apply_mat(bpy.context.active_object, m_hair)
+    export("troll_hair.dae")
+
+
 def mk_troll_body():
     """Troll torso + arms — used as BODY part chest (3)."""
     clear()
@@ -823,6 +838,193 @@ def mk_troll_hands():
     export("troll_hands.dae")
 
 
+# ─── SURVIVAL OBJECTS ─────────────────────────────────────────────────────
+
+def mk_workbench():
+    """Crafting table: flat rectangular top on 4 legs."""
+    clear()
+    m = mat("workbench", 0.45, 0.30, 0.15)
+    # Table top
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 50))
+    bpy.context.active_object.scale = (50, 30, 4)
+    bpy.ops.object.transform_apply(scale=True)
+    apply_mat(bpy.context.active_object, m)
+    # 4 legs at corners
+    for (lx, ly) in [(42, 22), (-42, 22), (42, -22), (-42, -22)]:
+        bpy.ops.mesh.primitive_cube_add(size=1, location=(lx, ly, 23))
+        bpy.context.active_object.scale = (4, 4, 25)
+        bpy.ops.object.transform_apply(scale=True)
+        apply_mat(bpy.context.active_object, m)
+    export("workbench.dae")
+
+
+def mk_build_site():
+    """Small pile of crossed sticks as a build-site marker."""
+    clear()
+    m = mat("build_site", 0.60, 0.50, 0.30)
+    # 3 crossed thin cylinders at different angles
+    angles = [(0.5, 0.0, 0.0), (-0.3, 0.0, 0.8), (0.2, 0.6, -0.4)]
+    for rot in angles:
+        bpy.ops.mesh.primitive_cylinder_add(vertices=6, radius=3, depth=40,
+                                             location=(0, 0, 10),
+                                             rotation=rot)
+        apply_mat(bpy.context.active_object, m)
+    export("build_site.dae")
+
+
+def mk_raw_meat():
+    """Small slab of raw meat — flattened UV sphere."""
+    clear()
+    m = mat("raw_meat", 0.70, 0.15, 0.10)
+    bpy.ops.mesh.primitive_uv_sphere_add(segments=10, ring_count=8,
+                                          radius=15, location=(0, 0, 5))
+    bpy.context.active_object.scale = (1.2, 0.8, 0.3)
+    bpy.ops.object.transform_apply(scale=True)
+    apply_mat(bpy.context.active_object, m)
+    export("raw_meat.dae")
+
+
+def mk_spider_silk():
+    """Small wispy ball of spider silk."""
+    clear()
+    m = mat("spider_silk", 0.85, 0.85, 0.80)
+    bpy.ops.mesh.primitive_uv_sphere_add(segments=8, ring_count=6,
+                                          radius=8, location=(0, 0, 8))
+    apply_mat(bpy.context.active_object, m)
+    export("spider_silk.dae")
+
+
+# ─── GROUND PICKABLES ────────────────────────────────────────────────
+
+def mk_stick():
+    """A small stick lying on the ground."""
+    clear()
+    m = mat("stick", 0.50, 0.32, 0.10)
+    bpy.ops.mesh.primitive_cylinder_add(vertices=6, radius=2, depth=40,
+                                         location=(0, 0, 2),
+                                         rotation=(0, math.pi / 2, 0.3))
+    apply_mat(bpy.context.active_object, m)
+    # Small branch
+    bpy.ops.mesh.primitive_cylinder_add(vertices=4, radius=1.5, depth=14,
+                                         location=(12, 4, 5),
+                                         rotation=(0.4, 0.3, 0.6))
+    apply_mat(bpy.context.active_object, m)
+    export("stick.dae")
+
+
+def mk_stone_item():
+    """A small rock on the ground."""
+    clear()
+    m = mat("stone_item", 0.55, 0.52, 0.50)
+    bpy.ops.mesh.primitive_ico_sphere_add(subdivisions=1, radius=10,
+                                           location=(0, 0, 6))
+    bpy.context.active_object.scale = (1.2, 0.9, 0.5)
+    bpy.ops.object.transform_apply(scale=True)
+    apply_mat(bpy.context.active_object, m)
+    export("stone_item.dae")
+
+
+def mk_flint():
+    """A sharp flint shard."""
+    clear()
+    m = mat("flint", 0.30, 0.28, 0.32)
+    bpy.ops.mesh.primitive_cone_add(vertices=3, radius1=8, radius2=1,
+                                     depth=14, location=(0, 0, 5),
+                                     rotation=(0.2, 0, 0))
+    apply_mat(bpy.context.active_object, m)
+    export("flint.dae")
+
+
+def mk_tinder():
+    """A small clump of dry grass/tinder."""
+    clear()
+    m = mat("tinder", 0.72, 0.65, 0.35)
+    bpy.ops.mesh.primitive_uv_sphere_add(segments=8, ring_count=6,
+                                          radius=8, location=(0, 0, 5))
+    bpy.context.active_object.scale = (1.4, 1.0, 0.5)
+    bpy.ops.object.transform_apply(scale=True)
+    apply_mat(bpy.context.active_object, m)
+    export("tinder.dae")
+
+
+def mk_jungle_berry():
+    """Small cluster of berries on the ground."""
+    clear()
+    m_leaf = mat("berry_leaf", 0.15, 0.50, 0.10)
+    m_berry = mat("berry_red", 0.75, 0.10, 0.15)
+    # Leaf base
+    bpy.ops.mesh.primitive_cylinder_add(vertices=8, radius=12, depth=4,
+                                         location=(0, 0, 2))
+    apply_mat(bpy.context.active_object, m_leaf)
+    # Berries
+    for (bx, by) in [(-4, -3), (4, -2), (0, 5), (-6, 4), (5, 4)]:
+        bpy.ops.mesh.primitive_uv_sphere_add(segments=6, ring_count=4,
+                                              radius=4, location=(bx, by, 7))
+        apply_mat(bpy.context.active_object, m_berry)
+    export("jungle_berry.dae")
+
+
+def mk_jungle_root():
+    """A gnarled root on the ground."""
+    clear()
+    m = mat("root", 0.40, 0.25, 0.08)
+    bpy.ops.mesh.primitive_cylinder_add(vertices=6, radius=4, depth=30,
+                                         location=(0, 0, 3),
+                                         rotation=(0, math.pi / 2, 0.5))
+    apply_mat(bpy.context.active_object, m)
+    bpy.ops.mesh.primitive_cylinder_add(vertices=4, radius=3, depth=18,
+                                         location=(10, 6, 4),
+                                         rotation=(0.3, 0.6, 0.2))
+    apply_mat(bpy.context.active_object, m)
+    export("jungle_root.dae")
+
+
+def mk_jungle_mushroom():
+    """A small glowing mushroom ingredient."""
+    clear()
+    m_stem = mat("ingr_mush_stem", 0.65, 0.55, 0.45)
+    m_cap  = mat("ingr_mush_cap",  0.10, 0.70, 0.45)
+    bpy.ops.mesh.primitive_cylinder_add(vertices=6, radius=4, depth=14,
+                                         location=(0, 0, 7))
+    apply_mat(bpy.context.active_object, m_stem)
+    bpy.ops.mesh.primitive_uv_sphere_add(segments=8, ring_count=6,
+                                          radius=10, location=(0, 0, 18))
+    bpy.context.active_object.scale = (1.0, 1.0, 0.6)
+    bpy.ops.object.transform_apply(scale=True)
+    apply_mat(bpy.context.active_object, m_cap)
+    export("jungle_mushroom.dae")
+
+
+def mk_tome():
+    """Generic book / tome mesh used by BOOK records."""
+    clear()
+    m_cover = mat("tome_cover", 0.40, 0.20, 0.06)
+    m_pages = mat("tome_pages", 0.90, 0.85, 0.70)
+    # Cover
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 6))
+    bpy.context.active_object.scale = (20, 28, 4)
+    bpy.ops.object.transform_apply(scale=True)
+    apply_mat(bpy.context.active_object, m_cover)
+    # Pages
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 6))
+    bpy.context.active_object.scale = (18, 26, 3)
+    bpy.ops.object.transform_apply(scale=True)
+    apply_mat(bpy.context.active_object, m_pages)
+    export("tome_tribal.dae")
+    clear()
+    m_cover2 = mat("recipe_cover", 0.15, 0.35, 0.12)
+    m_pages2 = mat("recipe_pages", 0.90, 0.85, 0.70)
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 6))
+    bpy.context.active_object.scale = (20, 28, 4)
+    bpy.ops.object.transform_apply(scale=True)
+    apply_mat(bpy.context.active_object, m_cover2)
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 6))
+    bpy.context.active_object.scale = (18, 26, 3)
+    bpy.ops.object.transform_apply(scale=True)
+    apply_mat(bpy.context.active_object, m_pages2)
+    export("tome_recipes.dae")
+
+
 # ─── RUN ALL ──────────────────────────────────────────────────────────────
 
 print("\n=== Generating JTT placeholder meshes ===\n")
@@ -871,8 +1073,26 @@ mk_boar()
 
 print("Troll body parts (for NPC rendering):")
 mk_troll_head()
+mk_troll_hair()
 mk_troll_body()
 mk_troll_legs()
 mk_troll_hands()
+
+# --- survival objects ---
+print("Survival objects:")
+mk_workbench()
+mk_build_site()
+mk_raw_meat()
+mk_spider_silk()
+
+print("Ground pickables:")
+mk_stick()
+mk_stone_item()
+mk_flint()
+mk_tinder()
+mk_jungle_berry()
+mk_jungle_root()
+mk_jungle_mushroom()
+mk_tome()
 
 print(f"\n=== Done! Meshes written to: {OUT} ===\n")

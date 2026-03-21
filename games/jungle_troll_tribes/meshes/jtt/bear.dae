@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 3.0.0 commit date:2021-12-02, commit time:18:35, hash:f1cca3055776</authoring_tool>
+    </contributor>
+    <created>2026-03-21T20:34:15</created>
+    <modified>2026-03-21T20:34:15</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="bear_fur-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.22 0.16 0.1 1</color>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="bear_ear-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.2 0.14 0.09 1</color>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images/>
+  <library_materials>
+    <material id="bear_fur-material" name="bear_fur">
+      <instance_effect url="#bear_fur-effect"/>
+    </material>
+    <material id="bear_ear-material" name="bear_ear">
+      <instance_effect url="#bear_ear-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="BearBodyMesh-mesh" name="BearBodyMesh">
+      <mesh>
+        <source id="BearBodyMesh-mesh-positions">
+          <float_array id="BearBodyMesh-mesh-positions-array" count="78">0 0 35 0 19.2 36 0 48 34 0 52 38 0 58 42 0 65 43 0 72 42 0 -0.6 31.5 0 -5.4 24.5 0 -12 10.5 -11.7 38.4 21 -9.9 33.6 3 -9 31.2 -13 -6.75 35.7 0 11.7 38.4 21 9.9 33.6 3 9 31.2 -13 6.75 35.7 0 -12.6 0 22.75 -10.8 -1.8 4.75 -9 0 -11.25 -6.75 4.5 0 12.6 0 22.75 10.8 -1.8 4.75 9 0 -11.25 6.75 4.5 0</float_array>
+          <technique_common>
+            <accessor source="#BearBodyMesh-mesh-positions-array" count="26" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="BearBodyMesh-mesh-normals">
+          <float_array id="BearBodyMesh-mesh-normals-array" count="0"/>
+          <technique_common>
+            <accessor source="#BearBodyMesh-mesh-normals-array" count="0" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="BearBodyMesh-mesh-vertices">
+          <input semantic="POSITION" source="#BearBodyMesh-mesh-positions"/>
+        </vertices>
+        <lines count="25">
+          <input semantic="VERTEX" source="#BearBodyMesh-mesh-vertices" offset="0"/>
+          <p>1 0 2 1 3 2 4 3 5 4 6 5 7 0 8 7 9 8 10 1 11 10 12 11 13 12 14 1 15 14 16 15 17 16 18 0 19 18 20 19 21 20 22 0 23 22 24 23 25 24</p>
+        </lines>
+      </mesh>
+    </geometry>
+    <geometry id="Sphere_001-mesh" name="Sphere.001">
+      <mesh>
+        <source id="Sphere_001-mesh-positions">
+          <float_array id="Sphere_001-mesh-positions-array" count="60">0 2.828427 2.828427 0 4 -1.74846e-7 0 2.828427 -2.828427 2.44949 1.414213 2.828427 3.464102 2 -1.74846e-7 2.44949 1.414213 -2.828427 2.44949 -1.414214 2.828427 3.464102 -2.000001 -1.74846e-7 2.44949 -1.414214 -2.828427 -4.12414e-7 -2.828428 2.828427 -6.50833e-7 -4 -1.74846e-7 -4.12414e-7 -2.828428 -2.828427 0 -3.49691e-7 -4 -3.02841e-7 -5.24537e-7 4 -2.449491 -1.414214 2.828427 -3.464102 -2 -1.74846e-7 -2.449491 -1.414214 -2.828427 -2.44949 1.414214 2.828427 -3.464101 2.000001 -1.74846e-7 -2.44949 1.414214 -2.828427</float_array>
+          <technique_common>
+            <accessor source="#Sphere_001-mesh-positions-array" count="20" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Sphere_001-mesh-normals">
+          <float_array id="Sphere_001-mesh-normals-array" count="108">0.4706354 0.8151646 -0.3376522 0.2157394 0.3736716 0.9021232 0.2157394 0.3736716 -0.9021232 0.4706354 0.8151646 0.3376522 0.941271 -2.24416e-7 -0.3376523 0.4314788 0 0.9021232 0.431479 0 -0.902123 0.941271 -1.58686e-7 0.3376523 0.4706354 -0.8151646 -0.3376523 0.2157396 -0.3736717 0.9021231 0.2157394 -0.3736716 -0.902123 0.4706353 -0.8151648 0.3376523 -0.4706356 -0.8151645 -0.3376522 -0.2157396 -0.3736716 0.902123 -0.2157394 -0.3736715 -0.902123 -0.4706357 -0.8151646 0.3376521 -0.941271 0 -0.3376522 -0.4314789 1.24178e-7 0.902123 -0.4314787 0 -0.9021232 -0.9412711 3.17373e-7 0.3376522 -0.4706353 0.8151647 0.3376522 -0.4706353 0.8151647 -0.3376522 -0.2157392 0.3736717 0.9021232 -0.2157393 0.3736716 -0.9021232 0.4706355 0.8151645 -0.3376523 0.4706354 0.8151646 0.3376523 0.941271 -1.58686e-7 -0.3376522 0.941271 0 0.3376522 0.4706354 -0.8151646 -0.3376523 0.4706354 -0.8151646 0.3376522 -0.4706357 -0.8151645 -0.3376521 -0.4706357 -0.8151646 0.337652 -0.941271 3.17373e-7 -0.3376522 -0.941271 0 0.3376521 -0.4706353 0.8151648 0.3376522 -0.4706354 0.8151647 -0.3376523</float_array>
+          <technique_common>
+            <accessor source="#Sphere_001-mesh-normals-array" count="36" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Sphere_001-mesh-map-0">
+          <float_array id="Sphere_001-mesh-map-0-array" count="216">0.6666667 0.5 0.5 0.25 0.6666667 0.25 0.6666667 0.75 0.5833333 1 0.5 0.75 0.5833333 0 0.6666667 0.25 0.5 0.25 0.6666667 0.75 0.5 0.5 0.6666667 0.5 0.5 0.5 0.3333333 0.25 0.5 0.25 0.5 0.75 0.4166666 1 0.3333333 0.75 0.4166666 0 0.5 0.25 0.3333333 0.25 0.5 0.75 0.3333333 0.5 0.5 0.5 0.3333333 0.25 0.1666666 0.5 0.1666666 0.25 0.3333333 0.75 0.25 1 0.1666666 0.75 0.25 0 0.3333333 0.25 0.1666666 0.25 0.3333333 0.75 0.1666666 0.5 0.3333333 0.5 0.1666666 0.5 0 0.25 0.1666666 0.25 0.1666666 0.75 0.08333331 1 0 0.75 0.08333331 0 0.1666666 0.25 0 0.25 0.1666666 0.75 0 0.5 0.1666666 0.5 1 0.5 0.8333333 0.25 1 0.25 1 0.75 0.9166667 1 0.8333333 0.75 0.9166667 0 1 0.25 0.8333333 0.25 1 0.75 0.8333333 0.5 1 0.5 0.8333333 0.75 0.6666667 0.5 0.8333333 0.5 0.8333333 0.5 0.6666667 0.25 0.8333333 0.25 0.8333333 0.75 0.7500001 1 0.6666667 0.75 0.7500001 0 0.8333333 0.25 0.6666667 0.25 0.6666667 0.5 0.5 0.5 0.5 0.25 0.6666667 0.75 0.5 0.75 0.5 0.5 0.5 0.5 0.3333333 0.5 0.3333333 0.25 0.5 0.75 0.3333333 0.75 0.3333333 0.5 0.3333333 0.25 0.3333333 0.5 0.1666666 0.5 0.3333333 0.75 0.1666666 0.75 0.1666666 0.5 0.1666666 0.5 0 0.5 0 0.25 0.1666666 0.75 0 0.75 0 0.5 1 0.5 0.8333333 0.5 0.8333333 0.25 1 0.75 0.8333333 0.75 0.8333333 0.5 0.8333333 0.75 0.6666667 0.75 0.6666667 0.5 0.8333333 0.5 0.6666667 0.5 0.6666667 0.25</float_array>
+          <technique_common>
+            <accessor source="#Sphere_001-mesh-map-0-array" count="108" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Sphere_001-mesh-vertices">
+          <input semantic="POSITION" source="#Sphere_001-mesh-positions"/>
+        </vertices>
+        <triangles material="bear_ear-material" count="36">
+          <input semantic="VERTEX" source="#Sphere_001-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Sphere_001-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Sphere_001-mesh-map-0" offset="2" set="0"/>
+          <p>1 0 0 5 0 1 2 0 2 0 1 3 13 1 4 3 1 5 12 2 6 2 2 7 5 2 8 0 3 9 4 3 10 1 3 11 4 4 12 8 4 13 5 4 14 3 5 15 13 5 16 6 5 17 12 6 18 5 6 19 8 6 20 3 7 21 7 7 22 4 7 23 8 8 24 10 8 25 11 8 26 6 9 27 13 9 28 9 9 29 12 10 30 8 10 31 11 10 32 6 11 33 10 11 34 7 11 35 10 12 36 16 12 37 11 12 38 9 13 39 13 13 40 14 13 41 12 14 42 11 14 43 16 14 44 9 15 45 15 15 46 10 15 47 15 16 48 19 16 49 16 16 50 14 17 51 13 17 52 17 17 53 12 18 54 16 18 55 19 18 56 14 19 57 18 19 58 15 19 59 17 20 60 1 20 61 18 20 62 18 21 63 2 21 64 19 21 65 17 22 66 13 22 67 0 22 68 12 23 69 19 23 70 2 23 71 1 24 72 4 24 73 5 24 74 0 25 75 3 25 76 4 25 77 4 26 78 7 26 79 8 26 80 3 27 81 6 27 82 7 27 83 8 28 84 7 28 85 10 28 86 6 29 87 9 29 88 10 29 89 10 30 90 15 30 91 16 30 92 9 31 93 14 31 94 15 31 95 15 32 96 18 32 97 19 32 98 14 33 99 17 33 100 18 33 101 17 34 102 0 34 103 1 34 104 18 35 105 1 35 106 2 35 107</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Sphere-mesh" name="Sphere">
+      <mesh>
+        <source id="Sphere-mesh-positions">
+          <float_array id="Sphere-mesh-positions-array" count="60">0 2.828427 2.828427 0 4 -1.74846e-7 0 2.828427 -2.828427 2.44949 1.414213 2.828427 3.464102 2 -1.74846e-7 2.44949 1.414213 -2.828427 2.44949 -1.414214 2.828427 3.464102 -2.000001 -1.74846e-7 2.44949 -1.414214 -2.828427 -4.12414e-7 -2.828428 2.828427 -6.50833e-7 -4 -1.74846e-7 -4.12414e-7 -2.828428 -2.828427 0 -3.49691e-7 -4 -3.02841e-7 -5.24537e-7 4 -2.449491 -1.414214 2.828427 -3.464102 -2 -1.74846e-7 -2.449491 -1.414214 -2.828427 -2.44949 1.414214 2.828427 -3.464101 2.000001 -1.74846e-7 -2.44949 1.414214 -2.828427</float_array>
+          <technique_common>
+            <accessor source="#Sphere-mesh-positions-array" count="20" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Sphere-mesh-normals">
+          <float_array id="Sphere-mesh-normals-array" count="108">0.4706354 0.8151646 -0.3376522 0.2157394 0.3736716 0.9021232 0.2157394 0.3736716 -0.9021232 0.4706354 0.8151646 0.3376522 0.941271 -2.24416e-7 -0.3376523 0.4314788 0 0.9021232 0.431479 0 -0.902123 0.941271 -1.58686e-7 0.3376523 0.4706354 -0.8151646 -0.3376523 0.2157396 -0.3736717 0.9021231 0.2157394 -0.3736716 -0.902123 0.4706353 -0.8151648 0.3376523 -0.4706356 -0.8151645 -0.3376522 -0.2157396 -0.3736716 0.902123 -0.2157394 -0.3736715 -0.902123 -0.4706357 -0.8151646 0.3376521 -0.941271 0 -0.3376522 -0.4314789 1.24178e-7 0.902123 -0.4314787 0 -0.9021232 -0.9412711 3.17373e-7 0.3376522 -0.4706353 0.8151647 0.3376522 -0.4706353 0.8151647 -0.3376522 -0.2157392 0.3736717 0.9021232 -0.2157393 0.3736716 -0.9021232 0.4706355 0.8151645 -0.3376523 0.4706354 0.8151646 0.3376523 0.941271 -1.58686e-7 -0.3376522 0.941271 0 0.3376522 0.4706354 -0.8151646 -0.3376523 0.4706354 -0.8151646 0.3376522 -0.4706357 -0.8151645 -0.3376521 -0.4706357 -0.8151646 0.337652 -0.941271 3.17373e-7 -0.3376522 -0.941271 0 0.3376521 -0.4706353 0.8151648 0.3376522 -0.4706354 0.8151647 -0.3376523</float_array>
+          <technique_common>
+            <accessor source="#Sphere-mesh-normals-array" count="36" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Sphere-mesh-map-0">
+          <float_array id="Sphere-mesh-map-0-array" count="216">0.6666667 0.5 0.5 0.25 0.6666667 0.25 0.6666667 0.75 0.5833333 1 0.5 0.75 0.5833333 0 0.6666667 0.25 0.5 0.25 0.6666667 0.75 0.5 0.5 0.6666667 0.5 0.5 0.5 0.3333333 0.25 0.5 0.25 0.5 0.75 0.4166666 1 0.3333333 0.75 0.4166666 0 0.5 0.25 0.3333333 0.25 0.5 0.75 0.3333333 0.5 0.5 0.5 0.3333333 0.25 0.1666666 0.5 0.1666666 0.25 0.3333333 0.75 0.25 1 0.1666666 0.75 0.25 0 0.3333333 0.25 0.1666666 0.25 0.3333333 0.75 0.1666666 0.5 0.3333333 0.5 0.1666666 0.5 0 0.25 0.1666666 0.25 0.1666666 0.75 0.08333331 1 0 0.75 0.08333331 0 0.1666666 0.25 0 0.25 0.1666666 0.75 0 0.5 0.1666666 0.5 1 0.5 0.8333333 0.25 1 0.25 1 0.75 0.9166667 1 0.8333333 0.75 0.9166667 0 1 0.25 0.8333333 0.25 1 0.75 0.8333333 0.5 1 0.5 0.8333333 0.75 0.6666667 0.5 0.8333333 0.5 0.8333333 0.5 0.6666667 0.25 0.8333333 0.25 0.8333333 0.75 0.7500001 1 0.6666667 0.75 0.7500001 0 0.8333333 0.25 0.6666667 0.25 0.6666667 0.5 0.5 0.5 0.5 0.25 0.6666667 0.75 0.5 0.75 0.5 0.5 0.5 0.5 0.3333333 0.5 0.3333333 0.25 0.5 0.75 0.3333333 0.75 0.3333333 0.5 0.3333333 0.25 0.3333333 0.5 0.1666666 0.5 0.3333333 0.75 0.1666666 0.75 0.1666666 0.5 0.1666666 0.5 0 0.5 0 0.25 0.1666666 0.75 0 0.75 0 0.5 1 0.5 0.8333333 0.5 0.8333333 0.25 1 0.75 0.8333333 0.75 0.8333333 0.5 0.8333333 0.75 0.6666667 0.75 0.6666667 0.5 0.8333333 0.5 0.6666667 0.5 0.6666667 0.25</float_array>
+          <technique_common>
+            <accessor source="#Sphere-mesh-map-0-array" count="108" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Sphere-mesh-vertices">
+          <input semantic="POSITION" source="#Sphere-mesh-positions"/>
+        </vertices>
+        <triangles material="bear_ear-material" count="36">
+          <input semantic="VERTEX" source="#Sphere-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Sphere-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Sphere-mesh-map-0" offset="2" set="0"/>
+          <p>1 0 0 5 0 1 2 0 2 0 1 3 13 1 4 3 1 5 12 2 6 2 2 7 5 2 8 0 3 9 4 3 10 1 3 11 4 4 12 8 4 13 5 4 14 3 5 15 13 5 16 6 5 17 12 6 18 5 6 19 8 6 20 3 7 21 7 7 22 4 7 23 8 8 24 10 8 25 11 8 26 6 9 27 13 9 28 9 9 29 12 10 30 8 10 31 11 10 32 6 11 33 10 11 34 7 11 35 10 12 36 16 12 37 11 12 38 9 13 39 13 13 40 14 13 41 12 14 42 11 14 43 16 14 44 9 15 45 15 15 46 10 15 47 15 16 48 19 16 49 16 16 50 14 17 51 13 17 52 17 17 53 12 18 54 16 18 55 19 18 56 14 19 57 18 19 58 15 19 59 17 20 60 1 20 61 18 20 62 18 21 63 2 21 64 19 21 65 17 22 66 13 22 67 0 22 68 12 23 69 19 23 70 2 23 71 1 24 72 4 24 73 5 24 74 0 25 75 3 25 76 4 25 77 4 26 78 7 26 79 8 26 80 3 27 81 6 27 82 7 27 83 8 28 84 7 28 85 10 28 86 6 29 87 9 29 88 10 29 89 10 30 90 15 30 91 16 30 92 9 31 93 14 31 94 15 31 95 15 32 96 18 32 97 19 32 98 14 33 99 17 33 100 18 33 101 17 34 102 0 34 103 1 34 104 18 35 105 1 35 106 2 35 107</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="BearBody" name="BearBody" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#BearBodyMesh-mesh" name="BearBody">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="bear_fur-material" target="#bear_fur-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Sphere_001" name="Sphere.001" type="NODE">
+        <matrix sid="transform">1 0 0 8 0 1 0 96 0 0 1 42 0 0 0 1</matrix>
+        <instance_geometry url="#Sphere_001-mesh" name="Sphere.001">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="bear_ear-material" target="#bear_ear-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Sphere" name="Sphere" type="NODE">
+        <matrix sid="transform">1 0 0 -8 0 1 0 96 0 0 1 42 0 0 0 1</matrix>
+        <instance_geometry url="#Sphere-mesh" name="Sphere">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="bear_ear-material" target="#bear_ear-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

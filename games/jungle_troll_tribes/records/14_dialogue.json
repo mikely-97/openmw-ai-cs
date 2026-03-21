@@ -1,7 +1,7 @@
 [
   {
     "rec_type": "DIAL",
-    "topic": "greeting",
+    "topic": "Greeting 0",
     "dial_type": 2,
     "flags": 0
   },

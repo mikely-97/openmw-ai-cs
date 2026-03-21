@@ -1,83 +1,31 @@
 [
+  {"rec_type": "GLOB", "record_id": "JTT_Hunger",     "var_type": "s", "value": 0.0,   "flags": 0},
+  {"rec_type": "GLOB", "record_id": "JTT_Warmth",     "var_type": "s", "value": 100.0, "flags": 0},
+  {"rec_type": "GLOB", "record_id": "JTT_Tribe",      "var_type": "s", "value": 0.0,   "flags": 0},
+  {"rec_type": "GLOB", "record_id": "JTT_Round",      "var_type": "s", "value": 0.0,   "flags": 0},
+  {"rec_type": "GLOB", "record_id": "JTT_Wood",       "var_type": "s", "value": 0.0,   "flags": 0},
+  {"rec_type": "GLOB", "record_id": "JTT_Stone",      "var_type": "s", "value": 0.0,   "flags": 0},
+  {"rec_type": "GLOB", "record_id": "JTT_PlayerInit",  "var_type": "s", "value": 0.0,   "flags": 0},
+  {"rec_type": "GLOB", "record_id": "JTT_Day",        "var_type": "f", "value": 0.0,   "flags": 0},
+  {"rec_type": "GLOB", "record_id": "JTT_Iron",       "var_type": "s", "value": 0.0,   "flags": 0},
   {
-    "rec_type": "GLOB",
-    "record_id": "JTT_Hunger",
-    "var_type": "s",
-    "value": 0.0,
-    "flags": 0
+    "rec_type": "GMST", "record_id": "sJTTIntro",
+    "str_value": "Welcome to Jungle Troll Tribes Survival! Gather resources, hunt animals, build campfires, craft gear, and survive the jungle!",
+    "int_value": null, "float_value": null, "flags": 0
   },
   {
-    "rec_type": "GLOB",
-    "record_id": "JTT_Warmth",
-    "var_type": "s",
-    "value": 100.0,
-    "flags": 0
-  },
-  {
-    "rec_type": "GLOB",
-    "record_id": "JTT_Tribe",
-    "var_type": "s",
-    "value": 0.0,
-    "flags": 0
-  },
-  {
-    "rec_type": "GLOB",
-    "record_id": "JTT_Round",
-    "var_type": "s",
-    "value": 0.0,
-    "flags": 0
-  },
-  {
-    "rec_type": "GLOB",
-    "record_id": "JTT_Wood",
-    "var_type": "s",
-    "value": 0.0,
-    "flags": 0
-  },
-  {
-    "rec_type": "GLOB",
-    "record_id": "JTT_Stone",
-    "var_type": "s",
-    "value": 0.0,
-    "flags": 0
-  },
-  {
-    "rec_type": "GLOB",
-    "record_id": "JTT_PlayerInit",
-    "var_type": "s",
-    "value": 0.0,
-    "flags": 0
-  },
-  {
-    "rec_type": "GMST",
-    "record_id": "sJTTIntro",
-    "str_value": "Welcome to Jungle Troll Tribes! Four ancient troll tribes war for dominance of the Jungle Isle. Gather resources, forge weapons, master voodoo magic, and crush your rivals. May the strongest tribe prevail!",
-    "int_value": null,
-    "float_value": null,
-    "flags": 0
-  },
-  {
-    "rec_type": "GMST",
-    "record_id": "sJTTHungry",
+    "rec_type": "GMST", "record_id": "sJTTHungry",
     "str_value": "You are growing hungry. Find food before your strength fades.",
-    "int_value": null,
-    "float_value": null,
-    "flags": 0
+    "int_value": null, "float_value": null, "flags": 0
   },
   {
-    "rec_type": "GMST",
-    "record_id": "sJTTStarving",
+    "rec_type": "GMST", "record_id": "sJTTStarving",
     "str_value": "You are starving! Your body grows weak. Eat something immediately!",
-    "int_value": null,
-    "float_value": null,
-    "flags": 0
+    "int_value": null, "float_value": null, "flags": 0
   },
   {
-    "rec_type": "GMST",
-    "record_id": "sJTTResourceDepleted",
+    "rec_type": "GMST", "record_id": "sJTTResourceDepleted",
     "str_value": "This resource node has been depleted.",
-    "int_value": null,
-    "float_value": null,
-    "flags": 0
+    "int_value": null, "float_value": null, "flags": 0
   }
 ]

@@ -98,5 +98,15 @@
     "_record_id": "random100",
     "_sort_order": 9,
     "_mod_id": 1
+  },
+  {
+    "rec_type": "GLOB",
+    "record_id": "pchasgolddiscount",
+    "var_type": "s",
+    "value": 0.0,
+    "flags": 0,
+    "_record_id": "pchasgolddiscount",
+    "_sort_order": 10,
+    "_mod_id": 1
   }
 ]

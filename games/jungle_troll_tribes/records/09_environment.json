@@ -30,7 +30,7 @@
     "record_id": "jtt_wood_node",
     "name": "Wood Grove",
     "mesh": "jtt\\wood_node.dae",
-    "script": "JTT_ResourceNode",
+    "script": "JTT_WoodNode",
     "flags": 0
   },
   {
@@ -38,7 +38,7 @@
     "record_id": "jtt_stone_node",
     "name": "Stone Outcrop",
     "mesh": "jtt\\stone_node.dae",
-    "script": "JTT_ResourceNode",
+    "script": "JTT_StoneNode",
     "flags": 0
   },
   {
@@ -46,7 +46,31 @@
     "record_id": "jtt_herb_node",
     "name": "Herb Patch",
     "mesh": "jtt\\herb_node.dae",
-    "script": "JTT_ResourceNode",
+    "script": "JTT_HerbNode",
+    "flags": 0
+  },
+  {
+    "rec_type": "ACTI",
+    "record_id": "jtt_campfire",
+    "name": "Campfire",
+    "mesh": "jtt\\fire_pit.dae",
+    "script": "JTT_Campfire",
+    "flags": 0
+  },
+  {
+    "rec_type": "ACTI",
+    "record_id": "jtt_workbench",
+    "name": "Workbench",
+    "mesh": "jtt\\workbench.dae",
+    "script": "JTT_Workbench",
+    "flags": 0
+  },
+  {
+    "rec_type": "ACTI",
+    "record_id": "jtt_build_site",
+    "name": "Build Site",
+    "mesh": "jtt\\build_site.dae",
+    "script": "JTT_BuildSite",
     "flags": 0
   },
   {
@@ -147,6 +171,18 @@
     "script": "",
     "open_sound": "",
     "close_sound": "",
+    "flags": 0
+  },
+  {"rec_type": "STAT", "record_id": "jtt_tree_oak",  "mesh": "jtt\\tree_oak.dae",  "flags": 0},
+  {"rec_type": "STAT", "record_id": "jtt_tree_palm", "mesh": "jtt\\tree_palm.dae", "flags": 0},
+  {"rec_type": "STAT", "record_id": "jtt_tree_pine", "mesh": "jtt\\tree_pine.dae", "flags": 0},
+  {"rec_type": "STAT", "record_id": "jtt_tree_dead", "mesh": "jtt\\tree_dead.dae", "flags": 0},
+  {
+    "rec_type": "ACTI",
+    "record_id": "jtt_iron_deposit",
+    "name": "Iron Deposit",
+    "mesh": "jtt\\iron_deposit.dae",
+    "script": "JTT_IronNode",
     "flags": 0
   }
 ]

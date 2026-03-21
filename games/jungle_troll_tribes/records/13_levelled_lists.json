@@ -5,12 +5,18 @@
     "lev_flags": 1,
     "chance_none": 20,
     "entries": [
+      {"item": "jtt_jungle_bird",    "level": 1},
+      {"item": "jtt_raccoon",        "level": 1},
       {"item": "jtt_jungle_boar",    "level": 1},
       {"item": "jtt_jungle_boar",    "level": 2},
+      {"item": "jtt_jungle_elk",     "level": 2},
       {"item": "jtt_giant_spider",   "level": 2},
       {"item": "jtt_giant_spider",   "level": 4},
+      {"item": "jtt_jungle_wolf",    "level": 4},
       {"item": "jtt_jungle_panther", "level": 5},
+      {"item": "jtt_jungle_bear",    "level": 5},
       {"item": "jtt_jungle_panther", "level": 7},
+      {"item": "jtt_jungle_tiger",   "level": 7},
       {"item": "jtt_jungle_croc",    "level": 6},
       {"item": "jtt_jungle_croc",    "level": 9}
     ],
@@ -20,12 +26,8 @@
     "rec_type": "LEVC",
     "record_id": "jtt_hostile_trolls",
     "lev_flags": 0,
-    "chance_none": 15,
-    "entries": [
-      {"item": "jtt_blood_berserker", "level": 5},
-      {"item": "jtt_shadow_hexer",    "level": 4},
-      {"item": "jtt_forest_warrior",  "level": 3}
-    ],
+    "chance_none": 100,
+    "entries": [],
     "flags": 0
   },
   {
