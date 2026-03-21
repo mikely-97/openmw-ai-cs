@@ -1,0 +1,8 @@
+idle: start 0.041667
+idle: stop 1.250000
+walkforward: start 1.291667
+walkforward: stop 2.083333
+runforward: start 2.125000
+runforward: stop 2.583333
+death1: start 2.625000
+death1: stop 3.416667

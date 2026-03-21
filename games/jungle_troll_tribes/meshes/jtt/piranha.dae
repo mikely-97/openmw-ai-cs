@@ -1,0 +1,954 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 3.0.0 commit date:2021-12-02, commit time:18:35, hash:f1cca3055776</authoring_tool>
+    </contributor>
+    <created>2026-03-21T22:36:48</created>
+    <modified>2026-03-21T22:36:48</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="piranha_fin-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.55 0.12 0.1 1</color>
+            </diffuse>
+            <transparent opaque="A_ONE">
+              <color sid="alpha">0 0 0 0.6</color>
+            </transparent>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="piranha_scales-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.65 0.18 0.12 1</color>
+            </diffuse>
+            <reflectivity>
+              <float sid="specular">0.2</float>
+            </reflectivity>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="piranha_tooth-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.95 0.95 0.9 1</color>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images/>
+  <library_materials>
+    <material id="piranha_fin-material" name="piranha_fin">
+      <instance_effect url="#piranha_fin-effect"/>
+    </material>
+    <material id="piranha_scales-material" name="piranha_scales">
+      <instance_effect url="#piranha_scales-effect"/>
+    </material>
+    <material id="piranha_tooth-material" name="piranha_tooth">
+      <instance_effect url="#piranha_tooth-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="TailFinU-mesh" name="TailFinU">
+      <mesh>
+        <source id="TailFinU-mesh-positions">
+          <float_array id="TailFinU-mesh-positions-array" count="45">0.1640625 1.476563 0 1.5 4 0 1 7.500001 0 0 8.179689 0 -0.6666667 4.833333 0 -0.4375001 2.666667 0 0.9583335 2.1875 0 1.4375 5.937501 0 0.5000001 8.333334 0 -0.4583334 6.875 0 0.4907408 4.38426 0 0.2314815 6.44213 0 0.6892361 5.631945 0 0.3333333 3.027778 0 0.03819441 7.286459 0</float_array>
+          <technique_common>
+            <accessor source="#TailFinU-mesh-positions-array" count="15" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="TailFinU-mesh-normals">
+          <float_array id="TailFinU-mesh-normals-array" count="3">0 0 1</float_array>
+          <technique_common>
+            <accessor source="#TailFinU-mesh-normals-array" count="1" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="TailFinU-mesh-vertices">
+          <input semantic="POSITION" source="#TailFinU-mesh-positions"/>
+        </vertices>
+        <triangles material="piranha_fin-material" count="18">
+          <input semantic="VERTEX" source="#TailFinU-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#TailFinU-mesh-normals" offset="1"/>
+          <p>7 0 10 0 1 0 11 0 7 0 2 0 4 0 12 0 11 0 5 0 10 0 4 0 6 0 5 0 0 0 1 0 13 0 6 0 2 0 14 0 11 0 3 0 14 0 8 0 11 0 9 0 4 0 7 0 12 0 10 0 11 0 12 0 7 0 4 0 10 0 12 0 5 0 13 0 10 0 6 0 13 0 5 0 1 0 10 0 13 0 2 0 8 0 14 0 3 0 9 0 14 0 11 0 14 0 9 0</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="TailFinD-mesh" name="TailFinD">
+      <mesh>
+        <source id="TailFinD-mesh-positions">
+          <float_array id="TailFinD-mesh-positions-array" count="45">-0.1640625 -1.476563 0 -1.5 -4 0 -1 -7.500001 0 0 -8.179689 0 0.6666667 -4.833333 0 0.4375001 -2.666667 0 -0.9583335 -2.1875 0 -1.4375 -5.937501 0 -0.5000001 -8.333334 0 0.4583334 -6.875 0 -0.4907408 -4.38426 0 -0.2314815 -6.44213 0 -0.6892361 -5.631945 0 -0.3333333 -3.027778 0 -0.03819441 -7.286459 0</float_array>
+          <technique_common>
+            <accessor source="#TailFinD-mesh-positions-array" count="15" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="TailFinD-mesh-normals">
+          <float_array id="TailFinD-mesh-normals-array" count="3">0 0 1</float_array>
+          <technique_common>
+            <accessor source="#TailFinD-mesh-normals-array" count="1" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="TailFinD-mesh-vertices">
+          <input semantic="POSITION" source="#TailFinD-mesh-positions"/>
+        </vertices>
+        <triangles material="piranha_fin-material" count="18">
+          <input semantic="VERTEX" source="#TailFinD-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#TailFinD-mesh-normals" offset="1"/>
+          <p>7 0 10 0 1 0 11 0 7 0 2 0 4 0 12 0 11 0 5 0 10 0 4 0 6 0 5 0 0 0 1 0 13 0 6 0 2 0 14 0 11 0 3 0 14 0 8 0 11 0 9 0 4 0 7 0 12 0 10 0 11 0 12 0 7 0 4 0 10 0 12 0 5 0 13 0 10 0 6 0 13 0 5 0 1 0 10 0 13 0 2 0 8 0 14 0 3 0 9 0 14 0 11 0 14 0 9 0</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="DorsalFin-mesh" name="DorsalFin">
+      <mesh>
+        <source id="DorsalFin-mesh-positions">
+          <float_array id="DorsalFin-mesh-positions-array" count="57">1.148438 0.4921876 0 1.333333 2.833334 0 4 4.5 0 6.666667 3.666667 0 7.507813 1.328125 0 5.333333 0.1666666 0 3.0625 0.08333331 0 0.6875001 1.541667 0 2.541667 3.916667 0 5.458334 4.395834 0 7.395834 2.5 0 6.854167 0.5625001 0 3.162037 1.708333 0 4.731482 2.685186 0 6.310186 2.194445 0 6.939237 1.699653 0 2.317708 1.043403 0 3.586806 2.706597 0 5.59375 3.034722 0</float_array>
+          <technique_common>
+            <accessor source="#DorsalFin-mesh-positions-array" count="19" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="DorsalFin-mesh-normals">
+          <float_array id="DorsalFin-mesh-normals-array" count="3">0 0 -1</float_array>
+          <technique_common>
+            <accessor source="#DorsalFin-mesh-normals-array" count="1" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="DorsalFin-mesh-vertices">
+          <input semantic="POSITION" source="#DorsalFin-mesh-positions"/>
+        </vertices>
+        <triangles material="piranha_fin-material" count="24">
+          <input semantic="VERTEX" source="#DorsalFin-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#DorsalFin-mesh-normals" offset="1"/>
+          <p>10 0 14 0 3 0 4 0 15 0 10 0 14 0 11 0 5 0 6 0 12 0 5 0 0 0 16 0 6 0 1 0 16 0 7 0 1 0 17 0 12 0 2 0 17 0 8 0 12 0 13 0 5 0 9 0 13 0 2 0 3 0 18 0 9 0 13 0 14 0 5 0 10 0 15 0 14 0 4 0 11 0 15 0 14 0 15 0 11 0 6 0 16 0 12 0 0 0 7 0 16 0 1 0 12 0 16 0 1 0 8 0 17 0 2 0 13 0 17 0 12 0 17 0 13 0 9 0 18 0 13 0 3 0 14 0 18 0 13 0 18 0 14 0</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="PiranhaBodyMesh-mesh" name="PiranhaBodyMesh">
+      <mesh>
+        <source id="PiranhaBodyMesh-mesh-positions">
+          <float_array id="PiranhaBodyMesh-mesh-positions-array" count="360">-0.6 -18 -0.4 0.6 -18 -0.4 0.6 -18 0.4 -0.6 -18 0.4 -2 -11.66667 -1.2 2 -11.66667 -1.2 2 -11.66667 1.2 -2 -11.66667 1.2 -4.5 -4.166666 -3.5 4.5 -4.166666 -3.5 4.5 -4.166666 3.5 -4.5 -4.166666 3.5 -5.8 3 -5 5.8 3 -5 5.8 3 5 -5.8 3 5 -3.5 16.00387 3.666665 3.5 16.00387 3.666665 3.5 15.99613 -2.333331 -3.5 15.99613 -2.333331 -4 15.99982 -3.833333 4 15.99982 -3.833333 4 16.00018 1.166667 -4 16.00018 1.166667 -1.8 21.49906 -0.1135483 1.8 21.49906 -0.1135483 1.8 18.50094 -0.219785 -1.8 18.50094 -0.219785 -0.9500001 -16.49479 -0.6 0.9500001 -16.49479 -0.6 0.9500001 -16.49479 0.6 -0.9500001 -16.49479 0.6 -1.3 -14.95833 -0.8 1.3 -14.95833 -0.8 1.3 -14.95833 0.8 -1.3 -14.95833 0.8 -1.65 -13.35937 -1 1.65 -13.35937 -1 1.65 -13.35937 1 -1.65 -13.35937 1 -2.625 -9.86198 -1.775 2.625 -9.86198 -1.775 2.625 -9.86198 1.775 -2.625 -9.86198 1.775 -3.25 -7.979167 -2.35 3.25 -7.979167 -2.35 3.25 -7.979167 2.35 -3.25 -7.979167 2.35 -3.875 -6.065104 -2.925 3.875 -6.065104 -2.925 3.875 -6.065104 2.925 -3.875 -6.065104 2.925 -4.825 -2.320312 -3.875 4.825 -2.320312 -3.875 4.825 -2.320312 3.875 -4.825 -2.320312 3.875 -5.15 -0.5208334 -4.25 5.15 -0.5208334 -4.25 5.15 -0.5208334 4.25 -5.15 -0.5208334 4.25 -5.475 1.247396 -4.625 5.475 1.247396 -4.625 5.475 1.247396 4.625 -5.475 1.247396 4.625 -5.6 4.75 -4.875 5.6 4.75 -4.875 5.6 4.75 4.875 -5.6 4.75 4.875 -5.4 6.5 -4.75 5.4 6.5 -4.75 5.4 6.5 4.75 -5.4 6.5 4.75 -4.83125 10.259 -4.272036 4.83125 10.259 -4.272036 4.83125 11.116 3.904849 -4.83125 11.116 3.904849 -4.25 12.54779 4.180968 4.25 12.54779 4.180968 4.25 13.45221 -3.264302 -4.25 13.45221 -3.264302 -3.875 14.26641 3.976283 3.875 14.26641 3.976283 3.875 14.73359 -2.757533 -3.875 14.73359 -2.757533 -4.5 12.17465 -4.31796 4.5 12.17465 -4.31796 4.5 13.82535 2.484627 -4.5 13.82535 2.484627 -4.25 14.08884 -4.190441 4.25 14.08884 -4.190441 4.25 14.91116 1.752941 -4.25 14.91116 1.752941 -3.075 17.69437 3.222057 3.075 17.69437 3.222057 3.075 17.24313 -2.008516 -3.075 17.24313 -2.008516 -2.65 19.21224 2.639508 2.65 19.21224 2.639508 2.65 18.28776 -1.764508 -2.65 18.28776 -1.764508 -2.225 20.60741 1.790311 2.225 20.60741 1.790311 2.225 18.70509 -1.441353 -2.225 18.70509 -1.441353 -3.45 17.79844 -3.447069 3.45 17.79844 -3.447069 3.45 17.13906 1.00436 -3.45 17.13906 1.00436 -2.9 19.35327 -2.844347 2.9 19.35327 -2.844347 2.9 18.14673 0.9693471 -2.9 18.14673 0.9693471 -2.35 20.6782 -1.980499 2.35 20.6782 -1.980499 2.35 18.6343 0.8607069 -2.35 18.6343 0.8607069 -0.7446288 -17.37801 -0.482645 0.7446288 -17.37801 -0.482645 0.7446288 -17.37801 0.482645 -0.7446288 -17.37801 0.482645</float_array>
+          <technique_common>
+            <accessor source="#PiranhaBodyMesh-mesh-positions-array" count="120" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="PiranhaBodyMesh-mesh-normals">
+          <float_array id="PiranhaBodyMesh-mesh-normals-array" count="360">0.6786898 -0.2495874 -0.6907144 -0.5055486 -0.6695886 -0.5441247 -0.6786898 -0.2495874 -0.6907144 0.5055486 -0.6695886 -0.5441247 -0.5055486 -0.6695886 0.5441247 0.6786898 -0.2495874 0.6907144 -0.6786898 -0.2495874 0.6907144 0.5055486 -0.6695886 0.5441247 0.6794831 -0.2469932 -0.6908669 -0.6794831 -0.2469932 -0.6908669 0.6794831 -0.2469932 0.6908669 -0.6794831 -0.2469932 0.6908669 0.6812623 -0.2399159 -0.6916085 -0.6812623 -0.2399159 -0.6916085 0.6812623 -0.2399159 0.6916085 -0.6812623 -0.2399159 0.6916085 0.6837306 -0.2291411 -0.6928254 -0.6837306 -0.2291411 -0.6928254 0.6837306 -0.2291411 0.6928254 -0.6837306 -0.2291411 0.6928254 0.6670023 -0.3430385 -0.6613869 -0.6670023 -0.3430385 -0.6613869 0.6670023 -0.3430385 0.6613869 -0.6670023 -0.3430385 0.6613869 0.640318 -0.4167362 -0.6452316 -0.640318 -0.4167362 -0.6452316 0.640318 -0.4167362 0.6452316 -0.640318 -0.4167362 0.6452316 0.6433194 -0.4074957 -0.6481415 -0.6433194 -0.4074957 -0.6481415 0.6433194 -0.4074957 0.6481415 -0.6433194 -0.4074957 0.6481415 0.6434749 -0.4068566 -0.6483886 -0.6434749 -0.4068566 -0.6483886 0.6434749 -0.4068566 0.6483886 -0.6434749 -0.4068566 0.6483886 0.6746374 -0.3236612 -0.6634063 -0.6746374 -0.3236612 -0.6634063 0.6746374 -0.3236612 0.6634063 -0.6746374 -0.3236612 0.6634063 0.6841424 -0.2624016 -0.6805106 -0.6841424 -0.2624016 -0.6805106 0.6841424 -0.2624016 0.6805106 -0.6841424 -0.2624016 0.6805106 0.6831789 -0.2675949 -0.6794555 -0.6831789 -0.2675949 -0.6794555 0.6831789 -0.2675949 0.6794555 -0.6831789 -0.2675949 0.6794555 0.6825669 -0.2707683 -0.678813 -0.6825669 -0.2707683 -0.678813 0.6825669 -0.2707683 0.678813 -0.6825669 -0.2707683 0.678813 0.7076196 -0.06637936 -0.7034689 -0.7076196 -0.06637936 -0.7034689 0.7076196 -0.06637936 0.7034689 -0.7076196 -0.06637936 0.7034689 0.699719 0.1301348 -0.7024658 -0.699719 0.1301348 -0.7024658 0.699719 0.1301348 0.7024658 -0.699719 0.1301348 0.7024658 0.694661 0.1593438 -0.7014669 -0.694661 0.1593438 -0.7014669 0.6871681 0.1703576 0.7062425 -0.6871681 0.1703576 0.7062425 0.6831931 0.2028277 -0.7015043 -0.6831931 0.2028277 -0.7015043 -0.7134516 0.265305 0.6485369 0.7134516 0.265305 0.6485369 -0.6204912 0.1478058 0.7701587 0.6677297 0.3849387 -0.6371494 0.6204912 0.1478058 0.7701587 -0.6677297 0.3849387 -0.6371494 -0.6699905 0.2495564 0.699167 0.6647089 0.4209518 -0.617221 0.6699905 0.2495564 0.699167 -0.6647089 0.4209518 -0.617221 -0.6695977 0.3039436 0.6776853 0.6638742 0.3974151 -0.633508 0.6695977 0.3039436 0.6776853 -0.6638742 0.3974151 -0.633508 0.6712712 0.1189336 -0.7316078 -0.6712712 0.1189336 -0.7316078 0.6786338 0.4552608 0.5763626 -0.6786338 0.4552608 0.5763626 0.6777724 0.1784157 -0.7132969 -0.6777724 0.1784157 -0.7132969 0.6820834 0.4857811 0.5466068 -0.6820834 0.4857811 0.5466068 0.6940122 0.2751939 -0.6652935 -0.6940122 0.2751939 -0.6652935 0.7061579 0.4197028 0.5702549 -0.7061579 0.4197028 0.5702549 -0.6597923 0.3824348 0.6468522 0.6436496 0.393606 -0.6563456 0.6597923 0.3824348 0.6468522 -0.6436496 0.393606 -0.6563456 -0.6499628 0.483085 0.5866664 0.5467305 0.54435 -0.6362144 0.6499628 0.483085 0.5866664 -0.5467305 0.54435 -0.6362144 -0.6194901 0.673327 0.4035628 0.200816 0.8874971 -0.4147554 0.6194901 0.673327 0.4035628 -0.200816 0.8874971 -0.4147554 -0.5637265 0.8256757 0.02172988 -0.3268004 0.9437476 0.05041784 0.5637265 0.8256757 0.02172988 0.3268004 0.9437476 0.05041784 0.6417225 0.4119451 -0.6469107 -0.6417225 0.4119451 -0.6469107 -0.6079486 0.3824704 0.6957837 0.6079486 0.3824704 0.6957837 0.6409698 0.5330835 -0.5522497 -0.6409698 0.5330835 -0.5522497 0.5404681 0.4403949 0.7169007 -0.5404681 0.4403949 0.7169007 0.610842 0.7126541 -0.3449586 -0.610842 0.7126541 -0.3449586 0.1744174 0.7423196 0.6469469 -0.1744174 0.7423196 0.6469469</float_array>
+          <technique_common>
+            <accessor source="#PiranhaBodyMesh-mesh-normals-array" count="120" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="PiranhaBodyMesh-mesh-vertices">
+          <input semantic="POSITION" source="#PiranhaBodyMesh-mesh-positions"/>
+        </vertices>
+        <triangles material="piranha_scales-material" count="242">
+          <input semantic="VERTEX" source="#PiranhaBodyMesh-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#PiranhaBodyMesh-mesh-normals" offset="1"/>
+          <p>117 0 0 1 116 2 1 3 3 4 0 1 118 5 1 3 117 0 119 6 2 7 118 5 116 2 3 4 119 6 29 8 116 2 28 9 30 10 117 0 29 8 31 11 118 5 30 10 28 9 119 6 31 11 33 12 28 9 32 13 34 14 29 8 33 12 35 15 30 10 34 14 32 13 31 11 35 15 37 16 32 13 36 17 38 18 33 12 37 16 39 19 34 14 38 18 36 17 35 15 39 19 5 20 36 17 4 21 6 22 37 16 5 20 7 23 38 18 6 22 4 21 39 19 7 23 41 24 4 21 40 25 42 26 5 20 41 24 43 27 6 22 42 26 40 25 7 23 43 27 45 28 40 25 44 29 46 30 41 24 45 28 47 31 42 26 46 30 44 29 43 27 47 31 49 32 44 29 48 33 50 34 45 28 49 32 51 35 46 30 50 34 48 33 47 31 51 35 9 36 48 33 8 37 10 38 49 32 9 36 11 39 50 34 10 38 8 37 51 35 11 39 53 40 8 37 52 41 54 42 9 36 53 40 55 43 10 38 54 42 52 41 11 39 55 43 57 44 52 41 56 45 58 46 53 40 57 44 59 47 54 42 58 46 56 45 55 43 59 47 61 48 56 45 60 49 62 50 57 44 61 48 63 51 58 46 62 50 60 49 59 47 63 51 13 52 60 49 12 53 14 54 61 48 13 52 15 55 62 50 14 54 12 53 63 51 15 55 65 56 12 53 64 57 66 58 13 52 65 56 67 59 14 54 66 58 64 57 15 55 67 59 69 60 64 57 68 61 70 62 65 56 69 60 71 63 66 58 70 62 68 61 67 59 71 63 73 64 68 61 72 65 73 64 70 62 69 60 75 66 70 62 74 67 72 65 71 63 75 66 74 67 76 68 75 66 74 67 78 69 77 70 72 65 78 69 73 64 75 66 79 71 72 65 77 70 80 72 76 68 77 70 82 73 81 74 79 71 82 73 78 69 76 68 83 75 79 71 81 74 16 76 80 72 81 74 18 77 17 78 83 75 18 77 82 73 80 72 19 79 83 75 85 80 72 65 84 81 86 82 73 64 85 80 87 83 74 67 86 82 87 83 72 65 75 66 89 84 84 81 88 85 90 86 85 80 89 84 91 87 86 82 90 86 91 87 84 81 87 83 21 88 88 85 20 89 22 90 89 84 21 88 23 91 90 86 22 90 23 91 88 85 91 87 17 78 92 92 16 76 17 78 94 93 93 94 19 79 94 93 18 77 16 76 95 95 19 79 93 94 96 96 92 92 93 94 98 97 97 98 95 95 98 97 94 93 92 92 99 99 95 95 97 98 100 100 96 96 97 98 102 101 101 102 99 99 102 101 98 97 96 96 103 103 99 99 101 102 24 104 100 100 101 102 26 105 25 106 103 103 26 105 102 101 100 100 27 107 103 103 105 108 20 89 104 109 105 108 22 90 21 88 107 110 22 90 106 111 104 109 23 91 107 110 109 112 104 109 108 113 110 114 105 108 109 112 111 115 106 111 110 114 111 115 104 109 107 110 113 116 108 113 112 117 114 118 109 112 113 116 115 119 110 114 114 118 115 119 108 113 111 115 25 106 112 117 24 104 26 105 113 116 25 106 27 107 114 118 26 105 27 107 112 117 115 119 117 0 1 3 0 1 1 3 2 7 3 4 118 5 2 7 1 3 119 6 3 4 2 7 116 2 0 1 3 4 29 8 117 0 116 2 30 10 118 5 117 0 31 11 119 6 118 5 28 9 116 2 119 6 33 12 29 8 28 9 34 14 30 10 29 8 35 15 31 11 30 10 32 13 28 9 31 11 37 16 33 12 32 13 38 18 34 14 33 12 39 19 35 15 34 14 36 17 32 13 35 15 5 20 37 16 36 17 6 22 38 18 37 16 7 23 39 19 38 18 4 21 36 17 39 19 41 24 5 20 4 21 42 26 6 22 5 20 43 27 7 23 6 22 40 25 4 21 7 23 45 28 41 24 40 25 46 30 42 26 41 24 47 31 43 27 42 26 44 29 40 25 43 27 49 32 45 28 44 29 50 34 46 30 45 28 51 35 47 31 46 30 48 33 44 29 47 31 9 36 49 32 48 33 10 38 50 34 49 32 11 39 51 35 50 34 8 37 48 33 51 35 53 40 9 36 8 37 54 42 10 38 9 36 55 43 11 39 10 38 52 41 8 37 11 39 57 44 53 40 52 41 58 46 54 42 53 40 59 47 55 43 54 42 56 45 52 41 55 43 61 48 57 44 56 45 62 50 58 46 57 44 63 51 59 47 58 46 60 49 56 45 59 47 13 52 61 48 60 49 14 54 62 50 61 48 15 55 63 51 62 50 12 53 60 49 63 51 65 56 13 52 12 53 66 58 14 54 13 52 67 59 15 55 14 54 64 57 12 53 15 55 69 60 65 56 64 57 70 62 66 58 65 56 71 63 67 59 66 58 68 61 64 57 67 59 73 64 69 60 68 61 73 64 74 67 70 62 75 66 71 63 70 62 72 65 68 61 71 63 74 67 77 70 76 68 74 67 73 64 78 69 72 65 79 71 78 69 75 66 76 68 79 71 77 70 81 74 80 72 77 70 78 69 82 73 79 71 83 75 82 73 76 68 80 72 83 75 81 74 17 78 16 76 81 74 82 73 18 77 83 75 19 79 18 77 80 72 16 76 19 79 85 80 73 64 72 65 86 82 74 67 73 64 87 83 75 66 74 67 87 83 84 81 72 65 89 84 85 80 84 81 90 86 86 82 85 80 91 87 87 83 86 82 91 87 88 85 84 81 21 88 89 84 88 85 22 90 90 86 89 84 23 91 91 87 90 86 23 91 20 89 88 85 17 78 93 94 92 92 17 78 18 77 94 93 19 79 95 95 94 93 16 76 92 92 95 95 93 94 97 98 96 96 93 94 94 93 98 97 95 95 99 99 98 97 92 92 96 96 99 99 97 98 101 102 100 100 97 98 98 97 102 101 99 99 103 103 102 101 96 96 100 100 103 103 101 102 25 106 24 104 101 102 102 101 26 105 103 103 27 107 26 105 100 100 24 104 27 107 105 108 21 88 20 89 105 108 106 111 22 90 107 110 23 91 22 90 104 109 20 89 23 91 109 112 105 108 104 109 110 114 106 111 105 108 111 115 107 110 106 111 111 115 108 113 104 109 113 116 109 112 108 113 114 118 110 114 109 112 115 119 111 115 110 114 115 119 112 117 108 113 25 106 113 116 112 117 26 105 114 118 113 116 27 107 115 119 114 118 27 107 24 104 112 117</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Cone_004-mesh" name="Cone.004">
+      <mesh>
+        <source id="Cone_004-mesh-positions">
+          <float_array id="Cone_004-mesh-positions-array" count="18">5 18.5 -2.3 5 21.5 -1.6 5.692821 18.5 -1.1 5.086603 21.5 -1.45 4.307179 18.5 -1.1 4.913397 21.5 -1.45</float_array>
+          <technique_common>
+            <accessor source="#Cone_004-mesh-positions-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cone_004-mesh-normals">
+          <float_array id="Cone_004-mesh-normals-array" count="24">0.8601912 0.1158809 -0.4966315 -2.27873e-7 0.1158807 0.9932632 0 1 0 -0.8601911 0.1158809 -0.4966316 0 -1 0 0.8601912 0.1158809 -0.4966316 0 0.1158806 0.9932632 -0.8601912 0.1158795 -0.4966316</float_array>
+          <technique_common>
+            <accessor source="#Cone_004-mesh-normals-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cone_004-mesh-map-0">
+          <float_array id="Cone_004-mesh-map-0-array" count="48">1 0.5 0.6666666 1 0.6666666 0.5 0.6666666 1 0.3333333 0.5 0.6666666 0.5 0.4578461 0.1299999 0.25 0.49 0.04215389 0.13 0.3333333 1 0 0.5 0.3333333 0.5 0.75 0.49 0.9578461 0.1299999 0.5421539 0.13 1 0.5 1 1 0.6666666 1 0.6666666 1 0.3333333 1 0.3333333 0.5 0.3333333 1 0 1 0 0.5</float_array>
+          <technique_common>
+            <accessor source="#Cone_004-mesh-map-0-array" count="24" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cone_004-mesh-vertices">
+          <input semantic="POSITION" source="#Cone_004-mesh-positions"/>
+        </vertices>
+        <triangles material="piranha_tooth-material" count="8">
+          <input semantic="VERTEX" source="#Cone_004-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cone_004-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cone_004-mesh-map-0" offset="2" set="0"/>
+          <p>0 0 0 3 0 1 2 0 2 3 1 3 4 1 4 2 1 5 3 2 6 1 2 7 5 2 8 5 3 9 0 3 10 4 3 11 0 4 12 2 4 13 4 4 14 0 5 15 1 5 16 3 5 17 3 6 18 5 6 19 4 6 20 5 7 21 1 7 22 0 7 23</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Cone_003-mesh" name="Cone.003">
+      <mesh>
+        <source id="Cone_003-mesh-positions">
+          <float_array id="Cone_003-mesh-positions-array" count="18">2.5 18.5 -2.3 2.5 21.5 -1.6 3.19282 18.5 -1.1 2.586602 21.5 -1.45 1.80718 18.5 -1.1 2.413398 21.5 -1.45</float_array>
+          <technique_common>
+            <accessor source="#Cone_003-mesh-positions-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cone_003-mesh-normals">
+          <float_array id="Cone_003-mesh-normals-array" count="24">0.8601913 0.1158807 -0.4966314 -2.27873e-7 0.1158807 0.9932632 0 1 0 -0.8601911 0.115881 -0.4966316 0 -1 0 0.860191 0.1158811 -0.4966316 0 0.1158804 0.9932632 -0.8601918 0.1158796 -0.4966306</float_array>
+          <technique_common>
+            <accessor source="#Cone_003-mesh-normals-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cone_003-mesh-map-0">
+          <float_array id="Cone_003-mesh-map-0-array" count="48">1 1 0.6666666 0.5 1 0.5 0.6666666 1 0.3333333 0.5 0.6666666 0.5 0.4578461 0.1299999 0.25 0.49 0.04215389 0.13 0.3333333 1 0 0.5 0.3333333 0.5 0.75 0.49 0.9578461 0.1299999 0.5421539 0.13 1 1 0.6666666 1 0.6666666 0.5 0.6666666 1 0.3333333 1 0.3333333 0.5 0.3333333 1 0 1 0 0.5</float_array>
+          <technique_common>
+            <accessor source="#Cone_003-mesh-map-0-array" count="24" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cone_003-mesh-vertices">
+          <input semantic="POSITION" source="#Cone_003-mesh-positions"/>
+        </vertices>
+        <triangles material="piranha_tooth-material" count="8">
+          <input semantic="VERTEX" source="#Cone_003-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cone_003-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cone_003-mesh-map-0" offset="2" set="0"/>
+          <p>1 0 0 2 0 1 0 0 2 3 1 3 4 1 4 2 1 5 3 2 6 1 2 7 5 2 8 5 3 9 0 3 10 4 3 11 0 4 12 2 4 13 4 4 14 1 5 15 3 5 16 2 5 17 3 6 18 5 6 19 4 6 20 5 7 21 1 7 22 0 7 23</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Cone_002-mesh" name="Cone.002">
+      <mesh>
+        <source id="Cone_002-mesh-positions">
+          <float_array id="Cone_002-mesh-positions-array" count="18">0 18.5 -2.3 0 21.5 -1.6 0.6928203 18.5 -1.1 0.0866025 21.5 -1.45 -0.6928204 18.5 -1.1 -0.0866025 21.5 -1.45</float_array>
+          <technique_common>
+            <accessor source="#Cone_002-mesh-positions-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cone_002-mesh-normals">
+          <float_array id="Cone_002-mesh-normals-array" count="24">0.8601913 0.1158806 -0.4966314 -2.27873e-7 0.1158807 0.9932632 0 1 9.17674e-6 -0.8601911 0.1158807 -0.4966316 0 -1 -2.29418e-6 0.8601911 0.1158806 -0.4966317 0 0.1158803 0.9932632 -0.8601915 0.1158806 -0.4966309</float_array>
+          <technique_common>
+            <accessor source="#Cone_002-mesh-normals-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cone_002-mesh-map-0">
+          <float_array id="Cone_002-mesh-map-0-array" count="48">1 1 0.6666666 0.5 1 0.5 0.6666666 1 0.3333333 0.5 0.6666666 0.5 0.4578461 0.1299999 0.25 0.49 0.04215389 0.13 0.3333333 1 0 0.5 0.3333333 0.5 0.75 0.49 0.9578461 0.1299999 0.5421539 0.13 1 1 0.6666666 1 0.6666666 0.5 0.6666666 1 0.3333333 1 0.3333333 0.5 0.3333333 1 0 1 0 0.5</float_array>
+          <technique_common>
+            <accessor source="#Cone_002-mesh-map-0-array" count="24" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cone_002-mesh-vertices">
+          <input semantic="POSITION" source="#Cone_002-mesh-positions"/>
+        </vertices>
+        <triangles material="piranha_tooth-material" count="8">
+          <input semantic="VERTEX" source="#Cone_002-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cone_002-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cone_002-mesh-map-0" offset="2" set="0"/>
+          <p>1 0 0 2 0 1 0 0 2 3 1 3 4 1 4 2 1 5 3 2 6 1 2 7 5 2 8 5 3 9 0 3 10 4 3 11 0 4 12 2 4 13 4 4 14 1 5 15 3 5 16 2 5 17 3 6 18 5 6 19 4 6 20 5 7 21 1 7 22 0 7 23</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Cone_001-mesh" name="Cone.001">
+      <mesh>
+        <source id="Cone_001-mesh-positions">
+          <float_array id="Cone_001-mesh-positions-array" count="18">-2.5 18.5 -2.3 -2.5 21.5 -1.6 -1.80718 18.5 -1.1 -2.413398 21.5 -1.45 -3.19282 18.5 -1.1 -2.586602 21.5 -1.45</float_array>
+          <technique_common>
+            <accessor source="#Cone_001-mesh-positions-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cone_001-mesh-normals">
+          <float_array id="Cone_001-mesh-normals-array" count="24">0.8601913 0.1158807 -0.4966314 -2.27873e-7 0.1158807 0.9932632 0 1 0 -0.8601911 0.1158809 -0.4966316 0 -1 0 0.860191 0.1158811 -0.4966316 0 0.1158804 0.9932632 -0.8601917 0.11588 -0.4966306</float_array>
+          <technique_common>
+            <accessor source="#Cone_001-mesh-normals-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cone_001-mesh-map-0">
+          <float_array id="Cone_001-mesh-map-0-array" count="48">1 1 0.6666666 0.5 1 0.5 0.6666666 1 0.3333333 0.5 0.6666666 0.5 0.4578461 0.1299999 0.25 0.49 0.04215389 0.13 0.3333333 1 0 0.5 0.3333333 0.5 0.75 0.49 0.9578461 0.1299999 0.5421539 0.13 1 1 0.6666666 1 0.6666666 0.5 0.6666666 1 0.3333333 1 0.3333333 0.5 0.3333333 1 0 1 0 0.5</float_array>
+          <technique_common>
+            <accessor source="#Cone_001-mesh-map-0-array" count="24" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cone_001-mesh-vertices">
+          <input semantic="POSITION" source="#Cone_001-mesh-positions"/>
+        </vertices>
+        <triangles material="piranha_tooth-material" count="8">
+          <input semantic="VERTEX" source="#Cone_001-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cone_001-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cone_001-mesh-map-0" offset="2" set="0"/>
+          <p>1 0 0 2 0 1 0 0 2 3 1 3 4 1 4 2 1 5 3 2 6 1 2 7 5 2 8 5 3 9 0 3 10 4 3 11 0 4 12 2 4 13 4 4 14 1 5 15 3 5 16 2 5 17 3 6 18 5 6 19 4 6 20 5 7 21 1 7 22 0 7 23</p>
+        </triangles>
+      </mesh>
+    </geometry>
+    <geometry id="Cone-mesh" name="Cone">
+      <mesh>
+        <source id="Cone-mesh-positions">
+          <float_array id="Cone-mesh-positions-array" count="18">-5 18.5 -2.3 -5 21.5 -1.6 -4.307179 18.5 -1.1 -4.913397 21.5 -1.45 -5.692821 18.5 -1.1 -5.086603 21.5 -1.45</float_array>
+          <technique_common>
+            <accessor source="#Cone-mesh-positions-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cone-mesh-normals">
+          <float_array id="Cone-mesh-normals-array" count="24">0.8601912 0.1158809 -0.4966315 -2.27873e-7 0.1158807 0.9932632 0 1 0 -0.8601911 0.1158806 -0.4966316 0 -1 0 0.8601913 0.11588 -0.4966316 0 0.1158806 0.9932632 -0.8601911 0.1158813 -0.4966315</float_array>
+          <technique_common>
+            <accessor source="#Cone-mesh-normals-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cone-mesh-map-0">
+          <float_array id="Cone-mesh-map-0-array" count="48">1 0.5 0.6666666 1 0.6666666 0.5 0.6666666 1 0.3333333 0.5 0.6666666 0.5 0.4578461 0.1299999 0.25 0.49 0.04215389 0.13 0.3333333 1 0 0.5 0.3333333 0.5 0.75 0.49 0.9578461 0.1299999 0.5421539 0.13 1 0.5 1 1 0.6666666 1 0.6666666 1 0.3333333 1 0.3333333 0.5 0.3333333 1 0 1 0 0.5</float_array>
+          <technique_common>
+            <accessor source="#Cone-mesh-map-0-array" count="24" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cone-mesh-vertices">
+          <input semantic="POSITION" source="#Cone-mesh-positions"/>
+        </vertices>
+        <triangles material="piranha_tooth-material" count="8">
+          <input semantic="VERTEX" source="#Cone-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cone-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cone-mesh-map-0" offset="2" set="0"/>
+          <p>0 0 0 3 0 1 2 0 2 3 1 3 4 1 4 2 1 5 3 2 6 1 2 7 5 2 8 5 3 9 0 3 10 4 3 11 0 4 12 2 4 13 4 4 14 0 5 15 1 5 16 3 5 17 3 6 18 5 6 19 4 6 20 5 7 21 1 7 22 0 7 23</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_controllers>
+    <controller id="CreatureArm_TailFinU-skin" name="CreatureArm">
+      <skin source="#TailFinU-mesh">
+        <bind_shape_matrix>-4.37114e-8 0 1 0 0 1 0 -18 -1 0 -4.37114e-8 0 0 0 0 1</bind_shape_matrix>
+        <source id="CreatureArm_TailFinU-skin-joints">
+          <Name_array id="CreatureArm_TailFinU-skin-joints-array" count="1">Bip01</Name_array>
+          <technique_common>
+            <accessor source="#CreatureArm_TailFinU-skin-joints-array" count="1" stride="1">
+              <param name="JOINT" type="name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="CreatureArm_TailFinU-skin-bind_poses">
+          <float_array id="CreatureArm_TailFinU-skin-bind_poses-array" count="16">1 0 0 0 0 1.19209e-7 1 0 0 -1 0 0 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#CreatureArm_TailFinU-skin-bind_poses-array" count="1" stride="16">
+              <param name="TRANSFORM" type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="CreatureArm_TailFinU-skin-weights">
+          <float_array id="CreatureArm_TailFinU-skin-weights-array" count="15">1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</float_array>
+          <technique_common>
+            <accessor source="#CreatureArm_TailFinU-skin-weights-array" count="15" stride="1">
+              <param name="WEIGHT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#CreatureArm_TailFinU-skin-joints"/>
+          <input semantic="INV_BIND_MATRIX" source="#CreatureArm_TailFinU-skin-bind_poses"/>
+        </joints>
+        <vertex_weights count="15">
+          <input semantic="JOINT" source="#CreatureArm_TailFinU-skin-joints" offset="0"/>
+          <input semantic="WEIGHT" source="#CreatureArm_TailFinU-skin-weights" offset="1"/>
+          <vcount>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </vcount>
+          <v>0 0 0 1 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 9 0 10 0 11 0 12 0 13 0 14</v>
+        </vertex_weights>
+      </skin>
+    </controller>
+    <controller id="CreatureArm_TailFinD-skin" name="CreatureArm">
+      <skin source="#TailFinD-mesh">
+        <bind_shape_matrix>-4.37114e-8 0 1 0 0 1 0 -18 -1 0 -4.37114e-8 0 0 0 0 1</bind_shape_matrix>
+        <source id="CreatureArm_TailFinD-skin-joints">
+          <Name_array id="CreatureArm_TailFinD-skin-joints-array" count="1">Bip01</Name_array>
+          <technique_common>
+            <accessor source="#CreatureArm_TailFinD-skin-joints-array" count="1" stride="1">
+              <param name="JOINT" type="name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="CreatureArm_TailFinD-skin-bind_poses">
+          <float_array id="CreatureArm_TailFinD-skin-bind_poses-array" count="16">1 0 0 0 0 1.19209e-7 1 0 0 -1 0 0 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#CreatureArm_TailFinD-skin-bind_poses-array" count="1" stride="16">
+              <param name="TRANSFORM" type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="CreatureArm_TailFinD-skin-weights">
+          <float_array id="CreatureArm_TailFinD-skin-weights-array" count="15">1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</float_array>
+          <technique_common>
+            <accessor source="#CreatureArm_TailFinD-skin-weights-array" count="15" stride="1">
+              <param name="WEIGHT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#CreatureArm_TailFinD-skin-joints"/>
+          <input semantic="INV_BIND_MATRIX" source="#CreatureArm_TailFinD-skin-bind_poses"/>
+        </joints>
+        <vertex_weights count="15">
+          <input semantic="JOINT" source="#CreatureArm_TailFinD-skin-joints" offset="0"/>
+          <input semantic="WEIGHT" source="#CreatureArm_TailFinD-skin-weights" offset="1"/>
+          <vcount>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </vcount>
+          <v>0 0 0 1 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 9 0 10 0 11 0 12 0 13 0 14</v>
+        </vertex_weights>
+      </skin>
+    </controller>
+    <controller id="CreatureArm_DorsalFin-skin" name="CreatureArm">
+      <skin source="#DorsalFin-mesh">
+        <bind_shape_matrix>1 0 0 0 0 -4.37114e-8 -1 0 0 1 -4.37114e-8 6 0 0 0 1</bind_shape_matrix>
+        <source id="CreatureArm_DorsalFin-skin-joints">
+          <Name_array id="CreatureArm_DorsalFin-skin-joints-array" count="1">Bip01</Name_array>
+          <technique_common>
+            <accessor source="#CreatureArm_DorsalFin-skin-joints-array" count="1" stride="1">
+              <param name="JOINT" type="name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="CreatureArm_DorsalFin-skin-bind_poses">
+          <float_array id="CreatureArm_DorsalFin-skin-bind_poses-array" count="16">1 0 0 0 0 1.19209e-7 1 0 0 -1 0 0 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#CreatureArm_DorsalFin-skin-bind_poses-array" count="1" stride="16">
+              <param name="TRANSFORM" type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="CreatureArm_DorsalFin-skin-weights">
+          <float_array id="CreatureArm_DorsalFin-skin-weights-array" count="19">1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</float_array>
+          <technique_common>
+            <accessor source="#CreatureArm_DorsalFin-skin-weights-array" count="19" stride="1">
+              <param name="WEIGHT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#CreatureArm_DorsalFin-skin-joints"/>
+          <input semantic="INV_BIND_MATRIX" source="#CreatureArm_DorsalFin-skin-bind_poses"/>
+        </joints>
+        <vertex_weights count="19">
+          <input semantic="JOINT" source="#CreatureArm_DorsalFin-skin-joints" offset="0"/>
+          <input semantic="WEIGHT" source="#CreatureArm_DorsalFin-skin-weights" offset="1"/>
+          <vcount>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </vcount>
+          <v>0 0 0 1 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 9 0 10 0 11 0 12 0 13 0 14 0 15 0 16 0 17 0 18</v>
+        </vertex_weights>
+      </skin>
+    </controller>
+    <controller id="CreatureArm_PiranhaBody-skin" name="CreatureArm">
+      <skin source="#PiranhaBodyMesh-mesh">
+        <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
+        <source id="CreatureArm_PiranhaBody-skin-joints">
+          <Name_array id="CreatureArm_PiranhaBody-skin-joints-array" count="1">Bip01</Name_array>
+          <technique_common>
+            <accessor source="#CreatureArm_PiranhaBody-skin-joints-array" count="1" stride="1">
+              <param name="JOINT" type="name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="CreatureArm_PiranhaBody-skin-bind_poses">
+          <float_array id="CreatureArm_PiranhaBody-skin-bind_poses-array" count="16">1 0 0 0 0 1.19209e-7 1 0 0 -1 0 0 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#CreatureArm_PiranhaBody-skin-bind_poses-array" count="1" stride="16">
+              <param name="TRANSFORM" type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="CreatureArm_PiranhaBody-skin-weights">
+          <float_array id="CreatureArm_PiranhaBody-skin-weights-array" count="120">1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</float_array>
+          <technique_common>
+            <accessor source="#CreatureArm_PiranhaBody-skin-weights-array" count="120" stride="1">
+              <param name="WEIGHT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#CreatureArm_PiranhaBody-skin-joints"/>
+          <input semantic="INV_BIND_MATRIX" source="#CreatureArm_PiranhaBody-skin-bind_poses"/>
+        </joints>
+        <vertex_weights count="120">
+          <input semantic="JOINT" source="#CreatureArm_PiranhaBody-skin-joints" offset="0"/>
+          <input semantic="WEIGHT" source="#CreatureArm_PiranhaBody-skin-weights" offset="1"/>
+          <vcount>1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </vcount>
+          <v>0 0 0 1 0 2 0 3 0 4 0 5 0 6 0 7 0 8 0 9 0 10 0 11 0 12 0 13 0 14 0 15 0 16 0 17 0 18 0 19 0 20 0 21 0 22 0 23 0 24 0 25 0 26 0 27 0 28 0 29 0 30 0 31 0 32 0 33 0 34 0 35 0 36 0 37 0 38 0 39 0 40 0 41 0 42 0 43 0 44 0 45 0 46 0 47 0 48 0 49 0 50 0 51 0 52 0 53 0 54 0 55 0 56 0 57 0 58 0 59 0 60 0 61 0 62 0 63 0 64 0 65 0 66 0 67 0 68 0 69 0 70 0 71 0 72 0 73 0 74 0 75 0 76 0 77 0 78 0 79 0 80 0 81 0 82 0 83 0 84 0 85 0 86 0 87 0 88 0 89 0 90 0 91 0 92 0 93 0 94 0 95 0 96 0 97 0 98 0 99 0 100 0 101 0 102 0 103 0 104 0 105 0 106 0 107 0 108 0 109 0 110 0 111 0 112 0 113 0 114 0 115 0 116 0 117 0 118 0 119</v>
+        </vertex_weights>
+      </skin>
+    </controller>
+    <controller id="CreatureArm_Cone_004-skin" name="CreatureArm">
+      <skin source="#Cone_004-mesh">
+        <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
+        <source id="CreatureArm_Cone_004-skin-joints">
+          <Name_array id="CreatureArm_Cone_004-skin-joints-array" count="1">Bip01</Name_array>
+          <technique_common>
+            <accessor source="#CreatureArm_Cone_004-skin-joints-array" count="1" stride="1">
+              <param name="JOINT" type="name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="CreatureArm_Cone_004-skin-bind_poses">
+          <float_array id="CreatureArm_Cone_004-skin-bind_poses-array" count="16">1 0 0 0 0 1.19209e-7 1 0 0 -1 0 0 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#CreatureArm_Cone_004-skin-bind_poses-array" count="1" stride="16">
+              <param name="TRANSFORM" type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="CreatureArm_Cone_004-skin-weights">
+          <float_array id="CreatureArm_Cone_004-skin-weights-array" count="6">1 1 1 1 1 1</float_array>
+          <technique_common>
+            <accessor source="#CreatureArm_Cone_004-skin-weights-array" count="6" stride="1">
+              <param name="WEIGHT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#CreatureArm_Cone_004-skin-joints"/>
+          <input semantic="INV_BIND_MATRIX" source="#CreatureArm_Cone_004-skin-bind_poses"/>
+        </joints>
+        <vertex_weights count="6">
+          <input semantic="JOINT" source="#CreatureArm_Cone_004-skin-joints" offset="0"/>
+          <input semantic="WEIGHT" source="#CreatureArm_Cone_004-skin-weights" offset="1"/>
+          <vcount>1 1 1 1 1 1 </vcount>
+          <v>0 0 0 1 0 2 0 3 0 4 0 5</v>
+        </vertex_weights>
+      </skin>
+    </controller>
+    <controller id="CreatureArm_Cone_003-skin" name="CreatureArm">
+      <skin source="#Cone_003-mesh">
+        <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
+        <source id="CreatureArm_Cone_003-skin-joints">
+          <Name_array id="CreatureArm_Cone_003-skin-joints-array" count="1">Bip01</Name_array>
+          <technique_common>
+            <accessor source="#CreatureArm_Cone_003-skin-joints-array" count="1" stride="1">
+              <param name="JOINT" type="name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="CreatureArm_Cone_003-skin-bind_poses">
+          <float_array id="CreatureArm_Cone_003-skin-bind_poses-array" count="16">1 0 0 0 0 1.19209e-7 1 0 0 -1 0 0 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#CreatureArm_Cone_003-skin-bind_poses-array" count="1" stride="16">
+              <param name="TRANSFORM" type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="CreatureArm_Cone_003-skin-weights">
+          <float_array id="CreatureArm_Cone_003-skin-weights-array" count="6">1 1 1 1 1 1</float_array>
+          <technique_common>
+            <accessor source="#CreatureArm_Cone_003-skin-weights-array" count="6" stride="1">
+              <param name="WEIGHT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#CreatureArm_Cone_003-skin-joints"/>
+          <input semantic="INV_BIND_MATRIX" source="#CreatureArm_Cone_003-skin-bind_poses"/>
+        </joints>
+        <vertex_weights count="6">
+          <input semantic="JOINT" source="#CreatureArm_Cone_003-skin-joints" offset="0"/>
+          <input semantic="WEIGHT" source="#CreatureArm_Cone_003-skin-weights" offset="1"/>
+          <vcount>1 1 1 1 1 1 </vcount>
+          <v>0 0 0 1 0 2 0 3 0 4 0 5</v>
+        </vertex_weights>
+      </skin>
+    </controller>
+    <controller id="CreatureArm_Cone_002-skin" name="CreatureArm">
+      <skin source="#Cone_002-mesh">
+        <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
+        <source id="CreatureArm_Cone_002-skin-joints">
+          <Name_array id="CreatureArm_Cone_002-skin-joints-array" count="1">Bip01</Name_array>
+          <technique_common>
+            <accessor source="#CreatureArm_Cone_002-skin-joints-array" count="1" stride="1">
+              <param name="JOINT" type="name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="CreatureArm_Cone_002-skin-bind_poses">
+          <float_array id="CreatureArm_Cone_002-skin-bind_poses-array" count="16">1 0 0 0 0 1.19209e-7 1 0 0 -1 0 0 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#CreatureArm_Cone_002-skin-bind_poses-array" count="1" stride="16">
+              <param name="TRANSFORM" type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="CreatureArm_Cone_002-skin-weights">
+          <float_array id="CreatureArm_Cone_002-skin-weights-array" count="6">1 1 1 1 1 1</float_array>
+          <technique_common>
+            <accessor source="#CreatureArm_Cone_002-skin-weights-array" count="6" stride="1">
+              <param name="WEIGHT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#CreatureArm_Cone_002-skin-joints"/>
+          <input semantic="INV_BIND_MATRIX" source="#CreatureArm_Cone_002-skin-bind_poses"/>
+        </joints>
+        <vertex_weights count="6">
+          <input semantic="JOINT" source="#CreatureArm_Cone_002-skin-joints" offset="0"/>
+          <input semantic="WEIGHT" source="#CreatureArm_Cone_002-skin-weights" offset="1"/>
+          <vcount>1 1 1 1 1 1 </vcount>
+          <v>0 0 0 1 0 2 0 3 0 4 0 5</v>
+        </vertex_weights>
+      </skin>
+    </controller>
+    <controller id="CreatureArm_Cone_001-skin" name="CreatureArm">
+      <skin source="#Cone_001-mesh">
+        <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
+        <source id="CreatureArm_Cone_001-skin-joints">
+          <Name_array id="CreatureArm_Cone_001-skin-joints-array" count="1">Bip01</Name_array>
+          <technique_common>
+            <accessor source="#CreatureArm_Cone_001-skin-joints-array" count="1" stride="1">
+              <param name="JOINT" type="name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="CreatureArm_Cone_001-skin-bind_poses">
+          <float_array id="CreatureArm_Cone_001-skin-bind_poses-array" count="16">1 0 0 0 0 1.19209e-7 1 0 0 -1 0 0 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#CreatureArm_Cone_001-skin-bind_poses-array" count="1" stride="16">
+              <param name="TRANSFORM" type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="CreatureArm_Cone_001-skin-weights">
+          <float_array id="CreatureArm_Cone_001-skin-weights-array" count="6">1 1 1 1 1 1</float_array>
+          <technique_common>
+            <accessor source="#CreatureArm_Cone_001-skin-weights-array" count="6" stride="1">
+              <param name="WEIGHT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#CreatureArm_Cone_001-skin-joints"/>
+          <input semantic="INV_BIND_MATRIX" source="#CreatureArm_Cone_001-skin-bind_poses"/>
+        </joints>
+        <vertex_weights count="6">
+          <input semantic="JOINT" source="#CreatureArm_Cone_001-skin-joints" offset="0"/>
+          <input semantic="WEIGHT" source="#CreatureArm_Cone_001-skin-weights" offset="1"/>
+          <vcount>1 1 1 1 1 1 </vcount>
+          <v>0 0 0 1 0 2 0 3 0 4 0 5</v>
+        </vertex_weights>
+      </skin>
+    </controller>
+    <controller id="CreatureArm_Cone-skin" name="CreatureArm">
+      <skin source="#Cone-mesh">
+        <bind_shape_matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</bind_shape_matrix>
+        <source id="CreatureArm_Cone-skin-joints">
+          <Name_array id="CreatureArm_Cone-skin-joints-array" count="1">Bip01</Name_array>
+          <technique_common>
+            <accessor source="#CreatureArm_Cone-skin-joints-array" count="1" stride="1">
+              <param name="JOINT" type="name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="CreatureArm_Cone-skin-bind_poses">
+          <float_array id="CreatureArm_Cone-skin-bind_poses-array" count="16">1 0 0 0 0 1.19209e-7 1 0 0 -1 0 0 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#CreatureArm_Cone-skin-bind_poses-array" count="1" stride="16">
+              <param name="TRANSFORM" type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="CreatureArm_Cone-skin-weights">
+          <float_array id="CreatureArm_Cone-skin-weights-array" count="6">1 1 1 1 1 1</float_array>
+          <technique_common>
+            <accessor source="#CreatureArm_Cone-skin-weights-array" count="6" stride="1">
+              <param name="WEIGHT" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <joints>
+          <input semantic="JOINT" source="#CreatureArm_Cone-skin-joints"/>
+          <input semantic="INV_BIND_MATRIX" source="#CreatureArm_Cone-skin-bind_poses"/>
+        </joints>
+        <vertex_weights count="6">
+          <input semantic="JOINT" source="#CreatureArm_Cone-skin-joints" offset="0"/>
+          <input semantic="WEIGHT" source="#CreatureArm_Cone-skin-weights" offset="1"/>
+          <vcount>1 1 1 1 1 1 </vcount>
+          <v>0 0 0 1 0 2 0 3 0 4 0 5</v>
+        </vertex_weights>
+      </skin>
+    </controller>
+  </library_controllers>
+  <library_animations>
+    <animation id="action_container-CreatureArm" name="CreatureArm">
+      <animation id="CreatureArm_creature_combined_010_Bip01_pose_matrix" name="CreatureArm">
+        <source id="CreatureArm_creature_combined_010_Bip01_pose_matrix-input">
+          <float_array id="CreatureArm_creature_combined_010_Bip01_pose_matrix-input-array" count="82">0.04166662 0.08333331 0.125 0.1666666 0.2083333 0.25 0.2916666 0.3333333 0.375 0.4166666 0.4583333 0.5 0.5416667 0.5833333 0.625 0.6666667 0.7083333 0.75 0.7916667 0.8333333 0.875 0.9166667 0.9583333 1 1.041667 1.083333 1.125 1.166667 1.208333 1.25 1.291667 1.333333 1.375 1.416667 1.458333 1.5 1.541667 1.583333 1.625 1.666667 1.708333 1.75 1.791667 1.833333 1.875 1.916667 1.958333 2 2.041667 2.083333 2.125 2.166667 2.208333 2.25 2.291667 2.333333 2.375 2.416667 2.458333 2.5 2.541667 2.583333 2.625 2.666667 2.708333 2.75 2.791667 2.833333 2.875 2.916667 2.958333 3 3.041667 3.083333 3.125 3.166667 3.208333 3.25 3.291667 3.333333 3.375 3.416667</float_array>
+          <technique_common>
+            <accessor source="#CreatureArm_creature_combined_010_Bip01_pose_matrix-input-array" count="82" stride="1">
+              <param name="TIME" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="CreatureArm_creature_combined_010_Bip01_pose_matrix-output">
+          <float_array id="CreatureArm_creature_combined_010_Bip01_pose_matrix-output-array" count="1312">1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 4.95166e-4 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.001974426 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.004419192 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.007798701 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.01207047 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.01718077 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.02306534 0 0 0 1 1 0 0 0 0 0.9999999 0 -2.22045e-16 0 0 0.9999999 0.02965018 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.03685248 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.04458166 0 0 0 1 1 0 0 0 0 0.9999999 0 -4.44089e-16 0 0 0.9999999 0.05274052 0 0 0 1 1 0 0 0 0 0.9999999 0 -4.44089e-16 0 0 0.9999999 0.06122648 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.06993279 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.07874999 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.0783186 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.07702912 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.07489569 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.0719417 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.06819949 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.06371008 0 0 0 1 1 0 0 0 0 0.9999999 0 -4.44089e-16 0 0 0.9999999 0.05852265 0 0 0 1 1 0 0 0 0 0.9999999 0 -4.44089e-16 0 0 0.9999999 0.05269403 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.04628808 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.03937499 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.0320305 0 0 0 1 1 0 0 0 0 0.9999999 0 -2.22045e-16 0 0 0.9999999 0.02433508 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.01637304 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.008231609 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.01998162 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.07688446 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.1620456 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.2625 0 0 0 1 1 0 0 0 0 0.9999999 0 -1.77636e-15 0 0 0.9999999 0.2496523 0 0 0 1 1 0 0 0 0 0.9999999 0 -1.77636e-15 0 0 0.9999999 0.2123669 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.1542936 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.08111694 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.01284766 0 0 0 1 1 0 0 0 0 0.9999999 0 -4.44089e-16 0 0 0.9999999 0.05013303 0 0 0 1 1 0 0 0 0 0.9999999 0 -8.88178e-16 0 0 0.9999999 0.1082064 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.181383 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.2625 0 0 0 1 1 0 0 0 0 0.9999999 0 -1.77636e-15 0 0 0.9999999 0.2496523 0 0 0 1 1 0 0 0 0 0.9999999 0 -1.77636e-15 0 0 0.9999999 0.2123669 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.1542936 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.08111694 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0 0 0 0 1 1 0 0 0 0 0.9999999 0 -4.44089e-16 0 0 0.9999999 0.05626934 0 0 0 1 1 0 0 0 0 0.9999999 0 -1.77636e-15 0 0 0.9999999 0.21 0 0 0 1 1 0 0 0 0 0.9999999 0 -3.55271e-15 0 0 0.9999999 0.42 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.3637306 0 0 0 1 1 0 0 0 0 0.9999999 0 -1.77636e-15 0 0 0.9999999 0.21 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0 0 0 0 1 1 0 0 0 0 0.9999999 0 -4.44089e-16 0 0 0.9999999 0.05626934 0 0 0 1 1 0 0 0 0 0.9999999 0 -1.77636e-15 0 0 0.9999999 0.21 0 0 0 1 1 0 0 0 0 0.9999999 0 -3.55271e-15 0 0 0.9999999 0.42 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0.2969848 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 -0.01075888 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 -0.04296183 0 0 0 1 1 0 0 0 0 0.9999999 0 8.88178e-16 0 0 0.9999999 -0.09638905 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 -0.1706757 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 -0.2653141 0 0 0 1 1 0 0 0 0 0.9999999 0 3.55271e-15 0 0 0.9999999 -0.3796577 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 -0.5129256 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 -0.6642074 0 0 0 1 1 0 0 0 0 0.9999999 0 7.10543e-15 0 0 0.9999999 -0.8324699 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 -1.016563 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 -1.21523 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 -1.427113 0 0 0 1 1 0 0 0 0 0.9999999 0 1.42109e-14 0 0 0.9999999 -1.650766 0 0 0 1 1 0 0 0 0 0.9999999 0 1.42109e-14 0 0 0.9999999 -1.884659 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 -2.127197 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 -2.376721 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 -2.631527 0 0 0 1 1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 -2.889875 0 0 0 1 1 0 0 0 0 0.9999999 0 2.84217e-14 0 0 0.9999999 -3.15 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#CreatureArm_creature_combined_010_Bip01_pose_matrix-output-array" count="82" stride="16">
+              <param name="TRANSFORM" type="float4x4"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="CreatureArm_creature_combined_010_Bip01_pose_matrix-interpolation">
+          <Name_array id="CreatureArm_creature_combined_010_Bip01_pose_matrix-interpolation-array" count="82">LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR LINEAR</Name_array>
+          <technique_common>
+            <accessor source="#CreatureArm_creature_combined_010_Bip01_pose_matrix-interpolation-array" count="82" stride="1">
+              <param name="INTERPOLATION" type="name"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <sampler id="CreatureArm_creature_combined_010_Bip01_pose_matrix-sampler">
+          <input semantic="INPUT" source="#CreatureArm_creature_combined_010_Bip01_pose_matrix-input"/>
+          <input semantic="OUTPUT" source="#CreatureArm_creature_combined_010_Bip01_pose_matrix-output"/>
+          <input semantic="INTERPOLATION" source="#CreatureArm_creature_combined_010_Bip01_pose_matrix-interpolation"/>
+        </sampler>
+        <channel source="#CreatureArm_creature_combined_010_Bip01_pose_matrix-sampler" target="CreatureArm_Bip01/transform"/>
+      </animation>
+    </animation>
+  </library_animations>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="CreatureArm" name="CreatureArm" type="NODE">
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <node id="CreatureArm_Root" name="Root" sid="Root" type="JOINT">
+          <matrix sid="transform">1 0 0 0 0 0 -0.9999999 0 0 0.9999999 1.19209e-7 0 0 0 0 1</matrix>
+          <node id="CreatureArm_Bip01" name="Bip01" sid="Bip01" type="JOINT">
+            <matrix sid="transform">1 0 0 0 0 0.9999999 0 0 0 0 0.9999999 0 0 0 0 1</matrix>
+            <extra>
+              <technique profile="blender">
+                <layer sid="layer" type="string">0</layer>
+                <tip_x sid="tip_x" type="float">0</tip_x>
+                <tip_y sid="tip_y" type="float">0</tip_y>
+                <tip_z sid="tip_z" type="float">10.5</tip_z>
+              </technique>
+            </extra>
+          </node>
+          <extra>
+            <technique profile="blender">
+              <layer sid="layer" type="string">0</layer>
+              <tip_x sid="tip_x" type="float">0</tip_x>
+              <tip_y sid="tip_y" type="float">0</tip_y>
+              <tip_z sid="tip_z" type="float">0.84</tip_z>
+            </technique>
+          </extra>
+        </node>
+        <node id="Cone" name="Cone" type="NODE">
+          <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+          <instance_controller url="#CreatureArm_Cone-skin">
+            <skeleton>#CreatureArm_Root</skeleton>
+            <bind_material>
+              <technique_common>
+                <instance_material symbol="piranha_tooth-material" target="#piranha_tooth-material">
+                  <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+                </instance_material>
+              </technique_common>
+            </bind_material>
+          </instance_controller>
+        </node>
+        <node id="Cone_001" name="Cone.001" type="NODE">
+          <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+          <instance_controller url="#CreatureArm_Cone_001-skin">
+            <skeleton>#CreatureArm_Root</skeleton>
+            <bind_material>
+              <technique_common>
+                <instance_material symbol="piranha_tooth-material" target="#piranha_tooth-material">
+                  <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+                </instance_material>
+              </technique_common>
+            </bind_material>
+          </instance_controller>
+        </node>
+        <node id="Cone_002" name="Cone.002" type="NODE">
+          <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+          <instance_controller url="#CreatureArm_Cone_002-skin">
+            <skeleton>#CreatureArm_Root</skeleton>
+            <bind_material>
+              <technique_common>
+                <instance_material symbol="piranha_tooth-material" target="#piranha_tooth-material">
+                  <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+                </instance_material>
+              </technique_common>
+            </bind_material>
+          </instance_controller>
+        </node>
+        <node id="Cone_003" name="Cone.003" type="NODE">
+          <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+          <instance_controller url="#CreatureArm_Cone_003-skin">
+            <skeleton>#CreatureArm_Root</skeleton>
+            <bind_material>
+              <technique_common>
+                <instance_material symbol="piranha_tooth-material" target="#piranha_tooth-material">
+                  <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+                </instance_material>
+              </technique_common>
+            </bind_material>
+          </instance_controller>
+        </node>
+        <node id="Cone_004" name="Cone.004" type="NODE">
+          <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+          <instance_controller url="#CreatureArm_Cone_004-skin">
+            <skeleton>#CreatureArm_Root</skeleton>
+            <bind_material>
+              <technique_common>
+                <instance_material symbol="piranha_tooth-material" target="#piranha_tooth-material">
+                  <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+                </instance_material>
+              </technique_common>
+            </bind_material>
+          </instance_controller>
+        </node>
+        <node id="PiranhaBody" name="PiranhaBody" type="NODE">
+          <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+          <instance_controller url="#CreatureArm_PiranhaBody-skin">
+            <skeleton>#CreatureArm_Root</skeleton>
+            <bind_material>
+              <technique_common>
+                <instance_material symbol="piranha_scales-material" target="#piranha_scales-material"/>
+              </technique_common>
+            </bind_material>
+          </instance_controller>
+        </node>
+        <node id="DorsalFin" name="DorsalFin" type="NODE">
+          <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+          <instance_controller url="#CreatureArm_DorsalFin-skin">
+            <skeleton>#CreatureArm_Root</skeleton>
+            <bind_material>
+              <technique_common>
+                <instance_material symbol="piranha_fin-material" target="#piranha_fin-material"/>
+              </technique_common>
+            </bind_material>
+          </instance_controller>
+        </node>
+        <node id="TailFinD" name="TailFinD" type="NODE">
+          <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+          <instance_controller url="#CreatureArm_TailFinD-skin">
+            <skeleton>#CreatureArm_Root</skeleton>
+            <bind_material>
+              <technique_common>
+                <instance_material symbol="piranha_fin-material" target="#piranha_fin-material"/>
+              </technique_common>
+            </bind_material>
+          </instance_controller>
+        </node>
+        <node id="TailFinU" name="TailFinU" type="NODE">
+          <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+          <instance_controller url="#CreatureArm_TailFinU-skin">
+            <skeleton>#CreatureArm_Root</skeleton>
+            <bind_material>
+              <technique_common>
+                <instance_material symbol="piranha_fin-material" target="#piranha_fin-material"/>
+              </technique_common>
+            </bind_material>
+          </instance_controller>
+        </node>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

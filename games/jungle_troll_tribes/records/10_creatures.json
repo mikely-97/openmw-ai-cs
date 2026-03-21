@@ -30,11 +30,17 @@
     "attack3_min": 10,
     "attack3_max": 20,
     "gold": 0,
-    "crea_flags": 8,
+    "crea_flags": 72,
     "scale": 1.0,
     "inventory": [
-      {"count": 1, "item": "jtt_raw_meat"},
-      {"count": 1, "item": "jtt_panther_fang"}
+      {
+        "count": 1,
+        "item": "jtt_raw_meat"
+      },
+      {
+        "count": 1,
+        "item": "jtt_panther_fang"
+      }
     ],
     "spells": [],
     "ai_hello": 0,
@@ -42,7 +48,12 @@
     "ai_flee": 100,
     "ai_alarm": 0,
     "ai_services": 0,
-    "ai_packages": [],
+    "ai_packages": [
+      {
+        "type": "AI_W",
+        "raw_hex": "00020800000000000a0000000100"
+      }
+    ],
     "transport": [],
     "flags": 0
   },
@@ -77,11 +88,17 @@
     "attack3_min": 12,
     "attack3_max": 30,
     "gold": 0,
-    "crea_flags": 8,
+    "crea_flags": 72,
     "scale": 1.2,
     "inventory": [
-      {"count": 1, "item": "jtt_croc_scale"},
-      {"count": 2, "item": "jtt_raw_meat"}
+      {
+        "count": 1,
+        "item": "jtt_croc_scale"
+      },
+      {
+        "count": 2,
+        "item": "jtt_raw_meat"
+      }
     ],
     "spells": [],
     "ai_hello": 0,
@@ -89,7 +106,12 @@
     "ai_flee": 100,
     "ai_alarm": 0,
     "ai_services": 0,
-    "ai_packages": [],
+    "ai_packages": [
+      {
+        "type": "AI_W",
+        "raw_hex": "00010800000000000a0000000100"
+      }
+    ],
     "transport": [],
     "flags": 0
   },
@@ -124,10 +146,13 @@
     "attack3_min": 3,
     "attack3_max": 8,
     "gold": 0,
-    "crea_flags": 8,
+    "crea_flags": 72,
     "scale": 0.8,
     "inventory": [
-      {"count": 2, "item": "jtt_spider_silk"}
+      {
+        "count": 2,
+        "item": "jtt_spider_silk"
+      }
     ],
     "spells": [],
     "ai_hello": 0,
@@ -135,7 +160,12 @@
     "ai_flee": 100,
     "ai_alarm": 0,
     "ai_services": 0,
-    "ai_packages": [],
+    "ai_packages": [
+      {
+        "type": "AI_W",
+        "raw_hex": "00010800000000000a0000000100"
+      }
+    ],
     "transport": [],
     "flags": 0
   },
@@ -170,10 +200,13 @@
     "attack3_min": 4,
     "attack3_max": 10,
     "gold": 0,
-    "crea_flags": 8,
+    "crea_flags": 72,
     "scale": 0.9,
     "inventory": [
-      {"count": 2, "item": "jtt_raw_meat"}
+      {
+        "count": 2,
+        "item": "jtt_raw_meat"
+      }
     ],
     "spells": [],
     "ai_hello": 0,
@@ -181,7 +214,12 @@
     "ai_flee": 100,
     "ai_alarm": 0,
     "ai_services": 0,
-    "ai_packages": [],
+    "ai_packages": [
+      {
+        "type": "AI_W",
+        "raw_hex": "00020800000000000a0000000100"
+      }
+    ],
     "transport": [],
     "flags": 0
   },
@@ -194,22 +232,54 @@
     "script": "",
     "crea_type": 0,
     "level": 6,
-    "strength": 70, "intelligence": 15, "willpower": 30,
-    "agility": 50, "speed": 45, "endurance": 80,
-    "personality": 20, "luck": 30,
-    "health": 120, "mana": 0, "fatigue": 250, "soul": 120,
-    "combat": 55, "magic": 0, "stealth": 25,
-    "attack1_min": 6, "attack1_max": 14,
-    "attack2_min": 8, "attack2_max": 16,
-    "attack3_min": 5, "attack3_max": 12,
-    "gold": 0, "crea_flags": 8, "scale": 1.1,
+    "strength": 70,
+    "intelligence": 15,
+    "willpower": 30,
+    "agility": 50,
+    "speed": 45,
+    "endurance": 80,
+    "personality": 20,
+    "luck": 30,
+    "health": 120,
+    "mana": 0,
+    "fatigue": 250,
+    "soul": 120,
+    "combat": 55,
+    "magic": 0,
+    "stealth": 25,
+    "attack1_min": 6,
+    "attack1_max": 14,
+    "attack2_min": 8,
+    "attack2_max": 16,
+    "attack3_min": 5,
+    "attack3_max": 12,
+    "gold": 0,
+    "crea_flags": 72,
+    "scale": 1.1,
     "inventory": [
-      {"count": 2, "item": "jtt_raw_meat"},
-      {"count": 1, "item": "jtt_bear_hide"}
+      {
+        "count": 2,
+        "item": "jtt_raw_meat"
+      },
+      {
+        "count": 1,
+        "item": "jtt_bear_hide"
+      }
     ],
     "spells": [],
-    "ai_hello": 0, "ai_fight": 0, "ai_flee": 80, "ai_alarm": 0, "ai_services": 0,
-    "ai_packages": [], "transport": [], "flags": 0
+    "ai_hello": 0,
+    "ai_fight": 0,
+    "ai_flee": 80,
+    "ai_alarm": 0,
+    "ai_services": 0,
+    "ai_packages": [
+      {
+        "type": "AI_W",
+        "raw_hex": "00020800000000000a0000000100"
+      }
+    ],
+    "transport": [],
+    "flags": 0
   },
   {
     "rec_type": "CREA",
@@ -220,21 +290,50 @@
     "script": "",
     "crea_type": 0,
     "level": 2,
-    "strength": 50, "intelligence": 10, "willpower": 15,
-    "agility": 60, "speed": 70, "endurance": 50,
-    "personality": 20, "luck": 30,
-    "health": 60, "mana": 0, "fatigue": 180, "soul": 40,
-    "combat": 20, "magic": 0, "stealth": 40,
-    "attack1_min": 2, "attack1_max": 6,
-    "attack2_min": 2, "attack2_max": 5,
-    "attack3_min": 2, "attack3_max": 6,
-    "gold": 0, "crea_flags": 8, "scale": 1.0,
+    "strength": 50,
+    "intelligence": 10,
+    "willpower": 15,
+    "agility": 60,
+    "speed": 70,
+    "endurance": 50,
+    "personality": 20,
+    "luck": 30,
+    "health": 60,
+    "mana": 0,
+    "fatigue": 180,
+    "soul": 40,
+    "combat": 20,
+    "magic": 0,
+    "stealth": 40,
+    "attack1_min": 2,
+    "attack1_max": 6,
+    "attack2_min": 2,
+    "attack2_max": 5,
+    "attack3_min": 2,
+    "attack3_max": 6,
+    "gold": 0,
+    "crea_flags": 72,
+    "scale": 1.0,
     "inventory": [
-      {"count": 2, "item": "jtt_raw_meat"}
+      {
+        "count": 2,
+        "item": "jtt_raw_meat"
+      }
     ],
     "spells": [],
-    "ai_hello": 0, "ai_fight": 0, "ai_flee": 100, "ai_alarm": 0, "ai_services": 0,
-    "ai_packages": [], "transport": [], "flags": 0
+    "ai_hello": 0,
+    "ai_fight": 0,
+    "ai_flee": 100,
+    "ai_alarm": 0,
+    "ai_services": 0,
+    "ai_packages": [
+      {
+        "type": "AI_W",
+        "raw_hex": "00040800000000000a0000000100"
+      }
+    ],
+    "transport": [],
+    "flags": 0
   },
   {
     "rec_type": "CREA",
@@ -245,21 +344,50 @@
     "script": "",
     "crea_type": 0,
     "level": 1,
-    "strength": 10, "intelligence": 10, "willpower": 10,
-    "agility": 80, "speed": 90, "endurance": 10,
-    "personality": 30, "luck": 40,
-    "health": 10, "mana": 0, "fatigue": 50, "soul": 10,
-    "combat": 10, "magic": 0, "stealth": 30,
-    "attack1_min": 1, "attack1_max": 2,
-    "attack2_min": 1, "attack2_max": 2,
-    "attack3_min": 1, "attack3_max": 2,
-    "gold": 0, "crea_flags": 8, "scale": 0.5,
+    "strength": 10,
+    "intelligence": 10,
+    "willpower": 10,
+    "agility": 80,
+    "speed": 90,
+    "endurance": 10,
+    "personality": 30,
+    "luck": 40,
+    "health": 10,
+    "mana": 0,
+    "fatigue": 50,
+    "soul": 10,
+    "combat": 10,
+    "magic": 0,
+    "stealth": 30,
+    "attack1_min": 1,
+    "attack1_max": 2,
+    "attack2_min": 1,
+    "attack2_max": 2,
+    "attack3_min": 1,
+    "attack3_max": 2,
+    "gold": 0,
+    "crea_flags": 72,
+    "scale": 0.5,
     "inventory": [
-      {"count": 1, "item": "jtt_bird_feather"}
+      {
+        "count": 1,
+        "item": "jtt_bird_feather"
+      }
     ],
     "spells": [],
-    "ai_hello": 0, "ai_fight": 0, "ai_flee": 100, "ai_alarm": 0, "ai_services": 0,
-    "ai_packages": [], "transport": [], "flags": 0
+    "ai_hello": 0,
+    "ai_fight": 0,
+    "ai_flee": 100,
+    "ai_alarm": 0,
+    "ai_services": 0,
+    "ai_packages": [
+      {
+        "type": "AI_W",
+        "raw_hex": "00040800000000000a0000000100"
+      }
+    ],
+    "transport": [],
+    "flags": 0
   },
   {
     "rec_type": "CREA",
@@ -270,19 +398,45 @@
     "script": "",
     "crea_type": 0,
     "level": 1,
-    "strength": 15, "intelligence": 20, "willpower": 10,
-    "agility": 70, "speed": 60, "endurance": 20,
-    "personality": 40, "luck": 50,
-    "health": 15, "mana": 0, "fatigue": 50, "soul": 10,
-    "combat": 10, "magic": 0, "stealth": 60,
-    "attack1_min": 1, "attack1_max": 2,
-    "attack2_min": 1, "attack2_max": 2,
-    "attack3_min": 1, "attack3_max": 2,
-    "gold": 0, "crea_flags": 8, "scale": 0.4,
+    "strength": 15,
+    "intelligence": 20,
+    "willpower": 10,
+    "agility": 70,
+    "speed": 60,
+    "endurance": 20,
+    "personality": 40,
+    "luck": 50,
+    "health": 15,
+    "mana": 0,
+    "fatigue": 50,
+    "soul": 10,
+    "combat": 10,
+    "magic": 0,
+    "stealth": 60,
+    "attack1_min": 1,
+    "attack1_max": 2,
+    "attack2_min": 1,
+    "attack2_max": 2,
+    "attack3_min": 1,
+    "attack3_max": 2,
+    "gold": 0,
+    "crea_flags": 72,
+    "scale": 0.4,
     "inventory": [],
     "spells": [],
-    "ai_hello": 0, "ai_fight": 0, "ai_flee": 100, "ai_alarm": 0, "ai_services": 0,
-    "ai_packages": [], "transport": [], "flags": 0
+    "ai_hello": 0,
+    "ai_fight": 0,
+    "ai_flee": 100,
+    "ai_alarm": 0,
+    "ai_services": 0,
+    "ai_packages": [
+      {
+        "type": "AI_W",
+        "raw_hex": "00020800000000000a0000000100"
+      }
+    ],
+    "transport": [],
+    "flags": 0
   },
   {
     "rec_type": "CREA",
@@ -293,21 +447,50 @@
     "script": "",
     "crea_type": 0,
     "level": 4,
-    "strength": 50, "intelligence": 15, "willpower": 20,
-    "agility": 65, "speed": 70, "endurance": 45,
-    "personality": 15, "luck": 35,
-    "health": 65, "mana": 0, "fatigue": 160, "soul": 60,
-    "combat": 50, "magic": 0, "stealth": 45,
-    "attack1_min": 4, "attack1_max": 10,
-    "attack2_min": 3, "attack2_max": 8,
-    "attack3_min": 4, "attack3_max": 10,
-    "gold": 0, "crea_flags": 8, "scale": 0.9,
+    "strength": 50,
+    "intelligence": 15,
+    "willpower": 20,
+    "agility": 65,
+    "speed": 70,
+    "endurance": 45,
+    "personality": 15,
+    "luck": 35,
+    "health": 65,
+    "mana": 0,
+    "fatigue": 160,
+    "soul": 60,
+    "combat": 50,
+    "magic": 0,
+    "stealth": 45,
+    "attack1_min": 4,
+    "attack1_max": 10,
+    "attack2_min": 3,
+    "attack2_max": 8,
+    "attack3_min": 4,
+    "attack3_max": 10,
+    "gold": 0,
+    "crea_flags": 72,
+    "scale": 0.9,
     "inventory": [
-      {"count": 1, "item": "jtt_raw_meat"}
+      {
+        "count": 1,
+        "item": "jtt_raw_meat"
+      }
     ],
     "spells": [],
-    "ai_hello": 0, "ai_fight": 0, "ai_flee": 80, "ai_alarm": 0, "ai_services": 0,
-    "ai_packages": [], "transport": [], "flags": 0
+    "ai_hello": 0,
+    "ai_fight": 0,
+    "ai_flee": 80,
+    "ai_alarm": 0,
+    "ai_services": 0,
+    "ai_packages": [
+      {
+        "type": "AI_W",
+        "raw_hex": "00040800000000000a0000000100"
+      }
+    ],
+    "transport": [],
+    "flags": 0
   },
   {
     "rec_type": "CREA",
@@ -318,21 +501,53 @@
     "script": "",
     "crea_type": 0,
     "level": 7,
-    "strength": 70, "intelligence": 20, "willpower": 35,
-    "agility": 75, "speed": 85, "endurance": 55,
-    "personality": 10, "luck": 40,
-    "health": 100, "mana": 0, "fatigue": 220, "soul": 130,
-    "combat": 65, "magic": 10, "stealth": 75,
-    "attack1_min": 6, "attack1_max": 16,
-    "attack2_min": 8, "attack2_max": 18,
-    "attack3_min": 10, "attack3_max": 22,
-    "gold": 0, "crea_flags": 8, "scale": 1.1,
+    "strength": 70,
+    "intelligence": 20,
+    "willpower": 35,
+    "agility": 75,
+    "speed": 85,
+    "endurance": 55,
+    "personality": 10,
+    "luck": 40,
+    "health": 100,
+    "mana": 0,
+    "fatigue": 220,
+    "soul": 130,
+    "combat": 65,
+    "magic": 10,
+    "stealth": 75,
+    "attack1_min": 6,
+    "attack1_max": 16,
+    "attack2_min": 8,
+    "attack2_max": 18,
+    "attack3_min": 10,
+    "attack3_max": 22,
+    "gold": 0,
+    "crea_flags": 72,
+    "scale": 1.1,
     "inventory": [
-      {"count": 1, "item": "jtt_raw_meat"},
-      {"count": 1, "item": "jtt_panther_fang"}
+      {
+        "count": 1,
+        "item": "jtt_raw_meat"
+      },
+      {
+        "count": 1,
+        "item": "jtt_panther_fang"
+      }
     ],
     "spells": [],
-    "ai_hello": 0, "ai_fight": 0, "ai_flee": 60, "ai_alarm": 0, "ai_services": 0,
-    "ai_packages": [], "transport": [], "flags": 0
+    "ai_hello": 0,
+    "ai_fight": 0,
+    "ai_flee": 60,
+    "ai_alarm": 0,
+    "ai_services": 0,
+    "ai_packages": [
+      {
+        "type": "AI_W",
+        "raw_hex": "00040800000000000a0000000100"
+      }
+    ],
+    "transport": [],
+    "flags": 0
   }
 ]
