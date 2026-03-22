@@ -194,14 +194,14 @@ class DialogueInfo(BaseRecord):
                 if pending is not None:
                     obj.conditions.append(pending)
                 raw_bytes = sub.data
-                # Format: index(1) + func_class(1) + func_type(1) + comparison(1) + var_name
-                if len(raw_bytes) >= 4:
+                # Format: index(1) + type(1) + comparison(1) + var_name
+                if len(raw_bytes) >= 3:
                     pending = InfoCondition(
                         index=chr(raw_bytes[0]),
                         func_class=chr(raw_bytes[1]),
-                        func_type=chr(raw_bytes[2]),
-                        comparison=chr(raw_bytes[3]),
-                        var_name=raw_bytes[4:].decode("cp1252", errors="replace"),
+                        func_type="0",
+                        comparison=chr(raw_bytes[2]),
+                        var_name=raw_bytes[3:].decode("cp1252", errors="replace"),
                     )
                 else:
                     pending = InfoCondition()
@@ -275,7 +275,6 @@ class DialogueInfo(BaseRecord):
             scvr = (
                 cond.index.encode("cp1252")[:1] +
                 cond.func_class.encode("cp1252")[:1] +
-                cond.func_type.encode("cp1252")[:1] +
                 cond.comparison.encode("cp1252")[:1] +
                 cond.var_name.encode("cp1252", errors="replace")
             )
