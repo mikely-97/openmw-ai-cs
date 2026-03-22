@@ -15,34 +15,6 @@
   },
   {
     "rec_type": "GLOB",
-    "record_id": "JTT_Tribe",
-    "var_type": "s",
-    "value": 0.0,
-    "flags": 0
-  },
-  {
-    "rec_type": "GLOB",
-    "record_id": "JTT_Round",
-    "var_type": "s",
-    "value": 0.0,
-    "flags": 0
-  },
-  {
-    "rec_type": "GLOB",
-    "record_id": "JTT_Wood",
-    "var_type": "s",
-    "value": 0.0,
-    "flags": 0
-  },
-  {
-    "rec_type": "GLOB",
-    "record_id": "JTT_Stone",
-    "var_type": "s",
-    "value": 0.0,
-    "flags": 0
-  },
-  {
-    "rec_type": "GLOB",
     "record_id": "JTT_PlayerInit",
     "var_type": "s",
     "value": 0.0,
@@ -52,13 +24,6 @@
     "rec_type": "GLOB",
     "record_id": "JTT_Day",
     "var_type": "f",
-    "value": 0.0,
-    "flags": 0
-  },
-  {
-    "rec_type": "GLOB",
-    "record_id": "JTT_Iron",
-    "var_type": "s",
     "value": 0.0,
     "flags": 0
   },

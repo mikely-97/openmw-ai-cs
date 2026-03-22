@@ -58,7 +58,7 @@
   {
     "rec_type": "STAT",
     "record_id": "jtt_totem_pole",
-    "mesh": "jtt\\totem_pole.dae",
+    "mesh": "jtt\\troll_idol.dae",
     "flags": 0
   },
   {
@@ -163,8 +163,8 @@
   {
     "rec_type": "LIGH",
     "record_id": "jtt_fire_pit",
-    "name": "Fire Pit",
-    "mesh": "jtt\\fire_pit.dae",
+    "name": "Smoldering Embers",
+    "mesh": "jtt\\glow_mushroom.dae",
     "icon": "icons\\jtt\\fire_pit.png",
     "weight": 0.0,
     "value": 20,
@@ -269,17 +269,6 @@
     "capacity": 0.0,
     "cont_flags": 8,
     "script": "JTT_CampfireScr",
-    "inventory": [],
-    "flags": 0
-  },
-  {
-    "rec_type": "CONT",
-    "record_id": "jtt_build_site",
-    "name": "Build Site",
-    "mesh": "jtt\\build_site.dae",
-    "capacity": 0.0,
-    "cont_flags": 8,
-    "script": "JTT_BuildSiteScr",
     "inventory": [],
     "flags": 0
   },
