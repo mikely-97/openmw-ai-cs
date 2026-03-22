@@ -39,6 +39,10 @@
       },
       {
         "count": 1,
+        "item": "jtt_cat_fur"
+      },
+      {
+        "count": 1,
         "item": "jtt_panther_fang"
       }
     ],
@@ -92,12 +96,16 @@
     "scale": 1.2,
     "inventory": [
       {
+        "count": 2,
+        "item": "jtt_raw_meat"
+      },
+      {
         "count": 1,
         "item": "jtt_croc_scale"
       },
       {
-        "count": 2,
-        "item": "jtt_raw_meat"
+        "count": 1,
+        "item": "jtt_bone"
       }
     ],
     "spells": [],
@@ -152,6 +160,10 @@
       {
         "count": 2,
         "item": "jtt_spider_silk"
+      },
+      {
+        "count": 1,
+        "item": "jtt_spider_venom"
       }
     ],
     "spells": [],
@@ -206,6 +218,14 @@
       {
         "count": 2,
         "item": "jtt_raw_meat"
+      },
+      {
+        "count": 1,
+        "item": "jtt_boar_hide"
+      },
+      {
+        "count": 1,
+        "item": "jtt_bone"
       }
     ],
     "spells": [],
@@ -263,7 +283,11 @@
       },
       {
         "count": 1,
-        "item": "jtt_bear_hide"
+        "item": "jtt_wolf_pelt"
+      },
+      {
+        "count": 2,
+        "item": "jtt_bone"
       }
     ],
     "spells": [],
@@ -318,6 +342,14 @@
       {
         "count": 2,
         "item": "jtt_raw_meat"
+      },
+      {
+        "count": 1,
+        "item": "jtt_elk_hide"
+      },
+      {
+        "count": 1,
+        "item": "jtt_antelope_horn"
       }
     ],
     "spells": [],
@@ -371,7 +403,15 @@
     "inventory": [
       {
         "count": 1,
+        "item": "jtt_raw_meat"
+      },
+      {
+        "count": 2,
         "item": "jtt_bird_feather"
+      },
+      {
+        "count": 1,
+        "item": "jtt_egg"
       }
     ],
     "spells": [],
@@ -422,7 +462,16 @@
     "gold": 0,
     "crea_flags": 72,
     "scale": 0.4,
-    "inventory": [],
+    "inventory": [
+      {
+        "count": 1,
+        "item": "jtt_raw_meat"
+      },
+      {
+        "count": 1,
+        "item": "jtt_raccoon_fur"
+      }
+    ],
     "spells": [],
     "ai_hello": 0,
     "ai_fight": 0,
@@ -475,6 +524,14 @@
       {
         "count": 1,
         "item": "jtt_raw_meat"
+      },
+      {
+        "count": 1,
+        "item": "jtt_wolf_pelt"
+      },
+      {
+        "count": 1,
+        "item": "jtt_bone"
       }
     ],
     "spells": [],
@@ -532,6 +589,10 @@
       },
       {
         "count": 1,
+        "item": "jtt_cat_fur"
+      },
+      {
+        "count": 1,
         "item": "jtt_panther_fang"
       }
     ],
@@ -545,6 +606,176 @@
       {
         "type": "AI_W",
         "raw_hex": "00040800000000000a0000000100"
+      }
+    ],
+    "transport": [],
+    "flags": 0
+  },
+  {
+    "rec_type": "CREA",
+    "record_id": "jtt_jungle_snake",
+    "name": "Jungle Snake",
+    "mesh": "jtt\\spider.dae",
+    "sound_template": "",
+    "script": "",
+    "crea_type": 0,
+    "level": 3,
+    "strength": 25,
+    "intelligence": 10,
+    "willpower": 15,
+    "agility": 70,
+    "speed": 65,
+    "endurance": 25,
+    "personality": 5,
+    "luck": 30,
+    "health": 30,
+    "mana": 0,
+    "fatigue": 80,
+    "soul": 40,
+    "combat": 45,
+    "magic": 0,
+    "stealth": 60,
+    "attack1_min": 3,
+    "attack1_max": 8,
+    "attack2_min": 2,
+    "attack2_max": 6,
+    "attack3_min": 3,
+    "attack3_max": 8,
+    "gold": 0,
+    "crea_flags": 72,
+    "scale": 0.6,
+    "inventory": [
+      {
+        "count": 1,
+        "item": "jtt_snake_skin"
+      },
+      {
+        "count": 1,
+        "item": "jtt_snake_venom"
+      }
+    ],
+    "spells": [],
+    "ai_hello": 0,
+    "ai_fight": 0,
+    "ai_flee": 60,
+    "ai_alarm": 0,
+    "ai_services": 0,
+    "ai_packages": [
+      {
+        "type": "AI_W",
+        "raw_hex": "00020800000000000a0000000100"
+      }
+    ],
+    "transport": [],
+    "flags": 0
+  },
+  {
+    "rec_type": "CREA",
+    "record_id": "jtt_jungle_rabbit",
+    "name": "Jungle Rabbit",
+    "mesh": "jtt\\raccoon.dae",
+    "sound_template": "",
+    "script": "",
+    "crea_type": 0,
+    "level": 1,
+    "strength": 8,
+    "intelligence": 10,
+    "willpower": 5,
+    "agility": 80,
+    "speed": 85,
+    "endurance": 10,
+    "personality": 40,
+    "luck": 50,
+    "health": 10,
+    "mana": 0,
+    "fatigue": 30,
+    "soul": 5,
+    "combat": 5,
+    "magic": 0,
+    "stealth": 70,
+    "attack1_min": 1,
+    "attack1_max": 2,
+    "attack2_min": 1,
+    "attack2_max": 2,
+    "attack3_min": 1,
+    "attack3_max": 2,
+    "gold": 0,
+    "crea_flags": 72,
+    "scale": 0.4,
+    "inventory": [
+      {
+        "count": 1,
+        "item": "jtt_rabbit_fur"
+      }
+    ],
+    "spells": [],
+    "ai_hello": 0,
+    "ai_fight": 0,
+    "ai_flee": 80,
+    "ai_alarm": 0,
+    "ai_services": 0,
+    "ai_packages": [
+      {
+        "type": "AI_W",
+        "raw_hex": "00040800000000000a0000000100"
+      }
+    ],
+    "transport": [],
+    "flags": 0
+  },
+  {
+    "rec_type": "CREA",
+    "record_id": "jtt_jungle_tortoise",
+    "name": "Jungle Tortoise",
+    "mesh": "jtt\\boar.dae",
+    "sound_template": "",
+    "script": "",
+    "crea_type": 0,
+    "level": 4,
+    "strength": 40,
+    "intelligence": 5,
+    "willpower": 30,
+    "agility": 15,
+    "speed": 15,
+    "endurance": 80,
+    "personality": 10,
+    "luck": 30,
+    "health": 60,
+    "mana": 0,
+    "fatigue": 200,
+    "soul": 50,
+    "combat": 30,
+    "magic": 0,
+    "stealth": 10,
+    "attack1_min": 2,
+    "attack1_max": 5,
+    "attack2_min": 2,
+    "attack2_max": 4,
+    "attack3_min": 2,
+    "attack3_max": 5,
+    "gold": 0,
+    "crea_flags": 72,
+    "scale": 1.3,
+    "inventory": [
+      {
+        "count": 1,
+        "item": "jtt_tortoise_shell"
+      },
+      {
+        "count": 2,
+        "item": "jtt_raw_meat"
+      }
+    ],
+    "spells": [],
+    "ai_hello": 0,
+    "ai_fight": 0,
+    "ai_flee": 20,
+    "ai_alarm": 0,
+    "ai_services": 0,
+    "ai_packages": [
+      {
+        "type": "AI_W",
+        "raw_hex": "00010800000000000a0000000100"
       }
     ],
     "transport": [],

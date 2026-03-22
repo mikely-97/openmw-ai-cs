@@ -1,0 +1,1449 @@
+================================================================================
+JUNGLE TROLL TRIBES 7.0.2 — COMPLETE GAME DESIGN DOCUMENT
+Extracted from Warcraft III map file (JungleTrolls_7.0.2.w3x)
+For reimplementation reference
+================================================================================
+
+================================================================================
+1. GAME OVERVIEW
+================================================================================
+
+Jungle Troll Tribes is a multiplayer team survival/crafting game set in a 
+hostile jungle. Players control troll heroes who must:
+- Gather resources (wood, stone, herbs, animal parts)
+- Craft items, weapons, armor, potions, and buildings
+- Manage survival stats (Food, Heat, Energy, Health)
+- Fight hostile beasts and boss creatures
+- Build a village with their team
+- Complete quests from the Old Troll NPC
+
+Version: 7.0.2 (5 January 2026)
+Website: www.jungletrolls.com  
+Author: A.Domin (troleplayers)
+Discord: https://discord.com/invite/q4SNMYfV3E
+
+Map Type: Team survival/crafting (3 teams)
+Day-Night Cycle: 500 seconds per full cycle (~8.3 minutes)
+One "week" in-game: ~58 minutes real time
+
+GAME MODES (selected via chat command at start):
+  -action    Action mode (combat-focused)
+  -plenty    Plenty mode (abundant resources)
+  -tutorial  Tutorial mode (guided gameplay)
+  -easy      Easy difficulty
+  -normal    Normal difficulty (default)
+  -hard      Hard difficulty
+  -debug     Fix item limit bugs
+
+
+================================================================================
+2. TROLL CLASSES (4 Hero Types)
+================================================================================
+
+Each player picks one of 4 troll classes. Each has unique abilities, recipes,
+and stat bonuses:
+
+WARRIOR (Unit ID: H003)
+  Role: Melee combat specialist
+  Special: "Warrior Modes" (stance switching for offense/defense)
+  Unique Recipes: 24 class-specific (heavy weapons, shields, armor upgrades)
+  Weapon Focus: Daggers, spears, axes, clubs, mauls, swords
+  Abilities: Power attacks, shield bash, berserker rage
+
+HUNTER (Unit ID: H001)
+  Role: Ranged specialist with trapping and animal taming
+  Special: Pet system (Hunter's Dog companion)
+    - Dog takes 75% damage from beasts
+    - Dog takes 120% damage from Hunter Troll
+    - Dog takes 100% from other trolls and Boss Beasts
+  Unique Recipes: 13 class-specific (bows, traps, tents, pet dens)
+  Weapon Focus: Bows, longbows, composite bows, arrows
+  Stat Bonus: Max Food 250 (vs normal 200)
+  Damage Profile: 100% to trolls, 120% to beasts, 50% to buildings
+
+SHAMAN (Unit ID: H002)
+  Role: Magic/potion specialist
+  Special: Alchemy leveling system (Alchemy_Lvl trigger)
+  Unique Recipes: 15 class-specific (wands, potions, elixirs, voodoo)
+  Weapon Focus: Wands, staves, voodoo dolls
+  Abilities: Hexes, curses, healing, buff spells
+
+INVENTOR (Unit ID: H000)
+  Role: Engineering/technology specialist
+  Special: Can craft machines, explosives, advanced buildings
+  Unique Recipes: 11 class-specific + workshop recipes
+  Weapon Focus: Guns, shotguns, chainsaws, remote mines, bombs
+  Stat Bonus: Max Heat 125 (vs normal 100)
+  Crafts: Engines, watchtowers, siege equipment, stockage boxes
+
+HERO STATS:
+  - Strength → +1 health per point
+  - Agility → combat speed / dodge
+  - Intelligence → mana / spell power  
+  - Health regeneration: +0.01 per stat point
+  - Heroes gain XP from kills and quests
+  - Death counter tracked (affects score/achievements)
+
+
+================================================================================
+3. SURVIVAL MECHANICS
+================================================================================
+
+3.1 FOOD / HUNGER SYSTEM
+  - Stat range: 0-200 (Hunter max: 250)
+  - Decreases over time automatically
+  - Low Food → "Starving" → continuous health damage
+  - At 0 Food → rapid health loss, can die
+  - Restore by eating: raw meat, cooked food, berries, herbs, potions
+  
+  FOOD TYPES (from udg_Eaten_* tracking variables):
+  - Raw Meat → basic food, low value, risk of disease
+  - Cooked Stew → better food value, requires campfire/cauldron
+  - Berries → basic food gathered from bushes
+  - Honey → food + minor healing
+  - Egg/Omelette → moderate food value
+  - Plants/Herbs → herbal food
+  - Fish → from fishing, can be cooked
+  - Alcohol/Strong Liquor → drink with side effects
+  - Potions → various liquid consumables
+  - Troll Meat → cannibalism mechanic (special consequences)
+  - Human Meat → forbidden food (special consequences)
+  - Old Troll's Cake → quest reward food
+  - Bone/Fishbone → very low quality, emergency food
+  - Bad food → can cause Vomiting (udg_Eaten_Vomit)
+
+3.2 HEAT / WARMTH SYSTEM
+  - Stat range: 0-100 (Inventor max: 125)
+  - Decreases at night (faster in snow/rain)
+  - "Wet" status accelerates heat loss dramatically
+  - Thresholds:
+    * Below ~70 → minor speed/power penalty
+    * Below 50 → "Frozen" status: slow movement + health loss
+    * Prolonged cold → "Fever" disease
+  - Heat Restoration:
+    * Stand near campfire/fire pit
+    * Carry a lit torch
+    * Be inside buildings/shelters
+    * Wear warm clothing (fur coats, lined armor)
+    * Hot springs on the map
+
+3.3 ENERGY SYSTEM
+  - Mana-like resource for abilities and actions
+  - Regenerates over time
+  - At 0 Energy → "Coma" status: lose heat, regenerate energy,
+    until full energy or attacked
+  - Used by: active weapon abilities, spells, crafting actions
+
+3.4 HEALTH
+  - Standard hit points
+  - Slow passive regeneration
+  - +1 max HP per Strength point
+  - Healing sources: food, potions, Shaman healing, rest near fire
+  - Death → respawn (with death counter penalty)
+
+3.5 DISEASES
+  - Malaria (buff B00I) → from jungle mosquitoes/environment
+  - Plague (buff B00H) → from certain creatures/contamination
+  - Fever (buff Brej) → from prolonged cold exposure
+  - Cured by: Antidote potions, Shaman abilities
+
+3.6 DAY-NIGHT CYCLE (500 seconds per cycle)
+  - Day: Safer, heat stable, better visibility
+  - Night: Dangerous, heat drops fast, predators more active
+  - Day counter (udg_Day) tracks progression
+  - Old Troll announces: "Today be day X"
+  - Boss spawns tied to day progression (periodic boss events)
+  - Snow/weather events at certain times
+
+
+================================================================================
+4. RESOURCE SYSTEM
+================================================================================
+
+4.1 BASE RESOURCES (gathered from environment nodes)
+  - Wood (I011) → from trees, primary building/crafting material
+  - Stone (I014) → from rock nodes, tools and buildings
+  - Flint (I08T) → fire-starting, black powder ingredient
+  - Oil (I013) → fuel, lubricant, crafting ingredient
+  - Tinder → fire-starting material
+  - Rope → crafted from plant fibers, universal binding material
+  
+4.2 HERBS AND PLANTS
+  - Berries → food, Berry Seeds craftable
+  - Herb varieties (4 named herbs used in alchemy):
+    * Aria → potion ingredient
+    * Bardane → potion ingredient
+    * Corian → potion ingredient
+    * Draximor → potion ingredient
+  - Mana Stone → magical crafting component
+  - Seeds → plantable (Berry, Tree, Herb seeds)
+  - Petrified Wood → rare/special wood variant
+
+4.3 ANIMAL DROPS (from hunting/killing)
+  By Animal Type:
+  
+  PIGS/BOARS:
+  - Raw Meat, Pig Skin, Bone
+  
+  BEARS:
+  - Raw Meat, Bear Fur, Bone
+  
+  SABRETOOTH (big cats):
+  - Raw Meat, Sabretooth Fur, Bone
+  
+  RABBITS:
+  - Raw Meat, Rabbit Fur
+  
+  RACOONS:
+  - Raw Meat, Racoon Fur
+  
+  ANTELOPES:
+  - Raw Meat, Antelope Leather, Antelope Horns
+  
+  ALLIGATORS/CROCODILES:
+  - Raw Meat, Alligator Scales/Leather
+  
+  SNAKES:
+  - Raw Meat, Snake Scales/Leather, Venom
+  
+  CRABS:
+  - Raw Meat, Crab Chitin
+  
+  SPIDERS:
+  - Spider Silk, Spider Venom/Poison
+  
+  BIRDS:
+  - Feathers (I00F), Eggs, Raw Meat
+  
+  FISH (via fishing):
+  - Fish, Fish Bone (I00E)
+  
+  SPECIAL DROPS:
+  - Skull → from trolls/bosses
+  - Shrunken Head → rare voodoo material
+  - Giant Egg → from boss creatures
+  - Giant Shell → from giant tortoise boss
+  - Horns → from horned creatures
+  - Hearts → rare powerful food/alchemy ingredient
+
+4.4 PROCESSED MATERIALS
+  - Bronze Bar → smelted at Forge (copper ore + tin ore or equivalent)
+  - Iron Bar → smelted at Forge (iron ore + fuel)
+  - Linen/Cloth → processed from plant fibers
+  - Leather variants → tanned at Tannery from raw hides
+  - Black Powder → from Flint (Inventor recipe)
+  - Fuel → from Oil (Inventor recipe)
+  - Parchment → writing material for plans/recipes
+
+4.5 FISHING SYSTEM
+  - Requires crafted Fishing Rod
+  - Needs Bait (craftable: "some Fishin' Bait" is a Basic recipe)
+  - Catches fish for cooking
+  - Fish Bones as crafting byproduct
+  - Check_and_Cast_Fishing_Rod trigger handles mechanics
+
+4.6 ANIMAL REPRODUCTION
+  - 4 separate reproduction triggers (Animal_Reproduction_1-4)
+  - Animals respawn over time in their habitat zones
+  - Ecosystem balance: overhunting reduces future spawns
+  - Different animal types have different reproduction rates
+
+
+================================================================================
+5. CRAFTING SYSTEM (362+ total recipes)
+================================================================================
+
+Crafting is performed via the "Crafting" ability (hotkey C).
+Required materials must be in troll's inventory.
+Some recipes require specific buildings (Workshop, Armory, Tannery, etc.)
+
+RECIPE CATEGORIES:
+
+
+--- Basic (All Classes) (19 recipes) ---
+  * a Rope!
+  * a Hunter's Tannery kit!
+  * a Shaman Hut kit!
+  * a Warrior's Armory kit!
+  * an Inventor's Workshop kit!
+  * a Fishing Pole!  →  We needz 1 Wood / Petrified Wood, 1 Tinder and 1 Feather.
+  * a Camp Fire kit!
+  * a Merchant Shop kit!
+  * a Dagger!
+  * a Tent!
+  * a Horn Dagger!
+  * an Obsidian Dagger!
+  * a Bone Dagger!
+  * a Bear Fur Tent kit!
+  * a Sabretooth Fur Tent kit!
+  * a Pig Skin Tent kit!
+  * a Fishin' Pole!
+  * a Strong Fishin' Pole!
+  * some Fishin' Bait.
+
+--- Cauldron (Potions) (14 recipes) ---
+  * a Cure Wound Drink!
+  * a Stamina Booster!
+  * a Diet Drink!
+  * a Regeneration Balm!
+  * an Energizer Balm!
+  * an Antidote!
+  * a Strong Liquor!
+  * an Invisibility Elixir!
+  * a Frenzy Elixir!
+  * a Vampire Elixir!
+  * Envenomed Arrowz!
+  * Tarantula Poisoned Arrowz!
+  * Snake Poisoned Arrowz!
+  * Spider Poisoned Arrowz!
+
+--- Warrior Class (24 recipes) ---
+  * a Battle Horn!
+  * a Bone Axe!
+  * a Club!
+  * a Club!
+  * Javelinz!
+  * Throwing Axez!
+  * an Axe!
+  * a Tortoize Shield!
+  * a Bone Armor!
+  * a Spear!  →  Me needz 1 Wood, 1 Rope and 1 Dagger.
+  * a Bone Axe!
+  * a Stone Axe!
+  * a Bronze Axe!
+  * an Iron Axe!
+  * a Big Spiked Club!
+  * a Big Spiked Club!
+  * a Spiked Club!
+  * a Big Bone Club!
+  * a Bone Club!
+  * a Horn Spear!
+  * an Obsidian Spear!
+  * a Bone Spear!
+  * a Bone Armor!
+  * a Badass Bone Armor!
+
+--- Hunter Class (13 recipes) ---
+  * a Bow!
+  * a Longbow!
+  * a Composite Bow!
+  * Arrowz!
+  * a Sensor Trap!
+  * a Spiked Trap!
+  * a Rock Trap!
+  * an Ensnare Trap!
+  * a Pet's Den!
+  * a Hunter'z Tent!
+  * a Hunter'z Bear Fur Tent kit!
+  * a Hunter'z Sabretooth Fur Tent kit!
+  * a Hunter'z Pig Skin Tent kit!
+
+--- Shaman Class (15 recipes) ---
+  * a Sacrificial Dagger!  →  Me needz a Horn Dagger.
+  * a Wand!
+  * a Staff!
+  * a Sarbacane!
+  * Parchmentz!
+  * a Totem of Horror!
+  * magical Seedz!
+  * a Voodoo Doll!  →  We needz 1 Wood and 3 Tinder.
+  * Poisonous Needlez!
+  * a Seed of Aria!
+  * a Seed of Bardane!
+  * a Seed of Corian!
+  * a Seed of Draximor!
+  * a Seed of Draximor!
+  * a Seed of Draximor!
+
+--- Inventor Class (11 recipes) ---
+  * Ammo!
+  * a Stockage Box kit!
+  * a Torch!
+  * Fuel!
+  * a Watch Tower
+  * Grenadez!
+  * Molotov Cocktailz!
+  * Parchmentz!
+  * a Wall!
+  * Black Powder!
+  * Fuel!
+
+--- Armory A (41 recipes) ---
+  * Bronze Bootz!  →  We needz 1 pair of Pig, Crab, Snake or Alligator Bootz or Bootz of Haste and 1 Bronze Bar.
+  * Bronze Gauntletz!  →  We needz 1 pair of Pig, Crab, Snake or Alligator Gauntletz or Gauntletz of Fury and 1 Bronze Bar.
+  * an Iron Armor!  →  We needz 1 Bronze Scale, Cuirass, Mail or Plate and 2 Iron Bar.
+  * a Bronze Armor!  →  We needz 1 Pig, Crab, Snake or Alligator Leather Coat and 2 Bronze Bar.
+  * a Tortoise Armor!  →  We needz 1 Fur Coat or Lined Fur Coat, 1 Giant Shell and 1 Rope.
+  * an Ironwood Shield!  →  We needz 1 Horned Shield and 1 Petrified Wood.
+  * a Horned Shield!  →  We needz 1 Tortoize Shield and 1 Antelope Horns.
+  * a Tortoize Shield!  →  We needz 1 Tortoize Shell, 1 Wood and 1 Rope.
+  * a Forge kit!  →  We needz 3 Flint and 1 Oil.
+  * Bronze Alligator Leather Gauntletz of Fury!
+  * Bronze Alligator Leather Bootz of Haste!
+  * Bronze Snake Leather Gauntletz of Fury!
+  * Bronze Snake Leather Bootz of Haste!
+  * Bronze Crab Chitin Gauntletz of Fury!
+  * Bronze Crab Chitin Bootz of Haste!
+  * Bronze Pig Skin Gauntletz of Fury!
+  * Bronze Pig Skin Bootz of Haste!
+  * Bronze Alligator Leather Gauntletz!
+  * Bronze Alligator Leather Bootz!
+  * Bronze Snake Leather Gauntletz!
+  * Bronze Snake Leather Bootz!
+  * Bronze Crab Chitin Gauntletz!
+  * Bronze Crab Chitin Bootz!
+  * Bronze Pig Skin Gauntletz!
+  * Bronze Pig Skin Bootz!
+  * a Lined Bear Fur Tortoize Armor!
+  * a Lined Sabretooth Fur Tortoize Armor!
+  * a Lined Racoon Fur Tortoize Armor!
+  * a Lined Rabbit Fur Tortoize Armor!
+  * a Bear Fur Tortoize Armor!
+  * a Wolf Fur Tortoize Armor!
+  * a Racoon Fur Tortoize Armor!
+  * a Rabbit Fur Tortoize Armor!
+  * a Bronze Plate!
+  * an Iron Plate!
+  * a Bronze Mail!
+  * an Iron Mail!
+  * a Bronze Cuirass!
+  * an Iron Cuirass!
+  * a Bronze Scale!
+  * an Iron Scale!
+
+--- Armory B (10 recipes) ---
+  * a Bone Axe!  →  We needz 1 Wood, 1 Bone and 1 Rope.
+  * a Stone Axe!  →  We needz 1 Wood, 1 Stone and 1 Rope.
+  * a Bronze Axe!  →  We needz 1 Wood, 1 Bronze Bar and 1 Rope.
+  * an Iron Axe!  →  We needz 1 Wood, 1 Iron Bar and 1 Rope.
+  * a Bone Club!  →  We needz 1 Wood, 2 Bone and 1 Tinder.
+  * a Big Bone Club!  →  We needz 1 Wood, 4 Bone and 1 Tinder.
+  * a Spiked Club!  →  We needz 1 Wood, 1 Antelope Hornz and 1 Tinder.
+  * a Big Spiked Club!  →  We needz 1 Wood, 1 Antelope Hornz, 1 Skull and 1 Tinder.
+  * Javelinz!  →  We needz 1 Wood, 1 Flint and 1 Rope.
+  * Throwing Axez!  →  We needz 1 Wood, 1 Stone and 1 Rope.
+
+--- Tannery (58 recipes) ---
+  * Troll Hut kit!
+  * a Spear!  →  We needz 1 Wood, 1 Rope and 1 Dagger.
+  * a Dagger!  →  We needz 1 Bone or 1 Flint or 1 Antelope Hornz.
+  * a Net!  →  We needz 2 Rope.
+  * Linen Cloth!  →  We needz 2 Tinder.
+  * Bear Fur Bootz!
+  * Bear Fur Gauntletz!
+  * Alligator Leather Bootz!
+  * Alligator Leather Gauntletz!
+  * Sabretooth Fur Bootz!
+  * Sabretooth Fur Gauntletz!
+  * Snake Leather Bootz!
+  * Snake Leather Gauntletz!
+  * Racoon Fur Bootz!
+  * Racoon Fur Gauntletz!
+  * Crab Chitin Bootz!
+  * Crab Chitin Gauntletz!
+  * Rabbit Fur Bootz!
+  * Rabbit Fur Gauntletz!
+  * Pig Skin Bootz!
+  * Pig Skin Gauntletz!
+  * a Troll Hut kit!
+  * a Horn Spear!
+  * an Obsidian Spear!
+  * a Bone Spear!
+  * a Horn Dagger!
+  * an Obsidian Dagger!
+  * a Bone Dagger!
+  * Lined Gauntletz or Bootz!  →  We needz 1 pair of Rabbit, Racoon, Sabretooth or Bear Gauntletz or Bootz and 1 Linen Cloth.
+  * a Lined Coat!  →  We needz 1 Rabbit, Racoon, Sabretooth or Bear Coat and 2 Linen Cloth.
+  * a Rabbit Fur Coat!  →  We needz 2 Rabbit Fur, 1 Antelope Leather and 1 Rope.
+  * a Racoon Fur Coat!  →  We needz 2 Racoon Fur, 1 Antelope Leather and 1 Rope.
+  * a Sabretooth Fur Coat!  →  We needz 1 Sabretooth Fur, 1 Antelope Leather and 1 Rope.
+  * a Bear Fur Coat!  →  We needz 1 Bear Fur, 1 Antelope Leather and 1 Rope.
+  * a Pig Skin Coat!  →  We needz 1 Pig Skin, 1 Antelope Leather and 1 Rope.
+  * a Crab Chitin Coat!  →  We needz 2 Crab Chitin, 1 Antelope Leather and 1 Rope.
+  * a Snake Leather Coat!  →  We needz 2 Snake Leather, 1 Antelope Leather and 1 Rope.
+  * an Alligator Leather Coat!  →  We needz 1 Alligator Leather, 1 Antelope Leather and 1 Rope.
+  * Lined Bear Fur Gauntletz of Fury!
+  * Lined Wolf Fur Gauntletz of Fury!
+  * Lined Racoon Fur Gauntletz of Fury!
+  * Lined Rabbit Fur Gauntletz of Fury!
+  * Lined Bear Fur Bootz of Haste!
+  * Lined Wolf Fur Bootz of Haste!
+  * Lined Racoon Fur Bootz of Haste!
+  * Lined Rabbit Fur Bootz of Haste!
+  * Lined Bear Fur Gauntletz!
+  * Lined Wolf Fur Gauntletz!
+  * Lined Racoon Fur Gauntletz!
+  * Lined Rabbit Fur Gauntletz!
+  * Lined Bear Fur Bootz!
+  * Lined Wolf Fur Bootz!
+  * Lined Racoon Fur Bootz!
+  * Lined Rabbit Fur Bootz!
+  * a Lined Bear Fur Coat!
+  * a Lined Wolf Fur Coat!
+  * a Lined Racoon Fur Coat!
+  * a Lined Rabbit Fur Coat!
+
+--- Imbuing (Enchanting) (34 recipes) ---
+  * imbued Gauntletz!  →  We needz 1 pair of any Gauntletz, 1 Mana Stone and 1 Feather.
+  * imbued Bootz!  →  We needz 1 pair of any Bootz, 1 Mana Stone and 1 Feather.
+  * Bronze Alligator Leather Gauntletz of Fury!
+  * Bronze Snake Leather Gauntletz of Fury!
+  * Bronze Crab Chitin Gauntletz of Fury!
+  * Bronze Pig Skin Gauntletz of Fury!
+  * Lined Bear Fur Gauntletz of Fury!
+  * Lined Sabretooth Fur Gauntletz of Fury!
+  * Lined Racoon Fur Gauntletz of Fury!
+  * Lined Rabbit Fur Gauntletz of Fury!
+  * Bear Fur Gauntletz of Fury!
+  * Sabretooth Fur Gauntletz of Fury!
+  * Racoon Fur Gauntletz of Fury!
+  * Rabbit Fur Gauntletz of Fury!
+  * Alligator Leather Gauntletz of Fury!
+  * Snake Leather Gauntletz of Fury!
+  * Crab Chitin Gauntletz of Fury!
+  * Pig Skin Gauntletz of Fury!
+  * Bronze Alligator Leather Bootz of Haste!
+  * Bronze Snake Leather Bootz of Haste!
+  * Bronze Crab Chitin Bootz of Haste!
+  * Bronze Pig Skin Bootz of Haste!
+  * Lined Bear Fur Bootz of Haste!
+  * Lined Sabretooth Fur Bootz of Haste!
+  * Lined Racoon Fur Bootz of Haste!
+  * Lined Rabbit Fur Bootz of Haste!
+  * Bear Fur Bootz of Haste!
+  * Sabretooth Fur Bootz of Haste!
+  * Racoon Fur Bootz of Haste!
+  * Rabbit Fur Bootz of Haste!
+  * Alligator Leather Bootz of Haste!
+  * Snake Leather Bootz of Haste!
+  * Crab Chitin Bootz of Haste!
+  * Pig Skin Bootz of Haste!
+
+--- Workshop A (8 recipes) ---
+  * a Boat kit!  →  We needz 1 Giant Shell and 2 Wood.
+  * a Repair Hammer!  →  We needz 1 Wood, 1 Stone and 1 Rope.
+  * a Mining Pick!  →  We needz 1 Wood, 1 Bronze Bar and 1 Rope.
+  * a Stockage Box kit!  →  We needz 1 Wood.
+  * a Wall kit!  →  We needz 1 Stone.
+  * a Watch Tower kit!  →  We needz 3 Wood.
+  * a Siege Tower kit!  →  We needz 3 Wood and 1 Engine.
+  * a Siege Machine kit!  →  We needz 1 Engine, 3 Wood and 3 Bronze Bar.
+
+--- Workshop B (13 recipes) ---
+  * a Flamethrower!  →  We needz 1 Shotgun, 1 Stockage Box kit and 2 Bronze Bar.
+  * a Sniper Gun!  →  We needz 1 Gun and 1 Mana Crystal.
+  * a Gun!  →  We needz 1 Wood, 1 Flint and 1 Bronze Bar.
+  * a Shotgun!  →  We needz 1 Wood, 1 Flint and 1 Bronze Bar.
+  * Rocketz!  →  We needz 1 Bronze Bar, 1 Black Powder and 1 Fuel.
+  * a Remote Mine!  →  We needz 1 Bronze Bar and 1 Black Powder.
+  * a Bomb!  →  We needz 1 Remote Mine and 2 Fuel.
+  * an Engine!  →  We needz 1 Planz for Engine, 1 Bronze Bar and 1 Fuel.
+  * a Torch!  →  We needz 1 Wood and 1 Oil.
+  * Poizon Gaz!  →  We needz 1 Spider, Snake or Tarantula Venom.
+  * Strong Poizon Gaz!|n
+  * Medium Poison Gaz!
+  * Weak Poison Gas!
+
+--- Invention Plans (9 recipes) ---
+  * Planz for an Engine!
+  * Recipe for Greatezt Elixir!
+  * Plans for a Mecha-Golem!
+  * Planz for Harpoonz!
+  * Planz for a Giant Shield!
+  * Planz for Fiery Axez!
+  * Planz for Thunder Clubz!
+  * Planz for a Chainsaw!
+  * a devious plan!
+
+--- Voodoo Hut (24 recipes) ---
+  * a magical Voodoo Mask!  →  We needz 1 Voodoo Mask, 1 Mana Stone and 1 Giant Egg.
+  * a magical Voodoo Mask!  →  We needz 1 Voodoo Mask, 1 Mana Stone and 1 Antelope Horns.
+  * a magical Voodoo Mask!  →  We needz 1 Voodoo Mask, 1 Mana Stone and 1 Shrunken Head.
+  * a Voodoo Mask!  →  We needz 1 Wood or Petrified Wood, 2 Fish Bone and 1 Feather.
+  * a Cauldron kit!  →  We needz 1 Wood, 1 Stone, 1 Flint and 1 Oil.
+  * magical Seedz!
+  * a Petrified Voodoo Mask of Life!
+  * a Petrified Voodoo Mask of Life!
+  * a Voodoo Mask of Life!
+  * a Voodoo Mask of Life!
+  * a Voodoo Mask of Life!
+  * a Petrified Voodoo Mask of Life!
+  * a Petrified Demonic Voodoo Mask!
+  * a Petrified Ghostly Voodoo Mask!
+  * a Petrified Voodoo Mask!
+  * a Demonic Voodoo Mask!
+  * a Ghostly Voodoo Mask!
+  * a Voodoo Mask!
+  * a Seed of Aria!
+  * a Seed of Bardane!
+  * a Seed of Corian!
+  * a Seed of Draximor!
+  * a Berry Seed!
+  * Tree Seedz!
+
+--- Forge (Smelting) (2 recipes) ---
+  * a Bronze Bar
+  * an Iron Bar!
+
+--- Recipe_Imbue_Staff_and_Wand (38 recipes) ---
+  * an imbued Staff!  →  We needz 1 Staff and a Spell Book.
+  * an imbued Wand!  →  We needz 1 Wand and a Spell Book.
+  * a Staff of Blink!
+  * a Staff of Double!
+  * a Staff of Invisibility!
+  * a Staff of Mirror Imagez!
+  * a Staff of Teleport!
+  * a Staff of Vanish!
+  * a Staff of Fireball!
+  * a Staff of Freeze!
+  * a Staff of Handz of the Dead!
+  * a Staff of Lightning!
+  * a Staff of Malaria!
+  * a Staff of Plague!
+  * a Staff of Group Haste!
+  * a Staff of Haste!
+  * a Staff of Hex!
+  * a Staff of Mass Heal!
+  * a Staff of Regeneration!
+  * a Staff of Torture!
+  * a Wand of Blink!
+  * a Wand of Double!
+  * a Wand of Invisibility!
+  * a Wand of Mirror Imagez!
+  * a Wand of Teleport!
+  * a Wand of Vanish!
+  * a Wand of Fireball!
+  * a Wand of Freeze!
+  * a Wand of Handz of the Dead!
+  * a Wand of Lightning!
+  * a Wand of Malaria!
+  * a Wand of Plague!
+  * a Wand of Group Haste!
+  * a Wand of Haste!
+  * a Wand of Hex!
+  * a Wand of Mass Heal!
+  * a Wand of Regeneration!
+  * a Wand of Torture!
+
+--- Recipe_SpellBooks (29 recipes) ---
+  * an empowered Spell Book!
+  * an Arcanum!
+  * a Spell Book of Blink!  →  We needz 1 Parchment, 1 Feather and 1 Stamina Booster.
+  * a Spell Book of Mirror Imagez!  →  We needz 1 Parchment, 1 Feather and 1 Strong Liquor.
+  * a Spell Book of Vanish!  →  We needz 1 Parchment, 1 Feather and 1 Invisibility Elixir.
+  * a Spell Book of Haste!  →  We needz 1 Parchment, 1 Feather and 1 Energizer Balm.
+  * a Spell Book of Torture!  →  We needz 1 Parchment, 1 Feather and 1 Diet Drink.
+  * a Spell Book of Regeneration!  →  We needz 1 Parchment, 1 Feather and 1 Regeneration Balm.
+  * a Spell Book of Fireball!  →  We needz 1 Parchment, 1 Feather and 1 Frenzy Elixir.
+  * a Spell Book of Handz of the Dead!  →  We needz 1 Parchment, 1 Feather and 1 Vampire Elixir.
+  * a Spell Book of Malaria!  →  We needz 1 Parchment, 1 Feather and 1 Poison of any type.
+  * a Spell Book of Teleport!
+  * a Spell Book of Double!
+  * a Spell Book of Invisibility!
+  * a Spell Book of Lightning!
+  * a Spell Book of Freeze!
+  * a Spell Book of Plague!
+  * a Spell Book of Group Haste!
+  * a Spell Book of Mass Heal!
+  * a Spell Book of Hex!
+  * an Arcanum of Shadow!
+  * an Arcanum of Shadow!
+  * an Arcanum of Shadow!
+  * an Arcanum of Darkness!
+  * an Arcanum of Darkness!
+  * an Arcanum of Darkness!
+  * an Arcanum of Light!
+  * an Arcanum of Light!
+  * an Arcanum of Light!
+
+
+================================================================================
+6. BUILDINGS & STRUCTURES
+================================================================================
+
+Buildings are crafted as "kits" (portable items), then placed on the map.
+Construction uses a progress bar system (Building_ProgressBar trigger).
+Once finished, buildings gain abilities (Finish_Building_Global trigger).
+
+BUILDING TYPES (identified from recipes and code):
+
+6.1 BASIC BUILDINGS (all classes)
+  - Camp Fire → basic warmth source, cooking station
+    Recipe: varies (basic materials)
+  - Merchant Shop → NPC trading post
+    Recipe: 1 Stone + 3 Wood → Shop kit (I03C)
+  
+6.2 HUNTER BUILDINGS  
+  - Pet's Den → houses Hunter's pet companion
+    Recipe: 2 Wood + 1 Stone
+  - Hunter's Tent (3 variants):
+    * Bear Fur Tent → Recipe: Bear Fur + Wood + Rope
+    * Sabretooth Fur Tent → Recipe: Sabretooth Fur + Wood + Rope
+    * Pig Skin Tent → Recipe: Pig Skin + Wood + Rope
+  - Sensor Trap → detects approaching enemies
+  - Spiked Trap → damage trap for enemies
+  - Rock Trap → area damage trap
+  - Ensnare Trap → immobilizes enemies
+
+6.3 INVENTOR BUILDINGS
+  - Stockage Box → storage container
+    Recipe: 1 Wood
+  - Watchtower → defensive structure, can be upgraded
+    (Upgrade_Tower trigger handles tower upgrades)
+  - Workshop → enables Workshop recipes
+  - Siege equipment → advanced military structures
+
+6.4 CRAFT BUILDINGS (from Workshop recipes)
+  - Armory → weapon and armor crafting station
+  - Tannery → leather/hide processing
+  - Forge → metal smelting (Bronze/Iron Bars)
+  - Cauldron → potion brewing station
+  - Voodoo Hut → Shaman magical crafting
+
+6.5 BUILDING COMBAT
+  - Buildings have HP and can be destroyed
+  - Building damage reduction: 33% from trolls, 10% from beasts
+  - Buildings can be equipped with weapons (towers)
+  - Building_Death trigger handles destruction
+  - Buildings can use equipped weapons or special abilities
+
+
+================================================================================
+7. CREATURES & ANIMALS
+================================================================================
+
+7.1 REGULAR ANIMALS (huntable, drop resources)
+Animals spawn in habitat zones and reproduce over time.
+
+  PIGS/BOARS
+  - Common prey, drops: Raw Meat, Pig Skin, Bone
+  - Found in jungle clearings
+  
+  BEARS
+  - Dangerous prey, drops: Raw Meat, Bear Fur, Bone
+  - Found in forest/mountain areas
+  
+  SABRETOOTH CATS
+  - Dangerous predator, drops: Raw Meat, Sabretooth Fur, Bone
+  
+  RABBITS
+  - Easy prey, drops: Raw Meat, Rabbit Fur
+  - Quick and hard to catch
+  
+  RACOONS  
+  - Small game, drops: Raw Meat, Racoon Fur
+  
+  ANTELOPES
+  - Medium prey, drops: Raw Meat, Antelope Leather, Antelope Horns
+  
+  ALLIGATORS/CROCODILES
+  - Dangerous aquatic predator, drops: Raw Meat, Alligator Scales
+  - Found near water
+  
+  SNAKES
+  - Venomous, drops: Raw Meat, Snake Scales, Venom
+  - Can cause poison/disease
+  
+  CRABS
+  - Coastal creature, drops: Raw Meat, Crab Chitin
+  
+  SPIDERS
+  - Venomous, drops: Spider Silk, Spider Venom
+  - Tarantula variant (larger, more dangerous)
+  
+  BIRDS/VULTURES
+  - Drops: Feathers, Eggs, Raw Meat
+  
+  FISH
+  - Caught via Fishing Rod + Bait
+  - Drops: Fish, Fish Bone
+  
+  WOLVES
+  - Predator, special mechanics:
+    * Wolf_Swallow_JASS → wolf can swallow items/prey
+    * Wolf_Swallow_Damage__JASS → damage from swallowed items
+    * Wolf_Die → special death mechanics
+
+  TORTOISES
+  - Tough creature, drops: Giant Shell (for Tortoise Armor/Shield)
+
+7.2 ANIMAL REPRODUCTION
+  - 4 reproduction zones/triggers
+  - Animals respawn periodically in their habitat
+  - Color variants possible (Animal_Color trigger)
+
+7.3 BOSS CREATURES
+Bosses spawn periodically based on day progression.
+Each spawns in a specific map region with an announcement.
+
+  Boss 1: WEREWOLF (Unit: n01E)
+  - Spawns in: WereWolf region
+  - Announced to all players
+  
+  Boss 2: GRIZZLY BEAR (appears near Grizzly region)
+  - Large bear boss
+  
+  Boss 3: GIANT ANACONDA (Unit: n010)  
+  - Spawns in: Anaconda region
+  - HP set to 1000
+  - Super creep spawn sound
+  
+  Boss 4: GIANT VULTURE (Unit: n01L)
+  - Spawns in: Giant_Vulture region
+  
+  Additional Boss-related:
+  - Boss[1-4] flags track which bosses are alive
+  - Mojo Anaconda and Mojo Tarantula → special quest bosses
+  - Boss attacks deal 100% to trolls/beasts, 33% to buildings
+  - Bosses drop rare/unique items
+
+
+================================================================================
+8. QUEST SYSTEM
+================================================================================
+
+Quests are given by the Old Troll NPC (unit h00F).
+New quests spawn based on day progression (New_quest trigger).
+The Old Troll's user data tracks quest cooldown.
+
+QUEST TYPES (from code analysis):
+
+  Quest: "Bring Berries and Strong Liquor"
+  - Old Troll says: "Me kidz, this old troll here needz something sweet.
+    Bring some berries and strong liquor and I'll teach ya a good ol' recipe
+    how cook 'em!"
+  - Reward: Cooking recipe
+
+  Quest: "Hot Spring Discovery"
+  - Reveals Hot Spring locations (north and south)
+  - Minimap pings show locations
+  - Hot Springs provide heat restoration
+
+  Quest: "Mojo Anaconda / Mojo Tarantula" 
+  - Kill special boss creatures
+  - Items placed at Mojo Anaconda and Mojo Tarantula regions
+  - Minimap pings guide players
+
+  Additional Quests (from TRIGSTR references):
+  - TRIGSTR_1047 → quest announcement
+  - TRIGSTR_897 → quest announcement
+  - TRIGSTR_687 → quest announcement
+  - TRIGSTR_996 → quest announcement
+  - TRIGSTR_1594 → quest about Mojo creatures
+  - TRIGSTR_2826 → quest announcement
+  
+  Quest rewards include: unique recipes, rare items, map reveals
+
+  ACHIEVEMENTS system (Achievements trigger):
+  - Track player accomplishments
+  - Likely tied to kills, crafting, survival milestones
+
+
+================================================================================
+9. COMBAT SYSTEM
+================================================================================
+
+9.1 DAMAGE TYPES AND MULTIPLIERS
+  Troll/Boss attacks:  100% to trolls/beasts, 33% to buildings
+  Beast attacks:       100% to trolls/beasts, 10% to buildings  
+  Hunter attacks:      100% to trolls, 120% to beasts, 50% to buildings
+  Power Hit (ability): 100% to trolls/beasts, 10% to buildings
+  Special:             100% to units, 200% to buildings (siege)
+
+9.2 WEAPON CATEGORIES (from ability triggers)
+  Melee:
+  - Daggers → fast, low damage
+  - Spears → medium range thrust
+  - Axes → medium damage, can throw
+  - Clubs (Bone, Spiked, Big) → slow, high damage
+  - Mauls → very slow, very high damage
+  - Swords → balanced
+  - Chainsaws (Inventor) → high sustained damage
+
+  Ranged:
+  - Bows (basic, Long, Composite) → arrow-based ranged
+  - Guns/Shotguns (Inventor) → ammo-based ranged
+  - Javelins → thrown spears
+  - Throwing Axes → thrown axes
+  - Harpoons (HARPOON_ID = I0AG) → special thrown weapon
+
+  Magical:
+  - Wands → Shaman magic attacks
+  - Staves → enhanced Shaman weapons
+  - Voodoo Dolls → curse-based attacks
+  - SpellBooks → collected spell compendiums
+
+  Off-hand:
+  - Shields (Bone, Tortoise, Horned, Ironwood, Giant)
+  - Torches → light source + fire damage
+
+9.3 AMMO SYSTEM
+  - Arrows → for Bows (Ammo_add trigger)
+  - Poisoned Arrows (4 types):
+    * Spider Poisoned Arrows
+    * Snake Poisoned Arrows
+    * Tarantula Poisoned Arrows
+    * Envenomed Arrows
+  - Ammo/Black Powder → for Guns (Inventor)
+  - Fuel → for certain Inventor weapons
+  - Ammo_poison trigger handles poison application
+
+9.4 ARMOR SYSTEM
+  Leather Armors (by material):
+  - Pig Skin Coat → basic leather
+  - Bear Fur Coat → warm, good defense
+  - Sabretooth Fur Coat → premium fur
+  - Racoon Fur Coat → light fur
+  - Rabbit Fur Coat → lightest fur
+  - Snake Leather Coat → scaled
+  - Alligator Leather Coat → heavy scaled
+  - Crab Chitin Coat → crustacean shell
+  
+  Lined variants → fur + lining for extra warmth
+  Bronze variants → metal-reinforced leather
+  Iron variants → heavy metal armor
+  Tortoise Armor → giant shell-based
+
+  Boots (by material, same animal types):
+  - Basic, Lined, Bronze variants
+  - Boots of Haste → speed bonus
+  
+  Gauntlets (same material system):
+  - Basic, Lined, Bronze variants  
+  - Gauntlets of Fury → attack bonus
+
+  Headpieces:
+  - Voodoo Masks (multiple variants):
+    * Basic Voodoo Mask
+    * Magical Voodoo Mask (+ Mana Stone + Giant Egg/Horns/Shrunken Head)
+    * Petrified Voodoo Mask
+    * Demonic Voodoo Mask
+    * Ghostly Voodoo Mask
+    * Voodoo Mask of Life
+  - Helmets (from Armory)
+
+9.5 IMBUING / ENCHANTING
+  - Gauntlets can be imbued → "of Fury" variant (attack bonus)
+  - Boots can be imbued → "of Haste" variant (speed bonus)
+  - Requires: item + Mana Stone + Feather
+  - 34 imbuing recipes covering all material types
+  - Staves and Wands can also be imbued (38 recipes)
+
+
+================================================================================
+10. ADDITIONAL SYSTEMS
+================================================================================
+
+10.1 SPELLBOOK SYSTEM
+  - 29 SpellBook recipes
+  - SpellBooks combine multiple spells into one item
+  - Shaman-focused magical progression
+  - Spells include: Fireball, Lightning, Teleport, Freeze, Blink,
+    Plague, Malaria, Vanish, Mirror Image, Double Image
+
+10.2 TANNERY SYSTEM (58 recipes)
+  - Converts raw animal hides into usable leather/fur
+  - Processes all animal skin types:
+    * Pig Skin → Pig Leather
+    * Bear Fur → processed fur
+    * Sabretooth Fur → premium processed fur
+    * Racoon/Rabbit Fur → light processed fur
+    * Snake/Alligator/Crab → scaled leather/chitin
+  - Lined variants add warmth bonus
+  - Bronze-plated variants add armor bonus
+
+10.3 INVENTION PLANS SYSTEM (9 plans)
+  - Plans for an Engine
+  - Recipe for Greatest Elixir
+  - Plans for a Mecha-Golem
+  - Plans for Harpoons
+  - Plans for a Giant Shield
+  - Plans for Fiery Axes
+  - Plans for Thunder Clubs
+  - Plans for a Chainsaw
+  - A devious plan (trap/sabotage?)
+  Plans are crafted at Workshop, then used to create the final item.
+
+10.4 CRAFT INVENTION SYSTEM
+  - Crafting invented items from plans
+  - Consumes plan + materials
+  - Creates: Chainsaw, Harpoons, Giant Shield, etc.
+  - Team announcements when crafted (e.g., "We haz crafted a Chainsaw!")
+
+10.5 ITEM STACKING & DISASSEMBLY
+  - Items can be stacked (Stacking triggers)
+  - Items can be disassembled back to components (8+ disassembly recipes)
+  - Allows resource recovery from unwanted items
+
+10.6 TROLL MERCHANT
+  - NPC shop building
+  - Buy/sell items for shell tokens or resources
+  - Recipe_Troll_Merchant handles trades
+
+10.7 MULTIBOARD (scoreboard)
+  - Create_MultiBoard trigger
+  - Displays team scores, day count, kill counts
+  - Tracks player stats and achievements
+
+10.8 TELEPORTER SYSTEM
+  - Use_teleporter trigger
+  - Teleport between specific map locations
+  - Requires specific items or buildings
+
+10.9 VOTING SYSTEM
+  - Voting trigger for team decisions
+  - Used for game mode selection or team choices
+
+10.10 WEAPON/ARMOR EQUIP SYSTEM
+  - Weapon_and_offHand__Gain → equipping weapons/shields
+  - Weapon_and_offHand__Lose → unequipping
+  - ArmorBootGauntlet__Lose → removing armor
+  - Headpiece_Lose → removing headgear
+  - SpellBookVoodooDoll__Lose → removing spellbooks/dolls
+  - Auto-applies stat bonuses on equip, removes on unequip
+
+
+================================================================================
+11. KEY ITEM ID REFERENCE (Warcraft III rawcodes)
+================================================================================
+
+RESOURCES:
+  I011 = Wood
+  I014 = Stone
+  I08T = Flint
+  I013 = Oil
+  I00E = Fish Bone
+  I00F = Feather
+
+TROLL CLASSES:
+  H000 = Inventor
+  H001 = Hunter
+  H002 = Shaman
+  H003 = Warrior
+
+SPECIAL ITEMS:
+  I0AG = Harpoons
+  I03C = Merchant Shop kit
+  I01L = Stockage Box kit
+  I02R = Pet's Den kit
+  I02S = Hunter's Pig Skin Tent kit
+  I0AI = Hunter's Sabretooth Fur Tent kit
+  I0AJ = Hunter's Bear Fur Tent kit
+  I044 = Bow
+  I0AR = Longbow
+  I0AO = Composite Bow
+  I027 = Arrows
+  I038 = Sensor Trap
+  I00I = Spiked Trap
+  I00J = Rock Trap
+  I026 = Ensnare Trap
+  I05V = Wand
+  I0AW = Sacrificial Dagger
+
+BUFFS/DISEASES:
+  B00I = Malaria
+  B00H = Plague
+  Brej = Fever
+
+BOSS UNITS:
+  n01E = Werewolf Boss
+  n010 = Giant Anaconda Boss
+  n01L = Giant Vulture Boss
+
+ABILITY IDS (selected):
+  ACcs = BioSupport Server ability
+  A00P = BioSupport Client ability
+  ACff = BioSupport Fever ability
+  A014, A01C = Building completion abilities
+  A04K = Special building ability
+  A09P = Building weapon ability
+  ACah = Building defense ability
+
+
+================================================================================
+12. MAP REGIONS (383 named regions)
+================================================================================
+
+  Anaconda
+  Area_1
+  Area_2
+  Area_3
+  Area_4
+  Area_5
+  Area_6
+  Area_7
+  Area_8
+  Area_9
+  Arrive_Left
+  Arrive_Right
+  Basic01
+  Basic02
+  Basic03
+  Basic04
+  Basic05
+  Basic06
+  Basic07
+  Basic08
+  Basic09
+  Basic10
+  Basic11
+  Basic12
+  Black_Pirahnas_Area
+  Boss1
+  Boss2
+  Boss3
+  Boss4
+  Class01
+  Class02
+  Class03
+  Class04
+  Class05
+  Class06
+  Class07
+  Class08
+  Class09
+  Class10
+  Class11
+  Class12
+  Food001
+  Food002
+  Food003
+  Food004
+  Food005
+  Food006
+  Food007
+  Food008
+  Food009
+  Food010
+  Food011
+  Food012
+  Food013
+  Food014
+  Food015
+  Food016
+  Food017
+  Food018
+  Food019
+  Food020
+  Food021
+  Food022
+  Food023
+  Food024
+  Food025
+  Food026
+  Food027
+  Food028
+  Food029
+  Food030
+  Food031
+  Food032
+  Food033
+  Food034
+  Food035
+  Food036
+  Food037
+  Food038
+  Food039
+  Food040
+  Food041
+  Food042
+  Food043
+  Food044
+  Food045
+  Food046
+  Food047
+  Food048
+  Food049
+  Food050
+  Food051
+  Food052
+  Food053
+  Food054
+  Food055
+  Food056
+  Food057
+  Food058
+  Food059
+  Food060
+  Food061
+  Food062
+  Food063
+  Food064
+  Food065
+  Food066
+  Food067
+  Food068
+  Food069
+  Food070
+  FrollFishing1
+  Froll_Hut
+  GardenOfEden
+  Giant_Vulture
+  Grizzly
+  GroundBig001
+  GroundBig002
+  GroundBig003
+  GroundBig004
+  GroundNormal001
+  GroundNormal002
+  GroundNormal003
+  GroundNormal004
+  GroundNormal005
+  GroundNormal006
+  GroundNormal007
+  GroundNormal008
+  GroundNormal009
+  GroundNormal010
+  GroundNormal011
+  GroundNormal012
+  GroundNormal013
+  GroundNormal014
+  GroundNormal015
+  GroundNormal016
+  GroundNormal017
+  GroundNormal018
+  GroundNormal019
+  GroundNormal020
+  GroundNormal021
+  GroundNormal022
+  GroundNormal023
+  GroundNormal024
+  GroundNormal025
+  GroundNormal026
+  GroundNormal027
+  GroundNormal028
+  GroundNormal029
+  GroundNormal030
+  GroundNormal031
+  GroundNormal032
+  GroundNormal033
+  GroundNormal034
+  GroundNormal035
+  GroundNormal036
+  GroundNormal037
+  GroundNormal038
+  GroundNormal039
+  GroundNormal040
+  GroundNormal041
+  GroundNormal042
+  GroundNormal043
+  GroundNormal044
+  GroundNormal045
+  GroundNormal046
+  GroundNormal047
+  GroundNormal048
+  GroundNormal049
+  GroundNormal050
+  GroundNormal051
+  GroundNormal052
+  GroundNormal053
+  GroundNormal054
+  GroundNormal055
+  GroundNormal056
+  GroundNormal057
+  GroundNormal058
+  GroundNormal059
+  GroundNormal060
+  GroundNormal061
+  GroundNormal062
+  GroundNormal063
+  GroundNormal064
+  GroundNormal065
+  GroundNormal066
+  GroundNormal067
+  GroundNormal068
+  GroundNormal069
+  GroundNormal070
+  GroundNormal071
+  GroundNormal072
+  GroundNormal073
+  GroundNormal074
+  GroundNormal075
+  GroundNormal076
+  GroundNormal077
+  GroundNormal078
+  GroundNormal079
+  GroundNormal080
+  GroundNormal081
+  GroundNormal082
+  GroundNormal083
+  GroundNormal084
+  GroundNormal085
+  GroundNormal086
+  GroundVermin001
+  GroundVermin002
+  GroundVermin003
+  GroundVermin004
+  GroundVermin005
+  GroundVermin006
+  GroundVermin007
+  GroundVermin008
+  GroundVermin009
+  GroundVermin010
+  GroundVermin011
+  GroundVermin012
+  GroundVermin013
+  GroundVermin014
+  GroundVermin015
+  GroundVermin016
+  GroundVermin017
+  GroundVermin018
+  GroundVermin019
+  GroundVermin020
+  GroundVermin021
+  GroundVermin022
+  GroundVermin023
+  GroundVermin024
+  GroundVermin025
+  GroundVermin026
+  GroundVermin027
+  GroundVermin028
+  GroundVermin029
+  GroundVermin030
+  GroundVermin031
+  GroundVermin032
+  GroundVermin033
+  GroundVermin034
+  GroundVermin035
+  GroundVermin036
+  GroundVermin037
+  GroundVermin038
+  GroundVermin039
+  GroundVermin040
+  GroundVermin041
+  GroundVermin042
+  Hot_Spring_north_1
+  Hot_Spring_north_2
+  Hot_Spring_south_1
+  Hot_Spring_south_2
+  Lost_Cave_NE
+  Lost_Cave_NNO
+  Lost_Cave_NO
+  Lost_Cave_SE
+  Lost_Cave_SO
+  Lost_Cave_SSO
+  Minerals001
+  Minerals002
+  Minerals003
+  Minerals004
+  Minerals005
+  Minerals006
+  Minerals007
+  Minerals008
+  Minerals009
+  Minerals010
+  Minerals011
+  Minerals012
+  Minerals013
+  Minerals014
+  Minerals015
+  Minerals016
+  Minerals017
+  Minerals018
+  Minerals019
+  Minerals020
+  Minerals021
+  Minerals022
+  Minerals023
+  Minerals024
+  Mojo_Anaconda
+  Mojo_Tarantula
+  Moving_Sand
+  Moving_Sand_2
+  Oil1
+  Oil2
+  Oil3
+  OilGeyser
+  Pirahnas_1
+  Pirahnas_2
+  Pirahnas_3
+  Pirahnas_4
+  Rect_002
+  Rough1
+  Ruin_1
+  Ruin_2
+  Score01
+  Score02
+  Score03
+  Score04
+  Score05
+  Score06
+  Score07
+  Score08
+  Score09
+  Score10
+  Score11
+  Score12
+  Secret_Deep_Zone
+  Tauren_Area
+  Team_1
+  Team_2
+  Team_3
+  Teleporter_left
+  Teleporter_right
+  Troll_Chief_Area
+  TutorialVisibility
+  Tutorial_Area_1
+  Tutorial_Basic
+  Voting
+  WaterBig001
+  WaterBig002
+  WaterBig003
+  WaterBig004
+  WaterNormal001
+  WaterNormal002
+  WaterNormal003
+  WaterNormal004
+  WaterNormal005
+  WaterNormal006
+  WaterNormal007
+  WaterNormal008
+  WaterNormal009
+  WaterNormal010
+  WaterNormal011
+  WaterNormal012
+  WaterNormal013
+  WaterNormal014
+  WaterNormal015
+  WaterNormal016
+  WaterNormal017
+  WaterNormal018
+  WaterNormal019
+  WaterNormal020
+  WaterNormal021
+  WaterNormal022
+  WaterNormal023
+  WaterNormal024
+  WaterNormal025
+  WaterNormal026
+  WaterNormal027
+  WaterNormal028
+  WaterNormal029
+  WaterNormal030
+  WaterNormal031
+  WaterNormal032
+  WaterNormal033
+  WaterNormal034
+  WaterNormal035
+  WaterNormal036
+  WaterNormal037
+  WaterNormal038
+  WaterNormal039
+  WaterNormal040
+  WaterNormal041
+  WaterNormal042
+  WaterNormal043
+  WaterNormal044
+  WaterNormal045
+  WaterNormal046
+  WaterNormal047
+  WaterNormal048
+  WaterNormal049
+  WaterNormal050
+  WaterNormal051
+  WaterNormal052
+  WaterNormal053
+  WaterNormal054
+  Waterfall
+  Waterfall2
+  WereWolf

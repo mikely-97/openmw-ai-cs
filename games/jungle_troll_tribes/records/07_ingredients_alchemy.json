@@ -208,5 +208,159 @@
       }
     ],
     "flags": 0
+  },
+  {
+    "rec_type": "ALCH",
+    "record_id": "jtt_cure_wound",
+    "name": "Cure Wound Drink",
+    "mesh": "jtt\\herb_basket.dae",
+    "icon": "",
+    "script": "",
+    "weight": 0.5,
+    "value": 15,
+    "auto_calc": 0,
+    "effects": [
+      {
+        "effect_id": 0,
+        "skill": -1,
+        "attribute": -1,
+        "range": 0,
+        "area": 0,
+        "duration": 5,
+        "mmin": 20,
+        "mmax": 30
+      }
+    ],
+    "flags": 0
+  },
+  {
+    "rec_type": "ALCH",
+    "record_id": "jtt_stamina_boost",
+    "name": "Stamina Booster",
+    "mesh": "jtt\\herb_basket.dae",
+    "icon": "",
+    "script": "",
+    "weight": 0.5,
+    "value": 12,
+    "auto_calc": 0,
+    "effects": [
+      {
+        "effect_id": 27,
+        "skill": -1,
+        "attribute": -1,
+        "range": 0,
+        "area": 0,
+        "duration": 1,
+        "mmin": 40,
+        "mmax": 60
+      }
+    ],
+    "flags": 0
+  },
+  {
+    "rec_type": "ALCH",
+    "record_id": "jtt_antidote",
+    "name": "Antidote",
+    "mesh": "jtt\\herb_basket.dae",
+    "icon": "",
+    "script": "",
+    "weight": 0.3,
+    "value": 20,
+    "auto_calc": 0,
+    "effects": [
+      {
+        "effect_id": 31,
+        "skill": -1,
+        "attribute": -1,
+        "range": 0,
+        "area": 0,
+        "duration": 1,
+        "mmin": 1,
+        "mmax": 1
+      }
+    ],
+    "flags": 0
+  },
+  {
+    "rec_type": "ALCH",
+    "record_id": "jtt_frenzy_elixir",
+    "name": "Frenzy Elixir",
+    "mesh": "jtt\\herb_basket.dae",
+    "icon": "",
+    "script": "",
+    "weight": 0.5,
+    "value": 30,
+    "auto_calc": 0,
+    "effects": [
+      {
+        "effect_id": 79,
+        "skill": -1,
+        "attribute": -1,
+        "range": 0,
+        "area": 0,
+        "duration": 30,
+        "mmin": 10,
+        "mmax": 20
+      }
+    ],
+    "flags": 0
+  },
+  {
+    "rec_type": "ALCH",
+    "record_id": "jtt_strong_liquor",
+    "name": "Strong Liquor",
+    "mesh": "jtt\\herb_basket.dae",
+    "icon": "",
+    "script": "",
+    "weight": 0.5,
+    "value": 10,
+    "auto_calc": 0,
+    "effects": [
+      {
+        "effect_id": 0,
+        "skill": -1,
+        "attribute": -1,
+        "range": 0,
+        "area": 0,
+        "duration": 3,
+        "mmin": 10,
+        "mmax": 15
+      }
+    ],
+    "flags": 0
+  },
+  {
+    "rec_type": "ALCH",
+    "record_id": "jtt_spirit_blessing",
+    "name": "Spirit Blessing",
+    "mesh": "jtt\\herb_basket.dae",
+    "icon": "",
+    "script": "",
+    "weight": 0.5,
+    "value": 50,
+    "auto_calc": 0,
+    "effects": [
+      {
+        "effect_id": 79,
+        "skill": -1,
+        "attribute": -1,
+        "range": 0,
+        "area": 0,
+        "duration": 60,
+        "mmin": 15,
+        "mmax": 25
+      },
+      {
+        "effect_id": 0,
+        "skill": -1,
+        "attribute": -1,
+        "range": 0,
+        "area": 0,
+        "duration": 10,
+        "mmin": 20,
+        "mmax": 30
+      }
+    ],
+    "flags": 0
   }
 ]

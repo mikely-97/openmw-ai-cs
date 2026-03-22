@@ -187,5 +187,26 @@
       }
     ],
     "flags": 0
+  },
+  {
+    "rec_type": "SPEL",
+    "record_id": "jtt_build",
+    "name": "Build",
+    "spell_type": 0,
+    "cost": 0,
+    "spell_flags": 0,
+    "effects": [
+      {
+        "effect_id": 79,
+        "skill": -1,
+        "attribute": 7,
+        "range": 0,
+        "area": 0,
+        "duration": 2,
+        "mmin": 1,
+        "mmax": 1
+      }
+    ],
+    "flags": 0
   }
 ]

@@ -1,13 +1,60 @@
 [
-  {"rec_type":"ACTI","record_id":"jtt_fast_travel","name":"Jungle Portal","mesh":"jtt\\totem_pole.dae","script":"JTT_FastTravel","flags":0},
-  {"rec_type":"STAT","record_id":"VFX_DefaultHit", "mesh":"","flags":0},
-  {"rec_type":"STAT","record_id":"VFX_DefaultCast","mesh":"","flags":0},
-  {"rec_type":"STAT","record_id":"VFX_DefaultArea","mesh":"","flags":0},
-  {"rec_type":"STAT","record_id":"divinemarker",  "mesh":"marker_divine.dae","flags":0},
-  {"rec_type":"STAT","record_id":"doormarker",    "mesh":"marker_door.dae",  "flags":0},
-  {"rec_type":"STAT","record_id":"northmarker",   "mesh":"marker_north.dae", "flags":0},
-  {"rec_type":"STAT","record_id":"templemarker",  "mesh":"marker_temple.dae","flags":0},
-  {"rec_type":"STAT","record_id":"travelmarker",  "mesh":"marker_travel.dae","flags":0},
+  {
+    "rec_type": "ACTI",
+    "record_id": "jtt_fast_travel",
+    "name": "Jungle Portal",
+    "mesh": "jtt\\totem_pole.dae",
+    "script": "JTT_FastTravel",
+    "flags": 0
+  },
+  {
+    "rec_type": "STAT",
+    "record_id": "VFX_DefaultHit",
+    "mesh": "",
+    "flags": 0
+  },
+  {
+    "rec_type": "STAT",
+    "record_id": "VFX_DefaultCast",
+    "mesh": "",
+    "flags": 0
+  },
+  {
+    "rec_type": "STAT",
+    "record_id": "VFX_DefaultArea",
+    "mesh": "",
+    "flags": 0
+  },
+  {
+    "rec_type": "STAT",
+    "record_id": "divinemarker",
+    "mesh": "marker_divine.dae",
+    "flags": 0
+  },
+  {
+    "rec_type": "STAT",
+    "record_id": "doormarker",
+    "mesh": "marker_door.dae",
+    "flags": 0
+  },
+  {
+    "rec_type": "STAT",
+    "record_id": "northmarker",
+    "mesh": "marker_north.dae",
+    "flags": 0
+  },
+  {
+    "rec_type": "STAT",
+    "record_id": "templemarker",
+    "mesh": "marker_temple.dae",
+    "flags": 0
+  },
+  {
+    "rec_type": "STAT",
+    "record_id": "travelmarker",
+    "mesh": "marker_travel.dae",
+    "flags": 0
+  },
   {
     "rec_type": "STAT",
     "record_id": "jtt_totem_pole",
@@ -51,30 +98,6 @@
     "flags": 0
   },
   {
-    "rec_type": "ACTI",
-    "record_id": "jtt_campfire",
-    "name": "Campfire",
-    "mesh": "jtt\\fire_pit.dae",
-    "script": "JTT_Campfire",
-    "flags": 0
-  },
-  {
-    "rec_type": "ACTI",
-    "record_id": "jtt_workbench",
-    "name": "Workbench",
-    "mesh": "jtt\\workbench.dae",
-    "script": "JTT_Workbench",
-    "flags": 0
-  },
-  {
-    "rec_type": "ACTI",
-    "record_id": "jtt_build_site",
-    "name": "Build Site",
-    "mesh": "jtt\\build_site.dae",
-    "script": "JTT_BuildSite",
-    "flags": 0
-  },
-  {
     "rec_type": "CONT",
     "record_id": "jtt_tribal_chest",
     "name": "Tribal Chest",
@@ -83,9 +106,18 @@
     "cont_flags": 8,
     "script": "",
     "inventory": [
-      {"count": 5, "item_id": "jtt_shell_token"},
-      {"count": 2, "item_id": "jtt_jungle_berry"},
-      {"count": 1, "item_id": "jtt_bone_club"}
+      {
+        "count": 5,
+        "item_id": "jtt_shell_token"
+      },
+      {
+        "count": 2,
+        "item_id": "jtt_jungle_berry"
+      },
+      {
+        "count": 1,
+        "item_id": "jtt_bone_club"
+      }
     ],
     "flags": 0
   },
@@ -98,10 +130,22 @@
     "cont_flags": 8,
     "script": "",
     "inventory": [
-      {"count": 3, "item_id": "jtt_jungle_berry"},
-      {"count": 2, "item_id": "jtt_jungle_mushroom"},
-      {"count": 2, "item_id": "jtt_jungle_root"},
-      {"count": 1, "item_id": "jtt_bird_feather"}
+      {
+        "count": 3,
+        "item_id": "jtt_jungle_berry"
+      },
+      {
+        "count": 2,
+        "item_id": "jtt_jungle_mushroom"
+      },
+      {
+        "count": 2,
+        "item_id": "jtt_jungle_root"
+      },
+      {
+        "count": 1,
+        "item_id": "jtt_bird_feather"
+      }
     ],
     "flags": 0
   },
@@ -174,16 +218,132 @@
     "close_sound": "",
     "flags": 0
   },
-  {"rec_type": "STAT", "record_id": "jtt_tree_oak",  "mesh": "jtt\\tree_oak.dae",  "flags": 0},
-  {"rec_type": "STAT", "record_id": "jtt_tree_palm", "mesh": "jtt\\tree_palm.dae", "flags": 0},
-  {"rec_type": "STAT", "record_id": "jtt_tree_pine", "mesh": "jtt\\tree_pine.dae", "flags": 0},
-  {"rec_type": "STAT", "record_id": "jtt_tree_dead", "mesh": "jtt\\tree_dead.dae", "flags": 0},
+  {
+    "rec_type": "STAT",
+    "record_id": "jtt_tree_oak",
+    "mesh": "jtt\\tree_oak.dae",
+    "flags": 0
+  },
+  {
+    "rec_type": "STAT",
+    "record_id": "jtt_tree_palm",
+    "mesh": "jtt\\tree_palm.dae",
+    "flags": 0
+  },
+  {
+    "rec_type": "STAT",
+    "record_id": "jtt_tree_pine",
+    "mesh": "jtt\\tree_pine.dae",
+    "flags": 0
+  },
+  {
+    "rec_type": "STAT",
+    "record_id": "jtt_tree_dead",
+    "mesh": "jtt\\tree_dead.dae",
+    "flags": 0
+  },
   {
     "rec_type": "ACTI",
     "record_id": "jtt_iron_deposit",
     "name": "Iron Deposit",
     "mesh": "jtt\\iron_deposit.dae",
     "script": "JTT_IronNode",
+    "flags": 0
+  },
+  {
+    "rec_type": "CONT",
+    "record_id": "jtt_storage_chest",
+    "name": "Storage Chest",
+    "mesh": "jtt\\tribal_chest.dae",
+    "capacity": 500.0,
+    "cont_flags": 8,
+    "script": "",
+    "inventory": [],
+    "flags": 0
+  },
+  {
+    "rec_type": "CONT",
+    "record_id": "jtt_campfire",
+    "name": "Campfire",
+    "mesh": "jtt\\fire_pit.dae",
+    "capacity": 0.0,
+    "cont_flags": 8,
+    "script": "JTT_CampfireScr",
+    "inventory": [],
+    "flags": 0
+  },
+  {
+    "rec_type": "CONT",
+    "record_id": "jtt_build_site",
+    "name": "Build Site",
+    "mesh": "jtt\\build_site.dae",
+    "capacity": 0.0,
+    "cont_flags": 8,
+    "script": "JTT_BuildSiteScr",
+    "inventory": [],
+    "flags": 0
+  },
+  {
+    "rec_type": "CONT",
+    "record_id": "jtt_tannery",
+    "name": "Tannery",
+    "mesh": "jtt\\workbench.dae",
+    "capacity": 0.0,
+    "cont_flags": 8,
+    "script": "JTT_TanneryScr",
+    "inventory": [],
+    "flags": 0
+  },
+  {
+    "rec_type": "CONT",
+    "record_id": "jtt_armory",
+    "name": "Armory",
+    "mesh": "jtt\\workbench.dae",
+    "capacity": 0.0,
+    "cont_flags": 8,
+    "script": "JTT_ArmoryScr",
+    "inventory": [],
+    "flags": 0
+  },
+  {
+    "rec_type": "CONT",
+    "record_id": "jtt_forge",
+    "name": "Forge",
+    "mesh": "jtt\\fire_pit.dae",
+    "capacity": 0.0,
+    "cont_flags": 8,
+    "script": "JTT_ForgeScr",
+    "inventory": [],
+    "flags": 0
+  },
+  {
+    "rec_type": "CONT",
+    "record_id": "jtt_cauldron",
+    "name": "Cauldron",
+    "mesh": "jtt\\herb_basket.dae",
+    "capacity": 0.0,
+    "cont_flags": 8,
+    "script": "JTT_CauldronScr",
+    "inventory": [],
+    "flags": 0
+  },
+  {
+    "rec_type": "CONT",
+    "record_id": "jtt_voodoo_hut",
+    "name": "Voodoo Hut",
+    "mesh": "jtt\\voodoo_shrine.dae",
+    "capacity": 0.0,
+    "cont_flags": 8,
+    "script": "JTT_VoodooHut",
+    "inventory": [],
+    "flags": 0
+  },
+  {
+    "rec_type": "ACTI",
+    "record_id": "jtt_workbench",
+    "name": "Workbench",
+    "mesh": "jtt\\workbench.dae",
+    "script": "JTT_WorkbenchScr",
     "flags": 0
   }
 ]

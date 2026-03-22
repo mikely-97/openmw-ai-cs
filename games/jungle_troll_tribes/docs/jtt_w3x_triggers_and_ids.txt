@@ -1,0 +1,494 @@
+JUNGLE TROLL TRIBES 7.0.2 - ALL GAME TRIGGERS/SYSTEMS
+============================================================
+  Abilities_All_Bow_and_Gun
+  Abilities_All_Dagger_Spear_Axe
+  Abilities_All_Dagger_Spear_Axe_2
+  Abilities_All_Others
+  Abilities_All_Spells_and_Clubs
+  Abilities_Heroes
+  Ability_channel_Animations
+  Achievements
+  Action_Mode_JASS
+  Alchemy_Lvl
+  Ammo_add
+  Ammo_poison
+  Animal_Color
+  Animal_Death
+  Animal_Death_2
+  Animal_Reproduction_1
+  Animal_Reproduction_2
+  Animal_Reproduction_3
+  Animal_Reproduction_4
+  ArmorBootGauntlet__Gain
+  ArmorBootGauntlet__Lose
+  Attacking_Units
+  Ballistics_Lvl
+  Basic_Recipes
+  Beast_Master_Lvl
+  Boat_enter
+  Boat_exit
+  Bomber_Lvl
+  Boss_and_Environment_Death
+  Bosses
+  Building_Death
+  Building_ProgressBar
+  Cancel_Special
+  Cauldron_Cooking
+  Change_Tribe_global
+  Check_and_Cast_Fishing_Rod
+  Choose_Hero10_new
+  Choose_Hero11_new
+  Choose_Hero12_new
+  Choose_Hero1_new
+  Choose_Hero2_new
+  Choose_Hero3_new
+  Choose_Hero4_new
+  Choose_Hero5_new
+  Choose_Hero6_new
+  Choose_Hero7_new
+  Choose_Hero8_new
+  Choose_Hero9_new
+  Clothes_Heat_Add
+  Cooking_Lvl
+  Count
+  Craft_an_Invention
+  Create_Bronze_Bar
+  Create_Iron_Bar
+  Create_MultiBoard
+  DTimer
+  Day
+  Days_ManaGold_JASS
+  Dclick
+  Debug
+  Dedit
+  Dismount_1
+  Dismount_2
+  Dissassemble_Item_1
+  Dissassemble_Item_10
+  Dissassemble_Item_11
+  Dissassemble_Item_2
+  Dissassemble_Item_3
+  Dissassemble_Item_4
+  Dissassemble_Item_5
+  Dissassemble_Item_6
+  Dissassemble_Item_7
+  Dissassemble_Item_8
+  Dissassemble_Item_9
+  DropAll_JASS
+  DropItemDestructible__JASS
+  Dsetup
+  Dummy_Death
+  Easy
+  Finish_Building_Global
+  FireCamp_Light_and_Cooking
+  Fish_bite
+  Fishing_Lvl
+  ForestFire_Spread_JASS
+  Game_Mode_Launcher_Bot
+  Global_Ability_1
+  Global_Ability_1_instant
+  Global_Ability_Recipe
+  Global_Item_Acquire
+  Global_Item_Drop
+  Global_Timer_10_sec
+  Global_Unit_Die
+  Global_Use_Items
+  Hard
+  Hawk_Swoop_Damage_JASS
+  Hawk_Swoop_die
+  Headpiece_Gain
+  Headpiece_Lose
+  HelpTimer__JASS
+  High_Camera
+  HostDetect
+  Hunter_Recipes
+  Initialize_Hiding_Abilties
+  Inventor_Recipes
+  Item_Choice_and_Summon_Beast
+  Items_Limit
+  Leaver_Event
+  MS
+  Map_Start_Basic
+  Map_Tree
+  Map_Variables_Ini_JASS
+  Max_Heat
+  Max_Heat_Inventor
+  Max_Hunger
+  Max_Hunger_hunter
+  Merchant_Lvl
+  Mining_Lvl
+  Mining_Resource
+  NestingBirds
+  New_quest
+  Next_Page
+  Normal
+  Pack_Buildings_and_Trap
+  PlayerTimer__JASS
+  Player_Defeat
+  Player_ini
+  Plenty_Mode_JASS
+  Puppet_Master_Lvl
+  Quests
+  Random_Troll
+  Random_Weather_JASS
+  Reanimation
+  Recipe_Armory_A
+  Recipe_Armory_B
+  Recipe_Buy
+  Recipe_Cauldron
+  Recipe_Forge
+  Recipe_Imbue_Gauntlets_and_Boots
+  Recipe_Imbue_Staff_and_Wand
+  Recipe_Invention
+  Recipe_Sell
+  Recipe_SpellBooks
+  Recipe_Tannery_A
+  Recipe_Tannery_B
+  Recipe_Troll_Merchant
+  Recipe_Voodoo_Hut
+  Recipe_Voodoo_Revive
+  Recipe_Workshop_A
+  Recipe_Workshop_B
+  Reeling
+  Renaming_Players
+  Resting_JASS
+  Ritual_of_Blood_end
+  Ritual_of_Blood_start
+  Rotten_Animal_Death
+  Select_Global
+  Shaman_Recipes
+  Show_and_Swap_Multiboard
+  SpawnLauncher_JASS
+  SpellBookVoodooDoll__Gain
+  SpellBookVoodooDoll__Lose
+  StackingActions
+  StackingCancel
+  StackingChecker
+  StackingPreload
+  Start_Cinematic_A
+  StopItemDrop_and_Visibility
+  StoreDestructible__JASS
+  Survival_Effects
+  Tactical_Master_Lvl
+  Tactics_casted
+  Taunt
+  TextTrigger01
+  TextTrigger02
+  TextTrigger03
+  TextTrigger04
+  TextTrigger05
+  TextTrigger06
+  TextTrigger07
+  TextTrigger08
+  TextTrigger09
+  TextTrigger10
+  TextTrigger11
+  TextTrigger12
+  Totem_Ability_and_Effects
+  Totem_Defeat_JASS
+  Totem_Prayers_JASS
+  Totem_Timer_JASS
+  Totem_Timer_Remover
+  Transition_and_Cancel
+  Trapper_Lvl
+  TribeTimer_JASS
+  Troll_Eat
+  Troll_Eat_2
+  Turn_on_Chainsaw_All
+  Unit_is_Attacked_Global
+  Update_MultiBoard
+  Upgrade_Tower
+  Use_teleporter
+  Voodoo_Doll
+  Voting
+  Warrior_Modes
+  Warrior_Recipes
+  Water_Animal_Death
+  Weapon_and_offHand__Gain
+  Weapon_and_offHand__Lose
+  Wolf_Die
+  Wolf_Swallow_Damage__JASS
+  Wolf_Swallow_JASS
+  Yes_global
+  color
+  remove_Help
+
+
+UNIT TYPES SPAWNED IN CODE (50 unique)
+============================================================
+  'ndwm' spawned 84 times
+  'h01S' spawned 13 times
+  'h007' spawned 12 times
+  'h01D' spawned 12 times
+  'h01U' spawned 12 times
+  'h01E' spawned 12 times
+  'h01T' spawned 12 times
+  'n00N' spawned 8 times
+  'n00G' spawned 5 times
+  'nskk' spawned 4 times
+  'h01Q' spawned 3 times
+  'u001' spawned 3 times
+  'h01H' spawned 3 times
+  'h004' spawned 3 times
+  'h012' spawned 2 times
+  'nmg1' spawned 2 times
+  'H001' spawned 1 times
+  'h00J' spawned 1 times
+  'n002' spawned 1 times
+  'hMEP' spawned 1 times
+  'h018' spawned 1 times
+  'h01C' spawned 1 times
+  'h02I' spawned 1 times
+  'h019' spawned 1 times
+  'h02U' spawned 1 times
+  'h02V' spawned 1 times
+  'h02S' spawned 1 times
+  'h00E' spawned 1 times
+  'h00S' spawned 1 times
+  'h00T' spawned 1 times
+  'h00U' spawned 1 times
+  'o000' spawned 1 times
+  'n00Y' spawned 1 times
+  'n01H' spawned 1 times
+  'n01O' spawned 1 times
+  'n01G' spawned 1 times
+  'n027' spawned 1 times
+  'n00K' spawned 1 times
+  'opeo' spawned 1 times
+  'oeye' spawned 1 times
+  'n00Z' spawned 1 times
+  'n025' spawned 1 times
+  'h02L' spawned 1 times
+  'n01Y' spawned 1 times
+  'n01B' spawned 1 times
+  'n01E' spawned 1 times
+  'n01C' spawned 1 times
+  'n010' spawned 1 times
+  'n01L' spawned 1 times
+  'h01V' spawned 1 times
+
+
+ITEM TYPES CREATED IN CODE (222 unique)
+============================================================
+  'I010' created 115 times
+  'I011' created 86 times
+  'I004' created 64 times
+  'I003' created 62 times
+  'I00F' created 58 times
+  'I036' created 52 times
+  'I07J' created 50 times
+  'I014' created 48 times
+  'I01Q' created 40 times
+  'I012' created 28 times
+  'I067' created 27 times
+  'I013' created 25 times
+  'I05C' created 24 times
+  'I009' created 23 times
+  'I005' created 21 times
+  'I006' created 20 times
+  'I00A' created 18 times
+  'I05W' created 18 times
+  'I05V' created 18 times
+  'I0AV' created 17 times
+  'I00D' created 17 times
+  'I00B' created 17 times
+  'I007' created 15 times
+  'I008' created 15 times
+  'I00E' created 15 times
+  'I054' created 14 times
+  'I05U' created 13 times
+  'I03O' created 12 times
+  'I0B3' created 10 times
+  'I02X' created 9 times
+  'I04I' created 8 times
+  'I000' created 7 times
+  'I04J' created 7 times
+  'I00Y' created 7 times
+  'I04L' created 7 times
+  'I04R' created 7 times
+  'I06A' created 7 times
+  'I00C' created 7 times
+  'ches' created 5 times
+  'I01Z' created 5 times
+  'I0AG' created 4 times
+  'I059' created 4 times
+  'I050' created 4 times
+  'I030' created 4 times
+  'I031' created 4 times
+  'I02Y' created 4 times
+  'I032' created 4 times
+  'I034' created 4 times
+  'I04Z' created 4 times
+  'I02A' created 4 times
+  'I02J' created 4 times
+  'I08T' created 4 times
+  'I00S' created 4 times
+  'I04W' created 4 times
+  'I05R' created 4 times
+  'I061' created 4 times
+  'I01M' created 4 times
+  'I0AN' created 3 times
+  'I015' created 3 times
+  'evtl' created 3 times
+  'ciri' created 3 times
+  'I01F' created 3 times
+  'I04K' created 3 times
+  'I0A6' created 2 times
+  'I05S' created 2 times
+  'I09U' created 2 times
+  'I09V' created 2 times
+  'I09W' created 2 times
+  'I09X' created 2 times
+  'I09Y' created 2 times
+  'I09Z' created 2 times
+  'I0A0' created 2 times
+  'I0A1' created 2 times
+  'I0A2' created 2 times
+  'I09K' created 2 times
+  'I09L' created 2 times
+  'I09M' created 2 times
+  'I09N' created 2 times
+  'I09O' created 2 times
+  'I09P' created 2 times
+  'I09Q' created 2 times
+  'I09R' created 2 times
+  'I09S' created 2 times
+  'I094' created 2 times
+  'I095' created 2 times
+  'I096' created 2 times
+  'I097' created 2 times
+  'I02N' created 2 times
+  'I03M' created 2 times
+  'I03N' created 2 times
+  'I03D' created 2 times
+  'I02S' created 2 times
+  'I0AI' created 2 times
+  'I0AJ' created 2 times
+  'I035' created 2 times
+  'I02K' created 2 times
+  'I0AL' created 2 times
+  'I02L' created 2 times
+  'I09B' created 2 times
+  'I01E' created 2 times
+  'I018' created 2 times
+  'I03T' created 2 times
+  'I03S' created 2 times
+  'I02H' created 2 times
+  'I08Z' created 2 times
+  'I001' created 2 times
+  'I05Z' created 2 times
+  'gmfr' created 2 times
+  'I09J' created 2 times
+  'I03B' created 2 times
+  'I047' created 2 times
+  'I03R' created 2 times
+  'I06C' created 2 times
+  'I04T' created 2 times
+  'I06D' created 2 times
+  'I052' created 2 times
+  'I06B' created 2 times
+  'I04U' created 2 times
+  'I05A' created 2 times
+  'I04S' created 2 times
+  'I04V' created 2 times
+  'I002' created 1 times
+  'I01A' created 1 times
+  'I01B' created 1 times
+  'I01C' created 1 times
+  'I01D' created 1 times
+  'I09A' created 1 times
+  'I044' created 1 times
+  'I027' created 1 times
+  'I02W' created 1 times
+  'I00G' created 1 times
+  'I01S' created 1 times
+  'I00M' created 1 times
+  'I0AQ' created 1 times
+  'I0AT' created 1 times
+  'I09I' created 1 times
+  'pspd' created 1 times
+  'I01G' created 1 times
+  'I01J' created 1 times
+  'I01K' created 1 times
+  'I01H' created 1 times
+  'I01L' created 1 times
+  'I01I' created 1 times
+  'I016' created 1 times
+  'I019' created 1 times
+  'I05J' created 1 times
+  'I025' created 1 times
+  'I03C' created 1 times
+  'I08W' created 1 times
+  'I00I' created 1 times
+  'I02U' created 1 times
+  'I00J' created 1 times
+  'I038' created 1 times
+  'I026' created 1 times
+  'I0B1' created 1 times
+  'I0B2' created 1 times
+  'I09F' created 1 times
+  'I0B0' created 1 times
+  'I0B4' created 1 times
+  'I07O' created 1 times
+  'I07P' created 1 times
+  'I07Q' created 1 times
+  'I07R' created 1 times
+  'I03P' created 1 times
+  'I069' created 1 times
+  'I03Q' created 1 times
+  'I0AK' created 1 times
+  'I09E' created 1 times
+  'I00Z' created 1 times
+  'I02V' created 1 times
+  'I02B' created 1 times
+  'vddl' created 1 times
+  'horl' created 1 times
+  'I029' created 1 times
+  'I045' created 1 times
+  'I02O' created 1 times
+  'I02T' created 1 times
+  'I02P' created 1 times
+  'bzbf' created 1 times
+  'sorf' created 1 times
+  'bzbe' created 1 times
+  'I06H' created 1 times
+  'I09H' created 1 times
+  'kpin' created 1 times
+  'I0AD' created 1 times
+  'I053' created 1 times
+  'I091' created 1 times
+  'I092' created 1 times
+  'I093' created 1 times
+  'I08S' created 1 times
+  'I00V' created 1 times
+  'I03J' created 1 times
+  'I03K' created 1 times
+  'I00U' created 1 times
+  'I08G' created 1 times
+  'I08I' created 1 times
+  'I08L' created 1 times
+  'I08P' created 1 times
+  'I08X' created 1 times
+  'I01R' created 1 times
+  'I023' created 1 times
+  'I04M' created 1 times
+  'I02E' created 1 times
+  'I020' created 1 times
+  'I02D' created 1 times
+  'I02M' created 1 times
+  'I01W' created 1 times
+  'I024' created 1 times
+  'I02Q' created 1 times
+  'I09G' created 1 times
+  'I0A7' created 1 times
+  'I0A8' created 1 times
+  'rde2' created 1 times
+  'rde3' created 1 times
+  'I00R' created 1 times
+  'I042' created 1 times
+  'I077' created 1 times
+  'I07A' created 1 times
+  'I07L' created 1 times
+  'I08Y' created 1 times
+  'I068' created 1 times
+  'I066' created 1 times

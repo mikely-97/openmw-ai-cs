@@ -125,5 +125,176 @@
     ],
     "enchantment": "jtt_ench_shaman_staff",
     "flags": 0
+  },
+  {
+    "rec_type": "ARMO",
+    "record_id": "jtt_boarskin_coat",
+    "name": "Boar Skin Coat",
+    "mesh": "jtt\\hide_cuirass.dae",
+    "icon": "",
+    "armo_type": 2,
+    "weight": 10.0,
+    "value": 30,
+    "health": 200,
+    "enchant_pts": 0,
+    "armour_rating": 15,
+    "script": "",
+    "parts": [
+      {"index": 2, "male": "", "female": ""}
+    ],
+    "enchantment": "",
+    "flags": 0
+  },
+  {
+    "rec_type": "ARMO",
+    "record_id": "jtt_bearfur_coat",
+    "name": "Bear Fur Coat",
+    "mesh": "jtt\\hide_cuirass.dae",
+    "icon": "",
+    "armo_type": 2,
+    "weight": 12.0,
+    "value": 55,
+    "health": 280,
+    "enchant_pts": 0,
+    "armour_rating": 22,
+    "script": "",
+    "parts": [
+      {"index": 2, "male": "", "female": ""}
+    ],
+    "enchantment": "",
+    "flags": 0
+  },
+  {
+    "rec_type": "ARMO",
+    "record_id": "jtt_catfur_coat",
+    "name": "Cat Fur Coat",
+    "mesh": "jtt\\hide_cuirass.dae",
+    "icon": "",
+    "armo_type": 2,
+    "weight": 8.0,
+    "value": 50,
+    "health": 250,
+    "enchant_pts": 0,
+    "armour_rating": 20,
+    "script": "",
+    "parts": [
+      {"index": 2, "male": "", "female": ""}
+    ],
+    "enchantment": "",
+    "flags": 0
+  },
+  {
+    "rec_type": "ARMO",
+    "record_id": "jtt_leather_boots",
+    "name": "Leather Boots",
+    "mesh": "jtt\\bark_pauldron.dae",
+    "icon": "",
+    "armo_type": 5,
+    "weight": 4.0,
+    "value": 20,
+    "health": 150,
+    "enchant_pts": 0,
+    "armour_rating": 8,
+    "script": "",
+    "parts": [
+      {"index": 5, "male": "", "female": ""}
+    ],
+    "enchantment": "",
+    "flags": 0
+  },
+  {
+    "rec_type": "ARMO",
+    "record_id": "jtt_leather_gauntlets",
+    "name": "Leather Gauntlets",
+    "mesh": "jtt\\bark_pauldron.dae",
+    "icon": "",
+    "armo_type": 6,
+    "weight": 2.0,
+    "value": 15,
+    "health": 120,
+    "enchant_pts": 0,
+    "armour_rating": 6,
+    "script": "",
+    "parts": [
+      {"index": 6, "male": "", "female": ""}
+    ],
+    "enchantment": "",
+    "flags": 0
+  },
+  {
+    "rec_type": "ARMO",
+    "record_id": "jtt_tortoise_shield",
+    "name": "Tortoise Shield",
+    "mesh": "jtt\\bone_shield.dae",
+    "icon": "",
+    "armo_type": 9,
+    "weight": 8.0,
+    "value": 45,
+    "health": 300,
+    "enchant_pts": 0,
+    "armour_rating": 25,
+    "script": "",
+    "parts": [
+      {"index": 9, "male": "", "female": ""}
+    ],
+    "enchantment": "",
+    "flags": 0
+  },
+  {
+    "rec_type": "ARMO",
+    "record_id": "jtt_iron_helm",
+    "name": "Iron Helm",
+    "mesh": "jtt\\bone_helm.dae",
+    "icon": "",
+    "armo_type": 0,
+    "weight": 5.0,
+    "value": 40,
+    "health": 250,
+    "enchant_pts": 0,
+    "armour_rating": 18,
+    "script": "",
+    "parts": [
+      {"index": 0, "male": "", "female": ""}
+    ],
+    "enchantment": "",
+    "flags": 0
+  },
+  {
+    "rec_type": "ARMO",
+    "record_id": "jtt_iron_cuirass",
+    "name": "Iron Cuirass",
+    "mesh": "jtt\\hide_cuirass.dae",
+    "icon": "",
+    "armo_type": 2,
+    "weight": 18.0,
+    "value": 80,
+    "health": 400,
+    "enchant_pts": 0,
+    "armour_rating": 35,
+    "script": "",
+    "parts": [
+      {"index": 2, "male": "", "female": ""}
+    ],
+    "enchantment": "",
+    "flags": 0
+  },
+  {
+    "rec_type": "ARMO",
+    "record_id": "jtt_voodoo_mask",
+    "name": "Voodoo Mask",
+    "mesh": "jtt\\bone_helm.dae",
+    "icon": "",
+    "armo_type": 0,
+    "weight": 2.0,
+    "value": 35,
+    "health": 150,
+    "enchant_pts": 30,
+    "armour_rating": 10,
+    "script": "",
+    "parts": [
+      {"index": 0, "male": "", "female": ""}
+    ],
+    "enchantment": "",
+    "flags": 0
   }
 ]

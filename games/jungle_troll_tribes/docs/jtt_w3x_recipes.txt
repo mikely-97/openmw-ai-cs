@@ -1,0 +1,1176 @@
+================================================================================
+JUNGLE TROLL TRIBES 7.0.2 — COMPLETE RECIPE REFERENCE
+================================================================================
+
+============================================================
+  Armory_A (41 recipes)
+============================================================
+
+  1. Bronze Bootz!
+     Description: We needz 1 pair of Pig, Crab, Snake or Alligator Bootz or Bootz of Haste and 1 Bronze Bar.
+     Ingredients: 1x I04N + 1x I04Q + 1x I04O + 1x I04P + 1x I03I + 1x I03H
+
+  2. Bronze Gauntletz!
+     Description: We needz 1 pair of Pig, Crab, Snake or Alligator Gauntletz or Gauntletz of Fury and 1 Bronze Bar.
+     Ingredients: 1x I05Q + 1x I05I + 1x I05N + 1x I05O + 1x I051 + 1x I05G
+
+  3. an Iron Armor!
+     Description: We needz 1 Bronze Scale, Cuirass, Mail or Plate and 2 Iron Bar.
+     Ingredients: 1x I039 + 1x I01U + 1x I01T + 1x I03A + 1x I01Z + 1x I05G
+
+  4. a Bronze Armor!
+     Description: We needz 1 Pig, Crab, Snake or Alligator Leather Coat and 2 Bronze Bar.
+     Ingredients: 1x I00O + 1x I03G + 1x I03L + 1x I00N + 2x I01Q
+
+  5. a Tortoise Armor!
+     Description: We needz 1 Fur Coat or Lined Fur Coat, 1 Giant Shell and 1 Rope.
+     Ingredients: 1x I08G + 1x I08P + 1x I08L + 1x I08I + 1x I00V + 1x I00U
+
+  6. an Ironwood Shield!
+     Description: We needz 1 Horned Shield and 1 Petrified Wood.
+     Ingredients: 1x I03U + 1x I06A + 1x I08L + 1x I08I + 1x I00V + 1x I00U
+
+  7. a Horned Shield!
+     Description: We needz 1 Tortoize Shield and 1 Antelope Horns.
+     Ingredients: 1x I00M + 1x I05U
+
+  8. a Tortoize Shield!
+     Description: We needz 1 Tortoize Shell, 1 Wood and 1 Rope.
+     Ingredients: 1x I00C + 1x I011 + 1x I010
+
+  9. a Forge kit!
+     Description: We needz 3 Flint and 1 Oil.
+     Ingredients: 3x I013 + 1x I08T + 1x I010
+
+  10. Bronze Alligator Leather Gauntletz of Fury!
+
+  11. Bronze Alligator Leather Bootz of Haste!
+
+  12. Bronze Snake Leather Gauntletz of Fury!
+
+  13. Bronze Snake Leather Bootz of Haste!
+
+  14. Bronze Crab Chitin Gauntletz of Fury!
+
+  15. Bronze Crab Chitin Bootz of Haste!
+
+  16. Bronze Pig Skin Gauntletz of Fury!
+
+  17. Bronze Pig Skin Bootz of Haste!
+
+  18. Bronze Alligator Leather Gauntletz!
+
+  19. Bronze Alligator Leather Bootz!
+
+  20. Bronze Snake Leather Gauntletz!
+
+  21. Bronze Snake Leather Bootz!
+
+  22. Bronze Crab Chitin Gauntletz!
+
+  23. Bronze Crab Chitin Bootz!
+
+  24. Bronze Pig Skin Gauntletz!
+
+  25. Bronze Pig Skin Bootz!
+
+  26. a Lined Bear Fur Tortoize Armor!
+
+  27. a Lined Sabretooth Fur Tortoize Armor!
+
+  28. a Lined Racoon Fur Tortoize Armor!
+
+  29. a Lined Rabbit Fur Tortoize Armor!
+
+  30. a Bear Fur Tortoize Armor!
+
+  31. a Wolf Fur Tortoize Armor!
+
+  32. a Racoon Fur Tortoize Armor!
+
+  33. a Rabbit Fur Tortoize Armor!
+
+  34. a Bronze Plate!
+
+  35. an Iron Plate!
+
+  36. a Bronze Mail!
+
+  37. an Iron Mail!
+
+  38. a Bronze Cuirass!
+
+  39. an Iron Cuirass!
+
+  40. a Bronze Scale!
+
+  41. an Iron Scale!
+
+============================================================
+  Armory_B (10 recipes)
+============================================================
+
+  1. a Bone Axe!
+     Description: We needz 1 Wood, 1 Bone and 1 Rope.
+     Ingredients: 1x I011 + 1x I004 + 1x I010
+     Result ID: I028
+
+  2. a Stone Axe!
+     Description: We needz 1 Wood, 1 Stone and 1 Rope.
+     Ingredients: 1x I011 + 1x I014 + 1x I010
+     Result ID: I01S
+
+  3. a Bronze Axe!
+     Description: We needz 1 Wood, 1 Bronze Bar and 1 Rope.
+     Ingredients: 1x I011 + 1x I01Q + 1x I010
+     Result ID: I00H
+
+  4. an Iron Axe!
+     Description: We needz 1 Wood, 1 Iron Bar and 1 Rope.
+     Ingredients: 1x I011 + 1x I01Z + 1x I010
+     Result ID: I02F
+
+  5. a Bone Club!
+     Description: We needz 1 Wood, 2 Bone and 1 Tinder.
+     Ingredients: 1x I011 + 2x I004 + 1x I012
+     Result ID: I02Z
+
+  6. a Big Bone Club!
+     Description: We needz 1 Wood, 4 Bone and 1 Tinder.
+     Ingredients: 1x I011 + 4x I004 + 1x I012
+     Result ID: I00G
+
+  7. a Spiked Club!
+     Description: We needz 1 Wood, 1 Antelope Hornz and 1 Tinder.
+     Ingredients: 1x I011 + 1x I05U + 1x I012
+     Result ID: I00T
+
+  8. a Big Spiked Club!
+     Description: We needz 1 Wood, 1 Antelope Hornz, 1 Skull and 1 Tinder.
+     Ingredients: 1x I011 + 1x I05U + 1x I012 + 1x I054 + 1x skrt
+     Result ID: I017
+
+  9. Javelinz!
+     Description: We needz 1 Wood, 1 Flint and 1 Rope.
+     Ingredients: 1x I011 + 1x I013 + 1x I010 + 1x I054 + 1x skrt
+     Result ID: I08V
+
+  10. Throwing Axez!
+     Description: We needz 1 Wood, 1 Stone and 1 Rope.
+     Ingredients: 1x I011 + 1x I014 + 1x I010
+     Result ID: I01V
+
+============================================================
+  Basic (19 recipes)
+============================================================
+
+  1. a Rope!
+     Ingredients: 2x I012
+     Result ID: I010
+
+  2. a Hunter's Tannery kit!
+     Ingredients: 4x I011 + 1x I009
+     Result ID: I01H
+
+  3. a Shaman Hut kit!
+     Ingredients: 4x I011 + 1x I010
+     Result ID: I01K
+
+  4. a Warrior's Armory kit!
+     Ingredients: 2x I013 + 4x I014
+     Result ID: I01G
+
+  5. an Inventor's Workshop kit!
+     Ingredients: 3x I011 + 3x I014
+     Result ID: I019
+
+  6. a Fishing Pole!
+     Description: We needz 1 Wood / Petrified Wood, 1 Tinder and 1 Feather.
+     Ingredients: 1x I012 + 1x I00F + 1x I011 + 1x I06A + 1x I003
+
+  7. a Camp Fire kit!
+     Ingredients: 1x I014 + 1x I012 + 1x I013 + 1x I011 + 1x I06A + 1x I003
+     Result ID: I015
+
+  8. a Merchant Shop kit!
+     Ingredients: 1x I014 + 3x I011 + 1x I013 + 1x I06A + 1x I003
+     Result ID: I03C
+
+  9. a Dagger!
+     Ingredients: 1x I05U + 1x I013 + 1x I004
+
+  10. a Tent!
+     Ingredients: 1x I011 + 1x I006 + 1x I005 + 1x I009
+
+  11. a Horn Dagger!
+     Result ID: I04R
+
+  12. an Obsidian Dagger!
+     Result ID: I04L
+
+  13. a Bone Dagger!
+     Result ID: I00Y
+
+  14. a Bear Fur Tent kit!
+     Result ID: I03D
+
+  15. a Sabretooth Fur Tent kit!
+     Result ID: I03N
+
+  16. a Pig Skin Tent kit!
+     Result ID: I03M
+
+  17. a Fishin' Pole!
+     Result ID: I02W
+
+  18. a Strong Fishin' Pole!
+     Result ID: I099
+
+  19. some Fishin' Bait.
+     Result ID: I0AV
+
+============================================================
+  Cauldron (14 recipes)
+============================================================
+
+  1. a Cure Wound Drink!
+     Ingredients: 1x I01A + 1x I01B
+     Result ID: I021
+
+  2. a Stamina Booster!
+     Ingredients: 1x I01C + 1x I01B
+     Result ID: I01R
+
+  3. a Diet Drink!
+     Ingredients: 1x I01A + 1x I01D
+     Result ID: I02M
+
+  4. a Regeneration Balm!
+     Ingredients: 2x I01A + 1x I01D
+     Result ID: I02D
+
+  5. an Energizer Balm!
+     Ingredients: 2x I01C + 1x I01D
+     Result ID: I02E
+
+  6. an Antidote!
+     Ingredients: 2x I01B
+     Result ID: I022
+
+  7. a Strong Liquor!
+     Ingredients: 2x I01D
+     Result ID: I01W
+
+  8. an Invisibility Elixir!
+     Ingredients: 1x I01D + 1x I01B
+     Result ID: I024
+
+  9. a Frenzy Elixir!
+     Ingredients: 1x I01A + 1x I01C
+     Result ID: I023
+
+  10. a Vampire Elixir!
+     Ingredients: 1x I01D + 1x I01C
+     Result ID: I04M
+
+  11. Envenomed Arrowz!
+     Ingredients: 1x I027 + 1x I04K + 1x I01F + 1x I01E
+
+  12. Tarantula Poisoned Arrowz!
+     Result ID: I0A5
+
+  13. Snake Poisoned Arrowz!
+     Result ID: I0A4
+
+  14. Spider Poisoned Arrowz!
+     Result ID: I0A3
+
+============================================================
+  Forge (2 recipes)
+============================================================
+
+  1. a Bronze Bar
+     Result ID: I01Q
+
+  2. an Iron Bar!
+     Result ID: I01Z
+
+============================================================
+  Hunter (13 recipes)
+============================================================
+
+  1. a Bow!
+     Ingredients: 1x I011 + 1x I010
+     Result ID: I044
+
+  2. a Longbow!
+     Ingredients: 1x I06A + 1x I010
+     Result ID: I0AR
+
+  3. a Composite Bow!
+     Ingredients: 1x I05U + 1x I010 + 2x I004
+     Result ID: I0AO
+
+  4. Arrowz!
+     Ingredients: 1x I011 + 1x I00F + 1x I004
+     Result ID: I027
+
+  5. a Sensor Trap!
+     Ingredients: 2x I004 + 1x I00F + 1x I004
+     Result ID: I038
+
+  6. a Spiked Trap!
+     Ingredients: 2x I004 + 3x I011 + 1x I004
+     Result ID: I00I
+
+  7. a Rock Trap!
+     Ingredients: 1x I010 + 2x I011
+     Result ID: I00J
+
+  8. an Ensnare Trap!
+     Ingredients: 2x I010 + 2x I011
+     Result ID: I026
+
+  9. a Pet's Den!
+     Ingredients: 2x I011 + 1x I014
+     Result ID: I02R
+
+  10. a Hunter'z Tent!
+     Ingredients: 1x I011 + 1x I006 + 1x I005 + 1x I009 + 2x I012
+
+  11. a Hunter'z Bear Fur Tent kit!
+     Result ID: I0AJ
+
+  12. a Hunter'z Sabretooth Fur Tent kit!
+     Result ID: I0AI
+
+  13. a Hunter'z Pig Skin Tent kit!
+     Result ID: I02S
+
+============================================================
+  Imbuing (34 recipes)
+============================================================
+
+  1. imbued Gauntletz!
+     Description: We needz 1 pair of any Gauntletz, 1 Mana Stone and 1 Feather.
+     Ingredients: 1x I089 + 1x I08O
+
+  2. imbued Bootz!
+     Description: We needz 1 pair of any Bootz, 1 Mana Stone and 1 Feather.
+     Ingredients: 1x I088 + 1x I08N
+
+  3. Bronze Alligator Leather Gauntletz of Fury!
+
+  4. Bronze Snake Leather Gauntletz of Fury!
+
+  5. Bronze Crab Chitin Gauntletz of Fury!
+
+  6. Bronze Pig Skin Gauntletz of Fury!
+
+  7. Lined Bear Fur Gauntletz of Fury!
+
+  8. Lined Sabretooth Fur Gauntletz of Fury!
+
+  9. Lined Racoon Fur Gauntletz of Fury!
+
+  10. Lined Rabbit Fur Gauntletz of Fury!
+
+  11. Bear Fur Gauntletz of Fury!
+
+  12. Sabretooth Fur Gauntletz of Fury!
+
+  13. Racoon Fur Gauntletz of Fury!
+
+  14. Rabbit Fur Gauntletz of Fury!
+
+  15. Alligator Leather Gauntletz of Fury!
+
+  16. Snake Leather Gauntletz of Fury!
+
+  17. Crab Chitin Gauntletz of Fury!
+
+  18. Pig Skin Gauntletz of Fury!
+
+  19. Bronze Alligator Leather Bootz of Haste!
+
+  20. Bronze Snake Leather Bootz of Haste!
+
+  21. Bronze Crab Chitin Bootz of Haste!
+
+  22. Bronze Pig Skin Bootz of Haste!
+
+  23. Lined Bear Fur Bootz of Haste!
+
+  24. Lined Sabretooth Fur Bootz of Haste!
+
+  25. Lined Racoon Fur Bootz of Haste!
+
+  26. Lined Rabbit Fur Bootz of Haste!
+
+  27. Bear Fur Bootz of Haste!
+
+  28. Sabretooth Fur Bootz of Haste!
+
+  29. Racoon Fur Bootz of Haste!
+
+  30. Rabbit Fur Bootz of Haste!
+
+  31. Alligator Leather Bootz of Haste!
+
+  32. Snake Leather Bootz of Haste!
+
+  33. Crab Chitin Bootz of Haste!
+
+  34. Pig Skin Bootz of Haste!
+
+============================================================
+  Invention_Plans (9 recipes)
+============================================================
+
+  1. Planz for an Engine!
+     Ingredients: 1x I02X
+     Result ID: I033
+
+  2. Recipe for Greatezt Elixir!
+     Ingredients: 1x I02X
+     Result ID: I033
+
+  3. Plans for a Mecha-Golem!
+     Ingredients: 1x I02X
+     Result ID: I0B6
+
+  4. Planz for Harpoonz!
+     Result ID: I0B5
+
+  5. Planz for a Giant Shield!
+     Result ID: I0AH
+
+  6. Planz for Fiery Axez!
+     Result ID: I0AE
+
+  7. Planz for Thunder Clubz!
+     Result ID: I098
+
+  8. Planz for a Chainsaw!
+     Result ID: I090
+
+  9. a devious plan!
+     Result ID: I05X
+
+============================================================
+  Inventor (11 recipes)
+============================================================
+
+  1. Ammo!
+     Ingredients: 1x I08T + 1x I013
+
+  2. a Stockage Box kit!
+     Ingredients: 1x I011 + 1x I013
+     Result ID: I01L
+
+  3. a Torch!
+     Ingredients: 1x I011 + 1x I08T
+     Result ID: I035
+
+  4. Fuel!
+     Ingredients: 1x I02N + 1x I012 + 1x I011
+     Result ID: I070
+
+  5. a Watch Tower
+     Ingredients: 3x I011 + 1x I012 + 1x I011
+     Result ID: I02J
+
+  6. Grenadez!
+     Ingredients: 1x I02N + 1x I012 + 1x I013
+     Result ID: I04H
+
+  7. Molotov Cocktailz!
+     Ingredients: 1x I02N + 2x I046 + 1x I013
+     Result ID: I048
+
+  8. Parchmentz!
+     Ingredients: 1x I009 + 1x I067 + 1x I013
+     Result ID: I02X
+
+  9. a Wall!
+     Ingredients: 1x I014 + 1x I067
+     Result ID: I05J
+
+  10. Black Powder!
+     Result ID: I02N
+
+  11. Fuel!
+     Result ID: I046
+
+============================================================
+  Shaman (15 recipes)
+============================================================
+
+  1. a Sacrificial Dagger!
+     Description: Me needz a Horn Dagger.
+     Ingredients: 1x I04R
+     Result ID: I0AW
+
+  2. a Wand!
+     Ingredients: 1x I011 + 1x I00E + 1x I00F
+     Result ID: I05V
+
+  3. a Staff!
+     Ingredients: 1x I011 + 4x I004 + 1x I00F
+     Result ID: I05W
+
+  4. a Sarbacane!
+     Ingredients: 1x I05U + 4x I004 + 1x I00F
+     Result ID: I0AS
+
+  5. Parchmentz!
+     Ingredients: 1x I009 + 1x I067
+     Result ID: I02X
+
+  6. a Totem of Horror!
+     Ingredients: 1x I014 + 1x I054
+     Result ID: I02K
+
+  7. magical Seedz!
+     Ingredients: 1x I01A + 1x I01B + 1x I01C + 1x I01D + 1x I002 + 1x I011
+     Result ID: I047
+
+  8. a Voodoo Doll!
+     Description: We needz 1 Wood and 3 Tinder.
+     Ingredients: 1x I011 + 3x I012 + 1x I01C + 1x I01D + 1x I002 + 1x I011
+     Result ID: vddl
+
+  9. Poisonous Needlez!
+     Ingredients: 1x I04K + 1x I01F + 1x I01E + 1x I00E
+     Result ID: I02C
+
+  10. a Seed of Aria!
+     Result ID: I07O
+
+  11. a Seed of Bardane!
+     Result ID: I07P
+
+  12. a Seed of Corian!
+     Result ID: I07Q
+
+  13. a Seed of Draximor!
+     Result ID: I07R
+
+  14. a Seed of Draximor!
+     Result ID: I087
+
+  15. a Seed of Draximor!
+     Result ID: I02I
+
+============================================================
+  SpellBooks (29 recipes)
+============================================================
+
+  1. an empowered Spell Book!
+     Ingredients: 1x I036 + 1x I034 + 1x I04Z + 1x I02A + 1x I031 + 1x I02Y
+
+  2. an Arcanum!
+     Ingredients: 1x I04V + 1x I06C + 1x I06B + 1x I04U + 1x I04T + 1x I04S
+
+  3. a Spell Book of Blink!
+     Description: We needz 1 Parchment, 1 Feather and 1 Stamina Booster.
+     Ingredients: 1x I02X + 1x I00F + 1x I01R + 1x I04U + 1x I04T + 1x I04S
+
+  4. a Spell Book of Mirror Imagez!
+     Description: We needz 1 Parchment, 1 Feather and 1 Strong Liquor.
+     Ingredients: 1x I02X + 1x I00F + 1x I01W
+
+  5. a Spell Book of Vanish!
+     Description: We needz 1 Parchment, 1 Feather and 1 Invisibility Elixir.
+     Ingredients: 1x I02X + 1x I00F + 1x I024
+
+  6. a Spell Book of Haste!
+     Description: We needz 1 Parchment, 1 Feather and 1 Energizer Balm.
+     Ingredients: 1x I02X + 1x I00F + 1x I02E
+
+  7. a Spell Book of Torture!
+     Description: We needz 1 Parchment, 1 Feather and 1 Diet Drink.
+     Ingredients: 1x I02X + 1x I00F + 1x I02M
+
+  8. a Spell Book of Regeneration!
+     Description: We needz 1 Parchment, 1 Feather and 1 Regeneration Balm.
+     Ingredients: 1x I02X + 1x I00F + 1x I02D
+
+  9. a Spell Book of Fireball!
+     Description: We needz 1 Parchment, 1 Feather and 1 Frenzy Elixir.
+     Ingredients: 1x I02X + 1x I00F + 1x I023
+
+  10. a Spell Book of Handz of the Dead!
+     Description: We needz 1 Parchment, 1 Feather and 1 Vampire Elixir.
+     Ingredients: 1x I02X + 1x I00F + 1x I04M
+
+  11. a Spell Book of Malaria!
+     Description: We needz 1 Parchment, 1 Feather and 1 Poison of any type.
+     Ingredients: 1x I020 + 1x I01Y + 1x I01X + 1x I02X + 1x I00F
+
+  12. a Spell Book of Teleport!
+
+  13. a Spell Book of Double!
+
+  14. a Spell Book of Invisibility!
+
+  15. a Spell Book of Lightning!
+
+  16. a Spell Book of Freeze!
+
+  17. a Spell Book of Plague!
+
+  18. a Spell Book of Group Haste!
+
+  19. a Spell Book of Mass Heal!
+
+  20. a Spell Book of Hex!
+
+  21. an Arcanum of Shadow!
+
+  22. an Arcanum of Shadow!
+
+  23. an Arcanum of Shadow!
+
+  24. an Arcanum of Darkness!
+
+  25. an Arcanum of Darkness!
+
+  26. an Arcanum of Darkness!
+
+  27. an Arcanum of Light!
+
+  28. an Arcanum of Light!
+
+  29. an Arcanum of Light!
+
+============================================================
+  Staff_Imbuing (38 recipes)
+============================================================
+
+  1. an imbued Staff!
+     Description: We needz 1 Staff and a Spell Book.
+     Ingredients: 1x I05W
+
+  2. an imbued Wand!
+     Description: We needz 1 Wand and a Spell Book.
+     Ingredients: 1x I05V
+
+  3. a Staff of Blink!
+
+  4. a Staff of Double!
+
+  5. a Staff of Invisibility!
+
+  6. a Staff of Mirror Imagez!
+
+  7. a Staff of Teleport!
+
+  8. a Staff of Vanish!
+
+  9. a Staff of Fireball!
+
+  10. a Staff of Freeze!
+
+  11. a Staff of Handz of the Dead!
+
+  12. a Staff of Lightning!
+
+  13. a Staff of Malaria!
+
+  14. a Staff of Plague!
+
+  15. a Staff of Group Haste!
+
+  16. a Staff of Haste!
+
+  17. a Staff of Hex!
+
+  18. a Staff of Mass Heal!
+
+  19. a Staff of Regeneration!
+
+  20. a Staff of Torture!
+
+  21. a Wand of Blink!
+
+  22. a Wand of Double!
+
+  23. a Wand of Invisibility!
+
+  24. a Wand of Mirror Imagez!
+
+  25. a Wand of Teleport!
+
+  26. a Wand of Vanish!
+
+  27. a Wand of Fireball!
+
+  28. a Wand of Freeze!
+
+  29. a Wand of Handz of the Dead!
+
+  30. a Wand of Lightning!
+
+  31. a Wand of Malaria!
+
+  32. a Wand of Plague!
+
+  33. a Wand of Group Haste!
+
+  34. a Wand of Haste!
+
+  35. a Wand of Hex!
+
+  36. a Wand of Mass Heal!
+
+  37. a Wand of Regeneration!
+
+  38. a Wand of Torture!
+
+============================================================
+  Tannery (58 recipes)
+============================================================
+
+  1. Troll Hut kit!
+     Ingredients: 2x I011 + 2x I014 + 1x I009 + 1x I00D + 1x I009
+
+  2. a Spear!
+     Description: We needz 1 Wood, 1 Rope and 1 Dagger.
+     Ingredients: 1x I04R + 1x I04L + 1x I00Y + 1x I011 + 1x I010
+
+  3. a Dagger!
+     Description: We needz 1 Bone or 1 Flint or 1 Antelope Hornz.
+     Ingredients: 1x I05U + 1x I013 + 1x I004 + 1x I011 + 1x I010
+
+  4. a Net!
+     Description: We needz 2 Rope.
+     Ingredients: 2x I010 + 1x I013 + 1x I004 + 1x I011 + 1x I010
+     Result ID: I00Z
+
+  5. Linen Cloth!
+     Description: We needz 2 Tinder.
+     Ingredients: 2x I012 + 1x I013 + 1x I004
+     Result ID: I05C
+
+  6. Bear Fur Bootz!
+     Result ID: I03E
+
+  7. Bear Fur Gauntletz!
+     Result ID: I03E
+
+  8. Alligator Leather Bootz!
+     Result ID: I04Y
+
+  9. Alligator Leather Gauntletz!
+     Result ID: I03I
+
+  10. Sabretooth Fur Bootz!
+     Result ID: I03F
+
+  11. Sabretooth Fur Gauntletz!
+     Result ID: I03F
+
+  12. Snake Leather Bootz!
+     Result ID: I05H
+
+  13. Snake Leather Gauntletz!
+     Result ID: I03H
+
+  14. Racoon Fur Bootz!
+     Result ID: I00X
+
+  15. Racoon Fur Gauntletz!
+     Result ID: I00X
+
+  16. Crab Chitin Bootz!
+     Result ID: I05F
+
+  17. Crab Chitin Gauntletz!
+     Result ID: I00Q
+
+  18. Rabbit Fur Bootz!
+     Result ID: I00W
+
+  19. Rabbit Fur Gauntletz!
+     Result ID: I00W
+
+  20. Pig Skin Bootz!
+     Result ID: I05E
+
+  21. Pig Skin Gauntletz!
+     Result ID: I00P
+
+  22. a Troll Hut kit!
+     Result ID: I01I
+
+  23. a Horn Spear!
+     Result ID: I04J
+
+  24. an Obsidian Spear!
+     Result ID: I04I
+
+  25. a Bone Spear!
+     Result ID: I000
+
+  26. a Horn Dagger!
+     Result ID: I04R
+
+  27. an Obsidian Dagger!
+     Result ID: I04L
+
+  28. a Bone Dagger!
+     Result ID: I00Y
+
+  29. Lined Gauntletz or Bootz!
+     Description: We needz 1 pair of Rabbit, Racoon, Sabretooth or Bear Gauntletz or Bootz and 1 Linen Cloth.
+     Ingredients: 1x I05P + 1x I056 + 1x I055
+
+  30. a Lined Coat!
+     Description: We needz 1 Rabbit, Racoon, Sabretooth or Bear Coat and 2 Linen Cloth.
+     Ingredients: 1x I00V + 1x I00U + 1x I03K + 1x I03J + 2x I05C
+
+  31. a Rabbit Fur Coat!
+     Description: We needz 2 Rabbit Fur, 1 Antelope Leather and 1 Rope.
+     Ingredients: 2x I007 + 1x I010 + 1x I067 + 1x I03J + 2x I05C
+
+  32. a Racoon Fur Coat!
+     Description: We needz 2 Racoon Fur, 1 Antelope Leather and 1 Rope.
+     Ingredients: 2x I008 + 1x I010 + 1x I067 + 2x I05C
+
+  33. a Sabretooth Fur Coat!
+     Description: We needz 1 Sabretooth Fur, 1 Antelope Leather and 1 Rope.
+     Ingredients: 1x I005 + 1x I010 + 1x I067
+
+  34. a Bear Fur Coat!
+     Description: We needz 1 Bear Fur, 1 Antelope Leather and 1 Rope.
+     Ingredients: 1x I006 + 1x I010 + 1x I067
+
+  35. a Pig Skin Coat!
+     Description: We needz 1 Pig Skin, 1 Antelope Leather and 1 Rope.
+     Ingredients: 1x I009 + 1x I010 + 1x I067
+
+  36. a Crab Chitin Coat!
+     Description: We needz 2 Crab Chitin, 1 Antelope Leather and 1 Rope.
+     Ingredients: 2x I00D + 1x I010 + 1x I067
+
+  37. a Snake Leather Coat!
+     Description: We needz 2 Snake Leather, 1 Antelope Leather and 1 Rope.
+     Ingredients: 2x I00A + 1x I010 + 1x I067
+
+  38. an Alligator Leather Coat!
+     Description: We needz 1 Alligator Leather, 1 Antelope Leather and 1 Rope.
+     Ingredients: 1x I00B + 1x I010 + 1x I067
+
+  39. Lined Bear Fur Gauntletz of Fury!
+
+  40. Lined Wolf Fur Gauntletz of Fury!
+
+  41. Lined Racoon Fur Gauntletz of Fury!
+
+  42. Lined Rabbit Fur Gauntletz of Fury!
+
+  43. Lined Bear Fur Bootz of Haste!
+
+  44. Lined Wolf Fur Bootz of Haste!
+
+  45. Lined Racoon Fur Bootz of Haste!
+
+  46. Lined Rabbit Fur Bootz of Haste!
+
+  47. Lined Bear Fur Gauntletz!
+
+  48. Lined Wolf Fur Gauntletz!
+
+  49. Lined Racoon Fur Gauntletz!
+
+  50. Lined Rabbit Fur Gauntletz!
+
+  51. Lined Bear Fur Bootz!
+
+  52. Lined Wolf Fur Bootz!
+
+  53. Lined Racoon Fur Bootz!
+
+  54. Lined Rabbit Fur Bootz!
+
+  55. a Lined Bear Fur Coat!
+
+  56. a Lined Wolf Fur Coat!
+
+  57. a Lined Racoon Fur Coat!
+
+  58. a Lined Rabbit Fur Coat!
+
+============================================================
+  Voodoo_Hut (24 recipes)
+============================================================
+
+  1. a magical Voodoo Mask!
+     Description: We needz 1 Voodoo Mask, 1 Mana Stone and 1 Giant Egg.
+     Ingredients: 1x I06K + 1x I01N + 1x I036 + 1x I03P + 1x I03Q + 1x I09E
+
+  2. a magical Voodoo Mask!
+     Description: We needz 1 Voodoo Mask, 1 Mana Stone and 1 Antelope Horns.
+     Ingredients: 1x I06K + 1x I01N + 1x I036 + 1x I05U + 1x I03Q + 1x I09E
+
+  3. a magical Voodoo Mask!
+     Description: We needz 1 Voodoo Mask, 1 Mana Stone and 1 Shrunken Head.
+     Ingredients: 1x I06K + 1x I01N + 1x I036 + 1x I06H
+
+  4. a Voodoo Mask!
+     Description: We needz 1 Wood or Petrified Wood, 2 Fish Bone and 1 Feather.
+     Ingredients: 1x I06A + 1x I011 + 2x I00E + 1x I00F
+
+  5. a Cauldron kit!
+     Description: We needz 1 Wood, 1 Stone, 1 Flint and 1 Oil.
+     Ingredients: 1x I011 + 1x I014 + 1x I013 + 1x I08T
+     Result ID: I016
+
+  6. magical Seedz!
+     Ingredients: 1x I01A + 1x I01B + 1x I01C + 1x I01D + 1x I002 + 1x I011
+     Result ID: I047
+
+  7. a Petrified Voodoo Mask of Life!
+     Result ID: I06N
+
+  8. a Petrified Voodoo Mask of Life!
+     Result ID: I06N
+
+  9. a Voodoo Mask of Life!
+     Result ID: I03V
+
+  10. a Voodoo Mask of Life!
+     Result ID: I03V
+
+  11. a Voodoo Mask of Life!
+     Result ID: I03V
+
+  12. a Petrified Voodoo Mask of Life!
+     Result ID: I06N
+
+  13. a Petrified Demonic Voodoo Mask!
+     Result ID: I074
+
+  14. a Petrified Ghostly Voodoo Mask!
+     Result ID: I074
+
+  15. a Petrified Voodoo Mask!
+     Result ID: I06X
+
+  16. a Demonic Voodoo Mask!
+     Result ID: I03W
+
+  17. a Ghostly Voodoo Mask!
+     Result ID: I03W
+
+  18. a Voodoo Mask!
+     Result ID: I03X
+
+  19. a Seed of Aria!
+     Result ID: I07O
+
+  20. a Seed of Bardane!
+     Result ID: I07P
+
+  21. a Seed of Corian!
+     Result ID: I07Q
+
+  22. a Seed of Draximor!
+     Result ID: I07R
+
+  23. a Berry Seed!
+     Result ID: I087
+
+  24. Tree Seedz!
+     Result ID: I02I
+
+============================================================
+  Warrior (24 recipes)
+============================================================
+
+  1. a Battle Horn!
+     Ingredients: 1x I05U
+     Result ID: I05T
+
+  2. a Bone Axe!
+     Ingredients: 1x I011 + 1x I004 + 1x I010
+     Result ID: I028
+
+  3. a Club!
+     Ingredients: 1x I011 + 1x I004 + 1x I010
+     Result ID: I02Z
+
+  4. a Club!
+     Ingredients: 1x I011 + 1x I012 + 2x I004 + 1x I05U + 1x I054 + 1x skrt
+
+  5. Javelinz!
+     Ingredients: 1x I011 + 1x I013 + 1x I010 + 1x I05U + 1x I054 + 1x skrt
+     Result ID: I08V
+
+  6. Throwing Axez!
+     Ingredients: 1x I011 + 1x I014 + 1x I010 + 1x skrt
+     Result ID: I01V
+
+  7. an Axe!
+     Ingredients: 1x I011 + 1x I004 + 1x I014 + 1x I01Q + 1x I01Z + 1x I010
+
+  8. a Tortoize Shield!
+     Ingredients: 1x I011 + 1x I00C + 1x I010 + 1x I01Q + 1x I01Z + 1x I010
+     Result ID: I00M
+
+  9. a Bone Armor!
+     Ingredients: 1x I054 + 1x I05U + 1x I00C + 4x I004 + 1x I067 + 1x I010
+     Result ID: I01P
+
+  10. a Spear!
+     Description: Me needz 1 Wood, 1 Rope and 1 Dagger.
+     Ingredients: 1x I04R + 1x I04L + 1x I00Y + 1x I011 + 1x I010 + 1x I010
+
+  11. a Bone Axe!
+     Result ID: I028
+
+  12. a Stone Axe!
+     Result ID: I01S
+
+  13. a Bronze Axe!
+     Result ID: I00H
+
+  14. an Iron Axe!
+     Result ID: I02F
+
+  15. a Big Spiked Club!
+     Result ID: I017
+
+  16. a Big Spiked Club!
+     Result ID: I017
+
+  17. a Spiked Club!
+     Result ID: I00T
+
+  18. a Big Bone Club!
+     Result ID: I00G
+
+  19. a Bone Club!
+     Result ID: I02Z
+
+  20. a Horn Spear!
+     Result ID: I04J
+
+  21. an Obsidian Spear!
+     Result ID: I04I
+
+  22. a Bone Spear!
+     Result ID: I000
+
+  23. a Bone Armor!
+     Result ID: I01P
+
+  24. a Badass Bone Armor!
+     Result ID: I01O
+
+============================================================
+  Workshop_A (8 recipes)
+============================================================
+
+  1. a Boat kit!
+     Description: We needz 1 Giant Shell and 2 Wood.
+     Ingredients: 1x I03O + 2x I011
+     Result ID: I025
+
+  2. a Repair Hammer!
+     Description: We needz 1 Wood, 1 Stone and 1 Rope.
+     Ingredients: 1x I011 + 1x I014 + 1x I010
+     Result ID: I02G
+
+  3. a Mining Pick!
+     Description: We needz 1 Wood, 1 Bronze Bar and 1 Rope.
+     Ingredients: 1x I011 + 1x I01Q + 1x I010
+     Result ID: I09I
+
+  4. a Stockage Box kit!
+     Description: We needz 1 Wood.
+     Ingredients: 1x I011 + 1x I01Q + 1x I010
+     Result ID: I01L
+
+  5. a Wall kit!
+     Description: We needz 1 Stone.
+     Ingredients: 1x I014 + 1x I01Q + 1x I010
+     Result ID: I05J
+
+  6. a Watch Tower kit!
+     Description: We needz 3 Wood.
+     Ingredients: 3x I011
+     Result ID: I02J
+
+  7. a Siege Tower kit!
+     Description: We needz 3 Wood and 1 Engine.
+     Ingredients: 3x I011 + 1x I08X
+     Result ID: I0AL
+
+  8. a Siege Machine kit!
+     Description: We needz 1 Engine, 3 Wood and 3 Bronze Bar.
+     Ingredients: 1x I08X + 3x I011 + 3x I01Q
+     Result ID: I02L
+
+============================================================
+  Workshop_B (13 recipes)
+============================================================
+
+  1. a Flamethrower!
+     Description: We needz 1 Shotgun, 1 Stockage Box kit and 2 Bronze Bar.
+     Ingredients: 1x I02T + 1x I01L + 2x I01Q + 1x I0AT
+     Result ID: I0AP
+
+  2. a Sniper Gun!
+     Description: We needz 1 Gun and 1 Mana Crystal.
+     Ingredients: 1x I02O + 1x I036 + 1x I0AQ + 1x I0AT
+     Result ID: I0AU
+
+  3. a Gun!
+     Description: We needz 1 Wood, 1 Flint and 1 Bronze Bar.
+     Ingredients: 1x I013 + 1x I011 + 1x I01Q + 1x I0AT
+     Result ID: I0AQ
+
+  4. a Shotgun!
+     Description: We needz 1 Wood, 1 Flint and 1 Bronze Bar.
+     Ingredients: 1x I013 + 1x I011 + 1x I01Q
+     Result ID: I0AT
+
+  5. Rocketz!
+     Description: We needz 1 Bronze Bar, 1 Black Powder and 1 Fuel.
+     Ingredients: 1x I02N + 1x I01Q + 1x I046
+     Result ID: I065
+
+  6. a Remote Mine!
+     Description: We needz 1 Bronze Bar and 1 Black Powder.
+     Ingredients: 2x I02N + 1x I01Q + 1x I046
+     Result ID: I02U
+
+  7. a Bomb!
+     Description: We needz 1 Remote Mine and 2 Fuel.
+     Ingredients: 1x I02U + 1x I046 + 1x I046
+     Result ID: I037
+
+  8. an Engine!
+     Description: We needz 1 Planz for Engine, 1 Bronze Bar and 1 Fuel.
+     Ingredients: 1x I033 + 1x I01Q + 1x I046
+     Result ID: I08X
+
+  9. a Torch!
+     Description: We needz 1 Wood and 1 Oil.
+     Ingredients: 1x I011 + 1x I08T + 1x I046
+     Result ID: I035
+
+  10. Poizon Gaz!
+     Description: We needz 1 Spider, Snake or Tarantula Venom.
+     Ingredients: 1x I04K + 1x I01F + 1x I01E
+
+  11. Strong Poizon Gaz!|n
+     Result ID: I01X
+
+  12. Medium Poison Gaz!
+     Result ID: I01Y
+
+  13. Weak Poison Gas!
+     Result ID: I020

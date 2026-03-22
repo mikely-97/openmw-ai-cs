@@ -4,23 +4,64 @@
     "record_id": "troll",
     "name": "Troll",
     "skill_bonuses": [
-      {"skill_id": 4,  "bonus": 15},
-      {"skill_id": 8,  "bonus": 10},
-      {"skill_id": 17, "bonus": 10},
-      {"skill_id": 26, "bonus": 10},
-      {"skill_id": 23, "bonus": 5},
-      {"skill_id": 19, "bonus": 5},
-      {"skill_id": 16, "bonus": 5}
+      {
+        "skill_id": 4,
+        "bonus": 45
+      },
+      {
+        "skill_id": 8,
+        "bonus": 45
+      },
+      {
+        "skill_id": 17,
+        "bonus": 45
+      },
+      {
+        "skill_id": 26,
+        "bonus": 45
+      },
+      {
+        "skill_id": 23,
+        "bonus": 45
+      },
+      {
+        "skill_id": 19,
+        "bonus": 45
+      },
+      {
+        "skill_id": 16,
+        "bonus": 45
+      }
     ],
-    "male_attrs":   [70, 30, 40, 45, 50, 70, 20, 45],
-    "female_attrs": [65, 35, 45, 45, 48, 65, 25, 45],
-    "height_male":   1.2,
+    "male_attrs": [
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100
+    ],
+    "female_attrs": [
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100,
+      100
+    ],
+    "height_male": 1.2,
     "height_female": 1.15,
-    "weight_male":   1.3,
+    "weight_male": 1.3,
     "weight_female": 1.2,
     "race_flags": 1,
     "description": "Trolls are powerful jungle-dwelling creatures with incredible regenerative abilities. Their great strength and endurance make them fearsome warriors, though their low intelligence and poor social skills limit their magical aptitude. Troll tribes have inhabited the Jungle Isle since time immemorial, each developing unique cultural traditions and fighting styles.",
-    "spells": ["jtt_troll_regen"],
+    "spells": [
+      "jtt_troll_regen"
+    ],
     "flags": 0
   },
   {
@@ -30,8 +71,20 @@
     "attr1": 0,
     "attr2": 5,
     "specialization": 0,
-    "minor_skills": [8, 17, 19, 23, 1],
-    "major_skills": [4, 0, 3, 26, 6],
+    "minor_skills": [
+      8,
+      17,
+      19,
+      23,
+      1
+    ],
+    "major_skills": [
+      4,
+      0,
+      3,
+      26,
+      6
+    ],
     "clas_flags": 1,
     "auto_calc_services": 0,
     "description": "The backbone of any troll tribe. Troll Warriors excel in close combat, relying on brute strength and thick hides. They favor heavy blunt weapons crafted from bones and stone, and have learned to fight without the encumbrance of refined armor.",
@@ -44,8 +97,20 @@
     "attr1": 1,
     "attr2": 2,
     "specialization": 1,
-    "minor_skills": [4, 8, 25, 16, 24],
-    "major_skills": [14, 10, 15, 16, 25],
+    "minor_skills": [
+      4,
+      8,
+      25,
+      16,
+      24
+    ],
+    "major_skills": [
+      14,
+      10,
+      15,
+      16,
+      25
+    ],
     "clas_flags": 1,
     "auto_calc_services": 0,
     "description": "Troll Shamans commune with the jungle spirits and practice ancient voodoo arts. They brew powerful tribal concoctions, cast hexes on enemies, and call upon the forces of nature. Though weaker in direct combat, their magical arsenal makes them invaluable to any tribe.",
@@ -58,8 +123,20 @@
     "attr1": 3,
     "attr2": 4,
     "specialization": 2,
-    "minor_skills": [4, 8, 16, 26, 18],
-    "major_skills": [23, 19, 21, 20, 16],
+    "minor_skills": [
+      4,
+      8,
+      16,
+      26,
+      18
+    ],
+    "major_skills": [
+      23,
+      19,
+      21,
+      20,
+      16
+    ],
     "clas_flags": 1,
     "auto_calc_services": 0,
     "description": "Forest-dwelling trackers and trappers, Troll Hunters provide food and scouting for their tribes. Expert with bows and thrown weapons, they prefer to engage enemies at range before melting back into the jungle undergrowth.",
@@ -72,8 +149,20 @@
     "attr1": 0,
     "attr2": 5,
     "specialization": 0,
-    "minor_skills": [0, 19, 17, 1, 24],
-    "major_skills": [4, 6, 8, 17, 7],
+    "minor_skills": [
+      0,
+      19,
+      17,
+      1,
+      24
+    ],
+    "major_skills": [
+      4,
+      6,
+      8,
+      17,
+      7
+    ],
     "clas_flags": 1,
     "auto_calc_services": 0,
     "description": "Blood Troll Berserkers enter a savage battle-rage that makes them nigh-unstoppable. They discard all notion of defense, charging headlong into battle with massive weapons. Their incredible endurance lets them sustain punishment that would fell lesser warriors.",
