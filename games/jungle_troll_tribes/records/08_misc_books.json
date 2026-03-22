@@ -488,5 +488,38 @@
     "value": 50,
     "script": "",
     "flags": 0
+  },
+  {
+    "rec_type": "MISC",
+    "record_id": "jtt_skull",
+    "name": "Skull",
+    "mesh": "jtt\\resource_pile.dae",
+    "icon": "",
+    "weight": 2.0,
+    "value": 20,
+    "script": "",
+    "flags": 0
+  },
+  {
+    "rec_type": "MISC",
+    "record_id": "jtt_tome_recipes",
+    "name": "Tribal Recipes",
+    "mesh": "jtt\\tome_recipes.dae",
+    "icon": "",
+    "weight": 1.0,
+    "value": 30,
+    "script": "",
+    "flags": 0
+  },
+  {
+    "rec_type": "MISC",
+    "record_id": "jtt_oil",
+    "name": "Oil",
+    "mesh": "jtt\\resource_pile.dae",
+    "icon": "",
+    "weight": 0.5,
+    "value": 8,
+    "script": "",
+    "flags": 0
   }
 ]
