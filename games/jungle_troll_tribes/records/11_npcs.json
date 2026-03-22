@@ -41,8 +41,8 @@
     "race": "troll",
     "class_id": "troll_warrior",
     "faction": "",
-    "head": "jtt_troll_head",
-    "hair": "jtt_troll_hair",
+    "head": "",
+    "hair": "",
     "script": "",
     "npc_flags": 16,
     "npdt_autocalc": {
@@ -53,8 +53,14 @@
       "gold": 50
     },
     "inventory": [
-      {"count": 1, "item_id": "jtt_bone_club"},
-      {"count": 3, "item_id": "jtt_tribal_brew"}
+      {
+        "count": 1,
+        "item_id": "jtt_bone_club"
+      },
+      {
+        "count": 3,
+        "item_id": "jtt_tribal_brew"
+      }
     ],
     "spells": [
       "jtt_troll_regen"
