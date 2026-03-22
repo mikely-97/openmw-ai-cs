@@ -41,8 +41,8 @@
     "race": "troll",
     "class_id": "troll_warrior",
     "faction": "",
-    "head": "",
-    "hair": "",
+    "head": "jtt_troll_head",
+    "hair": "jtt_troll_hair",
     "script": "",
     "npc_flags": 16,
     "npdt_autocalc": {

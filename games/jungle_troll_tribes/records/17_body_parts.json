@@ -9,5 +9,27 @@
     "part_flags": 0,
     "part_type": 0,
     "flags": 0
+  },
+  {
+    "rec_type": "BODY",
+    "record_id": "jtt_troll_head",
+    "mesh": "basicplayerbody.dae",
+    "name": "troll",
+    "part_index": 0,
+    "vampire": 0,
+    "part_flags": 0,
+    "part_type": 0,
+    "flags": 0
+  },
+  {
+    "rec_type": "BODY",
+    "record_id": "jtt_troll_hair",
+    "mesh": "basicplayerbody.dae",
+    "name": "troll",
+    "part_index": 1,
+    "vampire": 0,
+    "part_flags": 0,
+    "part_type": 0,
+    "flags": 0
   }
 ]
