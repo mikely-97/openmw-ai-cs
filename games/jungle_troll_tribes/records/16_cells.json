@@ -6,7 +6,7 @@
     "grid_x": 0,
     "grid_y": 0,
     "region": "jungle_isle_region",
-    "ref_num_counter": 39,
+    "ref_num_counter": 43,
     "water_height": null,
     "flags": 0,
     "refs": [
@@ -1125,6 +1125,122 @@
           0.0,
           0.0,
           6.05
+        ],
+        "is_deleted": false,
+        "is_blocked": false,
+        "soul": "",
+        "owner": "",
+        "owner_rank": -1,
+        "owner_global": "",
+        "key_id": "",
+        "trap_id": "",
+        "enchant_charge": -1.0,
+        "charge_int": -1,
+        "lock_level": 0.0,
+        "dest_pos": null,
+        "dest_rot": null,
+        "dest_cell": ""
+      },
+      {
+        "ref_num": 40,
+        "object_id": "jtt_workbench",
+        "scale": 1.0,
+        "pos": [
+          4200.0,
+          4150.0,
+          1600.0
+        ],
+        "rot": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "is_deleted": false,
+        "is_blocked": false,
+        "soul": "",
+        "owner": "",
+        "owner_rank": -1,
+        "owner_global": "",
+        "key_id": "",
+        "trap_id": "",
+        "enchant_charge": -1.0,
+        "charge_int": -1,
+        "lock_level": 0.0,
+        "dest_pos": null,
+        "dest_rot": null,
+        "dest_cell": ""
+      },
+      {
+        "ref_num": 41,
+        "object_id": "jtt_campfire",
+        "scale": 1.0,
+        "pos": [
+          3900.0,
+          4100.0,
+          1600.0
+        ],
+        "rot": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "is_deleted": false,
+        "is_blocked": false,
+        "soul": "",
+        "owner": "",
+        "owner_rank": -1,
+        "owner_global": "",
+        "key_id": "",
+        "trap_id": "",
+        "enchant_charge": -1.0,
+        "charge_int": -1,
+        "lock_level": 0.0,
+        "dest_pos": null,
+        "dest_rot": null,
+        "dest_cell": ""
+      },
+      {
+        "ref_num": 42,
+        "object_id": "jtt_wood_node",
+        "scale": 1.0,
+        "pos": [
+          3500.0,
+          4300.0,
+          1600.0
+        ],
+        "rot": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "is_deleted": false,
+        "is_blocked": false,
+        "soul": "",
+        "owner": "",
+        "owner_rank": -1,
+        "owner_global": "",
+        "key_id": "",
+        "trap_id": "",
+        "enchant_charge": -1.0,
+        "charge_int": -1,
+        "lock_level": 0.0,
+        "dest_pos": null,
+        "dest_rot": null,
+        "dest_cell": ""
+      },
+      {
+        "ref_num": 43,
+        "object_id": "jtt_herb_node",
+        "scale": 1.0,
+        "pos": [
+          3700.0,
+          4500.0,
+          1600.0
+        ],
+        "rot": [
+          0.0,
+          0.0,
+          0.0
         ],
         "is_deleted": false,
         "is_blocked": false,

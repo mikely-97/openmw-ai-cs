@@ -186,7 +186,7 @@ def _export_from_satellite(
                     "fog_density": cell["fog_density"],
                 }
             refs = conn.execute(
-                "SELECT * FROM cell_refs WHERE cell_id=? ORDER BY sort_order",
+                "SELECT * FROM cell_refs WHERE cell_id=? ORDER BY ref_num",
                 (rec_id,),
             ).fetchall()
             def _ref_dict(r: sqlite3.Row) -> dict:
