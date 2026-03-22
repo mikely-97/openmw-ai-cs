@@ -32,48 +32,5 @@
     "ai_packages": [],
     "transport": [],
     "flags": 0
-  },
-  {
-    "rec_type": "NPC_",
-    "record_id": "jtt_old_troll",
-    "name": "Old Troll",
-    "mesh": "",
-    "race": "troll",
-    "class_id": "troll_warrior",
-    "faction": "",
-    "head": "jtt_troll_head",
-    "hair": "jtt_troll_hair",
-    "script": "",
-    "npc_flags": 16,
-    "npdt_autocalc": {
-      "level": 10,
-      "disposition": 70,
-      "reputation": 0,
-      "rank": 0,
-      "gold": 50
-    },
-    "inventory": [
-      {
-        "count": 1,
-        "item_id": "jtt_bone_club"
-      },
-      {
-        "count": 3,
-        "item_id": "jtt_tribal_brew"
-      }
-    ],
-    "spells": [
-      "jtt_troll_regen"
-    ],
-    "ai_data": {
-      "hello": 0,
-      "fight": 0,
-      "flee": 0,
-      "alarm": 0,
-      "services": 0
-    },
-    "ai_packages": [],
-    "transport": [],
-    "flags": 0
   }
 ]
