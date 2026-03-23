@@ -5,31 +5,31 @@
     "name": "Troll",
     "skill_bonuses": [
       {
+        "skill_id": 0,
+        "bonus": 45
+      },
+      {
+        "skill_id": 1,
+        "bonus": 45
+      },
+      {
         "skill_id": 4,
         "bonus": 45
       },
       {
+        "skill_id": 5,
+        "bonus": 45
+      },
+      {
+        "skill_id": 6,
+        "bonus": 45
+      },
+      {
+        "skill_id": 7,
+        "bonus": 45
+      },
+      {
         "skill_id": 8,
-        "bonus": 45
-      },
-      {
-        "skill_id": 17,
-        "bonus": 45
-      },
-      {
-        "skill_id": 26,
-        "bonus": 45
-      },
-      {
-        "skill_id": 23,
-        "bonus": 45
-      },
-      {
-        "skill_id": 19,
-        "bonus": 45
-      },
-      {
-        "skill_id": 16,
         "bonus": 45
       }
     ],

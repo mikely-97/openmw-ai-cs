@@ -11,8 +11,9 @@ local function onJTTQuest(data)
     globals.JTT_QuestMenu = 1
 end
 
--- Spawn objects at specific world positions with collision avoidance
-local placed = {}  -- track placed positions
+-- ═══ WORLD SPAWNING ═══
+
+local placed = {}
 
 local function isClear(x, y, minDist)
     for _, p in ipairs(placed) do
@@ -25,7 +26,7 @@ local function isClear(x, y, minDist)
     return true
 end
 
-local function placeObject(recordId, x, y, z, count)
+local function spawn(recordId, x, y, z, count)
     count = count or 1
     local obj = world.createObject(recordId, count)
     obj:teleport('', util.vector3(x, y, z))
@@ -33,63 +34,119 @@ local function placeObject(recordId, x, y, z, count)
     return obj
 end
 
-local function randomInRange(min, max)
+local function randRange(min, max)
     return min + math.random() * (max - min)
 end
 
-local function spawnBiome(cx, cy, z)
-    -- cx, cy = cell center world coords
-    local nodes = {
-        {id='jtt_wood_node', count=2},
-        {id='jtt_stone_node', count=2},
-        {id='jtt_herb_node', count=2},
-        {id='jtt_iron_deposit', count=1},
-        {id='jtt_fast_travel', count=1},
-    }
-
-    placed = {}
-    -- Reserve center area (player spawn)
-    table.insert(placed, {x=cx, y=cy})
-
-    for _, node in ipairs(nodes) do
-        for i = 1, node.count do
-            -- Try up to 20 times to find a clear spot
-            for attempt = 1, 20 do
-                local x = randomInRange(cx - 3000, cx + 3000)
-                local y = randomInRange(cy - 3000, cy + 3000)
-                if isClear(x, y, 400) then
-                    placeObject(node.id, x, y, z)
-                    break
-                end
+local function spawnScattered(recordId, cx, cy, z, count, radius, minDist)
+    minDist = minDist or 400
+    for i = 1, count do
+        for attempt = 1, 30 do
+            local x = randRange(cx - radius, cx + radius)
+            local y = randRange(cy - radius, cy + radius)
+            if isClear(x, y, minDist) then
+                spawn(recordId, x, y, z)
+                break
             end
         end
     end
 end
 
-local worldSpawned = false
+local function spawnBiome(cx, cy, z, biomeType)
+    placed = {}
+    table.insert(placed, {x=cx, y=cy})
+
+    -- Resource nodes
+    spawnScattered('jtt_wood_node', cx, cy, z, 2, 3000, 400)
+    spawnScattered('jtt_stone_node', cx, cy, z, 2, 3000, 400)
+    spawnScattered('jtt_herb_node', cx, cy, z, 2, 3000, 400)
+    spawnScattered('jtt_iron_deposit', cx, cy, z, 1, 3000, 400)
+
+    -- Portal
+    spawn('jtt_fast_travel', cx + randRange(-500, 500), cy + randRange(-500, 500), z)
+
+    -- Trees
+    local trees = {
+        jungle = {'jtt_tree_palm', 'jtt_tree_oak'},
+        east   = {'jtt_tree_palm', 'jtt_tree_palm', 'jtt_tree_oak'},
+        ridge  = {'jtt_tree_pine', 'jtt_tree_oak'},
+        shore  = {'jtt_tree_palm'},
+        marsh  = {'jtt_tree_dead', 'jtt_tree_palm'},
+    }
+    local treePool = trees[biomeType] or trees.jungle
+    for i = 1, 15 do
+        for attempt = 1, 20 do
+            local x = randRange(cx - 3500, cx + 3500)
+            local y = randRange(cy - 3500, cy + 3500)
+            if isClear(x, y, 200) then
+                local tree = treePool[math.random(#treePool)]
+                spawn(tree, x, y, z)
+                break
+            end
+        end
+    end
+
+    -- Creatures
+    local creatures = {
+        jungle = {'jtt_jungle_boar', 'jtt_jungle_boar', 'jtt_jungle_bird', 'jtt_raccoon', 'jtt_jungle_rabbit'},
+        east   = {'jtt_jungle_panther', 'jtt_giant_spider', 'jtt_giant_spider', 'jtt_jungle_snake', 'jtt_jungle_snake'},
+        ridge  = {'jtt_jungle_bear', 'jtt_jungle_wolf', 'jtt_jungle_wolf', 'jtt_jungle_elk', 'jtt_jungle_elk'},
+        shore  = {'jtt_jungle_croc', 'jtt_jungle_croc', 'jtt_jungle_tortoise', 'jtt_jungle_bird', 'jtt_raccoon'},
+        marsh  = {'jtt_jungle_croc', 'jtt_giant_spider', 'jtt_jungle_snake', 'jtt_jungle_tiger', 'jtt_jungle_boar'},
+    }
+    local creaturePool = creatures[biomeType] or creatures.jungle
+    for _, cid in ipairs(creaturePool) do
+        for attempt = 1, 20 do
+            local x = randRange(cx - 3500, cx + 3500)
+            local y = randRange(cy - 3500, cy + 3500)
+            if isClear(x, y, 300) then
+                spawn(cid, x, y, z)
+                break
+            end
+        end
+    end
+
+    -- Lying-around items (NO raw_meat - that's hunting only)
+    local items = {'jtt_stick', 'jtt_stone_item', 'jtt_flint', 'jtt_tinder', 'jtt_jungle_berry'}
+    for i = 1, 8 do
+        local item = items[math.random(#items)]
+        for attempt = 1, 20 do
+            local x = randRange(cx - 3000, cx + 3000)
+            local y = randRange(cy - 3000, cy + 3000)
+            if isClear(x, y, 200) then
+                spawn(item, x, y, z)
+                break
+            end
+        end
+    end
+end
 
 local function onJTTSpawnWorld(data)
-    if worldSpawned then return end
-    worldSpawned = true
+    -- Use MW global to persist across save/load (but resets on new game)
+    local globals = world.mwscript.getGlobalVariables()
+    if globals.JTT_WorldSpawned == 1 then
+        return
+    end
+    globals.JTT_WorldSpawned = 1
 
-    local z = 1600
+    local z = 16  -- normal terrain (base_height=2, 2*8=16)
 
-    -- Base Camp (0,0) — also place workbench + campfire
-    spawnBiome(4096, 4096, z)
-    placeObject('jtt_workbench', 4096 + 250, 4096 + 100, z)
-    placeObject('jtt_campfire', 4096 - 200, 4096 + 150, z)
+    -- Base Camp (0,0)
+    spawnBiome(4096, 4096, z, 'jungle')
+    spawn('jtt_workbench', 4096 + 250, 4096 + 100, z)
+    spawn('jtt_campfire', 4096 - 200, 4096 + 150, z)
 
     -- East Jungle (1,0)
-    spawnBiome(8192 + 4096, 4096, z)
+    spawnBiome(8192 + 4096, 4096, z, 'east')
 
     -- North Ridge (0,1)
-    spawnBiome(4096, 8192 + 4096, z)
+    spawnBiome(4096, 8192 + 4096, z, 'ridge')
 
     -- West Shore (-1,0)
-    spawnBiome(-8192 + 4096, 4096, z)
+    spawnBiome(-8192 + 4096, 4096, z, 'shore')
 
-    -- South Marsh (0,-1)
-    spawnBiome(4096, -8192 + 4096, z)
+    -- South Marsh (0,-1) — at sea level
+    spawnBiome(4096, -8192 + 4096, 4, 'marsh')
 end
 
 return {
