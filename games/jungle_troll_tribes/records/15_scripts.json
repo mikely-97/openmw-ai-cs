@@ -34,7 +34,7 @@
       "Frame"
     ],
     "bytecode_hex": "",
-    "source_text": "Begin JTT_Init\n\nshort Done\nshort Frame\n\nif ( Done == 1 )\n    StopScript JTT_Init\n    return\nendif\n\nif ( Frame < 10 )\n    set Frame to ( Frame + 1 )\n    return\nendif\n\nSet Done to 1\nSet JTT_Hunger to 0\nSet JTT_Warmth to 100\nSet JTT_Day to 1\nSet JTT_PlayerInit to 1\n\nplayer->AddItem \"jtt_bone_club\" 1\nplayer->AddItem \"jtt_tribal_loincloth\" 1\nplayer->AddItem \"jtt_jungle_berry\" 5\nplayer->AddItem \"jtt_bone_torch\" 1\nplayer->AddItem \"jtt_stick\" 5\nplayer->AddItem \"jtt_stone_item\" 3\nplayer->AddItem \"jtt_flint\" 1\nplayer->AddItem \"jtt_tinder\" 2\n\n\nPlaceAtPC \"jtt_fast_travel\" 1 300 1\n\nMessageBox \"JTT! Press B to build. Chop Groves, Mine Stone, Hunt animals. Talk to Old Troll for quests!\"\n\nStopScript JTT_Init\n\nEnd JTT_Init",
+    "source_text": "Begin JTT_Init\n\nshort Done\nshort Frame\n\nif ( Done == 1 )\n    StopScript JTT_Init\n    return\nendif\n\nif ( Frame < 10 )\n    set Frame to ( Frame + 1 )\n    return\nendif\n\nSet Done to 1\nSet JTT_Hunger to 0\nSet JTT_Warmth to 100\nSet JTT_Day to 1\nSet JTT_PlayerInit to 1\n\nplayer->AddItem \"jtt_bone_club\" 1\nplayer->AddItem \"jtt_tribal_loincloth\" 1\nplayer->AddItem \"jtt_jungle_berry\" 5\nplayer->AddItem \"jtt_bone_torch\" 1\nplayer->AddItem \"jtt_stick\" 5\nplayer->AddItem \"jtt_stone_item\" 3\nplayer->AddItem \"jtt_flint\" 1\nplayer->AddItem \"jtt_tinder\" 2\n\nMessageBox \"B=Build, N=Quest. Explore, gather, craft, survive!\"\n\nStopScript JTT_Init\n\nEnd JTT_Init",
     "has_scdt": false,
     "flags": 0
   },

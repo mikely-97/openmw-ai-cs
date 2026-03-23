@@ -82,7 +82,7 @@ def write_mod(
                     writer.write_record(rt, encoded, unknown=0, flags=row["flags"])
 
         for row in conn.execute(
-            "SELECT * FROM records WHERE mod_id=? ORDER BY sort_order",
+            "SELECT * FROM records WHERE mod_id=? ORDER BY rec_type, sort_order",
             (mod_id,),
         ):
             if row["rec_type"] == "INFO":
