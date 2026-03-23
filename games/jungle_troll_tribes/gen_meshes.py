@@ -858,6 +858,153 @@ def mk_workbench():
     export("workbench.dae")
 
 
+def mk_tannery():
+    """Hide-drying A-frame rack: two angled poles meeting at top, crossbar, hide plane."""
+    clear()
+    m_wood = mat("tannery_wood", 0.50, 0.28, 0.08)
+    m_hide = mat("tannery_hide", 0.65, 0.45, 0.25)
+    m_rope = mat("tannery_rope", 0.40, 0.35, 0.20)
+    # Left A-frame leg (angled inward)
+    bpy.ops.mesh.primitive_cylinder_add(vertices=6, radius=5, depth=140,
+                                         location=(-40, 0, 55),
+                                         rotation=(0, 0.35, 0))
+    apply_mat(bpy.context.active_object, m_wood)
+    # Right A-frame leg (angled inward opposite)
+    bpy.ops.mesh.primitive_cylinder_add(vertices=6, radius=5, depth=140,
+                                         location=(40, 0, 55),
+                                         rotation=(0, -0.35, 0))
+    apply_mat(bpy.context.active_object, m_wood)
+    # Top crossbar connecting the two legs
+    bpy.ops.mesh.primitive_cylinder_add(vertices=6, radius=4, depth=100,
+                                         location=(0, 0, 118),
+                                         rotation=(0, math.pi / 2, 0))
+    apply_mat(bpy.context.active_object, m_wood)
+    # Lower crossbar for stability
+    bpy.ops.mesh.primitive_cylinder_add(vertices=6, radius=3, depth=90,
+                                         location=(0, 0, 40),
+                                         rotation=(0, math.pi / 2, 0))
+    apply_mat(bpy.context.active_object, m_wood)
+    # Hide draped over top bar (flat plane, slightly angled)
+    bpy.ops.mesh.primitive_plane_add(size=1, location=(0, 0, 105))
+    bpy.context.active_object.scale = (35, 50, 1)
+    bpy.ops.object.transform_apply(scale=True)
+    bpy.context.active_object.rotation_euler = (0.4, 0, 0)
+    apply_mat(bpy.context.active_object, m_hide)
+    # Rope lashings at top
+    for x in [-20, 20]:
+        bpy.ops.mesh.primitive_torus_add(major_radius=7, minor_radius=2,
+                                          major_segments=8, minor_segments=4,
+                                          location=(x, 0, 118))
+        apply_mat(bpy.context.active_object, m_rope)
+    export("tannery.dae")
+
+
+def mk_armory():
+    """Weapon rack: two vertical poles with horizontal bars and crossed sticks."""
+    clear()
+    m_wood = mat("armory_wood", 0.38, 0.22, 0.06)
+    m_bar  = mat("armory_bar",  0.55, 0.35, 0.12)
+    m_bone = mat("armory_bone", 0.78, 0.74, 0.60)
+    # Two vertical side poles
+    for x in [-50, 50]:
+        bpy.ops.mesh.primitive_cylinder_add(vertices=6, radius=6, depth=160,
+                                             location=(x, 0, 80))
+        apply_mat(bpy.context.active_object, m_wood)
+    # Three horizontal bars for hanging weapons
+    for z in [40, 80, 120]:
+        bpy.ops.mesh.primitive_cylinder_add(vertices=6, radius=4, depth=110,
+                                             location=(0, 0, z),
+                                             rotation=(0, math.pi / 2, 0))
+        apply_mat(bpy.context.active_object, m_bar)
+    # Decorative crossed sticks on front
+    for rot_z in [0.5, -0.5]:
+        bpy.ops.mesh.primitive_cylinder_add(vertices=4, radius=3, depth=80,
+                                             location=(0, -8, 80),
+                                             rotation=(0, 0, rot_z))
+        apply_mat(bpy.context.active_object, m_bone)
+    # Bone ornament on top
+    bpy.ops.mesh.primitive_uv_sphere_add(segments=6, ring_count=4,
+                                          radius=10, location=(0, 0, 168))
+    apply_mat(bpy.context.active_object, m_bone)
+    export("armory.dae")
+
+
+def mk_forge():
+    """Stone furnace: large stone block base with glowing orange top surface."""
+    clear()
+    m_stone = mat("forge_stone", 0.35, 0.32, 0.30)
+    m_glow  = mat("forge_glow",  0.95, 0.45, 0.05)
+    m_dark  = mat("forge_dark",  0.20, 0.18, 0.16)
+    # Main stone block base
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 40))
+    bpy.context.active_object.scale = (55, 45, 40)
+    bpy.ops.object.transform_apply(scale=True)
+    apply_mat(bpy.context.active_object, m_stone)
+    # Chimney / raised back wall
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 30, 80))
+    bpy.context.active_object.scale = (50, 10, 35)
+    bpy.ops.object.transform_apply(scale=True)
+    apply_mat(bpy.context.active_object, m_dark)
+    # Glowing hot top surface (recessed)
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 81))
+    bpy.context.active_object.scale = (42, 32, 3)
+    bpy.ops.object.transform_apply(scale=True)
+    apply_mat(bpy.context.active_object, m_glow)
+    # Side stone supports
+    for x in [-52, 52]:
+        bpy.ops.mesh.primitive_cube_add(size=1, location=(x, 0, 25))
+        bpy.context.active_object.scale = (8, 35, 25)
+        bpy.ops.object.transform_apply(scale=True)
+        apply_mat(bpy.context.active_object, m_stone)
+    # Small bellows hint (cylinder on side)
+    bpy.ops.mesh.primitive_cylinder_add(vertices=8, radius=12, depth=20,
+                                         location=(-68, 0, 40),
+                                         rotation=(0, math.pi / 2, 0))
+    apply_mat(bpy.context.active_object, m_dark)
+    export("forge.dae")
+
+
+def mk_cauldron():
+    """Large round pot (half-sphere) on three legs with greenish brew inside."""
+    clear()
+    m_iron = mat("cauldron_iron", 0.18, 0.18, 0.20)
+    m_brew = mat("cauldron_brew", 0.15, 0.55, 0.20)
+    m_rim  = mat("cauldron_rim",  0.25, 0.22, 0.22)
+    # Pot body (top half of sphere — full sphere scaled to cut bottom)
+    bpy.ops.mesh.primitive_uv_sphere_add(segments=14, ring_count=10,
+                                          radius=55, location=(0, 0, 55))
+    bpy.context.active_object.scale = (1.0, 1.0, 0.6)
+    bpy.ops.object.transform_apply(scale=True)
+    apply_mat(bpy.context.active_object, m_iron)
+    # Brew surface inside (flat disc near top)
+    bpy.ops.mesh.primitive_cylinder_add(vertices=14, radius=48, depth=3,
+                                         location=(0, 0, 72))
+    apply_mat(bpy.context.active_object, m_brew)
+    # Rim ring
+    bpy.ops.mesh.primitive_torus_add(major_radius=55, minor_radius=4,
+                                      major_segments=14, minor_segments=6,
+                                      location=(0, 0, 78))
+    apply_mat(bpy.context.active_object, m_rim)
+    # Three legs (120 degrees apart)
+    for angle in [0, 120, 240]:
+        rad = math.radians(angle)
+        lx = math.cos(rad) * 40
+        ly = math.sin(rad) * 40
+        bpy.ops.mesh.primitive_cylinder_add(vertices=6, radius=5, depth=50,
+                                             location=(lx, ly, 12),
+                                             rotation=(0, 0, 0))
+        apply_mat(bpy.context.active_object, m_iron)
+    # Handle arch over top
+    bpy.ops.mesh.primitive_torus_add(major_radius=42, minor_radius=3,
+                                      major_segments=12, minor_segments=4,
+                                      location=(0, 0, 88),
+                                      rotation=(math.pi / 2, 0, 0))
+    bpy.context.active_object.scale = (0.3, 1.0, 1.0)
+    bpy.ops.object.transform_apply(scale=True)
+    apply_mat(bpy.context.active_object, m_iron)
+    export("cauldron.dae")
+
+
 def mk_build_site():
     """Small pile of crossed sticks as a build-site marker."""
     clear()
@@ -1084,6 +1231,12 @@ mk_workbench()
 mk_build_site()
 mk_raw_meat()
 mk_spider_silk()
+
+print("Crafting stations:")
+mk_tannery()
+mk_armory()
+mk_forge()
+mk_cauldron()
 
 print("Ground pickables:")
 mk_stick()

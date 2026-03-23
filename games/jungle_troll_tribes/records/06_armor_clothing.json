@@ -9,11 +9,15 @@
     "value": 40,
     "health": 300,
     "enchant_pts": 25,
-    "armour_rating": 10,
+    "armour_rating": 12,
     "script": "",
     "icon": "icons\\jtt\\bone_shield.png",
     "parts": [
-      {"index": 9, "male": "", "female": ""}
+      {
+        "index": 9,
+        "male": "",
+        "female": ""
+      }
     ],
     "enchantment": "",
     "flags": 0
@@ -28,11 +32,15 @@
     "value": 60,
     "health": 400,
     "enchant_pts": 30,
-    "armour_rating": 12,
+    "armour_rating": 10,
     "script": "",
     "icon": "icons\\jtt\\hide_cuirass.png",
     "parts": [
-      {"index": 2, "male": "", "female": ""}
+      {
+        "index": 2,
+        "male": "",
+        "female": ""
+      }
     ],
     "enchantment": "",
     "flags": 0
@@ -51,7 +59,11 @@
     "script": "",
     "icon": "icons\\jtt\\bone_helm.png",
     "parts": [
-      {"index": 0, "male": "", "female": ""}
+      {
+        "index": 0,
+        "male": "",
+        "female": ""
+      }
     ],
     "enchantment": "",
     "flags": 0
@@ -70,7 +82,11 @@
     "script": "",
     "icon": "icons\\jtt\\bark_pauldron.png",
     "parts": [
-      {"index": 22, "male": "", "female": ""}
+      {
+        "index": 22,
+        "male": "",
+        "female": ""
+      }
     ],
     "enchantment": "",
     "flags": 0
@@ -87,7 +103,11 @@
     "script": "",
     "icon": "icons\\jtt\\tribal_loincloth.png",
     "parts": [
-      {"index": 0, "male": "", "female": ""}
+      {
+        "index": 0,
+        "male": "",
+        "female": ""
+      }
     ],
     "enchantment": "",
     "flags": 0
@@ -104,7 +124,11 @@
     "script": "",
     "icon": "icons\\jtt\\shaman_robe.png",
     "parts": [
-      {"index": 4, "male": "", "female": ""}
+      {
+        "index": 4,
+        "male": "",
+        "female": ""
+      }
     ],
     "enchantment": "",
     "flags": 0
@@ -121,7 +145,11 @@
     "script": "",
     "icon": "icons\\jtt\\bone_necklace.png",
     "parts": [
-      {"index": 9, "male": "", "female": ""}
+      {
+        "index": 9,
+        "male": "",
+        "female": ""
+      }
     ],
     "enchantment": "jtt_ench_shaman_staff",
     "flags": 0
@@ -140,7 +168,11 @@
     "armour_rating": 15,
     "script": "",
     "parts": [
-      {"index": 2, "male": "", "female": ""}
+      {
+        "index": 2,
+        "male": "",
+        "female": ""
+      }
     ],
     "enchantment": "",
     "flags": 0
@@ -156,10 +188,14 @@
     "value": 55,
     "health": 280,
     "enchant_pts": 0,
-    "armour_rating": 22,
+    "armour_rating": 25,
     "script": "",
     "parts": [
-      {"index": 2, "male": "", "female": ""}
+      {
+        "index": 2,
+        "male": "",
+        "female": ""
+      }
     ],
     "enchantment": "",
     "flags": 0
@@ -175,10 +211,14 @@
     "value": 50,
     "health": 250,
     "enchant_pts": 0,
-    "armour_rating": 20,
+    "armour_rating": 22,
     "script": "",
     "parts": [
-      {"index": 2, "male": "", "female": ""}
+      {
+        "index": 2,
+        "male": "",
+        "female": ""
+      }
     ],
     "enchantment": "",
     "flags": 0
@@ -197,7 +237,11 @@
     "armour_rating": 8,
     "script": "",
     "parts": [
-      {"index": 5, "male": "", "female": ""}
+      {
+        "index": 5,
+        "male": "",
+        "female": ""
+      }
     ],
     "enchantment": "",
     "flags": 0
@@ -216,7 +260,11 @@
     "armour_rating": 6,
     "script": "",
     "parts": [
-      {"index": 6, "male": "", "female": ""}
+      {
+        "index": 6,
+        "male": "",
+        "female": ""
+      }
     ],
     "enchantment": "",
     "flags": 0
@@ -232,10 +280,14 @@
     "value": 45,
     "health": 300,
     "enchant_pts": 0,
-    "armour_rating": 25,
+    "armour_rating": 30,
     "script": "",
     "parts": [
-      {"index": 9, "male": "", "female": ""}
+      {
+        "index": 9,
+        "male": "",
+        "female": ""
+      }
     ],
     "enchantment": "",
     "flags": 0
@@ -251,10 +303,14 @@
     "value": 40,
     "health": 250,
     "enchant_pts": 0,
-    "armour_rating": 18,
+    "armour_rating": 20,
     "script": "",
     "parts": [
-      {"index": 0, "male": "", "female": ""}
+      {
+        "index": 0,
+        "male": "",
+        "female": ""
+      }
     ],
     "enchantment": "",
     "flags": 0
@@ -270,10 +326,14 @@
     "value": 80,
     "health": 400,
     "enchant_pts": 0,
-    "armour_rating": 35,
+    "armour_rating": 40,
     "script": "",
     "parts": [
-      {"index": 2, "male": "", "female": ""}
+      {
+        "index": 2,
+        "male": "",
+        "female": ""
+      }
     ],
     "enchantment": "",
     "flags": 0
@@ -289,10 +349,14 @@
     "value": 35,
     "health": 150,
     "enchant_pts": 30,
-    "armour_rating": 10,
+    "armour_rating": 12,
     "script": "",
     "parts": [
-      {"index": 0, "male": "", "female": ""}
+      {
+        "index": 0,
+        "male": "",
+        "female": ""
+      }
     ],
     "enchantment": "",
     "flags": 0
