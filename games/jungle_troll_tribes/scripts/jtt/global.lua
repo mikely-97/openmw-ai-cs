@@ -96,6 +96,20 @@ local function spawnBiome(cx, cy, z, biomeType)
         end
     end
 
+    -- Rocks (mineable)
+    local rockCount = {jungle=8, east=6, ridge=15, shore=5, marsh=4}
+    local nRocks = rockCount[biomeType] or 8
+    for i = 1, nRocks do
+        for attempt = 1, 20 do
+            local x = randRange(cx - 3500, cx + 3500)
+            local y = randRange(cy - 3500, cy + 3500)
+            if isClear(x, y, 200) then
+                spawn('jtt_rock', x, y, z)
+                break
+            end
+        end
+    end
+
     -- Creatures
     local creatures = {
         jungle = {'jtt_jungle_boar', 'jtt_jungle_boar', 'jtt_jungle_bird', 'jtt_raccoon', 'jtt_jungle_rabbit'},

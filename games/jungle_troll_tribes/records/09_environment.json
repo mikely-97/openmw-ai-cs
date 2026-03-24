@@ -219,30 +219,6 @@
     "flags": 0
   },
   {
-    "rec_type": "STAT",
-    "record_id": "jtt_tree_oak",
-    "mesh": "jtt\\tree_oak.dae",
-    "flags": 0
-  },
-  {
-    "rec_type": "STAT",
-    "record_id": "jtt_tree_palm",
-    "mesh": "jtt\\tree_palm.dae",
-    "flags": 0
-  },
-  {
-    "rec_type": "STAT",
-    "record_id": "jtt_tree_pine",
-    "mesh": "jtt\\tree_pine.dae",
-    "flags": 0
-  },
-  {
-    "rec_type": "STAT",
-    "record_id": "jtt_tree_dead",
-    "mesh": "jtt\\tree_dead.dae",
-    "flags": 0
-  },
-  {
     "rec_type": "ACTI",
     "record_id": "jtt_iron_deposit",
     "name": "Iron Deposit",
@@ -333,6 +309,46 @@
     "name": "Workbench",
     "mesh": "jtt\\workbench.dae",
     "script": "JTT_WorkbenchScr",
+    "flags": 0
+  },
+  {
+    "rec_type": "ACTI",
+    "record_id": "jtt_tree_oak",
+    "name": "Oak Tree",
+    "mesh": "jtt\\tree_oak.dae",
+    "script": "JTT_ChopTree",
+    "flags": 0
+  },
+  {
+    "rec_type": "ACTI",
+    "record_id": "jtt_tree_pine",
+    "name": "Pine Tree",
+    "mesh": "jtt\\tree_pine.dae",
+    "script": "JTT_ChopTree",
+    "flags": 0
+  },
+  {
+    "rec_type": "ACTI",
+    "record_id": "jtt_tree_palm",
+    "name": "Palm Tree",
+    "mesh": "jtt\\tree_palm.dae",
+    "script": "JTT_ChopTree",
+    "flags": 0
+  },
+  {
+    "rec_type": "ACTI",
+    "record_id": "jtt_tree_dead",
+    "name": "Dead Tree",
+    "mesh": "jtt\\tree_dead.dae",
+    "script": "JTT_ChopTree",
+    "flags": 0
+  },
+  {
+    "rec_type": "ACTI",
+    "record_id": "jtt_rock",
+    "name": "Rock",
+    "mesh": "jtt\\stone_node.dae",
+    "script": "JTT_MineRock",
     "flags": 0
   }
 ]
