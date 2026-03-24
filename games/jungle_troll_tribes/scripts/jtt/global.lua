@@ -11,6 +11,16 @@ local function onJTTQuest(data)
     globals.JTT_QuestMenu = 1
 end
 
+local function onJTTStatus(data)
+    local globals = world.mwscript.getGlobalVariables()
+    globals.JTT_StatusMenu = 1
+end
+
+local function onJTTEat(data)
+    local globals = world.mwscript.getGlobalVariables()
+    globals.JTT_EatMenu = 1
+end
+
 -- ═══ WORLD SPAWNING ═══
 
 local placed = {}
@@ -74,11 +84,11 @@ local function spawnBiome(cx, cy, z, biomeType)
         marsh  = {'jtt_tree_dead', 'jtt_tree_palm'},
     }
     local treePool = trees[biomeType] or trees.jungle
-    for i = 1, 15 do
+    for i = 1, 150 do
         for attempt = 1, 20 do
             local x = randRange(cx - 3500, cx + 3500)
             local y = randRange(cy - 3500, cy + 3500)
-            if isClear(x, y, 200) then
+            if isClear(x, y, 120) then
                 local tree = treePool[math.random(#treePool)]
                 spawn(tree, x, y, z)
                 break
@@ -153,6 +163,8 @@ return {
     eventHandlers = {
         JTT_Build = onJTTBuild,
         JTT_Quest = onJTTQuest,
+        JTT_Status = onJTTStatus,
+        JTT_Eat = onJTTEat,
         JTT_SpawnWorld = onJTTSpawnWorld,
     }
 }

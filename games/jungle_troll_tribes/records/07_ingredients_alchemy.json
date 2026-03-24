@@ -6,9 +6,24 @@
     "mesh": "jtt\\jungle_berry.dae",
     "weight": 0.1,
     "value": 5,
-    "effect_ids":    [0,  27, -1, -1],
-    "skill_ids":     [-1, -1, -1, -1],
-    "attribute_ids": [-1, -1, -1, -1],
+    "effect_ids": [
+      0,
+      27,
+      -1,
+      -1
+    ],
+    "skill_ids": [
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "attribute_ids": [
+      -1,
+      -1,
+      -1,
+      -1
+    ],
     "script": "",
     "icon": "icons\\jtt\\jungle_berry.png",
     "flags": 0
@@ -20,9 +35,24 @@
     "mesh": "jtt\\jungle_mushroom.dae",
     "weight": 0.2,
     "value": 15,
-    "effect_ids":    [0,  25, -1, -1],
-    "skill_ids":     [-1, -1, -1, -1],
-    "attribute_ids": [-1, -1, -1, -1],
+    "effect_ids": [
+      0,
+      25,
+      -1,
+      -1
+    ],
+    "skill_ids": [
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "attribute_ids": [
+      -1,
+      -1,
+      -1,
+      -1
+    ],
     "script": "",
     "icon": "icons\\jtt\\jungle_mushroom.png",
     "flags": 0
@@ -34,9 +64,24 @@
     "mesh": "jtt\\jungle_root.dae",
     "weight": 0.3,
     "value": 8,
-    "effect_ids":    [27, 0,  -1, -1],
-    "skill_ids":     [-1, -1, -1, -1],
-    "attribute_ids": [-1, -1, -1, -1],
+    "effect_ids": [
+      27,
+      0,
+      -1,
+      -1
+    ],
+    "skill_ids": [
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "attribute_ids": [
+      -1,
+      -1,
+      -1,
+      -1
+    ],
     "script": "",
     "icon": "icons\\jtt\\jungle_root.png",
     "flags": 0
@@ -48,9 +93,24 @@
     "mesh": "jtt\\croc_scale.dae",
     "weight": 0.5,
     "value": 20,
-    "effect_ids":    [3, 25, -1, -1],
-    "skill_ids":     [-1, -1, -1, -1],
-    "attribute_ids": [-1, -1, -1, -1],
+    "effect_ids": [
+      3,
+      25,
+      -1,
+      -1
+    ],
+    "skill_ids": [
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "attribute_ids": [
+      -1,
+      -1,
+      -1,
+      -1
+    ],
     "script": "",
     "icon": "icons\\jtt\\croc_scale.png",
     "flags": 0
@@ -62,9 +122,24 @@
     "mesh": "jtt\\panther_fang.dae",
     "weight": 0.3,
     "value": 30,
-    "effect_ids":    [17, 14, -1, -1],
-    "skill_ids":     [-1, -1, -1, -1],
-    "attribute_ids": [0, -1, -1, -1],
+    "effect_ids": [
+      17,
+      14,
+      -1,
+      -1
+    ],
+    "skill_ids": [
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "attribute_ids": [
+      0,
+      -1,
+      -1,
+      -1
+    ],
     "script": "",
     "icon": "icons\\jtt\\panther_fang.png",
     "flags": 0
@@ -76,9 +151,24 @@
     "mesh": "jtt\\bird_feather.dae",
     "weight": 0.05,
     "value": 4,
-    "effect_ids":    [8, 9, -1, -1],
-    "skill_ids":     [-1, -1, -1, -1],
-    "attribute_ids": [-1, -1, -1, -1],
+    "effect_ids": [
+      8,
+      9,
+      -1,
+      -1
+    ],
+    "skill_ids": [
+      -1,
+      -1,
+      -1,
+      -1
+    ],
+    "attribute_ids": [
+      -1,
+      -1,
+      -1,
+      -1
+    ],
     "script": "",
     "icon": "icons\\jtt\\bird_feather.png",
     "flags": 0
@@ -361,6 +451,126 @@
         "mmax": 30
       }
     ],
+    "flags": 0
+  },
+  {
+    "rec_type": "ALCH",
+    "record_id": "jtt_cooked_meat",
+    "name": "Cooked Meat",
+    "mesh": "jtt\\raw_meat.dae",
+    "icon": "",
+    "weight": 0.8,
+    "value": 10,
+    "auto_calc": 0,
+    "effects": [
+      {
+        "effect_id": 0,
+        "skill": -1,
+        "attribute": -1,
+        "range": 0,
+        "area": 0,
+        "duration": 1,
+        "mmin": 5,
+        "mmax": 10
+      }
+    ],
+    "script": "",
+    "flags": 0
+  },
+  {
+    "rec_type": "ALCH",
+    "record_id": "jtt_cooked_fish",
+    "name": "Cooked Fish",
+    "mesh": "jtt\\raw_meat.dae",
+    "icon": "",
+    "weight": 0.6,
+    "value": 8,
+    "auto_calc": 0,
+    "effects": [
+      {
+        "effect_id": 0,
+        "skill": -1,
+        "attribute": -1,
+        "range": 0,
+        "area": 0,
+        "duration": 1,
+        "mmin": 3,
+        "mmax": 8
+      }
+    ],
+    "script": "",
+    "flags": 0
+  },
+  {
+    "rec_type": "ALCH",
+    "record_id": "jtt_stew",
+    "name": "Hearty Stew",
+    "mesh": "jtt\\raw_meat.dae",
+    "icon": "",
+    "weight": 0.5,
+    "value": 15,
+    "auto_calc": 0,
+    "effects": [
+      {
+        "effect_id": 0,
+        "skill": -1,
+        "attribute": -1,
+        "range": 0,
+        "area": 0,
+        "duration": 3,
+        "mmin": 10,
+        "mmax": 15
+      }
+    ],
+    "script": "",
+    "flags": 0
+  },
+  {
+    "rec_type": "ALCH",
+    "record_id": "jtt_omelette",
+    "name": "Egg Omelette",
+    "mesh": "jtt\\raw_meat.dae",
+    "icon": "",
+    "weight": 0.3,
+    "value": 8,
+    "auto_calc": 0,
+    "effects": [
+      {
+        "effect_id": 0,
+        "skill": -1,
+        "attribute": -1,
+        "range": 0,
+        "area": 0,
+        "duration": 1,
+        "mmin": 3,
+        "mmax": 6
+      }
+    ],
+    "script": "",
+    "flags": 0
+  },
+  {
+    "rec_type": "ALCH",
+    "record_id": "jtt_raw_meat",
+    "name": "Raw Meat",
+    "mesh": "jtt\\raw_meat.dae",
+    "icon": "",
+    "weight": 0.8,
+    "value": 4,
+    "auto_calc": 0,
+    "effects": [
+      {
+        "effect_id": 0,
+        "skill": -1,
+        "attribute": -1,
+        "range": 0,
+        "area": 0,
+        "duration": 1,
+        "mmin": 1,
+        "mmax": 3
+      }
+    ],
+    "script": "",
     "flags": 0
   }
 ]

@@ -53,19 +53,6 @@
   },
   {
     "rec_type": "MISC",
-    "record_id": "jtt_raw_meat",
-    "name": "Raw Meat",
-    "mesh": "jtt\\raw_meat.dae",
-    "weight": 1.0,
-    "value": 5,
-    "unknown2": 0,
-    "script": "",
-    "icon": "icons\\jtt\\raw_meat.png",
-    "enchantment": "",
-    "flags": 0
-  },
-  {
-    "rec_type": "MISC",
     "record_id": "jtt_spider_silk",
     "name": "Spider Silk",
     "mesh": "jtt\\spider_silk.dae",
@@ -419,50 +406,6 @@
     "mesh": "jtt\\resource_pile.dae",
     "icon": "",
     "weight": 0.5,
-    "value": 8,
-    "script": "",
-    "flags": 0
-  },
-  {
-    "rec_type": "MISC",
-    "record_id": "jtt_cooked_meat",
-    "name": "Cooked Meat",
-    "mesh": "jtt\\raw_meat.dae",
-    "icon": "",
-    "weight": 0.8,
-    "value": 10,
-    "script": "",
-    "flags": 0
-  },
-  {
-    "rec_type": "MISC",
-    "record_id": "jtt_cooked_fish",
-    "name": "Cooked Fish",
-    "mesh": "jtt\\raw_meat.dae",
-    "icon": "",
-    "weight": 0.6,
-    "value": 8,
-    "script": "",
-    "flags": 0
-  },
-  {
-    "rec_type": "MISC",
-    "record_id": "jtt_stew",
-    "name": "Hearty Stew",
-    "mesh": "jtt\\raw_meat.dae",
-    "icon": "",
-    "weight": 0.5,
-    "value": 15,
-    "script": "",
-    "flags": 0
-  },
-  {
-    "rec_type": "MISC",
-    "record_id": "jtt_omelette",
-    "name": "Egg Omelette",
-    "mesh": "jtt\\raw_meat.dae",
-    "icon": "",
-    "weight": 0.3,
     "value": 8,
     "script": "",
     "flags": 0
