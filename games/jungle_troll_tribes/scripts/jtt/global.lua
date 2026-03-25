@@ -66,11 +66,10 @@ local function spawnBiome(cx, cy, z, biomeType)
     placed = {}
     table.insert(placed, {x=cx, y=cy})
 
-    -- Resource nodes
-    spawnScattered('jtt_wood_node', cx, cy, z, 2, 3000, 400)
-    spawnScattered('jtt_stone_node', cx, cy, z, 2, 3000, 400)
-    spawnScattered('jtt_herb_node', cx, cy, z, 2, 3000, 400)
-    spawnScattered('jtt_iron_deposit', cx, cy, z, 1, 3000, 400)
+    -- Herb patches (still clickable nodes) + iron veins (mineable)
+    spawnScattered('jtt_herb_node', cx, cy, z, 3, 3000, 400)
+    local ironCount = {jungle=1, east=1, ridge=3, shore=1, marsh=1}
+    spawnScattered('jtt_iron_vein', cx, cy, z, ironCount[biomeType] or 1, 3000, 400)
 
     -- Portal
     spawn('jtt_fast_travel', cx + randRange(-500, 500), cy + randRange(-500, 500), z)

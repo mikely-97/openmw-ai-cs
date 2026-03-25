@@ -75,22 +75,6 @@
   },
   {
     "rec_type": "ACTI",
-    "record_id": "jtt_wood_node",
-    "name": "Wood Grove",
-    "mesh": "jtt\\wood_node.dae",
-    "script": "JTT_WoodNode",
-    "flags": 0
-  },
-  {
-    "rec_type": "ACTI",
-    "record_id": "jtt_stone_node",
-    "name": "Stone Outcrop",
-    "mesh": "jtt\\stone_node.dae",
-    "script": "JTT_StoneNode",
-    "flags": 0
-  },
-  {
-    "rec_type": "ACTI",
     "record_id": "jtt_herb_node",
     "name": "Herb Patch",
     "mesh": "jtt\\herb_node.dae",
@@ -219,14 +203,6 @@
     "flags": 0
   },
   {
-    "rec_type": "ACTI",
-    "record_id": "jtt_iron_deposit",
-    "name": "Iron Deposit",
-    "mesh": "jtt\\iron_deposit.dae",
-    "script": "JTT_IronNode",
-    "flags": 0
-  },
-  {
     "rec_type": "CONT",
     "record_id": "jtt_storage_chest",
     "name": "Storage Chest",
@@ -349,6 +325,14 @@
     "name": "Rock",
     "mesh": "jtt\\stone_node.dae",
     "script": "JTT_MineRock",
+    "flags": 0
+  },
+  {
+    "rec_type": "ACTI",
+    "record_id": "jtt_iron_vein",
+    "name": "Iron Vein",
+    "mesh": "jtt\\iron_deposit.dae",
+    "script": "JTT_MineIron",
     "flags": 0
   }
 ]
