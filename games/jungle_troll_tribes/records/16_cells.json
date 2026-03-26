@@ -194,5 +194,153 @@
     "water_height": null,
     "flags": 0,
     "refs": []
+  },
+  {
+    "rec_type": "CELL",
+    "cell_name": "Troll Hut",
+    "cell_flags": 1,
+    "grid_x": 0,
+    "grid_y": 0,
+    "region": "",
+    "ref_num_counter": 5,
+    "water_height": null,
+    "flags": 0,
+    "ambient": {
+      "ambient": 4289374890,
+      "sunlight": 4285822068,
+      "fog": 4282400832,
+      "fog_density": 0.5
+    },
+    "refs": [
+      {
+        "ref_num": 1,
+        "object_id": "jtt_campfire",
+        "scale": 0.8,
+        "pos": [
+          0.0,
+          200.0,
+          0.0
+        ],
+        "rot": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "is_deleted": false,
+        "is_blocked": false,
+        "soul": "",
+        "owner": "",
+        "owner_rank": -1,
+        "owner_global": "",
+        "key_id": "",
+        "trap_id": "",
+        "enchant_charge": -1.0,
+        "charge_int": -1,
+        "lock_level": 0.0,
+        "dest_pos": null,
+        "dest_rot": null,
+        "dest_cell": ""
+      },
+      {
+        "ref_num": 2,
+        "object_id": "jtt_tribal_chest",
+        "scale": 1.0,
+        "pos": [
+          200.0,
+          -100.0,
+          0.0
+        ],
+        "rot": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "is_deleted": false,
+        "is_blocked": false,
+        "soul": "",
+        "owner": "",
+        "owner_rank": -1,
+        "owner_global": "",
+        "key_id": "",
+        "trap_id": "",
+        "enchant_charge": -1.0,
+        "charge_int": -1,
+        "lock_level": 0.0,
+        "dest_pos": null,
+        "dest_rot": null,
+        "dest_cell": ""
+      },
+      {
+        "ref_num": 3,
+        "object_id": "jtt_hut_floor",
+        "scale": 1.0,
+        "pos": [0.0, 0.0, -50.0],
+        "rot": [0.0, 0.0, 0.0],
+        "is_deleted": false,
+        "is_blocked": false,
+        "soul": "",
+        "owner": "",
+        "owner_rank": -1,
+        "owner_global": "",
+        "key_id": "",
+        "trap_id": "",
+        "enchant_charge": -1.0,
+        "charge_int": -1,
+        "lock_level": 0.0,
+        "dest_pos": null,
+        "dest_rot": null,
+        "dest_cell": ""
+      },
+      {
+        "ref_num": 4,
+        "object_id": "jtt_hut_door_exit",
+        "scale": 1.0,
+        "pos": [0.0, -300.0, 0.0],
+        "rot": [0.0, 0.0, 3.1416],
+        "is_deleted": false,
+        "is_blocked": false,
+        "soul": "",
+        "owner": "",
+        "owner_rank": -1,
+        "owner_global": "",
+        "key_id": "",
+        "trap_id": "",
+        "enchant_charge": -1.0,
+        "charge_int": -1,
+        "lock_level": 0.0,
+        "dest_pos": null,
+        "dest_rot": null,
+        "dest_cell": ""
+      },
+      {
+        "ref_num": 5,
+        "object_id": "northmarker",
+        "scale": 1.0,
+        "pos": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rot": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "is_deleted": false,
+        "is_blocked": false,
+        "soul": "",
+        "owner": "",
+        "owner_rank": -1,
+        "owner_global": "",
+        "key_id": "",
+        "trap_id": "",
+        "enchant_charge": -1.0,
+        "charge_int": -1,
+        "lock_level": 0.0,
+        "dest_pos": null,
+        "dest_rot": null,
+        "dest_cell": ""
+      }
+    ]
   }
 ]

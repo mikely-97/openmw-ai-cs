@@ -1142,6 +1142,17 @@ def mk_jungle_mushroom():
     export("jungle_mushroom.dae")
 
 
+def mk_hut_floor():
+    """Large flat wooden floor slab for the Troll Hut interior."""
+    clear()
+    m_wood = mat("hut_floor", 0.42, 0.28, 0.14)
+    bpy.ops.mesh.primitive_cube_add(size=1, location=(0, 0, 0))
+    bpy.context.active_object.scale = (1000, 1000, 100)
+    bpy.ops.object.transform_apply(scale=True)
+    apply_mat(bpy.context.active_object, m_wood)
+    export("hut_floor.dae")
+
+
 def mk_tome():
     """Generic book / tome mesh used by BOOK records."""
     clear()
@@ -1189,6 +1200,7 @@ mk_fire_pit()
 mk_bone_torch()
 mk_glow_mushroom()
 mk_troll_door()
+mk_hut_floor()
 
 print("Weapons:")
 mk_bone_club()

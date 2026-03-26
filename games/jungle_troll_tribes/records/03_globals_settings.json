@@ -107,5 +107,26 @@
     "var_type": "s",
     "value": 0.0,
     "flags": 0
+  },
+  {
+    "rec_type": "GLOB",
+    "record_id": "JTT_HutExit",
+    "var_type": "s",
+    "value": 0.0,
+    "flags": 0
+  },
+  {
+    "rec_type": "GLOB",
+    "record_id": "JTT_HutLastX",
+    "var_type": "f",
+    "value": 0.0,
+    "flags": 0
+  },
+  {
+    "rec_type": "GLOB",
+    "record_id": "JTT_HutLastY",
+    "var_type": "f",
+    "value": 0.0,
+    "flags": 0
   }
 ]

@@ -69,6 +69,12 @@
   },
   {
     "rec_type": "STAT",
+    "record_id": "jtt_hut_floor",
+    "mesh": "jtt\\hut_floor.dae",
+    "flags": 0
+  },
+  {
+    "rec_type": "STAT",
     "record_id": "jtt_voodoo_shrine",
     "mesh": "jtt\\voodoo_shrine.dae",
     "flags": 0
@@ -333,6 +339,26 @@
     "name": "Iron Vein",
     "mesh": "jtt\\iron_deposit.dae",
     "script": "JTT_MineIron",
+    "flags": 0
+  },
+  {
+    "rec_type": "DOOR",
+    "record_id": "jtt_hut_entrance",
+    "name": "Troll Hut Entrance",
+    "mesh": "jtt\\troll_door.dae",
+    "script": "JTT_EnterHut",
+    "open_sound": "",
+    "close_sound": "",
+    "flags": 0
+  },
+  {
+    "rec_type": "DOOR",
+    "record_id": "jtt_hut_door_exit",
+    "name": "Exit",
+    "mesh": "jtt\\troll_door.dae",
+    "script": "JTT_HutExitDoor",
+    "open_sound": "",
+    "close_sound": "",
     "flags": 0
   }
 ]
