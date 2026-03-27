@@ -185,12 +185,107 @@ local function onJTTSpawnWorld(data)
     spawnBiome(4096, -8192 + 4096, 4, 'marsh')
 end
 
+-- ============================================================
+-- DUNGEON SYSTEM
+-- ============================================================
+
+local JTT_DungeonState = {}
+
+local function loadDungeonConfig(typeName)
+    local ok, dungeons_tbl = pcall(require, "scripts.jungle_troll_tribes.dungeon_config_" .. typeName)
+    if not ok then
+        util.log("JTT: dungeon config not found: " .. typeName)
+        return nil
+    end
+    -- dungeons_tbl is JTT_Dungeons = { bear_den = { variants=..., creatures=... }, ... }
+    return dungeons_tbl and dungeons_tbl[typeName] or nil
+end
+
+local function onJTTEnterDungeon(data)
+    local typeName = data.dungeon_type
+    local cfg = loadDungeonConfig(typeName)
+    if not cfg then return end
+
+    local variants = cfg.variants
+    local idx = math.random(1, #variants)
+    local variant = variants[idx]
+    local player = world.players[1]
+
+    local pos = util.vector3(variant.entrance_pos.x, variant.entrance_pos.y, variant.entrance_pos.z)
+    player:teleport(variant.cell_id, pos, util.transform.identity)
+
+    JTT_DungeonState[variant.cell_id] = { variant = variant, dungeon_type = typeName, spawned = {} }
+
+    core.sendGlobalEvent("JTT_PopulateDungeon", {
+        cell_id      = variant.cell_id,
+        dungeon_type = typeName,
+        anchors      = variant.anchors,
+    })
+end
+
+local function onJTTPopulateDungeon(data)
+    local cfg = loadDungeonConfig(data.dungeon_type)
+    if not cfg then return end
+
+    local cellId  = data.cell_id
+    local anchors = data.anchors
+    local state   = JTT_DungeonState[cellId]
+
+    for _, anchor in ipairs(anchors) do
+        local pos = util.vector3(anchor.x, anchor.y, anchor.z)
+
+        if #cfg.creatures > 0 then
+            local count = math.random(cfg.creatures_per_room[1], cfg.creatures_per_room[2])
+            for _ = 1, count do
+                local creatureId = cfg.creatures[math.random(1, #cfg.creatures)]
+                local obj = world.createObject(creatureId, 1)
+                local jitter = util.vector3(math.random(-2, 2), math.random(-2, 2), 0)
+                obj:teleport(cellId, pos + jitter, util.transform.identity)
+                if state then table.insert(state.spawned, obj) end
+            end
+        end
+
+        if #cfg.containers > 0 then
+            local roll = math.random(cfg.loot_per_room[1], cfg.loot_per_room[2])
+            if roll > 0 then
+                local contId = cfg.containers[math.random(1, #cfg.containers)]
+                local lootObj = world.createObject(contId, 1)
+                lootObj:teleport(cellId, pos + util.vector3(1.5, 0, 0), util.transform.identity)
+                if state then table.insert(state.spawned, lootObj) end
+            end
+        end
+    end
+end
+
+local function onJTTExitDungeon(data)
+    local cellId = data.cell_id
+    local state  = JTT_DungeonState[cellId]
+    if not state then return end
+
+    for _, obj in ipairs(state.spawned) do
+        if obj and obj:isValid() then
+            obj:remove()
+        end
+    end
+
+    local ext    = state.variant.exit_exterior
+    local player = world.players[1]
+    local pos    = util.vector3(ext.x, ext.y, ext.z)
+    local target = (ext.cell == "" or ext.cell == "default") and "" or ext.cell
+    player:teleport(target, pos, util.transform.identity)
+
+    JTT_DungeonState[cellId] = nil
+end
+
 return {
     eventHandlers = {
-        JTT_Build = onJTTBuild,
-        JTT_Quest = onJTTQuest,
-        JTT_Status = onJTTStatus,
-        JTT_Eat = onJTTEat,
-        JTT_SpawnWorld = onJTTSpawnWorld,
+        JTT_Build            = onJTTBuild,
+        JTT_Quest            = onJTTQuest,
+        JTT_Status           = onJTTStatus,
+        JTT_Eat              = onJTTEat,
+        JTT_SpawnWorld       = onJTTSpawnWorld,
+        JTT_EnterDungeon     = onJTTEnterDungeon,
+        JTT_PopulateDungeon  = onJTTPopulateDungeon,
+        JTT_ExitDungeon      = onJTTExitDungeon,
     }
 }

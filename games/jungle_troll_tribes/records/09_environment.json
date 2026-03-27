@@ -392,5 +392,7 @@
     "mesh": "jtt\\mushroom_patch.dae",
     "script": "JTT_MushroomPatch",
     "flags": 0
-  }
+  },
+  {"rec_type": "ACTI", "record_id": "jtt_dungeon_entrance", "mesh": "omwdg\\cave_doorway.dae", "name": "Cave Entrance", "script": ""},
+  {"rec_type": "ACTI", "record_id": "jtt_dungeon_exit",     "mesh": "omwdg\\cave_doorway.dae", "name": "Cave Exit",     "script": ""}
 ]
