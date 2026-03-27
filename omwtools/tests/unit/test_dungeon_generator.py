@@ -218,7 +218,7 @@ def test_pool_builder_cell_count():
         creature_pool=["tst_bear"], creatures_per_room=(1, 1),
         loot_containers=["tst_chest"], loot_per_room=(0, 1),
     )
-    records, layouts = build_pool(spec, TILESET)
+    records, layouts, _ = build_pool(spec, TILESET)
     cell_records = [r for r in records if r["rec_type"] == "CELL"]
     assert len(cell_records) == 3
     assert len(layouts) == 3
@@ -232,7 +232,7 @@ def test_pool_builder_cell_ids_sequential():
         creature_pool=[], creatures_per_room=(0, 0),
         loot_containers=[], loot_per_room=(0, 0),
     )
-    records, _ = build_pool(spec, TILESET)
+    records, _, _ids = build_pool(spec, TILESET)
     cell_ids = [r["record_id"] for r in records if r["rec_type"] == "CELL"]
     assert cell_ids == ["tst_tiny_0", "tst_tiny_1", "tst_tiny_2"]
 
@@ -245,8 +245,8 @@ def test_pool_builder_start_seed_offset():
         creature_pool=[], creatures_per_room=(0, 0),
         loot_containers=[], loot_per_room=(0, 0),
     )
-    _, layouts_s0 = build_pool(spec, TILESET, start_seed=0)
-    _, layouts_s5 = build_pool(spec, TILESET, start_seed=5)
+    _, layouts_s0, _ = build_pool(spec, TILESET, start_seed=0)
+    _, layouts_s5, _ = build_pool(spec, TILESET, start_seed=5)
     assert layouts_s0[0].floor_tiles != layouts_s5[0].floor_tiles
 
 
@@ -258,8 +258,8 @@ def test_lua_config_contains_cell_ids():
         creature_pool=["tst_bear"], creatures_per_room=(1, 1),
         loot_containers=[], loot_per_room=(0, 0),
     )
-    _, layouts = build_pool(spec, TILESET)
-    lua = generate_lua_config("tiny", spec, layouts, TILESET)
+    _, layouts, cell_ids = build_pool(spec, TILESET)
+    lua = generate_lua_config("tiny", spec, layouts, TILESET, cell_ids)
     assert "tst_tiny_0" in lua
     assert "tst_tiny_1" in lua
     assert "TST_Dungeons" in lua
