@@ -79,7 +79,7 @@
       "HarvestCount"
     ],
     "bytecode_hex": "",
-    "source_text": "Begin JTT_HerbNode\n\nshort HarvestCount\n\nif ( OnActivate == 1 )\n    if ( HarvestCount >= 3 )\n        MessageBox \"This patch is picked clean.\"\n    else\n        set HarvestCount to ( HarvestCount + 1 )\n        player->AddItem \"jtt_jungle_berry\" 2\n        player->AddItem \"jtt_jungle_root\" 1\n        if ( HarvestCount == 1 )\n            MessageBox \"+2 Berries, +1 Root (2 harvests left)\"\n        endif\n        if ( HarvestCount == 2 )\n            MessageBox \"+2 Berries, +1 Root (1 harvest left)\"\n        endif\n        if ( HarvestCount == 3 )\n            MessageBox \"+2 Berries, +1 Root (picked clean)\"\n        endif\n    endif\nendif\n\nEnd JTT_HerbNode",
+    "source_text": "Begin JTT_HerbNode\n\nshort HarvestCount\n\nif ( OnActivate == 1 )\n    if ( HarvestCount >= 3 )\n        MessageBox \"This patch is picked clean.\"\n    else\n        set HarvestCount to ( HarvestCount + 1 )\n        player->AddItem \"jtt_jungle_berry\" 2\n        player->AddItem \"jtt_jungle_root\" 1\n        if ( HarvestCount == 1 )\n            MessageBox \"+2 Berries, +1 Root (2 harvests left)\"\n        endif\n        if ( HarvestCount == 2 )\n            MessageBox \"+2 Berries, +1 Root (1 harvest left)\"\n        endif\n        if ( HarvestCount == 3 )\n            MessageBox \"+2 Berries, +1 Root (picked clean)\"\n            Disable\n        endif\n    endif\nendif\n\nEnd JTT_HerbNode",
     "has_scdt": false,
     "flags": 0
   },
@@ -366,7 +366,7 @@
     "bytecode_hex": "",
     "has_scdt": false,
     "flags": 0,
-    "source_text": "Begin JTT_SpiderWebNode\n\nshort HarvestCount\n\nif ( OnActivate == 1 )\n    if ( HarvestCount >= 2 )\n        MessageBox \"The web has been stripped clean.\"\n    else\n        set HarvestCount to ( HarvestCount + 1 )\n        player->AddItem \"jtt_spider_silk\" 2\n        if ( HarvestCount == 1 )\n            MessageBox \"+2 Spider Silk (1 harvest left)\"\n        endif\n        if ( HarvestCount == 2 )\n            MessageBox \"+2 Spider Silk (stripped clean)\"\n        endif\n    endif\nendif\n\nEnd JTT_SpiderWebNode"
+    "source_text": "Begin JTT_SpiderWebNode\n\nshort HarvestCount\n\nif ( OnActivate == 1 )\n    if ( HarvestCount >= 2 )\n        MessageBox \"The web has been stripped clean.\"\n    else\n        set HarvestCount to ( HarvestCount + 1 )\n        player->AddItem \"jtt_spider_silk\" 2\n        if ( HarvestCount == 1 )\n            MessageBox \"+2 Spider Silk (1 harvest left)\"\n        endif\n        if ( HarvestCount == 2 )\n            MessageBox \"+2 Spider Silk (stripped clean)\"\n            Disable\n        endif\n    endif\nendif\n\nEnd JTT_SpiderWebNode"
   },
   {
     "rec_type": "SCPT",
@@ -380,7 +380,7 @@
     "bytecode_hex": "",
     "has_scdt": false,
     "flags": 0,
-    "source_text": "Begin JTT_BearDenNode\n\nshort HarvestCount\n\nif ( OnActivate == 1 )\n    if ( HarvestCount >= 2 )\n        MessageBox \"The den is empty.\"\n    else\n        set HarvestCount to ( HarvestCount + 1 )\n        player->AddItem \"jtt_bear_hide\" 1\n        if ( HarvestCount == 1 )\n            MessageBox \"+1 Bear Hide (1 harvest left)\"\n        endif\n        if ( HarvestCount == 2 )\n            MessageBox \"+1 Bear Hide (den empty)\"\n        endif\n    endif\nendif\n\nEnd JTT_BearDenNode"
+    "source_text": "Begin JTT_BearDenNode\n\nshort HarvestCount\n\nif ( OnActivate == 1 )\n    if ( HarvestCount >= 2 )\n        MessageBox \"The den is empty.\"\n    else\n        set HarvestCount to ( HarvestCount + 1 )\n        player->AddItem \"jtt_bear_hide\" 1\n        if ( HarvestCount == 1 )\n            MessageBox \"+1 Bear Hide (1 harvest left)\"\n        endif\n        if ( HarvestCount == 2 )\n            MessageBox \"+1 Bear Hide (den empty)\"\n            Disable\n        endif\n    endif\nendif\n\nEnd JTT_BearDenNode"
   },
   {
     "rec_type": "SCPT",
@@ -394,7 +394,7 @@
     "bytecode_hex": "",
     "has_scdt": false,
     "flags": 0,
-    "source_text": "Begin JTT_TidalPoolNode\n\nshort HarvestCount\n\nif ( OnActivate == 1 )\n    if ( HarvestCount >= 2 )\n        MessageBox \"The pool has been picked clean.\"\n    else\n        set HarvestCount to ( HarvestCount + 1 )\n        player->AddItem \"jtt_crab_chitin\" 1\n        player->AddItem \"jtt_salt\" 1\n        if ( HarvestCount == 1 )\n            MessageBox \"+1 Crab Chitin, +1 Salt (1 harvest left)\"\n        endif\n        if ( HarvestCount == 2 )\n            MessageBox \"+1 Crab Chitin, +1 Salt (pool empty)\"\n        endif\n    endif\nendif\n\nEnd JTT_TidalPoolNode"
+    "source_text": "Begin JTT_TidalPoolNode\n\nshort HarvestCount\n\nif ( OnActivate == 1 )\n    if ( HarvestCount >= 2 )\n        MessageBox \"The pool has been picked clean.\"\n    else\n        set HarvestCount to ( HarvestCount + 1 )\n        player->AddItem \"jtt_crab_chitin\" 1\n        player->AddItem \"jtt_salt\" 1\n        if ( HarvestCount == 1 )\n            MessageBox \"+1 Crab Chitin, +1 Salt (1 harvest left)\"\n        endif\n        if ( HarvestCount == 2 )\n            MessageBox \"+1 Crab Chitin, +1 Salt (pool empty)\"\n            Disable\n        endif\n    endif\nendif\n\nEnd JTT_TidalPoolNode"
   },
   {
     "rec_type": "SCPT",
@@ -408,6 +408,6 @@
     "bytecode_hex": "",
     "has_scdt": false,
     "flags": 0,
-    "source_text": "Begin JTT_MushroomPatch\n\nshort HarvestCount\n\nif ( OnActivate == 1 )\n    if ( HarvestCount >= 3 )\n        MessageBox \"The patch is picked clean.\"\n    else\n        set HarvestCount to ( HarvestCount + 1 )\n        player->AddItem \"jtt_jungle_mushroom\" 2\n        player->AddItem \"jtt_jungle_root\" 1\n        if ( HarvestCount == 1 )\n            MessageBox \"+2 Mushrooms, +1 Root (2 harvests left)\"\n        endif\n        if ( HarvestCount == 2 )\n            MessageBox \"+2 Mushrooms, +1 Root (1 harvest left)\"\n        endif\n        if ( HarvestCount == 3 )\n            MessageBox \"+2 Mushrooms, +1 Root (picked clean)\"\n        endif\n    endif\nendif\n\nEnd JTT_MushroomPatch"
+    "source_text": "Begin JTT_MushroomPatch\n\nshort HarvestCount\n\nif ( OnActivate == 1 )\n    if ( HarvestCount >= 3 )\n        MessageBox \"The patch is picked clean.\"\n    else\n        set HarvestCount to ( HarvestCount + 1 )\n        player->AddItem \"jtt_jungle_mushroom\" 2\n        player->AddItem \"jtt_jungle_root\" 1\n        if ( HarvestCount == 1 )\n            MessageBox \"+2 Mushrooms, +1 Root (2 harvests left)\"\n        endif\n        if ( HarvestCount == 2 )\n            MessageBox \"+2 Mushrooms, +1 Root (1 harvest left)\"\n        endif\n        if ( HarvestCount == 3 )\n            MessageBox \"+2 Mushrooms, +1 Root (picked clean)\"\n            Disable\n        endif\n    endif\nendif\n\nEnd JTT_MushroomPatch"
   }
 ]
