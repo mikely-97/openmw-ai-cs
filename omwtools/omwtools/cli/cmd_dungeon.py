@@ -76,19 +76,23 @@ def _compile_addon(records_json: Path, addon_path: Path, mod_name: str) -> None:
     from omwtools.json_io.import_ import import_records_from_json
     from omwtools.cli.cmd_write import write_mod
 
-    with tempfile.TemporaryDirectory() as tmp:
-        db_path = Path(tmp) / "dungeon.db"
-        conn = make_db(str(db_path))
-        # Insert a mod entry (required by FK constraint)
-        conn.execute(
-            "INSERT INTO mods (id, filename, format_version, author, description, "
-            "is_master, num_objects) VALUES (1, ?, 23, '', '', 0, 0)",
-            (mod_name + ".omwaddon",)
-        )
-        conn.commit()
-        import_records_from_json(conn, records_json.read_text(), mod_id=1)
-        write_mod(conn, mod_id=1, output_path=str(addon_path))
-        conn.close()
+    try:
+        with tempfile.TemporaryDirectory() as tmp:
+            db_path = Path(tmp) / "dungeon.db"
+            conn = make_db(str(db_path))
+            # Insert a mod entry (required by FK constraint)
+            conn.execute(
+                "INSERT INTO mods (id, filename, format_version, author, description, "
+                "is_master, num_objects) VALUES (1, ?, 23, '', '', 0, 0)",
+                (mod_name + ".omwaddon",)
+            )
+            conn.commit()
+            import_records_from_json(conn, records_json.read_text(), mod_id=1)
+            write_mod(conn, mod_id=1, output_path=str(addon_path))
+            conn.close()
+    except Exception as e:
+        print(f"Error compiling addon: {e}", file=sys.stderr)
+        sys.exit(1)
     print(f"Compiled addon: {addon_path}")
 
 
@@ -119,12 +123,12 @@ def _load_registry(game_dir: Path) -> dict:
         return mod
 
     # Register top-level dungeons package
-    _load_pkg("_jtt_dungeons", dungeons_dir)
+    _load_pkg("_omwdg_registry", dungeons_dir)
 
     # Pre-register all sub-packages so relative imports resolve
     for subdir in dungeons_dir.iterdir():
         if subdir.is_dir() and (subdir / "__init__.py").exists():
-            sub_pkg = f"_jtt_dungeons.{subdir.name}"
+            sub_pkg = f"_omwdg_registry.{subdir.name}"
             _load_pkg(sub_pkg, subdir)
             # Register leaf modules inside each sub-package
             for pyfile in subdir.glob("*.py"):
@@ -140,10 +144,10 @@ def _load_registry(game_dir: Path) -> dict:
 
     # Now load registry.py itself
     registry_path = dungeons_dir / "registry.py"
-    reg_spec = importlib.util.spec_from_file_location("_jtt_dungeons.registry", registry_path)
+    reg_spec = importlib.util.spec_from_file_location("_omwdg_registry.registry", registry_path)
     reg_mod = importlib.util.module_from_spec(reg_spec)
-    reg_mod.__package__ = "_jtt_dungeons"
-    sys.modules["_jtt_dungeons.registry"] = reg_mod
+    reg_mod.__package__ = "_omwdg_registry"
+    sys.modules["_omwdg_registry.registry"] = reg_mod
     reg_spec.loader.exec_module(reg_mod)
 
     return {"TILESETS": reg_mod.TILESETS, "DUNGEON_TYPES": reg_mod.DUNGEON_TYPES}
