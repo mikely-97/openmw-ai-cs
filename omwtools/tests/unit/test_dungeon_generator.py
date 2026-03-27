@@ -232,9 +232,11 @@ def test_pool_builder_cell_ids_sequential():
         creature_pool=[], creatures_per_room=(0, 0),
         loot_containers=[], loot_per_room=(0, 0),
     )
-    records, _, _ids = build_pool(spec, TILESET)
-    cell_ids = [r["record_id"] for r in records if r["rec_type"] == "CELL"]
+    records, _, cell_ids = build_pool(spec, TILESET)
     assert cell_ids == ["tst_tiny_0", "tst_tiny_1", "tst_tiny_2"]
+    # Also verify IDs are consistent with what was baked into CELL records
+    record_ids = [r["record_id"] for r in records if r["rec_type"] == "CELL"]
+    assert record_ids == cell_ids
 
 
 def test_pool_builder_start_seed_offset():
