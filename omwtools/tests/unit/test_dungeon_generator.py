@@ -3,6 +3,7 @@ from collections import deque
 from omwtools.dungeons.dungeon_spec import DungeonSpec, DungeonLayout
 from omwtools.dungeons.tile_spec import TileSet, TileDef
 from omwtools.dungeons.generator import generate
+from omwtools.records.cell import Cell
 
 
 SPEC = DungeonSpec(
@@ -197,8 +198,6 @@ def test_stat_records_returns_one_per_tile_type():
         assert s["mesh"].startswith("omwdg\\")
         assert s["flags"] == 0
 
-
-from omwtools.records.cell import Cell
 
 def test_build_cell_roundtrip_via_from_dict():
     """build() output must be consumable by Cell.from_dict without errors."""
