@@ -360,5 +360,37 @@
     "open_sound": "",
     "close_sound": "",
     "flags": 0
+  },
+  {
+    "rec_type": "ACTI",
+    "record_id": "jtt_spider_web",
+    "name": "Spider Web",
+    "mesh": "jtt\\spider_web.dae",
+    "script": "JTT_SpiderWebNode",
+    "flags": 0
+  },
+  {
+    "rec_type": "ACTI",
+    "record_id": "jtt_bear_den",
+    "name": "Bear Den",
+    "mesh": "jtt\\bear_den.dae",
+    "script": "JTT_BearDenNode",
+    "flags": 0
+  },
+  {
+    "rec_type": "ACTI",
+    "record_id": "jtt_tidal_pool",
+    "name": "Tidal Pool",
+    "mesh": "jtt\\tidal_pool.dae",
+    "script": "JTT_TidalPoolNode",
+    "flags": 0
+  },
+  {
+    "rec_type": "ACTI",
+    "record_id": "jtt_mushroom_patch",
+    "name": "Mushroom Patch",
+    "mesh": "jtt\\mushroom_patch.dae",
+    "script": "JTT_MushroomPatch",
+    "flags": 0
   }
 ]

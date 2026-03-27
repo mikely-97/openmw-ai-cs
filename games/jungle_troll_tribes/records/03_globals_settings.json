@@ -128,5 +128,33 @@
     "var_type": "f",
     "value": 0.0,
     "flags": 0
+  },
+  {
+    "rec_type": "GLOB",
+    "record_id": "JTT_Found_East",
+    "var_type": "s",
+    "value": 0.0,
+    "flags": 0
+  },
+  {
+    "rec_type": "GLOB",
+    "record_id": "JTT_Found_Ridge",
+    "var_type": "s",
+    "value": 0.0,
+    "flags": 0
+  },
+  {
+    "rec_type": "GLOB",
+    "record_id": "JTT_Found_Shore",
+    "var_type": "s",
+    "value": 0.0,
+    "flags": 0
+  },
+  {
+    "rec_type": "GLOB",
+    "record_id": "JTT_Found_Marsh",
+    "var_type": "s",
+    "value": 0.0,
+    "flags": 0
   }
 ]

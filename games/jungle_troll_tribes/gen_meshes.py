@@ -1202,6 +1202,81 @@ mk_glow_mushroom()
 mk_troll_door()
 mk_hut_floor()
 
+def mk_spider_web():
+    """A large flat web stretched between anchor points."""
+    clear()
+    m_web = mat("web_silk", 0.90, 0.90, 0.85)
+    # Central disc
+    bpy.ops.mesh.primitive_cylinder_add(vertices=16, radius=40, depth=2,
+                                         location=(0, 0, 60))
+    apply_mat(bpy.context.active_object, m_web)
+    # Radial strands
+    for angle in range(0, 360, 45):
+        rad = math.radians(angle)
+        bpy.ops.mesh.primitive_cylinder_add(vertices=4, radius=2, depth=80,
+                                             location=(math.cos(rad)*40,
+                                                       math.sin(rad)*40, 60),
+                                             rotation=(0, 0, rad))
+        apply_mat(bpy.context.active_object, m_web)
+    export("spider_web.dae")
+
+
+def mk_bear_den():
+    """A rocky cave entrance mound."""
+    clear()
+    m_rock = mat("den_rock", 0.35, 0.30, 0.25)
+    m_dark = mat("den_shadow", 0.12, 0.10, 0.08)
+    # Main mound
+    bpy.ops.mesh.primitive_uv_sphere_add(segments=10, ring_count=8,
+                                          radius=55, location=(0, 0, 30))
+    bpy.context.active_object.scale = (1.0, 0.8, 0.5)
+    bpy.ops.object.transform_apply(scale=True)
+    apply_mat(bpy.context.active_object, m_rock)
+    # Dark cave opening
+    bpy.ops.mesh.primitive_cylinder_add(vertices=10, radius=22, depth=20,
+                                         location=(0, 45, 20))
+    apply_mat(bpy.context.active_object, m_dark)
+    export("bear_den.dae")
+
+
+def mk_tidal_pool():
+    """A shallow rocky tidal pool."""
+    clear()
+    m_rock = mat("pool_rock", 0.45, 0.40, 0.35)
+    m_water = mat("pool_water", 0.15, 0.50, 0.60)
+    # Rocky rim
+    bpy.ops.mesh.primitive_torus_add(major_radius=50, minor_radius=12,
+                                      major_segments=16, minor_segments=8,
+                                      location=(0, 0, 6))
+    apply_mat(bpy.context.active_object, m_rock)
+    # Water surface
+    bpy.ops.mesh.primitive_cylinder_add(vertices=16, radius=38, depth=4,
+                                         location=(0, 0, 2))
+    apply_mat(bpy.context.active_object, m_water)
+    export("tidal_pool.dae")
+
+
+def mk_mushroom_patch():
+    """A cluster of large glowing mushrooms."""
+    clear()
+    m_stem = mat("patch_stem", 0.60, 0.52, 0.42)
+    m_cap1 = mat("patch_cap1", 0.08, 0.75, 0.45)
+    m_cap2 = mat("patch_cap2", 0.50, 0.20, 0.70)
+    offsets = [(0, 0, 20), (25, 15, 15), (-20, 20, 12), (15, -25, 18)]
+    caps = [m_cap1, m_cap2, m_cap1, m_cap2]
+    for (ox, oy, h), cap in zip(offsets, caps):
+        r = h * 0.35
+        bpy.ops.mesh.primitive_cylinder_add(vertices=6, radius=max(3, r*0.4),
+                                             depth=h, location=(ox, oy, h/2))
+        apply_mat(bpy.context.active_object, m_stem)
+        bpy.ops.mesh.primitive_uv_sphere_add(segments=8, ring_count=6,
+                                              radius=r, location=(ox, oy, h))
+        bpy.context.active_object.scale = (1.0, 1.0, 0.55)
+        bpy.ops.object.transform_apply(scale=True)
+        apply_mat(bpy.context.active_object, cap)
+    export("mushroom_patch.dae")
+
+
 print("Weapons:")
 mk_bone_club()
 mk_stone_hatchet()
@@ -1259,5 +1334,11 @@ mk_jungle_berry()
 mk_jungle_root()
 mk_jungle_mushroom()
 mk_tome()
+
+print("Biome harvest nodes:")
+mk_spider_web()
+mk_bear_den()
+mk_tidal_pool()
+mk_mushroom_patch()
 
 print(f"\n=== Done! Meshes written to: {OUT} ===\n")

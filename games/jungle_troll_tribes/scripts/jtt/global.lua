@@ -62,9 +62,22 @@ local function spawnScattered(recordId, cx, cy, z, count, radius, minDist)
     end
 end
 
+local uniqueNodes = {
+    east  = 'jtt_spider_web',
+    ridge = 'jtt_bear_den',
+    shore = 'jtt_tidal_pool',
+    marsh = 'jtt_mushroom_patch',
+}
+
 local function spawnBiome(cx, cy, z, biomeType)
     placed = {}
     table.insert(placed, {x=cx, y=cy})
+
+    -- Unique biome harvest nodes (3 per biome)
+    local uniqueNode = uniqueNodes[biomeType]
+    if uniqueNode then
+        spawnScattered(uniqueNode, cx, cy, z, 3, 2500, 400)
+    end
 
     -- Herb patches (still clickable nodes) + iron veins (mineable)
     spawnScattered('jtt_herb_node', cx, cy, z, 3, 3000, 400)

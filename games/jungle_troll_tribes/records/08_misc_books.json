@@ -464,5 +464,16 @@
     "value": 8,
     "script": "",
     "flags": 0
+  },
+  {
+    "rec_type": "MISC",
+    "record_id": "jtt_salt",
+    "name": "Salt",
+    "mesh": "jtt\\resource_pile.dae",
+    "icon": "",
+    "weight": 0.3,
+    "value": 5,
+    "script": "",
+    "flags": 0
   }
 ]

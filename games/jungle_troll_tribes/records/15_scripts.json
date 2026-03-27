@@ -7,7 +7,7 @@
     "num_floats": 0,
     "local_vars": [],
     "bytecode_hex": "",
-    "source_text": "Begin Main\n\nStartScript EnableMenus\nStartScript JTT_Init\nStartScript JTT_SurvivalScript\nStartScript JTT_BuildCheck\nStartScript JTT_FoodTracker\nStartScript JTT_StatusScr\nStopScript Main\n\nEnd Main\n",
+    "source_text": "Begin Main\n\nStartScript EnableMenus\nStartScript JTT_Init\nStartScript JTT_SurvivalScript\nStartScript JTT_BuildCheck\nStartScript JTT_FoodTracker\nStartScript JTT_StatusScr\nStartScript JTT_DiscoveryScr\nStartScript JTT_QuestScr\nStopScript Main\n\nEnd Main\n",
     "has_scdt": false,
     "flags": 0
   },
@@ -183,7 +183,7 @@
       "Button"
     ],
     "bytecode_hex": "",
-    "source_text": "Begin JTT_CauldronScr\n\nshort State\nshort Button\n\nif ( OnActivate == 1 )\n    if ( State == 0 )\n        MessageBox \"Cauldron - Alchemy\" \"Cure Wound (2 Root+1 Berry)\" \"Stamina Boost (1 Root+1 Mushroom)\" \"Antidote (1 Venom+2 Root)\" \"Frenzy Elixir (1 Venom+1 Fang+1 Berry)\" \"Strong Liquor (3 Berry+1 Root)\" \"Tribal Brew (2 Berry+1 Root+1 Mush)\" \"Close\"\n        set State to 1\n    endif\nendif\n\nif ( State == 1 )\n    set Button to GetButtonPressed\n    if ( Button == -1 )\n        return\n    endif\n    if ( Button == 0 )\n        if ( player->GetItemCount \"jtt_jungle_root\" >= 2 )\n            if ( player->GetItemCount \"jtt_jungle_berry\" >= 1 )\n                player->RemoveItem \"jtt_jungle_root\" 2\n                player->RemoveItem \"jtt_jungle_berry\" 1\n                player->AddItem \"jtt_cure_wound\" 1\n                MessageBox \"Brewed a Cure Wound Drink!\"\n            else\n                MessageBox \"Need 2 Roots and 1 Berry.\"\n            endif\n        else\n            MessageBox \"Need 2 Roots and 1 Berry.\"\n        endif\n    endif\n    if ( Button == 1 )\n        if ( player->GetItemCount \"jtt_jungle_root\" >= 1 )\n            if ( player->GetItemCount \"jtt_jungle_mushroom\" >= 1 )\n                player->RemoveItem \"jtt_jungle_root\" 1\n                player->RemoveItem \"jtt_jungle_mushroom\" 1\n                player->AddItem \"jtt_stamina_boost\" 1\n                MessageBox \"Brewed a Stamina Booster!\"\n            else\n                MessageBox \"Need 1 Root and 1 Mushroom.\"\n            endif\n        else\n            MessageBox \"Need 1 Root and 1 Mushroom.\"\n        endif\n    endif\n    if ( Button == 2 )\n        if ( player->GetItemCount \"jtt_snake_venom\" >= 1 )\n            if ( player->GetItemCount \"jtt_jungle_root\" >= 2 )\n                player->RemoveItem \"jtt_snake_venom\" 1\n                player->RemoveItem \"jtt_jungle_root\" 2\n                player->AddItem \"jtt_antidote\" 1\n                MessageBox \"Brewed an Antidote!\"\n            else\n                MessageBox \"Need 1 Snake Venom and 2 Roots.\"\n            endif\n        else\n            MessageBox \"Need 1 Snake Venom and 2 Roots.\"\n        endif\n    endif\n    if ( Button == 3 )\n        if ( player->GetItemCount \"jtt_spider_venom\" >= 1 )\n            if ( player->GetItemCount \"jtt_panther_fang\" >= 1 )\n                if ( player->GetItemCount \"jtt_jungle_berry\" >= 1 )\n                    player->RemoveItem \"jtt_spider_venom\" 1\n                    player->RemoveItem \"jtt_panther_fang\" 1\n                    player->RemoveItem \"jtt_jungle_berry\" 1\n                    player->AddItem \"jtt_frenzy_elixir\" 1\n                    MessageBox \"Brewed a Frenzy Elixir!\"\n                else\n                    MessageBox \"Need 1 Spider Venom, 1 Fang, 1 Berry.\"\n                endif\n            else\n                MessageBox \"Need 1 Spider Venom, 1 Fang, 1 Berry.\"\n            endif\n        else\n            MessageBox \"Need 1 Spider Venom, 1 Fang, 1 Berry.\"\n        endif\n    endif\n    if ( Button == 4 )\n        if ( player->GetItemCount \"jtt_jungle_berry\" >= 3 )\n            if ( player->GetItemCount \"jtt_jungle_root\" >= 1 )\n                player->RemoveItem \"jtt_jungle_berry\" 3\n                player->RemoveItem \"jtt_jungle_root\" 1\n                player->AddItem \"jtt_strong_liquor\" 1\n                MessageBox \"Brewed Strong Liquor!\"\n            else\n                MessageBox \"Need 3 Berries and 1 Root.\"\n            endif\n        else\n            MessageBox \"Need 3 Berries and 1 Root.\"\n        endif\n    endif\n    if ( Button == 5 )\n        if ( player->GetItemCount \"jtt_jungle_berry\" >= 2 )\n            if ( player->GetItemCount \"jtt_jungle_root\" >= 1 )\n                if ( player->GetItemCount \"jtt_jungle_mushroom\" >= 1 )\n                    player->RemoveItem \"jtt_jungle_berry\" 2\n                    player->RemoveItem \"jtt_jungle_root\" 1\n                    player->RemoveItem \"jtt_jungle_mushroom\" 1\n                    player->AddItem \"jtt_tribal_brew\" 1\n                    MessageBox \"Brewed a Tribal Brew!\"\n                else\n                    MessageBox \"Need 2 Berries, 1 Root, 1 Mushroom.\"\n                endif\n            else\n                MessageBox \"Need 2 Berries, 1 Root, 1 Mushroom.\"\n            endif\n        else\n            MessageBox \"Need 2 Berries, 1 Root, 1 Mushroom.\"\n        endif\n    endif\n    set State to 0\nendif\n\nEnd JTT_CauldronScr",
+    "source_text": "Begin JTT_CauldronScr\n\nshort State\nshort Button\n\nif ( OnActivate == 1 )\n    if ( State == 0 )\n        MessageBox \"Cauldron - Alchemy\" \"Cure Wound (2 Root+1 Berry)\" \"Stamina Boost (1 Root+1 Mushroom)\" \"Antidote (1 Venom+2 Root)\" \"Frenzy Elixir (1 Venom+1 Fang+1 Berry)\" \"Strong Liquor (3 Berry+1 Root)\" \"Tribal Brew (2 Berry+1 Root+1 Mush)\" \"Close\"\n        set State to 1\n    endif\nendif\n\nif ( State == 1 )\n    set Button to GetButtonPressed\n    if ( Button == -1 )\n        return\n    endif\n    if ( Button == 0 )\n        if ( player->GetItemCount \"jtt_jungle_root\" >= 2 )\n            if ( player->GetItemCount \"jtt_jungle_berry\" >= 1 )\n                player->RemoveItem \"jtt_jungle_root\" 2\n                player->RemoveItem \"jtt_jungle_berry\" 1\n                player->AddItem \"jtt_cure_wound\" 1\n                MessageBox \"Brewed a Cure Wound Drink!\"\n            else\n                MessageBox \"Need 2 Roots and 1 Berry.\"\n            endif\n        else\n            MessageBox \"Need 2 Roots and 1 Berry.\"\n        endif\n    endif\n    if ( Button == 1 )\n        if ( player->GetItemCount \"jtt_jungle_root\" >= 1 )\n            if ( player->GetItemCount \"jtt_jungle_mushroom\" >= 1 )\n                player->RemoveItem \"jtt_jungle_root\" 1\n                player->RemoveItem \"jtt_jungle_mushroom\" 1\n                player->AddItem \"jtt_stamina_boost\" 1\n                MessageBox \"Brewed a Stamina Booster!\"\n            else\n                MessageBox \"Need 1 Root and 1 Mushroom.\"\n            endif\n        else\n            MessageBox \"Need 1 Root and 1 Mushroom.\"\n        endif\n    endif\n    if ( Button == 2 )\n        if ( player->GetItemCount \"jtt_snake_venom\" >= 1 )\n            if ( player->GetItemCount \"jtt_jungle_root\" >= 2 )\n                player->RemoveItem \"jtt_snake_venom\" 1\n                player->RemoveItem \"jtt_jungle_root\" 2\n                player->AddItem \"jtt_antidote\" 1\n                MessageBox \"Brewed an Antidote!\"\n            else\n                MessageBox \"Need 1 Snake Venom and 2 Roots.\"\n            endif\n        else\n            MessageBox \"Need 1 Snake Venom and 2 Roots.\"\n        endif\n    endif\n    if ( Button == 3 )\n        if ( player->GetItemCount \"jtt_spider_venom\" >= 1 )\n            if ( player->GetItemCount \"jtt_panther_fang\" >= 1 )\n                if ( player->GetItemCount \"jtt_jungle_berry\" >= 1 )\n                    player->RemoveItem \"jtt_spider_venom\" 1\n                    player->RemoveItem \"jtt_panther_fang\" 1\n                    player->RemoveItem \"jtt_jungle_berry\" 1\n                    player->AddItem \"jtt_frenzy_elixir\" 1\n                    MessageBox \"Brewed a Frenzy Elixir!\"\n                else\n                    MessageBox \"Need 1 Spider Venom, 1 Fang, 1 Berry.\"\n                endif\n            else\n                MessageBox \"Need 1 Spider Venom, 1 Fang, 1 Berry.\"\n            endif\n        else\n            MessageBox \"Need 1 Spider Venom, 1 Fang, 1 Berry.\"\n        endif\n    endif\n    if ( Button == 4 )\n        if ( player->GetItemCount \"jtt_jungle_berry\" >= 3 )\n            if ( player->GetItemCount \"jtt_jungle_root\" >= 1 )\n                player->RemoveItem \"jtt_jungle_berry\" 3\n                player->RemoveItem \"jtt_jungle_root\" 1\n                player->AddItem \"jtt_strong_liquor\" 1\n                MessageBox \"Brewed Strong Liquor!\"\n            else\n                MessageBox \"Need 3 Berries and 1 Root.\"\n            endif\n        else\n            MessageBox \"Need 3 Berries and 1 Root.\"\n        endif\n    endif\n    if ( Button == 5 )\n        if ( player->GetItemCount \"jtt_jungle_berry\" >= 2 )\n            if ( player->GetItemCount \"jtt_jungle_root\" >= 1 )\n                if ( player->GetItemCount \"jtt_jungle_mushroom\" >= 1 )\n                    player->RemoveItem \"jtt_jungle_berry\" 2\n                    player->RemoveItem \"jtt_jungle_root\" 1\n                    player->RemoveItem \"jtt_jungle_mushroom\" 1\n                    player->AddItem \"jtt_tribal_brew\" 1\n                    MessageBox \"Brewed a Tribal Brew!\"\n                else\n                    MessageBox \"Need 2 Berries, 1 Root, 1 Mushroom.\"\n                endif\n            else\n                MessageBox \"Need 2 Berries, 1 Root, 1 Mushroom.\"\n            endif\n        else\n            MessageBox \"Need 2 Berries, 1 Root, 1 Mushroom.\"\n        endif\n    endif\n    if ( Button == 6 )\n        if ( player->GetItemCount \"jtt_raw_meat\" >= 1 )\n            if ( player->GetItemCount \"jtt_jungle_root\" >= 1 )\n                if ( player->GetItemCount \"jtt_salt\" >= 1 )\n                    player->RemoveItem \"jtt_raw_meat\" 1\n                    player->RemoveItem \"jtt_jungle_root\" 1\n                    player->RemoveItem \"jtt_salt\" 1\n                    set JTT_Hunger to ( JTT_Hunger - 70 )\n                    if ( JTT_Hunger < 0 )\n                        set JTT_Hunger to 0\n                    endif\n                    MessageBox \"Made and ate Seasoned Stew! Very filling!\"\n                else\n                    MessageBox \"Need 1 Raw Meat, 1 Root, 1 Salt.\"\n                endif\n            else\n                MessageBox \"Need 1 Raw Meat, 1 Root, 1 Salt.\"\n            endif\n        else\n            MessageBox \"Need 1 Raw Meat, 1 Root, 1 Salt.\"\n        endif\n    endif\n    set State to 0\nendif\n\nEnd JTT_CauldronScr",
     "has_scdt": false,
     "flags": 0
   },
@@ -221,16 +221,17 @@
   {
     "rec_type": "SCPT",
     "script_name": "JTT_StatusScr",
-    "num_shorts": 1,
+    "num_shorts": 2,
     "num_longs": 0,
     "num_floats": 0,
     "local_vars": [
-      "State"
+      "State",
+      "Explored"
     ],
     "bytecode_hex": "",
     "has_scdt": false,
     "flags": 0,
-    "source_text": "Begin JTT_StatusScr\n\nshort State\n\nif ( State == 0 )\n    if ( JTT_StatusMenu == 1 )\n        set JTT_StatusMenu to 0\n        MessageBox \"=== SURVIVAL STATUS === Day: %g | Hunger: %g/100 | Warmth: %g/100 === Keys: B=Build F=Eat H=Status N=Quest\", JTT_Day, JTT_Hunger, JTT_Warmth\n    endif\nendif\n\nEnd JTT_StatusScr"
+    "source_text": "Begin JTT_StatusScr\n\nshort State\nshort Explored\n\nif ( State == 0 )\n    if ( JTT_StatusMenu == 1 )\n        set JTT_StatusMenu to 0\n        set Explored to ( JTT_Found_East + JTT_Found_Ridge + JTT_Found_Shore + JTT_Found_Marsh )\n        MessageBox \"=== STATUS === Day: %g | Hunger: %g/100 | Warmth: %g/100 | Biomes: %g/4 === B=Build H=Status N=Quest\", JTT_Day, JTT_Hunger, JTT_Warmth, Explored\n    endif\nendif\n\nEnd JTT_StatusScr"
   },
   {
     "rec_type": "SCPT",
@@ -322,5 +323,91 @@
     "has_scdt": false,
     "flags": 0,
     "source_text": "Begin JTT_HutExitDoor\n\nif ( OnActivate == 1 )\n    player->PositionCell JTT_HutLastX JTT_HutLastY 20 0 \"\"\n    MessageBox \"You step outside.\"\nendif\n\nEnd JTT_HutExitDoor"
+  },
+  {
+    "rec_type": "SCPT",
+    "script_name": "JTT_DiscoveryScr",
+    "num_shorts": 0,
+    "num_longs": 0,
+    "num_floats": 2,
+    "local_vars": [
+      "PX",
+      "PY"
+    ],
+    "bytecode_hex": "",
+    "has_scdt": false,
+    "flags": 0,
+    "source_text": "Begin JTT_DiscoveryScr\n\nfloat PX\nfloat PY\n\nset PX to ( player->GetPos x )\nset PY to ( player->GetPos y )\n\nif ( JTT_Found_East == 0 )\n    if ( PX > 8192 )\n        set JTT_Found_East to 1\n        MessageBox \"You've reached the East Jungle! Spider Webs yield Spider Silk. Press N for details.\"\n    endif\nendif\n\nif ( JTT_Found_Ridge == 0 )\n    if ( PY > 8192 )\n        set JTT_Found_Ridge to 1\n        MessageBox \"You've reached the North Ridge! Bear Dens and Iron Veins await. Press N for details.\"\n    endif\nendif\n\nif ( JTT_Found_Shore == 0 )\n    if ( PX < 0 )\n        set JTT_Found_Shore to 1\n        MessageBox \"You've reached the West Shore! Tidal Pools yield Crab Chitin and Salt. Press N for details.\"\n    endif\nendif\n\nif ( JTT_Found_Marsh == 0 )\n    if ( PY < 0 )\n        set JTT_Found_Marsh to 1\n        MessageBox \"You've reached the South Marsh! Mushroom Patches grow here. Press N for details.\"\n    endif\nendif\n\nEnd JTT_DiscoveryScr"
+  },
+  {
+    "rec_type": "SCPT",
+    "script_name": "JTT_QuestScr",
+    "num_shorts": 2,
+    "num_longs": 0,
+    "num_floats": 0,
+    "local_vars": [
+      "State",
+      "Button"
+    ],
+    "bytecode_hex": "",
+    "has_scdt": false,
+    "flags": 0,
+    "source_text": "Begin JTT_QuestScr\n\nshort State\nshort Button\n\nif ( State == 0 )\n    if ( JTT_QuestMenu == 1 )\n        set JTT_QuestMenu to 0\n        MessageBox \"=== QUESTS ===\" \"East Jungle\" \"North Ridge\" \"West Shore\" \"South Marsh\" \"Close\"\n        set State to 1\n    endif\nendif\n\nif ( State == 1 )\n    set Button to GetButtonPressed\n    if ( Button == -1 )\n        return\n    endif\n    if ( Button == 0 )\n        if ( JTT_Found_East == 0 )\n            MessageBox \"EAST JUNGLE [undiscovered]: Head east past base camp. Spider Webs yield Silk for bows and voodoo.\"\n        else\n            MessageBox \"EAST JUNGLE [explored]: Harvest Spider Webs for Silk. Use at Workbench (Bow) or Voodoo Hut (Hex Bag, Doll, Mask).\"\n        endif\n    endif\n    if ( Button == 1 )\n        if ( JTT_Found_Ridge == 0 )\n            MessageBox \"NORTH RIDGE [undiscovered]: Head north past base camp. Rich in iron and bear hides.\"\n        else\n            MessageBox \"NORTH RIDGE [explored]: Bear Dens drop Bear Hide. Mine Iron Veins. Use Forge for iron bars, armor and weapons.\"\n        endif\n    endif\n    if ( Button == 2 )\n        if ( JTT_Found_Shore == 0 )\n            MessageBox \"WEST SHORE [undiscovered]: Head west past base camp. Tidal pools and fishing await.\"\n        else\n            MessageBox \"WEST SHORE [explored]: Tidal Pools yield Crab Chitin and Salt. Salt + Raw Meat + Root = Seasoned Stew at Cauldron.\"\n        endif\n    endif\n    if ( Button == 3 )\n        if ( JTT_Found_Marsh == 0 )\n            MessageBox \"SOUTH MARSH [undiscovered]: Head south past base camp. Strange fungi grow there.\"\n        else\n            MessageBox \"SOUTH MARSH [explored]: Mushroom Patches yield Mushrooms and Roots. Use at Cauldron for Stamina Boost and Tribal Brew.\"\n        endif\n    endif\n    set State to 0\nendif\n\nEnd JTT_QuestScr"
+  },
+  {
+    "rec_type": "SCPT",
+    "script_name": "JTT_SpiderWebNode",
+    "num_shorts": 1,
+    "num_longs": 0,
+    "num_floats": 0,
+    "local_vars": [
+      "HarvestCount"
+    ],
+    "bytecode_hex": "",
+    "has_scdt": false,
+    "flags": 0,
+    "source_text": "Begin JTT_SpiderWebNode\n\nshort HarvestCount\n\nif ( OnActivate == 1 )\n    if ( HarvestCount >= 2 )\n        MessageBox \"The web has been stripped clean.\"\n    else\n        set HarvestCount to ( HarvestCount + 1 )\n        player->AddItem \"jtt_spider_silk\" 2\n        if ( HarvestCount == 1 )\n            MessageBox \"+2 Spider Silk (1 harvest left)\"\n        endif\n        if ( HarvestCount == 2 )\n            MessageBox \"+2 Spider Silk (stripped clean)\"\n        endif\n    endif\nendif\n\nEnd JTT_SpiderWebNode"
+  },
+  {
+    "rec_type": "SCPT",
+    "script_name": "JTT_BearDenNode",
+    "num_shorts": 1,
+    "num_longs": 0,
+    "num_floats": 0,
+    "local_vars": [
+      "HarvestCount"
+    ],
+    "bytecode_hex": "",
+    "has_scdt": false,
+    "flags": 0,
+    "source_text": "Begin JTT_BearDenNode\n\nshort HarvestCount\n\nif ( OnActivate == 1 )\n    if ( HarvestCount >= 2 )\n        MessageBox \"The den is empty.\"\n    else\n        set HarvestCount to ( HarvestCount + 1 )\n        player->AddItem \"jtt_bear_hide\" 1\n        if ( HarvestCount == 1 )\n            MessageBox \"+1 Bear Hide (1 harvest left)\"\n        endif\n        if ( HarvestCount == 2 )\n            MessageBox \"+1 Bear Hide (den empty)\"\n        endif\n    endif\nendif\n\nEnd JTT_BearDenNode"
+  },
+  {
+    "rec_type": "SCPT",
+    "script_name": "JTT_TidalPoolNode",
+    "num_shorts": 1,
+    "num_longs": 0,
+    "num_floats": 0,
+    "local_vars": [
+      "HarvestCount"
+    ],
+    "bytecode_hex": "",
+    "has_scdt": false,
+    "flags": 0,
+    "source_text": "Begin JTT_TidalPoolNode\n\nshort HarvestCount\n\nif ( OnActivate == 1 )\n    if ( HarvestCount >= 2 )\n        MessageBox \"The pool has been picked clean.\"\n    else\n        set HarvestCount to ( HarvestCount + 1 )\n        player->AddItem \"jtt_crab_chitin\" 1\n        player->AddItem \"jtt_salt\" 1\n        if ( HarvestCount == 1 )\n            MessageBox \"+1 Crab Chitin, +1 Salt (1 harvest left)\"\n        endif\n        if ( HarvestCount == 2 )\n            MessageBox \"+1 Crab Chitin, +1 Salt (pool empty)\"\n        endif\n    endif\nendif\n\nEnd JTT_TidalPoolNode"
+  },
+  {
+    "rec_type": "SCPT",
+    "script_name": "JTT_MushroomPatch",
+    "num_shorts": 1,
+    "num_longs": 0,
+    "num_floats": 0,
+    "local_vars": [
+      "HarvestCount"
+    ],
+    "bytecode_hex": "",
+    "has_scdt": false,
+    "flags": 0,
+    "source_text": "Begin JTT_MushroomPatch\n\nshort HarvestCount\n\nif ( OnActivate == 1 )\n    if ( HarvestCount >= 3 )\n        MessageBox \"The patch is picked clean.\"\n    else\n        set HarvestCount to ( HarvestCount + 1 )\n        player->AddItem \"jtt_jungle_mushroom\" 2\n        player->AddItem \"jtt_jungle_root\" 1\n        if ( HarvestCount == 1 )\n            MessageBox \"+2 Mushrooms, +1 Root (2 harvests left)\"\n        endif\n        if ( HarvestCount == 2 )\n            MessageBox \"+2 Mushrooms, +1 Root (1 harvest left)\"\n        endif\n        if ( HarvestCount == 3 )\n            MessageBox \"+2 Mushrooms, +1 Root (picked clean)\"\n        endif\n    endif\nendif\n\nEnd JTT_MushroomPatch"
   }
 ]
