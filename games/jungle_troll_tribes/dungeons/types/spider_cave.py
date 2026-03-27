@@ -1,7 +1,7 @@
 # games/jungle_troll_tribes/dungeons/types/spider_cave.py
 import sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).parents[5] / "omwtools"))
+sys.path.insert(0, str(Path(__file__).parents[4] / "omwtools"))
 from omwtools.dungeons.dungeon_spec import DungeonSpec
 
 spider_cave = DungeonSpec(

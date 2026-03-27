@@ -1,7 +1,7 @@
 # games/jungle_troll_tribes/dungeons/types/bear_den.py
 import sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).parents[5] / "omwtools"))
+sys.path.insert(0, str(Path(__file__).parents[4] / "omwtools"))
 from omwtools.dungeons.dungeon_spec import DungeonSpec
 
 bear_den = DungeonSpec(
