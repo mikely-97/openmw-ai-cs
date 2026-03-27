@@ -196,3 +196,14 @@ def test_stat_records_returns_one_per_tile_type():
         assert s["rec_type"] == "STAT"
         assert s["mesh"].startswith("omwdg\\")
         assert s["flags"] == 0
+
+
+from omwtools.records.cell import Cell
+
+def test_build_cell_roundtrip_via_from_dict():
+    """build() output must be consumable by Cell.from_dict without errors."""
+    layout = generate(SPEC, seed=0)
+    cell_dict = build(layout, TILESET, "tst_test_cave_0")
+    cell_obj = Cell.from_dict(cell_dict)
+    assert cell_obj.cell_name == "tst_test_cave_0"
+    assert cell_obj.ambient.ambient == 0x00808080

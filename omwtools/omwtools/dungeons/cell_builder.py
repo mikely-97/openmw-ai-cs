@@ -77,10 +77,7 @@ def build(layout: DungeonLayout, tileset: TileSet, cell_id: str) -> dict:
         "cell_flags": 1,               # CELL_INTERIOR = 0x01
         "grid_x": 0,
         "grid_y": 0,
-        "ambient": 0x00808080,         # dim grey ambient (torchlight feel)
-        "sunlight": 0,
-        "fog": 0,
-        "fog_density": 0.0,
+        "ambient": {"ambient": 0x00808080, "sunlight": 0, "fog": 0, "fog_density": 0.0},
         "region": "",
         "ref_num_counter": 0,
         "water_height": -1.0,
