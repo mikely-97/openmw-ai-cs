@@ -195,3 +195,4 @@ def test_stat_records_returns_one_per_tile_type():
     for s in stats:
         assert s["rec_type"] == "STAT"
         assert s["mesh"].startswith("omwdg\\")
+        assert s["flags"] == 0

@@ -24,7 +24,7 @@ _REF_DEFAULTS = {
 def stat_records(tileset: TileSet) -> list[dict]:
     """Return one STAT record dict per base tile type. Import before CELL records."""
     return [
-        {"rec_type": "STAT", "record_id": tile_def.stat_id, "mesh": tile_def.mesh}
+        {"rec_type": "STAT", "record_id": tile_def.stat_id, "mesh": tile_def.mesh, "flags": 0}
         for tile_def in tileset.tiles.values()
     ]
 
@@ -81,7 +81,10 @@ def build(layout: DungeonLayout, tileset: TileSet, cell_id: str) -> dict:
         "sunlight": 0,
         "fog": 0,
         "fog_density": 0.0,
-        "water_height": None,
+        "region": "",
+        "ref_num_counter": 0,
+        "water_height": -1.0,
+        "flags": 0,
         "refs": refs,
     }
 
