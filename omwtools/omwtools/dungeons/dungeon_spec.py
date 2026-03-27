@@ -54,7 +54,7 @@ class DungeonSpec:
     room_count: tuple[int, int]
     room_size: tuple[int, int] # (min, max) in tiles
     pool_size: int
-    exterior_return_pos: dict  # {"cell": "", "x": 4096, "y": 4096, "z": 200}
+    exterior_return_pos: dict[str, object]  # {"cell": "", "x": 4096, "y": 4096, "z": 200}
     creature_pool: list[str]
     creatures_per_room: tuple[int, int]
     loot_containers: list[str]

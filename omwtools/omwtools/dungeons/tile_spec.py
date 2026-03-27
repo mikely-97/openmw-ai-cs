@@ -43,5 +43,7 @@ class TileSet:
 
     def get_tile(self, tile_type: str) -> TileDef:
         """Resolve directional type (wall_n) to base TileDef."""
-        base = BASE_TILE.get(tile_type, tile_type)
+        if tile_type not in BASE_TILE:
+            raise ValueError(f"Unknown tile type {tile_type!r}. Valid types: {sorted(BASE_TILE)}")
+        base = BASE_TILE[tile_type]
         return self.tiles[base]
