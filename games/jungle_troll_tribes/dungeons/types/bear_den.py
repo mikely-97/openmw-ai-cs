@@ -1,0 +1,15 @@
+# games/jungle_troll_tribes/dungeons/types/bear_den.py
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parents[5] / "omwtools"))
+from omwtools.dungeons.dungeon_spec import DungeonSpec
+
+bear_den = DungeonSpec(
+    name="bear_den", game_prefix="jtt", tileset="cave",
+    room_count=(1, 3), room_size=(3, 5), pool_size=8,
+    exterior_return_pos={"cell": "", "x": 4096, "y": 4096, "z": 200},
+    creature_pool=["jtt_bear", "jtt_wolf"],
+    creatures_per_room=(1, 2),
+    loot_containers=["jtt_loot_small", "jtt_loot_medium"],
+    loot_per_room=(0, 1),
+)
