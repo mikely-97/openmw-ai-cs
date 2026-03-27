@@ -89,6 +89,25 @@ def _make_parser() -> argparse.ArgumentParser:
     p_scripts_dump = scripts_sub.add_parser("dump", help="Show loaded script entries")
     p_scripts_dump.add_argument("--file-id", type=int, default=None)
 
+    # Dungeon subcommand group
+    dg = sub.add_parser("dungeon", help="Procedural dungeon tools")
+    dg_sub = dg.add_subparsers(dest="dungeon_command", required=True)
+    dg_gen = dg_sub.add_parser("generate", help="Generate dungeon variant pool")
+    dg_gen.add_argument("--game", required=True,
+        help="Game ID — resolves to games/<id>/ relative to repo root")
+    dg_gen.add_argument("--type", required=True, dest="dungeon_type",
+        help="Dungeon type name (must exist in game registry)")
+    dg_gen.add_argument("--count", type=int, default=None,
+        help="Number of variants (overrides spec pool_size)")
+    dg_gen.add_argument("--seed", type=int, default=0,
+        help="Starting seed (default: 0)")
+    dg_gen.add_argument("--output", required=True,
+        help="Output directory for JSON records file")
+    dg_gen.add_argument("--addon", default=None,
+        help="Path to write compiled .omwaddon (optional)")
+    dg_gen.add_argument("--no-deploy", action="store_true",
+        help="Skip copying tile meshes to game meshes/ dir")
+
     return parser
 
 
@@ -184,6 +203,10 @@ def main(argv: list[str] | None = None) -> None:
         from omwtools.cli.cmd_validate import validate_mod
         result = validate_mod(conn, mod_id=args.mod_id)
         _out(result, args.json)
+
+    elif cmd == "dungeon":
+        from .cmd_dungeon import cmd_dungeon
+        cmd_dungeon(args)
 
     elif cmd == "scripts":
         sc = args.scripts_command
