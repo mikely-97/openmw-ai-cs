@@ -6,8 +6,8 @@ from omwtools.dungeons.dungeon_spec import DungeonSpec
 
 troll_lair = DungeonSpec(
     name="troll_lair", game_prefix="jtt", tileset="cave",
-    room_count=(6, 12), room_size=(4, 7), pool_size=3,
-    exterior_return_pos={"cell": "", "x": 4096, "y": 4096, "z": 200},
+    room_count=(6, 12), room_size=(4, 7), pool_size=5,
+    exterior_return_pos={"cell": "", "x": 4096, "y": 4096, "z": 210},
     creature_pool=["jtt_troll_warrior", "jtt_troll_shaman"],
     creatures_per_room=(1, 3),
     loot_containers=["jtt_loot_medium", "jtt_loot_large"],

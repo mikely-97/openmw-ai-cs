@@ -7,7 +7,7 @@ from omwtools.dungeons.dungeon_spec import DungeonSpec
 bear_den = DungeonSpec(
     name="bear_den", game_prefix="jtt", tileset="cave",
     room_count=(1, 3), room_size=(3, 5), pool_size=8,
-    exterior_return_pos={"cell": "", "x": 4096, "y": 4096, "z": 200},
+    exterior_return_pos={"cell": "", "x": 4096, "y": 4096, "z": 210},
     creature_pool=["jtt_bear", "jtt_wolf"],
     creatures_per_room=(1, 2),
     loot_containers=["jtt_loot_small", "jtt_loot_medium"],

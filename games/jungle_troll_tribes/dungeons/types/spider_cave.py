@@ -7,7 +7,7 @@ from omwtools.dungeons.dungeon_spec import DungeonSpec
 spider_cave = DungeonSpec(
     name="spider_cave", game_prefix="jtt", tileset="cave",
     room_count=(3, 6), room_size=(3, 6), pool_size=8,
-    exterior_return_pos={"cell": "", "x": 4096, "y": 4096, "z": 200},
+    exterior_return_pos={"cell": "", "x": 4096, "y": 4096, "z": 210},
     creature_pool=["jtt_spider"],
     creatures_per_room=(2, 3),
     loot_containers=["jtt_loot_small", "jtt_loot_medium"],
