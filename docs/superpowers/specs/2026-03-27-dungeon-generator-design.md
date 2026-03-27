@@ -24,10 +24,11 @@ Supports two usage modes:
 omwtools/
   dungeons/
     generator.py      ← room-and-corridor layout algorithm → DungeonLayout
-    tile_spec.py      ← TileSet + TileDef dataclasses
+    tile_spec.py      ← TileSet + TileDef dataclasses; TILESET_REGISTRY
     dungeon_spec.py   ← DungeonSpec dataclass
     cell_builder.py   ← DungeonLayout + TileSet → CELL record dict + ref list
-    pool_builder.py   ← generates N variants → list of CELL dicts
+    pool_builder.py   ← DungeonSpec + TileSet → list[dict] of CELL records (N variants)
+    lua_config.py     ← DungeonLayout[] → JTT_Dungeons Lua table string
   cli/main.py         ← adds `dungeon` subcommand group
   dungeons/tilesets/meshes/
     cave/
@@ -41,12 +42,22 @@ omwtools/
 games/jungle_troll_tribes/
   dungeons/
     tilesets/
-      cave.py         ← JTT cave TileSet (mesh IDs, dimensions)
+      cave.py         ← JTT cave TileSet instance
     types/
       bear_den.py     ← DungeonSpec: 1-3 rooms, creature/loot tables
       spider_cave.py  ← DungeonSpec: 3-6 rooms
       troll_lair.py   ← DungeonSpec: 6-12 rooms (boss dungeon)
+    registry.py       ← TILESETS dict + DUNGEON_TYPES dict for JTT
     gen_dungeon_meshes.py  ← Blender script: generates omwdg_* placeholder .dae files
+```
+
+### Game resolution
+
+`--game jtt` resolves to `games/jtt/` (convention: `games/<id>/`). The game directory must contain `dungeons/registry.py` exporting:
+
+```python
+TILESETS: dict[str, TileSet]      # name → TileSet instance
+DUNGEON_TYPES: dict[str, DungeonSpec]  # name → DungeonSpec instance
 ```
 
 ### Data flow
@@ -57,8 +68,10 @@ DungeonSpec + TileSet + seed
     DungeonLayout   (rooms[], corridors[], door_positions[], anchor_positions[])
         ↓ cell_builder.py
     CELL record dict + refs[]   (JSON)
-        ↓ pool_builder.py (×N)
-    records/dungeons/*.json
+        ↓ pool_builder.py (×N, seeds 0..N-1)
+    list[CELL dict]
+        ↓ lua_config.py
+    JTT_Dungeons Lua string → LUAL record
         ↓ omw import → omw write
     jtt_dungeons.omwaddon
 ```
@@ -87,8 +100,8 @@ omw dungeon generate --game jtt --type troll_lair --count 1 --seed 42 \
 ```
 
 The command also:
-- Copies any missing `omwdg_*` tile meshes to the target game's `meshes/` directory (never overwrites existing files, allowing art replacement)
-- Writes a companion `JTT_Dungeons` Lua config as a LUAL record into the addon
+- Copies any missing `omwdg_*` tile meshes to `games/<id>/meshes/omwdg/` (never overwrites)
+- Writes the `JTT_Dungeons` Lua config as a LUAL record into the addon
 
 ---
 
@@ -100,10 +113,21 @@ The command also:
 2. Sort rooms by centre position (left-to-right)
 3. Connect each room to the next with an L-shaped corridor (horizontal then vertical)
 4. Mark corridor–room intersections as doorway tiles
-5. Fill grid: floor tiles inside rooms/corridors, wall/corner tiles on boundaries, pillar tiles at isolated solid corners
-6. Place one invisible anchor ACTI ref at each room centre (used by Lua populator for creature/loot placement)
+5. Fill grid:
+   - Floor tiles inside rooms and corridors
+   - Wall/corner tiles on room and corridor boundaries
+   - Pillar tiles at isolated solid corners
+   - **Ceiling tiles** placed above every floor tile at `z = room_height` (one ceiling per floor tile, same x/y position, z_offset = room_height from TileSet)
+6. Record one **anchor position** (world x/y/z) at the centre of each room — exported into the Lua config, not placed as an in-world ref
 
 Reproducible: same `DungeonSpec` + `seed` always produces the same layout.
+
+### Entrance and exit placement
+
+- **Entrance**: first room (index 0) contains a pre-placed ACTI ref with id `<game_prefix>_dungeon_entrance` at the room centre. The exterior ACTI activator (e.g. `jtt_bear_den`) teleports the player to the dungeon cell's entrance position.
+- **Exit**: last room contains a pre-placed ACTI ref with id `<game_prefix>_dungeon_exit` at the room centre. Activating it teleports the player back to the exterior entrance coords (stored in the Lua config per variant).
+
+`game_prefix` is defined on `DungeonSpec` (e.g. `"jtt"`).
 
 ---
 
@@ -120,9 +144,15 @@ All tiles are **4m × 4m** footprint. Room height: **3m**.
 | `corner_ne/nw/se/sw` | `omwdg_cave_corner.dae` (rotated) | Convex corner |
 | `pillar` | `omwdg_cave_pillar.dae` | Solid impassable block |
 | `doorway` | `omwdg_cave_doorway.dae` | Corridor opening |
-| `ceiling` | `omwdg_cave_ceiling.dae` | Caps room (flipped normals) |
+| `ceiling` | `omwdg_cave_ceiling.dae` | Placed at z=room_height, flipped normals |
 
 Walls are separate STAT refs on floor tile edges — not baked into the floor mesh. Enables per-theme art replacement without touching the generator.
+
+**Wall rotation convention:** `wall_n` = 0°, `wall_e` = 90°, `wall_s` = 180°, `wall_w` = 270°, all rotated around the Z axis (yaw). `corner_ne` = 0°, `corner_se` = 90°, `corner_sw` = 180°, `corner_nw` = 270°.
+
+**Corridor height:** corridors share `room_height` — ceiling tiles are placed at `z = room_height` for both rooms and corridors.
+
+**Interior CELL ambient settings:** generated CELLs use `ambient=128, sunlight=0, fog=0, fog_density=0` (dim torchlight feel). No water. These are written as CELL header fields by `cell_builder.build()`.
 
 ### TileSet dataclass
 
@@ -131,7 +161,7 @@ Walls are separate STAT refs on floor tile edges — not baked into the floor me
 class TileDef:
     mesh: str           # e.g. "omwdg\\cave_floor.dae" — no meshes\ prefix
     scale: float = 1.0
-    z_offset: float = 0.0
+    z_offset: float = 0.0   # used for ceiling tiles (= room_height)
 
 @dataclass
 class TileSet:
@@ -140,6 +170,10 @@ class TileSet:
     room_height: float  # metres, default 3.0
     tiles: dict[str, TileDef]
 ```
+
+### Mesh path convention
+
+STAT `mesh` fields use the path as deployed: `"omwdg\\cave_floor.dae"`. OpenMW auto-prepends `meshes/`, so the full resolved path is `meshes/omwdg/cave_floor.dae`. Files are deployed to `games/<id>/meshes/omwdg/`.
 
 ### Placeholder mesh spec
 
@@ -157,7 +191,7 @@ Generated by `gen_dungeon_meshes.py` (Blender Python), same pattern as existing 
 ### Tile mesh deployment
 
 - Canonical source: `omwtools/dungeons/tilesets/meshes/cave/`
-- `omw dungeon generate` auto-copies missing `omwdg_*` files to `<game>/meshes/omwdg/`
+- `omw dungeon generate` auto-copies missing `omwdg_*` files to `games/<id>/meshes/omwdg/`
 - **Never overwrites** existing files — allows artists to replace placeholders
 
 ---
@@ -168,10 +202,14 @@ Generated by `gen_dungeon_meshes.py` (Blender Python), same pattern as existing 
 @dataclass
 class DungeonSpec:
     name: str
-    tileset: str                        # references a TileSet by name
+    game_prefix: str                    # e.g. "jtt" — used for cell IDs and entrance/exit ref IDs
+    tileset: str                        # key in game's TILESETS registry
     room_count: tuple[int, int]         # (min, max)
     room_size: tuple[int, int]          # (min, max) in tiles
     pool_size: int                      # variants to pre-generate
+    exterior_return_pos: dict           # where to teleport player on exit, e.g.:
+                                        # {"cell": "", "x": 4096, "y": 4096, "z": 200}
+                                        # "cell" = "" means default exterior cell
     # Runtime population (written to Lua config)
     creature_pool: list[str]            # CREA/NPC_ record IDs
     creatures_per_room: tuple[int, int]
@@ -179,14 +217,18 @@ class DungeonSpec:
     loot_per_room: tuple[int, int]
 ```
 
+Cell IDs are derived as `<game_prefix>_<name>_<index>` (e.g. `jtt_bear_den_0` .. `jtt_bear_den_7`).
+
 Example (`bear_den.py`):
 ```python
 bear_den = DungeonSpec(
     name="bear_den",
+    game_prefix="jtt",
     tileset="cave",
     room_count=(1, 3),
     room_size=(3, 5),
     pool_size=8,
+    exterior_return_pos={"cell": "", "x": 4096, "y": 4096, "z": 200},
     creature_pool=["jtt_bear", "jtt_wolf"],
     creatures_per_room=(1, 2),
     loot_containers=["jtt_loot_small", "jtt_loot_medium"],
@@ -196,45 +238,93 @@ bear_den = DungeonSpec(
 
 ---
 
+## Module Interfaces
+
+### generator.py
+
+```python
+def generate(spec: DungeonSpec, seed: int) -> DungeonLayout:
+    """
+    Run the room-and-corridor algorithm with the given seed.
+    Returns a DungeonLayout with rooms[], corridors[], anchor_positions[],
+    entrance_pos, and exit_pos. Deterministic: same spec + seed → same layout.
+    """
+```
+
+### cell_builder.py
+
+```python
+def build(layout: DungeonLayout, tileset: TileSet, cell_id: str) -> dict:
+    """
+    Convert an abstract DungeonLayout into an omwtools CELL record dict.
+    Tile positions are converted to world coordinates using tileset.tile_size.
+    Walls are placed as STAT refs on floor tile boundaries.
+    Ceilings placed above every floor tile at z = tileset.room_height.
+    Entrance ACTI ref placed at layout.rooms[0].centre.
+    Exit ACTI ref placed at layout.rooms[-1].centre.
+    Returns a single dict with rec_type="CELL" and a refs[] list.
+    """
+```
+
+### pool_builder.py
+
+```python
+def build_pool(spec: DungeonSpec, tileset: TileSet) -> list[dict]:
+    """
+    Generate spec.pool_size CELL record dicts, one per seed (0..pool_size-1).
+    Each dict is a valid omwtools JSON record ready for omw import.
+    Returns list in seed order.
+    """
+```
+
+Internally: `generator.generate(spec, seed)` → `cell_builder.build(layout, tileset, cell_id)` for each seed, where `cell_id = f"{spec.game_prefix}_{spec.name}_{seed}"`.
+
+---
+
 ## Lua Runtime Populator
 
 ### Lua config (auto-generated LUAL record in addon)
+
+Anchor positions are exported at generation time — Lua uses known world coordinates rather than iterating cell contents at runtime.
 
 ```lua
 -- Auto-generated by omw dungeon generate — do not edit
 JTT_Dungeons = {
   bear_den = {
-    variants = {"jtt_bear_den_0", "jtt_bear_den_1", ..., "jtt_bear_den_7"},
+    variants = {
+      {
+        cell_id = "jtt_bear_den_0",
+        entrance_pos = {x=8.0, y=8.0, z=0.0},   -- world coords inside cell
+        exit_exterior = {cell="", x=4096, y=4096, z=200},  -- exterior return point
+        anchors = {{x=8.0, y=8.0, z=0.0}, {x=24.0, y=8.0, z=0.0}},  -- room centres
+      },
+      -- ... variants 1-7
+    },
     creatures = {"jtt_bear", "jtt_wolf"},
     creatures_per_room = {1, 2},
     containers = {"jtt_loot_small", "jtt_loot_medium"},
     loot_per_room = {0, 1},
   },
-  -- ... other types
 }
 ```
 
 ### Entry/exit flow
 
 ```
-player activates bear_den entrance ACTI
+player activates jtt_bear_den ACTI (exterior)
   → JTT_EnterDungeon(type="bear_den")
-      → pick random variant cell id from JTT_Dungeons[type].variants
-      → core.teleportToCell(player, cell_id, entrance_pos)
-      → JTT_PopulateDungeon(cell_id, type)
-          → iterate jtt_dungeon_anchor refs in cell
-          → per anchor: spawn N creatures + maybe spawn loot container
-          → tag spawned objects JTT_DungeonSpawned=true
+      → pick random variant from JTT_Dungeons["bear_den"].variants
+      → core.teleportToCell(player, variant.cell_id, variant.entrance_pos)
+      → JTT_PopulateDungeon(variant, type)
+          → for each anchor in variant.anchors:
+              → world.createObject(random creature, pos=anchor)  [tagged JTT_DungeonSpawned]
+              → maybe world.createObject(random container, pos=anchor+offset)
 
-player activates exit marker inside dungeon
-  → JTT_ExitDungeon(cell_id)
-      → despawn all JTT_DungeonSpawned objects in cell
-      → core.teleportToCell(player, exterior_cell, entrance_coords)
+player activates jtt_dungeon_exit ACTI (inside dungeon, last room)
+  → JTT_ExitDungeon(variant)
+      → despawn all JTT_DungeonSpawned objects in variant.cell_id
+      → core.teleportToCell(player, variant.exit_exterior.cell, variant.exit_exterior pos)
 ```
-
-### Room anchor points
-
-Each generated CELL contains one invisible **ACTI ref** with id `jtt_dungeon_anchor` at each room centre. The Lua populator iterates these refs to place creatures and loot — no hardcoded coordinates in Lua.
 
 ---
 
@@ -245,6 +335,8 @@ Each generated CELL contains one invisible **ACTI ref** with id `jtt_dungeon_anc
   - Room count within spec bounds
   - All rooms connected (BFS from room 0 reaches all rooms)
   - No out-of-bounds tile refs
+  - Anchor count equals room count
+  - Ceiling tile count equals floor tile count
 - **Integration test**: `generate → import → write → omw load` roundtrip produces valid CELL records
 - **Manual test**: load `jtt_dungeons.omwaddon` in OpenMW, enter bear den, verify geometry renders and Lua populates creatures/loot
 
