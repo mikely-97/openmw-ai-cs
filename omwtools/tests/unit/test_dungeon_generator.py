@@ -69,7 +69,7 @@ def test_all_rooms_connected():
     """BFS from first room centre must reach all other room centres via floor tiles."""
     layout = generate(SPEC, seed=42)
     if len(layout.rooms) < 2:
-        return
+        pytest.skip("Degenerate single-room layout for this seed — use multi-room seed")
     start = layout.rooms[0].centre_tile
     visited: set[tuple[int, int]] = set()
     queue = deque([start])

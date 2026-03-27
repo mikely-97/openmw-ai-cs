@@ -46,6 +46,11 @@ def _place_rooms(spec: DungeonSpec, rng: random.Random) -> list[Room]:
         candidate = Room(x=x, y=y, w=w, h=h)
         if not any(candidate.overlaps(r) for r in rooms):
             rooms.append(candidate)
+    if len(rooms) == 0:
+        raise RuntimeError(
+            f"Failed to place any rooms for spec '{spec.name}' with room_size={spec.room_size}. "
+            "Try increasing grid_size or reducing room_size."
+        )
     rooms.sort(key=lambda r: r.centre_tile[0])
     return rooms
 
@@ -106,12 +111,14 @@ def _is_doorway(
     corridor_tiles: set[tuple[int, int]],
 ) -> bool:
     """
-    A boundary tile is a doorway if it has exactly one cardinal floor neighbour
-    that is a corridor tile (the corridor is entering a room through this position).
+    A boundary tile is a doorway if it has exactly one cardinal corridor neighbour
+    AND at least one cardinal floor neighbour that is a room tile (not corridor).
+    This ensures we only mark doorways at true corridor-room junctions.
     """
     cardinal = [(tx, ty-1), (tx, ty+1), (tx+1, ty), (tx-1, ty)]
     corridor_neighbours = [p for p in cardinal if p in corridor_tiles]
-    return len(corridor_neighbours) == 1
+    room_neighbours = [p for p in cardinal if p in floor_tiles and p not in corridor_tiles]
+    return len(corridor_neighbours) == 1 and len(room_neighbours) >= 1
 
 
 def _classify_boundary(n: bool, s: bool, e: bool, w: bool, is_doorway: bool) -> str | None:
