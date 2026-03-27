@@ -124,3 +124,74 @@ def test_doorway_tiles_present_when_rooms_gt_1():
         return
     doorway_tiles = [t for t, tt in layout.boundary_tiles.items() if tt == "doorway"]
     assert len(doorway_tiles) > 0, "No doorway tiles generated despite multiple rooms"
+
+
+from omwtools.dungeons.cell_builder import build, stat_records
+
+
+def test_cell_rec_type():
+    layout = generate(SPEC, seed=0)
+    cell = build(layout, TILESET, "tst_test_cave_0")
+    assert cell["rec_type"] == "CELL"
+
+
+def test_cell_record_id():
+    layout = generate(SPEC, seed=0)
+    cell = build(layout, TILESET, "tst_test_cave_0")
+    assert cell["record_id"] == "tst_test_cave_0"
+
+
+def test_cell_name_equals_record_id():
+    """cell_name must equal record_id for predictable teleportToCell targeting."""
+    layout = generate(SPEC, seed=0)
+    cell = build(layout, TILESET, "tst_test_cave_0")
+    assert cell["cell_name"] == "tst_test_cave_0"
+
+
+def test_cell_is_interior():
+    layout = generate(SPEC, seed=0)
+    cell = build(layout, TILESET, "tst_test_cave_0")
+    assert cell["cell_flags"] & 0x01  # CELL_INTERIOR bit set
+
+
+def test_floor_ref_count_equals_floor_tiles():
+    layout = generate(SPEC, seed=0)
+    cell = build(layout, TILESET, "tst_test_cave_0")
+    floor_refs = [r for r in cell["refs"] if r["object_id"] == "tst_cave_floor"]
+    assert len(floor_refs) == len(layout.floor_tiles)
+
+
+def test_ceiling_count_equals_floor_count():
+    layout = generate(SPEC, seed=0)
+    cell = build(layout, TILESET, "tst_test_cave_0")
+    floor_refs  = [r for r in cell["refs"] if r["object_id"] == "tst_cave_floor"]
+    ceiling_refs = [r for r in cell["refs"] if r["object_id"] == "tst_cave_ceiling"]
+    assert len(ceiling_refs) == len(floor_refs)
+
+
+def test_entrance_and_exit_refs_present():
+    layout = generate(SPEC, seed=0)
+    cell = build(layout, TILESET, "tst_test_cave_0")
+    ids = {r["object_id"] for r in cell["refs"]}
+    assert "tst_dungeon_entrance" in ids
+    assert "tst_dungeon_exit" in ids
+
+
+def test_ref_world_coords_use_tile_size():
+    """Floor ref at tile (1,0) should have pos [tile_size, 0, 0]."""
+    layout = generate(SPEC, seed=0)
+    cell = build(layout, TILESET, "tst_test_cave_0")
+    # Pick any floor ref and verify its position is a multiple of tile_size
+    floor_refs = [r for r in cell["refs"] if r["object_id"] == "tst_cave_floor"]
+    ts = TILESET.tile_size
+    for ref in floor_refs:
+        assert ref["pos"][0] % ts == pytest.approx(0.0)
+        assert ref["pos"][1] % ts == pytest.approx(0.0)
+
+
+def test_stat_records_returns_one_per_tile_type():
+    stats = stat_records(TILESET)
+    assert len(stats) == len(TILESET.tiles)
+    for s in stats:
+        assert s["rec_type"] == "STAT"
+        assert s["mesh"].startswith("omwdg\\")
