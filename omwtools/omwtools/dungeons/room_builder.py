@@ -89,7 +89,7 @@ def build_roomkit(
         ref_num += 1
         ceil_def = corridor_tiles.get_tile("ceiling")
         refs.append(_make_ref(ref_num, ceil_def.stat_id, tx * ts, ty * ts,
-                               kit.room_height, 0.0))
+                               0.0, 0.0))  # ceiling verts already at z=room_height in local space
         ref_num += 1
 
     # ── Corridor boundary walls (skip tiles adjacent only to room tiles) ────
