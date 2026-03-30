@@ -3,15 +3,20 @@ local self = require('openmw.self')
 local ui = require('openmw.ui')
 
 local DUNGEON_ENTRANCES = {
-    jtt_cave_portal = 'bear_den',
-    jtt_bear_den    = 'bear_den',
+    jtt_cave_portal     = 'bear_den',
+    jtt_bear_den        = 'bear_den',
+}
+
+local DUNGEON_EXITS = {
+    jtt_dungeon_exit     = true,
+    jtt_dungeon_entrance = true,  -- entrance portal also exits (back to surface)
 }
 
 local recordId = tostring(self.recordId):lower()
 
 ui.showMessage('LUA LOAD: id=' .. recordId)
 
-if recordId == 'jtt_dungeon_exit' then
+if DUNGEON_EXITS[recordId] then
     return {
         engineHandlers = {
             onActivate = function(activator)

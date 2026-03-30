@@ -1,3 +1,4 @@
+local core = require('openmw.core')
 local world = require('openmw.world')
 local util = require('openmw.util')
 
