@@ -7,8 +7,8 @@ from omwtools.dungeons.tile_spec import TileSet, TileDef
 
 cave = TileSet(
     name="cave",
-    tile_size=4.0,
-    room_height=3.0,
+    tile_size=256.0,
+    room_height=256.0,
     tiles={
         "floor":   TileDef(mesh="omwdg\\cave_floor.dae",   stat_id="jtt_cave_floor"),
         "wall":    TileDef(mesh="omwdg\\cave_wall.dae",    stat_id="jtt_cave_wall"),
@@ -18,7 +18,7 @@ cave = TileSet(
         "ceiling": TileDef(
             mesh="omwdg\\cave_ceiling.dae",
             stat_id="jtt_cave_ceiling",
-            z_offset=3.0,
+            z_offset=256.0,
         ),
     },
 )

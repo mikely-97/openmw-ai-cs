@@ -1,6 +1,14 @@
 [
   {
     "rec_type": "ACTI",
+    "record_id": "jtt_cave_portal",
+    "name": "Cave Entrance",
+    "mesh": "jtt\\totem_pole.dae",
+    "script": "JTT_CaveDebug",
+    "flags": 0
+  },
+  {
+    "rec_type": "ACTI",
     "record_id": "jtt_fast_travel",
     "name": "Jungle Portal",
     "mesh": "jtt\\totem_pole.dae",

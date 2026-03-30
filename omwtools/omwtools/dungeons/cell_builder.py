@@ -61,6 +61,12 @@ def build(layout: DungeonLayout, tileset: TileSet, cell_id: str) -> dict:
         refs.append(_make_ref(ref_num, tile_def.stat_id, tx * ts, ty * ts, 0.0, rot_z))
         ref_num += 1
 
+    # Bone torches — one per room at ceiling mid-height for visibility
+    for room in layout.rooms:
+        rtx, rty = room.centre_tile
+        refs.append(_make_ref(ref_num, "jtt_bone_torch", rtx * ts, rty * ts, ts * 0.5, 0.0))
+        ref_num += 1
+
     # Entrance ACTI ref at first room centre (world coords)
     etx, ety = layout.entrance_tile
     refs.append(_make_ref(ref_num, f"{prefix}_dungeon_entrance", etx * ts, ety * ts, 0.0, 0.0))
@@ -77,7 +83,7 @@ def build(layout: DungeonLayout, tileset: TileSet, cell_id: str) -> dict:
         "cell_flags": 1,               # CELL_INTERIOR = 0x01
         "grid_x": 0,
         "grid_y": 0,
-        "ambient": {"ambient": 0x00808080, "sunlight": 0, "fog": 0, "fog_density": 0.0},
+        "ambient": {"ambient": 0xFFFFFFFF, "sunlight": 0, "fog": 0, "fog_density": 0.0},
         "region": "",
         "ref_num_counter": 0,
         "water_height": -1.0,

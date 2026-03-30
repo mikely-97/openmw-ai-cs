@@ -29,3 +29,36 @@ def build_pool(
         layouts.append(layout)
         cells.append(build(layout, tileset, cell_id))
     return stats + cells, layouts, cell_ids
+
+
+def build_pool_roomkit(
+    spec: DungeonSpec,
+    kit,          # RoomKit
+    corridor_tiles: TileSet,
+    start_seed: int = 0,
+) -> tuple[list[dict], list[DungeonLayout], list[str]]:
+    """Like build_pool() but uses the room-kit builder."""
+    from .room_kit import RoomKit
+    from .room_builder import stat_records_roomkit, build_roomkit
+
+    # STAT records: room variants + corridor piece + corridor tile pieces
+    kit_stats = stat_records_roomkit(kit)
+    tile_stats = stat_records(corridor_tiles)
+    seen: set[str] = set()
+    unique_stats: list[dict] = []
+    for s in kit_stats + tile_stats:
+        if s["record_id"] not in seen:
+            seen.add(s["record_id"])
+            unique_stats.append(s)
+
+    cells: list[dict] = []
+    layouts: list[DungeonLayout] = []
+    cell_ids: list[str] = []
+    for i in range(spec.pool_size):
+        seed = start_seed + i
+        cell_id = f"{spec.game_prefix}_{spec.name}_{seed}"
+        cell_ids.append(cell_id)
+        layout = generate(spec, seed)
+        layouts.append(layout)
+        cells.append(build_roomkit(layout, kit, corridor_tiles, cell_id, seed=seed))
+    return unique_stats + cells, layouts, cell_ids

@@ -1,6 +1,13 @@
 [
   {
     "rec_type": "GLOB",
+    "record_id": "JTT_EnterCave",
+    "var_type": "s",
+    "value": 0.0,
+    "flags": 0
+  },
+  {
+    "rec_type": "GLOB",
     "record_id": "JTT_Hunger",
     "var_type": "s",
     "value": 0.0,

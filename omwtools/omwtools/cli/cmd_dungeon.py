@@ -31,17 +31,31 @@ def _cmd_generate(args) -> None:
         sys.exit(1)
 
     spec = registry["DUNGEON_TYPES"][dungeon_type]
-    tileset = registry["TILESETS"][spec.tileset]
+    kit_or_tileset = registry["TILESETS"][spec.tileset]
 
     if args.count is not None:
         spec = replace(spec, pool_size=args.count)
 
     start_seed = args.seed
 
-    from omwtools.dungeons.pool_builder import build_pool
     from omwtools.dungeons.lua_config import generate_lua_config
+    from omwtools.dungeons.room_kit import RoomKit
 
-    records, layouts, cell_ids = build_pool(spec, tileset, start_seed=start_seed)
+    if isinstance(kit_or_tileset, RoomKit):
+        from omwtools.dungeons.pool_builder import build_pool_roomkit
+        corridor_tiles = registry.get("CORRIDOR_TILES", {}).get(spec.tileset)
+        if corridor_tiles is None:
+            print(f"Error: no CORRIDOR_TILES entry for tileset '{spec.tileset}'",
+                  file=sys.stderr)
+            sys.exit(1)
+        records, layouts, cell_ids = build_pool_roomkit(
+            spec, kit_or_tileset, corridor_tiles, start_seed=start_seed
+        )
+    else:
+        from omwtools.dungeons.pool_builder import build_pool
+        records, layouts, cell_ids = build_pool(
+            spec, kit_or_tileset, start_seed=start_seed
+        )
 
     # Write JSON records file
     out_json = output_dir / f"{spec.game_prefix}_{dungeon_type}.json"
@@ -52,14 +66,15 @@ def _cmd_generate(args) -> None:
     lua_out_dir = game_dir / "scripts" / game_id
     lua_out_dir.mkdir(parents=True, exist_ok=True)
     lua_out = lua_out_dir / f"dungeon_config_{dungeon_type}.lua"
-    lua_str = generate_lua_config(dungeon_type, spec, layouts, tileset, cell_ids)
+    lua_str = generate_lua_config(dungeon_type, spec, layouts, kit_or_tileset, cell_ids)
     lua_out.write_text(lua_str)
     print(f"Written Lua config to {lua_out}")
 
     # Deploy tile meshes (unless --no-deploy)
     if not getattr(args, "no_deploy", False):
         from omwtools.dungeons.deployer import deploy_tiles
-        copied = deploy_tiles(tileset.name, game_dir)
+        tileset_name = kit_or_tileset.name
+        copied = deploy_tiles(tileset_name, game_dir)
         if copied:
             print(f"Deployed {len(copied)} tile meshes to {game_dir}/meshes/omwdg/")
         else:
@@ -150,4 +165,8 @@ def _load_registry(game_dir: Path) -> dict:
     sys.modules["_omwdg_registry.registry"] = reg_mod
     reg_spec.loader.exec_module(reg_mod)
 
-    return {"TILESETS": reg_mod.TILESETS, "DUNGEON_TYPES": reg_mod.DUNGEON_TYPES}
+    return {
+        "TILESETS": reg_mod.TILESETS,
+        "DUNGEON_TYPES": reg_mod.DUNGEON_TYPES,
+        "CORRIDOR_TILES": getattr(reg_mod, "CORRIDOR_TILES", {}),
+    }

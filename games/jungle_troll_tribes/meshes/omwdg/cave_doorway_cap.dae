@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset><unit name="meter" meter="1"/><up_axis>Z_UP</up_axis></asset>
+  <library_effects>
+    <effect id="cave_rock-effect"><profile_COMMON>
+      <newparam sid="img-surface"><surface type="2D"><init_from>img</init_from></surface></newparam>
+      <newparam sid="img-sampler"><sampler2D><source>img-surface</source></sampler2D></newparam>
+      <technique sid="common"><lambert><diffuse>
+        <texture texture="img-sampler" texcoord="UVMap"/>
+      </diffuse></lambert></technique>
+    </profile_COMMON></effect>
+  </library_effects>
+  <library_images>
+    <image id="img" name="img"><init_from>textures/omwdg/cave_stone.png</init_from></image>
+  </library_images>
+  <library_materials>
+    <material id="cave_rock-material" name="cave_rock">
+      <instance_effect url="#cave_rock-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="Cap-mesh" name="Cap"><mesh>
+      <source id="Cap-pos">
+        <float_array id="Cap-pos-arr" count="12">-128 0 0  128 0 0  128 0 200  -128 0 200</float_array>
+        <technique_common><accessor source="#Cap-pos-arr" count="4" stride="3">
+          <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/>
+        </accessor></technique_common>
+      </source>
+      <source id="Cap-nor">
+        <float_array id="Cap-nor-arr" count="3">0 1 0</float_array>
+        <technique_common><accessor source="#Cap-nor-arr" count="1" stride="3">
+          <param name="X" type="float"/><param name="Y" type="float"/><param name="Z" type="float"/>
+        </accessor></technique_common>
+      </source>
+      <source id="Cap-uv">
+        <float_array id="Cap-uv-arr" count="8">0 0  1 0  1 1  0 1</float_array>
+        <technique_common><accessor source="#Cap-uv-arr" count="4" stride="2">
+          <param name="S" type="float"/><param name="T" type="float"/>
+        </accessor></technique_common>
+      </source>
+      <vertices id="Cap-verts"><input semantic="POSITION" source="#Cap-pos"/></vertices>
+      <triangles material="cave_rock-material" count="4">
+        <input semantic="VERTEX" source="#Cap-verts" offset="0"/>
+        <input semantic="NORMAL" source="#Cap-nor" offset="1"/>
+        <input semantic="TEXCOORD" source="#Cap-uv" offset="2" set="0"/>
+        <p>0 0 0  1 0 1  2 0 2  0 0 0  2 0 2  3 0 3  2 0 2  1 0 1  0 0 0  3 0 3  2 0 2  0 0 0</p>
+      </triangles>
+    </mesh></geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="Cap" name="Cap" type="NODE">
+        <instance_geometry url="#Cap-mesh" name="Cap">
+          <bind_material><technique_common>
+            <instance_material symbol="cave_rock-material" target="#cave_rock-material">
+              <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+            </instance_material>
+          </technique_common></bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene><instance_visual_scene url="#Scene"/></scene>
+</COLLADA>

@@ -1,2 +1,3 @@
 PLAYER: scripts/jtt/player.lua
 GLOBAL: scripts/jtt/global.lua
+ACTIVATORS: scripts/jtt/cave_portal.lua

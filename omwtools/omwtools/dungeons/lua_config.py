@@ -1,13 +1,12 @@
 # omwtools/omwtools/dungeons/lua_config.py
 from .dungeon_spec import DungeonSpec, DungeonLayout
-from .tile_spec import TileSet
 
 
 def generate_lua_config(
     type_name: str,
     spec: DungeonSpec,
     layouts: list[DungeonLayout],
-    tileset: TileSet,
+    tileset,          # TileSet or RoomKit — both expose .tile_size
     cell_ids: list[str],
 ) -> str:
     """

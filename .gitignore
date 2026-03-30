@@ -38,3 +38,4 @@ htmlcov/
 
 # Local Claude Code permission settings (user-specific, not project config)
 .claude/settings.local.json
+JungleTrolls_7.0.2.w3x

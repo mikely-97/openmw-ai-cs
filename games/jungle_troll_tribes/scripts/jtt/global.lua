@@ -278,6 +278,15 @@ local function onJTTExitDungeon(data)
 end
 
 return {
+    engineHandlers = {
+        onUpdate = function(dt)
+            local globals = world.mwscript.getGlobalVariables()
+            if globals.JTT_EnterCave == 1 then
+                globals.JTT_EnterCave = 0
+                onJTTEnterDungeon({ dungeon_type = 'bear_den' })
+            end
+        end,
+    },
     eventHandlers = {
         JTT_Build            = onJTTBuild,
         JTT_Quest            = onJTTQuest,

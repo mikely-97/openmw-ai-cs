@@ -207,7 +207,7 @@ def test_build_cell_roundtrip_via_from_dict():
     cell_dict = build(layout, TILESET, "tst_test_cave_0")
     cell_obj = Cell.from_dict(cell_dict)
     assert cell_obj.cell_name == "tst_test_cave_0"
-    assert cell_obj.ambient.ambient == 0x00808080
+    assert cell_obj.ambient.ambient == 0xFFFFFFFF
 
 
 def test_pool_builder_cell_count():
