@@ -1,6 +1,7 @@
 local core = require('openmw.core')
 local world = require('openmw.world')
 local util = require('openmw.util')
+local ui = require('openmw.ui')
 
 local function onJTTBuild(data)
     local globals = world.mwscript.getGlobalVariables()
@@ -258,6 +259,47 @@ local function onJTTPopulateDungeon(data)
     end
 end
 
+-- ============================================================
+-- DEBUG: DUNGEON PARTS VIEWER
+-- ============================================================
+
+local DEBUG_PARTS = {
+    "jtt_cave_room_a", "jtt_cave_room_b", "jtt_cave_room_c",
+    "jtt_cave_room_d", "jtt_cave_room_e", "jtt_cave_room_f",
+    "jtt_cave_room_g", "jtt_cave_room_h", "jtt_cave_room_i",
+    "jtt_cave_room_j", "jtt_cave_corridor",
+}
+local DEBUG_SPACING = 1500  -- units between room centres
+local debugSpawned = {}
+
+local function onJTTDebugParts(data)
+    -- Toggle: if already spawned, despawn all
+    if #debugSpawned > 0 then
+        for _, obj in ipairs(debugSpawned) do
+            if obj and obj:isValid() then obj:remove() end
+        end
+        debugSpawned = {}
+        ui.showMessage('Debug parts removed')
+        return
+    end
+
+    local ox, oy, oz = data.x, data.y + 2048, data.z + 50
+    for i, partId in ipairs(DEBUG_PARTS) do
+        local px = ox + (i - 1) * DEBUG_SPACING
+        local pos = util.vector3(px, oy, oz)
+        local ok, obj = pcall(world.createObject, partId, 1)
+        if ok and obj then
+            obj:teleport('', pos, util.transform.identity)
+            table.insert(debugSpawned, obj)
+        end
+        -- Bone torch at centre of each piece
+        local torch = world.createObject('jtt_bone_torch', 1)
+        torch:teleport('', util.vector3(px, oy, oz + 128), util.transform.identity)
+        table.insert(debugSpawned, torch)
+    end
+    ui.showMessage('Debug parts spawned (J to remove) — walk north ~2000 units')
+end
+
 local function onJTTExitDungeon(data)
     local cellId = data.cell_id
     local state  = JTT_DungeonState[cellId]
@@ -289,6 +331,7 @@ return {
         end,
     },
     eventHandlers = {
+        JTT_DebugParts       = onJTTDebugParts,
         JTT_Build            = onJTTBuild,
         JTT_Quest            = onJTTQuest,
         JTT_Status           = onJTTStatus,
