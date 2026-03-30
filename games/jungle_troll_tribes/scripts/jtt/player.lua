@@ -17,14 +17,6 @@ return {
             if key.symbol == 'h' and not key.withShift and not key.withCtrl and not key.withAlt then
                 core.sendGlobalEvent('JTT_Status', {})
             end
-            if key.symbol == 'j' and not key.withShift and not key.withCtrl and not key.withAlt then
-                local player = require('openmw.self')
-                core.sendGlobalEvent('JTT_DebugParts', {
-                    x = player.position.x,
-                    y = player.position.y,
-                    z = player.position.z,
-                })
-            end
         end,
         onUpdate = function(dt)
             if not spawned then
