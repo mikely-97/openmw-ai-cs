@@ -67,13 +67,13 @@ def build_roomkit(
             # South side (-Y): corridor tiles just below room
             if not any((room.x + dx, room.y - 1) in corr for dx in range(rw)):
                 refs.append(_make_ref(ref_num, kit.door_cap_stat_id,
-                                      cx * ts, room.y * ts, 0.0, 0.0))
+                                      cx * ts, room.y * ts, 0.0, math.pi))
                 ref_num += 1
             # East side (+X): corridor tiles just right of room
             if not any((room.x + rw, room.y + dy) in corr for dy in range(rh)):
                 refs.append(_make_ref(ref_num, kit.door_cap_stat_id,
                                       (room.x + rw) * ts, cy * ts, 0.0,
-                                      math.pi / 2))
+                                      -math.pi / 2))
                 ref_num += 1
             # West side (-X): corridor tiles just left of room
             if not any((room.x - 1, room.y + dy) in corr for dy in range(rh)):
