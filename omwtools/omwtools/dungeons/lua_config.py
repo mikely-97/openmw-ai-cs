@@ -28,7 +28,7 @@ def generate_lua_config(
 
     for cell_id, layout in zip(cell_ids, layouts):
         etx, ety = layout.entrance_tile
-        ex, ey, ez = etx * ts, ety * ts, 0.0
+        ex, ey, ez = etx * ts, ety * ts, 50.0  # 50 units above floor to avoid falling through
         rx = spec.exterior_return_pos["x"]
         ry = spec.exterior_return_pos["y"]
         rz = spec.exterior_return_pos["z"]
