@@ -258,6 +258,20 @@ local function onJTTPopulateDungeon(data)
     end
 end
 
+local debugObj = nil
+
+local function onJTTDebugSpawn(data)
+    if debugObj and debugObj:isValid() then debugObj:remove() end
+    local pos = world.players[1].position + util.vector3(0, 1200, 50)
+    debugObj = world.createObject(data.part, 1)
+    debugObj:teleport('', pos, util.transform.identity)
+end
+
+local function onJTTDebugRemove(data)
+    if debugObj and debugObj:isValid() then debugObj:remove() end
+    debugObj = nil
+end
+
 local function onJTTExitDungeon(data)
     local cellId = data.cell_id
     local state  = JTT_DungeonState[cellId]
@@ -289,6 +303,8 @@ return {
         end,
     },
     eventHandlers = {
+        JTT_DebugSpawn       = onJTTDebugSpawn,
+        JTT_DebugRemove      = onJTTDebugRemove,
         JTT_Build            = onJTTBuild,
         JTT_Quest            = onJTTQuest,
         JTT_Status           = onJTTStatus,
