@@ -6,7 +6,8 @@ sys.path.insert(0, str(Path(__file__).parents[4] / "omwtools"))
 from omwtools.dungeons.room_kit import RoomKit, RoomVariant
 from omwtools.dungeons.tile_spec import TileSet, TileDef
 
-# 10 pre-built room variants (1024×1024×256, doorways on all 4 sides)
+# One basic cave room (1024×1024×256, full-height doorways on all 4 sides).
+# Room variety comes from procedurally placed loot/creatures, not mesh variants.
 cave_roomkit = RoomKit(
     name="cave",
     tile_size=256.0,
@@ -14,20 +15,17 @@ cave_roomkit = RoomKit(
     room_height=256.0,
     variants=[
         RoomVariant(mesh="omwdg\\cave_room_a.dae", stat_id="jtt_cave_room_a"),
-        RoomVariant(mesh="omwdg\\cave_room_b.dae", stat_id="jtt_cave_room_b"),
-        RoomVariant(mesh="omwdg\\cave_room_c.dae", stat_id="jtt_cave_room_c"),
-        RoomVariant(mesh="omwdg\\cave_room_d.dae", stat_id="jtt_cave_room_d"),
-        RoomVariant(mesh="omwdg\\cave_room_e.dae", stat_id="jtt_cave_room_e"),
-        RoomVariant(mesh="omwdg\\cave_room_f.dae", stat_id="jtt_cave_room_f"),
-        RoomVariant(mesh="omwdg\\cave_room_g.dae", stat_id="jtt_cave_room_g"),
-        RoomVariant(mesh="omwdg\\cave_room_h.dae", stat_id="jtt_cave_room_h"),
-        RoomVariant(mesh="omwdg\\cave_room_i.dae", stat_id="jtt_cave_room_i"),
-        RoomVariant(mesh="omwdg\\cave_room_j.dae", stat_id="jtt_cave_room_j"),
     ],
     corridor_mesh="omwdg\\cave_corridor.dae",
     corridor_stat_id="jtt_cave_corridor",
     door_cap_mesh="omwdg\\cave_doorway_cap.dae",
     door_cap_stat_id="jtt_cave_doorway_cap",
+    corridor_corner_mesh="omwdg\\cave_corridor_corner.dae",
+    corridor_corner_stat_id="jtt_cave_corridor_corner",
+    corridor_t_mesh="omwdg\\cave_corridor_t.dae",
+    corridor_t_stat_id="jtt_cave_corridor_t",
+    corridor_cross_mesh="omwdg\\cave_corridor_cross.dae",
+    corridor_cross_stat_id="jtt_cave_corridor_cross",
 )
 
 # Tile pieces reused for corridor sections between rooms

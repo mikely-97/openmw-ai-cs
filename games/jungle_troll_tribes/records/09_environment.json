@@ -199,7 +199,7 @@
     "weight": 0.3,
     "value": 12,
     "time": 86400,
-    "radius": 150,
+    "radius": 500,
     "color": 4278256640,
     "light_flags": 1,
     "script": "",
@@ -401,6 +401,90 @@
     "script": "JTT_MushroomPatch",
     "flags": 0
   },
-  {"rec_type": "ACTI", "record_id": "jtt_dungeon_entrance", "mesh": "omwdg\\cave_doorway.dae", "name": "Cave Entrance", "script": ""},
-  {"rec_type": "ACTI", "record_id": "jtt_dungeon_exit",     "mesh": "omwdg\\cave_doorway.dae", "name": "Cave Exit",     "script": ""}
+  {
+    "rec_type": "ACTI",
+    "record_id": "jtt_dungeon_entrance",
+    "mesh": "omwdg\\cave_doorway.dae",
+    "name": "Cave Entrance",
+    "script": ""
+  },
+  {
+    "rec_type": "ACTI",
+    "record_id": "jtt_dungeon_exit",
+    "mesh": "omwdg\\cave_doorway.dae",
+    "name": "Cave Exit",
+    "script": ""
+  },
+  {
+    "rec_type": "ACTI",
+    "record_id": "jtt_debug_portal_0",
+    "name": "Debug: Variant 0",
+    "mesh": "jtt\\totem_pole.dae",
+    "script": "JTT_DbgP0"
+  },
+  {
+    "rec_type": "ACTI",
+    "record_id": "jtt_debug_portal_1",
+    "name": "Debug: Variant 1",
+    "mesh": "jtt\\totem_pole.dae",
+    "script": "JTT_DbgP1"
+  },
+  {
+    "rec_type": "ACTI",
+    "record_id": "jtt_debug_portal_2",
+    "name": "Debug: Variant 2",
+    "mesh": "jtt\\totem_pole.dae",
+    "script": "JTT_DbgP2"
+  },
+  {
+    "rec_type": "ACTI",
+    "record_id": "jtt_debug_portal_3",
+    "name": "Debug: Variant 3",
+    "mesh": "jtt\\totem_pole.dae",
+    "script": "JTT_DbgP3"
+  },
+  {
+    "rec_type": "ACTI",
+    "record_id": "jtt_debug_portal_4",
+    "name": "Debug: Variant 4",
+    "mesh": "jtt\\totem_pole.dae",
+    "script": "JTT_DbgP4"
+  },
+  {
+    "rec_type": "ACTI",
+    "record_id": "jtt_debug_portal_5",
+    "name": "Debug: Variant 5",
+    "mesh": "jtt\\totem_pole.dae",
+    "script": "JTT_DbgP5"
+  },
+  {
+    "rec_type": "ACTI",
+    "record_id": "jtt_debug_portal_6",
+    "name": "Debug: Variant 6",
+    "mesh": "jtt\\totem_pole.dae",
+    "script": "JTT_DbgP6"
+  },
+  {
+    "rec_type": "ACTI",
+    "record_id": "jtt_debug_portal_7",
+    "name": "Debug: Variant 7",
+    "mesh": "jtt\\totem_pole.dae",
+    "script": "JTT_DbgP7"
+  },
+  {
+    "rec_type": "LIGH",
+    "record_id": "jtt_cave_torch",
+    "name": "Cave Torch",
+    "mesh": "jtt\\bone_torch.dae",
+    "icon": "icons\\jtt\\bone_torch.png",
+    "weight": 0.0,
+    "value": 0,
+    "time": 86400,
+    "radius": 700,
+    "color": 4281597952,
+    "light_flags": 1,
+    "script": "",
+    "sound": "",
+    "flags": 0
+  }
 ]

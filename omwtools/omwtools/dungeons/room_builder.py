@@ -3,12 +3,12 @@ import math
 import random
 from .dungeon_spec import DungeonLayout
 from .room_kit import RoomKit
-from .tile_spec import TileSet, WALL_ROTATIONS, BASE_TILE
+from .tile_spec import TileSet
 from .cell_builder import _make_ref
 
 
 def stat_records_roomkit(kit: RoomKit) -> list[dict]:
-    """STAT records for all room variants + corridor piece + optional door cap."""
+    """STAT records for all room variants + corridor pieces + optional door cap."""
     records = [
         {"rec_type": "STAT", "record_id": v.stat_id, "mesh": v.mesh, "flags": 0}
         for v in kit.variants
@@ -21,6 +21,16 @@ def stat_records_roomkit(kit: RoomKit) -> list[dict]:
         records.append(
             {"rec_type": "STAT", "record_id": kit.door_cap_stat_id,
              "mesh": kit.door_cap_mesh, "flags": 0}
+        )
+    if kit.corridor_corner_stat_id:
+        records.append(
+            {"rec_type": "STAT", "record_id": kit.corridor_corner_stat_id,
+             "mesh": kit.corridor_corner_mesh, "flags": 0}
+        )
+    if kit.corridor_cross_stat_id:
+        records.append(
+            {"rec_type": "STAT", "record_id": kit.corridor_cross_stat_id,
+             "mesh": kit.corridor_cross_mesh, "flags": 0}
         )
     return records
 
@@ -59,6 +69,9 @@ def build_roomkit(
         for room in layout.rooms:
             cx, cy = room.centre_tile
             rw, rh = room.w, room.h
+            # Cap rotation (Blender X → OpenMW X, no axis swap):
+            #   cap mesh DOOR_W wide in Blender X = E-W; rot=0 seals N or S wall
+            #   each 90° CW step turns cap to seal the next wall (N→E→S→W)
             # North side (+Y): corridor tiles just above room
             if not any((room.x + dx, room.y + rh) in corr for dx in range(rw)):
                 refs.append(_make_ref(ref_num, kit.door_cap_stat_id,
@@ -73,37 +86,89 @@ def build_roomkit(
             if not any((room.x + rw, room.y + dy) in corr for dy in range(rh)):
                 refs.append(_make_ref(ref_num, kit.door_cap_stat_id,
                                       (room.x + rw) * ts, cy * ts, 0.0,
-                                      -math.pi / 2))
+                                      math.pi / 2))
                 ref_num += 1
             # West side (-X): corridor tiles just left of room
             if not any((room.x - 1, room.y + dy) in corr for dy in range(rh)):
                 refs.append(_make_ref(ref_num, kit.door_cap_stat_id,
                                       room.x * ts, cy * ts, 0.0,
-                                      math.pi / 2))
+                                      3 * math.pi / 2))
                 ref_num += 1
 
-    # ── Corridor floor + ceiling ────────────────────────────────────────────
-    for tx, ty in sorted(layout.corridor_tiles):
-        floor_def = corridor_tiles.get_tile("floor")
-        refs.append(_make_ref(ref_num, floor_def.stat_id, tx * ts, ty * ts, 0.0, 0.0))
-        ref_num += 1
-        ceil_def = corridor_tiles.get_tile("ceiling")
-        refs.append(_make_ref(ref_num, ceil_def.stat_id, tx * ts, ty * ts,
-                               0.0, 0.0))  # ceiling verts already at z=room_height in local space
-        ref_num += 1
+    # ── Corridor tiles — pre-built oriented corridor meshes ────────────────
+    # Classification uses two layers:
+    #   corr_set  — only for the dominant-axis guard (cn+cs or ce+cw both True)
+    #               so Z-path parallel corridors don't generate false T-junctions
+    #   floor_set — corridor + room tiles: counts how many cardinal directions have
+    #               SOME floor (room or corridor), determines piece type and orientation
+    #
+    # Piece types (all rotatable):
+    #   straight  — 2 walls (E+W), open N+S;  rot 90° → E-W
+    #   corner    — 2 walls (N+W), open S+E;  4 rotations
+    #   t         — 1 wall  (S),   open N+E+W; 4 rotations
+    #   cross     — 0 walls, open all 4 sides
+    corr_set  = layout.corridor_tiles
+    floor_set = layout.floor_tiles
+    corner_id = kit.corridor_corner_stat_id or kit.corridor_stat_id
+    t_id      = kit.corridor_t_stat_id      or kit.corridor_cross_stat_id or kit.corridor_stat_id
+    cross_id  = kit.corridor_cross_stat_id  or kit.corridor_stat_id
 
-    # ── Corridor boundary walls (skip tiles adjacent only to room tiles) ────
-    corridor_set = layout.corridor_tiles
-    for (tx, ty), tile_type in sorted(layout.boundary_tiles.items()):
-        cardinal = [(tx, ty - 1), (tx, ty + 1), (tx + 1, ty), (tx - 1, ty)]
-        if not any(nb in corridor_set for nb in cardinal):
-            continue  # adjacent only to room tiles — room mesh handles this
-        base = BASE_TILE.get(tile_type)
-        if base not in corridor_tiles.tiles:
-            continue
-        tile_def = corridor_tiles.get_tile(tile_type)
-        rot_z = WALL_ROTATIONS.get(tile_type, 0.0)
-        refs.append(_make_ref(ref_num, tile_def.stat_id, tx * ts, ty * ts, 0.0, rot_z))
+    for tx, ty in sorted(layout.corridor_tiles):
+        cn = (tx, ty + 1) in corr_set
+        cs = (tx, ty - 1) in corr_set
+        ce = (tx + 1, ty) in corr_set
+        cw = (tx - 1, ty) in corr_set
+        fn = (tx, ty + 1) in floor_set
+        fs = (tx, ty - 1) in floor_set
+        fe = (tx + 1, ty) in floor_set
+        fw = (tx - 1, ty) in floor_set
+        open_n = sum([fn, fs, fe, fw])
+
+        # Rotation convention (no axis swap: Blender X → OpenMW X, Blender Y → OpenMW Y):
+        #   rot=0   corridor opens N-S  (walls E+W — Blender X=±140 → OpenMW X=±140)
+        #   rot=π/2 corridor opens E-W  (walls N+S)
+        #   corner base (rot=0): walls N+W, open S+E
+        #   t base (rot=0): wall S, open N+E+W
+        if cn and cs:
+            # Dominant N-S straight — upgrade to T/cross if room also connects E or W
+            if fe and fw:
+                stat, rot_z = cross_id, 0.0
+            elif fe:
+                stat, rot_z = t_id, math.pi / 2        # wall W, open N+S+E  (CW 1 step)
+            elif fw:
+                stat, rot_z = t_id, 3 * math.pi / 2   # wall E, open N+S+W  (CW 3 steps)
+            else:
+                stat, rot_z = kit.corridor_stat_id, 0.0           # N-S straight
+        elif ce and cw:
+            # Dominant E-W straight — upgrade to T/cross if room also connects N or S
+            if fn and fs:
+                stat, rot_z = cross_id, 0.0
+            elif fn:
+                stat, rot_z = t_id, 0.0                # wall S, open N+E+W  (CW 0 steps)
+            elif fs:
+                stat, rot_z = t_id, math.pi            # wall N, open S+E+W  (CW 2 steps)
+            else:
+                stat, rot_z = kit.corridor_stat_id, math.pi / 2   # E-W straight
+        elif open_n == 4:
+            stat, rot_z = cross_id, 0.0
+        elif open_n == 3:
+            # T-junction: 1 wall facing the empty side
+            if   not fw: stat, rot_z = t_id, math.pi / 2        # wall W, open N+S+E
+            elif not fe: stat, rot_z = t_id, 3 * math.pi / 2   # wall E, open N+S+W
+            elif not fn: stat, rot_z = t_id, math.pi            # wall N, open S+E+W
+            else:        stat, rot_z = t_id, 0.0                # wall S, open N+E+W
+        elif open_n == 2:
+            if   fn and fs: stat, rot_z = kit.corridor_stat_id, 0.0            # N-S straight
+            elif fe and fw: stat, rot_z = kit.corridor_stat_id, math.pi / 2    # E-W straight
+            elif fn and fe: stat, rot_z = corner_id, 3 * math.pi / 2          # NE corner (CW 3 steps)
+            elif fn and fw: stat, rot_z = corner_id, math.pi                   # NW corner (CW 2 steps)
+            elif fs and fe: stat, rot_z = corner_id, 0.0                       # SE corner (CW 0 steps)
+            elif fs and fw: stat, rot_z = corner_id, math.pi / 2               # SW corner (CW 1 step)
+            else:           stat, rot_z = cross_id, 0.0
+        else:
+            stat, rot_z = cross_id, 0.0
+
+        refs.append(_make_ref(ref_num, stat, tx * ts, ty * ts, 0.0, rot_z))
         ref_num += 1
 
     # ── Entrance ACTI ───────────────────────────────────────────────────────
@@ -118,12 +183,26 @@ def build_roomkit(
                            xtx * ts, xty * ts, 0.0, 0.0))
     ref_num += 1
 
-    # ── Bone torches — one per room ─────────────────────────────────────────
+    # ── Cave torches — two per room (NW + SE corners), below ceiling ────────
     for room in layout.rooms:
-        cx, cy = room.centre_tile
-        refs.append(_make_ref(ref_num, f"{prefix}_bone_torch",
-                               cx * ts, cy * ts, ts * 0.5, 0.0))
-        ref_num += 1
+        half = ts * 0.35
+        corners = [
+            (room.x * ts + half,              room.y * ts + half),
+            ((room.x + room.w) * ts - half,   (room.y + room.h) * ts - half),
+        ]
+        for cx_pos, cy_pos in corners:
+            refs.append(_make_ref(ref_num, f"{prefix}_cave_torch",
+                                   cx_pos, cy_pos, 30.0, 0.0))
+            ref_num += 1
+
+    # ── Corridor lights — one glow mushroom every 2 tiles, offset to wall ───
+    for i, (tx, ty) in enumerate(sorted(layout.corridor_tiles)):
+        if i % 2 == 0:
+            # Alternate left/right wall so mushrooms don't clump on one side
+            offset = ts * 0.35 if (i // 2) % 2 == 0 else -ts * 0.35
+            refs.append(_make_ref(ref_num, f"{prefix}_glow_mushroom",
+                                   tx * ts + offset, ty * ts, 20.0, 0.0))
+            ref_num += 1
 
     return {
         "rec_type": "CELL",
@@ -132,7 +211,7 @@ def build_roomkit(
         "cell_flags": 1,
         "grid_x": 0,
         "grid_y": 0,
-        "ambient": {"ambient": 0xFFFFFFFF, "sunlight": 0, "fog": 0, "fog_density": 0.0},
+        "ambient": {"ambient": 0xFFE0E0E0, "sunlight": 0xFFE0E0E0, "fog": 0, "fog_density": 0.0},
         "region": "",
         "ref_num_counter": 0,
         "water_height": -1.0,

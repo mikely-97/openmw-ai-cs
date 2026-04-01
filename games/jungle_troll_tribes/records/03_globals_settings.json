@@ -163,5 +163,19 @@
     "var_type": "s",
     "value": 0.0,
     "flags": 0
+  },
+  {
+    "rec_type": "GLOB",
+    "record_id": "JTT_DebugMenu",
+    "var_type": "s",
+    "value": 0.0,
+    "flags": 0
+  },
+  {
+    "rec_type": "GLOB",
+    "record_id": "JTT_DbgV",
+    "var_type": "s",
+    "value": 0.0,
+    "flags": 0
   }
 ]

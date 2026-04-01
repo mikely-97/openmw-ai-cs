@@ -82,4 +82,4 @@ def test_build_roomkit_cell_is_interior():
     cell = build_roomkit(layout, KIT, CORRIDOR_TILES, "tst_cell_0", seed=0)
     assert cell["rec_type"] == "CELL"
     assert cell["cell_flags"] & 1
-    assert cell["ambient"]["ambient"] == 0xFFFFFFFF
+    assert cell["ambient"]["ambient"] == 0xFFE0E0E0

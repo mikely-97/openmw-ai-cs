@@ -26,12 +26,15 @@ return {
                 core.sendGlobalEvent('JTT_Status', {})
             end
             if key.symbol == 'j' and not key.withShift and not key.withCtrl and not key.withAlt then
-                debugIdx = (debugIdx % #DEBUG_PARTS) + 1
-                local partId = DEBUG_PARTS[debugIdx]
-                ui.showMessage(debugIdx .. '/' .. #DEBUG_PARTS .. ': ' .. partId .. ' (Shift+J removes)')
-                core.sendGlobalEvent('JTT_DebugSpawn', { part = partId })
+                core.sendGlobalEvent('JTT_DebugMenuOpen', {})
             end
             if key.symbol == 'j' and key.withShift and not key.withCtrl and not key.withAlt then
+                debugIdx = (debugIdx % #DEBUG_PARTS) + 1
+                local partId = DEBUG_PARTS[debugIdx]
+                ui.showMessage(debugIdx .. '/' .. #DEBUG_PARTS .. ': ' .. partId .. ' (Ctrl+J removes)')
+                core.sendGlobalEvent('JTT_DebugSpawn', { part = partId })
+            end
+            if key.symbol == 'j' and not key.withShift and key.withCtrl and not key.withAlt then
                 debugIdx = 0
                 core.sendGlobalEvent('JTT_DebugRemove', {})
             end

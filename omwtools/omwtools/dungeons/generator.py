@@ -1,4 +1,5 @@
 import random
+from collections import deque
 from .dungeon_spec import DungeonSpec, DungeonLayout, Room
 
 
@@ -44,7 +45,7 @@ def _place_rooms(spec: DungeonSpec, rng: random.Random) -> list[Room]:
         x = rng.randint(1, grid_size - w - 1)
         y = rng.randint(1, grid_size - h - 1)
         candidate = Room(x=x, y=y, w=w, h=h)
-        if not any(candidate.overlaps(r) for r in rooms):
+        if not any(candidate.overlaps(r, margin=3) for r in rooms):
             rooms.append(candidate)
     if len(rooms) == 0:
         raise RuntimeError(
@@ -60,20 +61,110 @@ def _carve_corridors(
     room_tiles: set[tuple[int, int]],
     corridor_tiles: set[tuple[int, int]],
 ) -> None:
-    """Connect each room to the next with an L-shaped corridor.
-    Only adds tiles that are NOT already room tiles to corridor_tiles.
+    """Connect rooms via a minimum spanning tree (by Manhattan distance).
+
+    Routing uses BFS that avoids:
+      - Room interiors (room_tiles)
+      - Tiles adjacent to any room wall at a non-doorway position (forbidden)
+
+    This guarantees every corridor tile adjacent to a room wall is at the
+    wall's centre doorway position.  BFS produces L-shaped paths on open
+    grids and routes cleanly around obstacles when rooms are nearby.
     """
-    for i in range(len(rooms) - 1):
-        ax, ay = rooms[i].centre_tile
-        bx, by = rooms[i + 1].centre_tile
-        # Horizontal leg
-        for tx in range(min(ax, bx), max(ax, bx) + 1):
-            if (tx, ay) not in room_tiles:
-                corridor_tiles.add((tx, ay))
-        # Vertical leg
-        for ty in range(min(ay, by), max(ay, by) + 1):
-            if (bx, ty) not in room_tiles:
-                corridor_tiles.add((bx, ty))
+    # Tiles adjacent to a room wall at a non-centre (non-doorway) position.
+    forbidden: set[tuple[int, int]] = set()
+    for r in rooms:
+        rx, ry = r.centre_tile
+        for tx in range(r.x, r.x + r.w):
+            if tx != rx:
+                forbidden.add((tx, r.y + r.h))   # north face, wrong col
+                forbidden.add((tx, r.y - 1))      # south face, wrong col
+        for ty in range(r.y, r.y + r.h):
+            if ty != ry:
+                forbidden.add((r.x + r.w, ty))    # east face, wrong row
+                forbidden.add((r.x - 1, ty))      # west face, wrong row
+
+    blocked = room_tiles | forbidden
+
+    # MST via Kruskal's (Manhattan distance between room centres)
+    n = len(rooms)
+    edges = sorted(
+        (abs(rooms[i].centre_tile[0] - rooms[j].centre_tile[0]) +
+         abs(rooms[i].centre_tile[1] - rooms[j].centre_tile[1]), i, j)
+        for i in range(n) for j in range(i + 1, n)
+    )
+    parent = list(range(n))
+
+    def _find(x: int) -> int:
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    # BFS bounding box: rooms extent + small pad
+    pad = 4
+    bx_min = min(r.x for r in rooms) - pad
+    bx_max = max(r.x + r.w for r in rooms) + pad
+    by_min = min(r.y for r in rooms) - pad
+    by_max = max(r.y + r.h for r in rooms) + pad
+
+    for _, i, j in edges:
+        pi, pj = _find(i), _find(j)
+        if pi == pj:
+            continue
+        parent[pi] = pj
+        path = _bfs_path(rooms[i], rooms[j], blocked, bx_min, bx_max, by_min, by_max)
+        for tile in path:
+            corridor_tiles.add(tile)
+
+
+def _bfs_path(
+    a: Room, b: Room,
+    blocked: set[tuple[int, int]],
+    x_min: int, x_max: int, y_min: int, y_max: int,
+) -> list[tuple[int, int]]:
+    """BFS from any doorway tile of room *a* to any doorway tile of room *b*.
+
+    Doorway tiles are the one tile just outside each wall centre:
+      north: (cx, y+h)   south: (cx, y-1)
+      east:  (x+w, cy)   west:  (x-1, cy)
+    """
+    ax, ay = a.centre_tile
+    bx, by = b.centre_tile
+    targets: frozenset[tuple[int, int]] = frozenset({
+        (bx, b.y + b.h), (bx, b.y - 1),
+        (b.x + b.w, by), (b.x - 1, by),
+    })
+
+    prev: dict[tuple[int, int], tuple[int, int] | None] = {}
+    queue: deque[tuple[int, int]] = deque()
+    for src in ((ax, a.y + a.h), (ax, a.y - 1), (a.x + a.w, ay), (a.x - 1, ay)):
+        if src not in blocked and src not in prev:
+            prev[src] = None
+            queue.append(src)
+
+    found: tuple[int, int] | None = None
+    while queue and found is None:
+        cur = queue.popleft()
+        if cur in targets:
+            found = cur
+            break
+        cx2, cy2 = cur
+        for dx, dy in ((0, 1), (0, -1), (1, 0), (-1, 0)):
+            nb = (cx2 + dx, cy2 + dy)
+            if (nb not in blocked and nb not in prev
+                    and x_min <= nb[0] <= x_max and y_min <= nb[1] <= y_max):
+                prev[nb] = cur
+                queue.append(nb)
+
+    if found is None:
+        return []
+    path: list[tuple[int, int]] = []
+    node: tuple[int, int] | None = found
+    while node is not None:
+        path.append(node)
+        node = prev[node]
+    return path
 
 
 def _compute_boundary(

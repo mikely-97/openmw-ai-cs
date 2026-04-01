@@ -19,6 +19,12 @@ class RoomKit:
     corridor_stat_id: str    # e.g. "jtt_cave_corridor"
     door_cap_mesh: str = ""          # flat panel to seal unused doorways
     door_cap_stat_id: str = ""
+    corridor_corner_mesh: str = ""   # L-corner piece (walls N+W, open S+E; rotatable)
+    corridor_corner_stat_id: str = ""
+    corridor_t_mesh: str = ""        # T-junction piece (wall S, open N+E+W; rotatable)
+    corridor_t_stat_id: str = ""
+    corridor_cross_mesh: str = ""    # 4-way cross (floor+ceiling only)
+    corridor_cross_stat_id: str = ""
 
     @property
     def room_size(self) -> float:

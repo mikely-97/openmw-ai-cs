@@ -2,6 +2,17 @@ local core = require('openmw.core')
 local world = require('openmw.world')
 local util = require('openmw.util')
 
+local DEBUG_CELL_ENTRANCES = {
+    [0] = { cell='jtt_bear_den_0', x=2816.0, y=4864.0, z=50.0 },
+    [1] = { cell='jtt_bear_den_1', x=1536.0, y=4608.0, z=50.0 },
+    [2] = { cell='jtt_bear_den_2', x=2816.0, y=5632.0, z=50.0 },
+    [3] = { cell='jtt_bear_den_3', x=5632.0, y=4608.0, z=50.0 },
+    [4] = { cell='jtt_bear_den_4', x=1280.0, y=1280.0, z=50.0 },
+    [5] = { cell='jtt_bear_den_5', x=1536.0, y=3584.0, z=50.0 },
+    [6] = { cell='jtt_bear_den_6', x=1792.0, y=6144.0, z=50.0 },
+    [7] = { cell='jtt_bear_den_7', x=1024.0, y=1280.0, z=50.0 },
+}
+
 local function onJTTBuild(data)
     local globals = world.mwscript.getGlobalVariables()
     globals.JTT_BuildMenu = 1
@@ -260,6 +271,16 @@ end
 
 local debugObj = nil
 
+local function onJTTEnterDungeonDirect(data)
+    local player = world.players[1]
+    player:teleport(data.cell, util.vector3(data.x, data.y, data.z), util.transform.identity)
+end
+
+local function onJTTDebugMenuOpen(data)
+    local globals = world.mwscript.getGlobalVariables()
+    globals.JTT_DebugMenu = 1
+end
+
 local function onJTTDebugSpawn(data)
     if debugObj and debugObj:isValid() then debugObj:remove() end
     local pos = world.players[1].position + util.vector3(0, 1200, 50)
@@ -300,9 +321,20 @@ return {
                 globals.JTT_EnterCave = 0
                 onJTTEnterDungeon({ dungeon_type = 'bear_den' })
             end
+            if globals.JTT_EnterCave == 2 then
+                globals.JTT_EnterCave = 0
+                local idx = math.floor(globals.JTT_DbgV)
+                local cfg = DEBUG_CELL_ENTRANCES[idx]
+                if cfg then
+                    local player = world.players[1]
+                    player:teleport(cfg.cell, util.vector3(cfg.x, cfg.y, cfg.z), util.transform.identity)
+                end
+            end
         end,
     },
     eventHandlers = {
+        JTT_EnterDungeonDirect = onJTTEnterDungeonDirect,
+        JTT_DebugMenuOpen    = onJTTDebugMenuOpen,
         JTT_DebugSpawn       = onJTTDebugSpawn,
         JTT_DebugRemove      = onJTTDebugRemove,
         JTT_Build            = onJTTBuild,
