@@ -33,19 +33,7 @@ return {
     engineHandlers = {
         onKeyPress = function(key)
             if key.symbol == 'b' and not key.withShift and not key.withCtrl and not key.withAlt then
-                local found = nil
-                for _, obj in ipairs(nearby.activators()) do
-                    local rid = tostring(obj.recordId):lower()
-                    if CRAFTING_STATIONS[rid] then
-                        found = CRAFTING_STATIONS[rid]
-                        break
-                    end
-                end
-                if found then
-                    core.sendGlobalEvent('JTT_OpenCraftMenu', { station = found })
-                else
-                    ui.showMessage("Activate a crafting station to craft.")
-                end
+                core.sendGlobalEvent('JTT_Build', {})
             end
             if key.symbol == 'n' and not key.withShift and not key.withCtrl and not key.withAlt then
                 core.sendGlobalEvent('JTT_Quest', {})
