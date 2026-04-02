@@ -491,7 +491,13 @@ local function onJTTEnterDungeon(data)
     local pos = util.vector3(variant.entrance_pos.x, variant.entrance_pos.y, variant.entrance_pos.z)
     player:teleport(variant.cell_id, pos, util.transform.identity)
 
-    JTT_DungeonState[variant.cell_id] = { variant = variant, dungeon_type = typeName, spawned = {} }
+    local state = { variant = variant, dungeon_type = typeName, spawned = {} }
+    JTT_DungeonState[variant.cell_id] = state
+
+    -- Spawn exit portal at entrance position so player can leave
+    local exitPortal = world.createObject("jtt_dungeon_entrance", 1)
+    exitPortal:teleport(variant.cell_id, pos, util.transform.identity)
+    table.insert(state.spawned, exitPortal)
 
     core.sendGlobalEvent("JTT_PopulateDungeon", {
         cell_id      = variant.cell_id,

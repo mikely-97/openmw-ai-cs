@@ -51,7 +51,7 @@ local JTT_Dungeons = {
         anchors = {{x=2816.0, y=2560.0, z=0.0}, {x=6656.0, y=2816.0, z=0.0}},
       },
     },
-    creatures = {"jtt_bear", "jtt_wolf"},
+    creatures = {"jtt_jungle_bear", "jtt_jungle_wolf"},
     creatures_per_room = {1, 2},
     containers = {"jtt_loot_small", "jtt_loot_medium"},
     loot_per_room = {0, 1},
