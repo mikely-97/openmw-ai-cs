@@ -475,5 +475,38 @@
     "value": 5,
     "script": "",
     "flags": 0
+  },
+  {
+    "rec_type": "MISC",
+    "record_id": "jtt_charcoal",
+    "name": "Charcoal",
+    "mesh": "jtt\\resource_pile.dae",
+    "icon": "",
+    "weight": 0.5,
+    "value": 3,
+    "script": "",
+    "flags": 0
+  },
+  {
+    "rec_type": "MISC",
+    "record_id": "jtt_gunpowder",
+    "name": "Gunpowder",
+    "mesh": "jtt\\resource_pile.dae",
+    "icon": "",
+    "weight": 0.3,
+    "value": 30,
+    "script": "",
+    "flags": 0
+  },
+  {
+    "rec_type": "MISC",
+    "record_id": "jtt_ancient_core",
+    "name": "Ancient Core",
+    "mesh": "jtt\\troll_idol.dae",
+    "icon": "",
+    "weight": 3.0,
+    "value": 500,
+    "script": "",
+    "flags": 0
   }
 ]

@@ -283,7 +283,7 @@
       },
       {
         "count": 1,
-        "item": "jtt_wolf_pelt"
+        "item": "jtt_bear_hide"
       },
       {
         "count": 2,
@@ -718,6 +718,55 @@
       {
         "type": "AI_W",
         "raw_hex": "00040800000000000a0000000100"
+      }
+    ],
+    "transport": [],
+    "flags": 0
+  },
+  {
+    "rec_type": "CREA",
+    "record_id": "jtt_golem",
+    "name": "Stone Golem",
+    "mesh": "jtt\\golem.dae",
+    "sound_template": "",
+    "script": "",
+    "crea_type": 0,
+    "level": 12,
+    "strength": 120,
+    "intelligence": 5,
+    "willpower": 50,
+    "agility": 20,
+    "speed": 30,
+    "endurance": 100,
+    "personality": 5,
+    "luck": 30,
+    "health": 300,
+    "mana": 0,
+    "fatigue": 400,
+    "soul": 200,
+    "combat": 70,
+    "magic": 0,
+    "stealth": 10,
+    "attack1_min": 15,
+    "attack1_max": 35,
+    "attack2_min": 20,
+    "attack2_max": 40,
+    "attack3_min": 10,
+    "attack3_max": 25,
+    "gold": 0,
+    "crea_flags": 72,
+    "scale": 1.3,
+    "inventory": [],
+    "spells": [],
+    "ai_hello": 0,
+    "ai_fight": 80,
+    "ai_flee": 0,
+    "ai_alarm": 0,
+    "ai_services": 0,
+    "ai_packages": [
+      {
+        "type": "AI_W",
+        "raw_hex": "00010800000000000a0000000100"
       }
     ],
     "transport": [],

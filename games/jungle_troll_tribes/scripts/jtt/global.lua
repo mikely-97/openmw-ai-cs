@@ -198,6 +198,228 @@ local function onJTTSpawnWorld(data)
 end
 
 -- ============================================================
+-- NODE HARVEST SYSTEM
+-- ============================================================
+
+-- Items yielded when activating each surface node type.
+-- Each entry: { item_id, count_min, count_max }
+local NODE_YIELDS = {
+    jtt_herb_node      = { {"jtt_jungle_berry", 2, 4}, {"jtt_jungle_root", 1, 2}, {"jtt_bird_feather", 0, 1} },
+    jtt_mushroom_patch = { {"jtt_jungle_mushroom", 2, 4}, {"jtt_tinder", 1, 2} },
+    jtt_tidal_pool     = { {"jtt_raw_fish", 1, 3}, {"jtt_salt", 1, 2}, {"jtt_crab_chitin", 0, 1} },
+    jtt_spider_web     = { {"jtt_spider_silk", 1, 2} },
+    jtt_iron_vein      = { {"jtt_iron_ore", 2, 4}, {"jtt_stone_item", 1, 2} },
+    jtt_rock           = { {"jtt_stone_item", 2, 4}, {"jtt_flint", 0, 1} },
+    jtt_tree_oak       = { {"jtt_stick", 3, 6} },
+    jtt_tree_pine      = { {"jtt_stick", 3, 6}, {"jtt_tinder", 1, 2} },
+    jtt_tree_palm      = { {"jtt_stick", 2, 4} },
+    jtt_tree_dead      = { {"jtt_stick", 1, 3}, {"jtt_charcoal", 1, 2} },
+}
+
+local function onJTTHarvestNode(data)
+    local nodeType = data.node_type
+    local yields   = NODE_YIELDS[nodeType]
+    if not yields then return end
+
+    local player = world.players[1]
+    local names  = {}
+    for _, y in ipairs(yields) do
+        local itemId = y[1]
+        local count  = y[2] + math.random(0, y[3] - y[2])
+        if count > 0 then
+            local obj = world.createObject(itemId, count)
+            obj:moveInto(player)
+            table.insert(names, count .. "× " .. itemId:gsub("jtt_",""):gsub("_"," "))
+        end
+    end
+    if #names > 0 then
+        core.sendGlobalEvent("JTT_Notify", { msg = "Gathered: " .. table.concat(names, ", ") })
+    end
+end
+
+-- ============================================================
+-- CRAFTING SYSTEM
+-- ============================================================
+
+-- Recipe table: each entry = { output, count, station, ingredients={id=count,...} }
+-- station: "workbench" | "campfire" | "forge" | "tannery" | "cauldron" | "voodoo_hut"
+local RECIPES = {
+    -- ── Tier 1 intermediates ────────────────────────────────
+    { output="jtt_charcoal",   count=2,  station="campfire",  ingredients={jtt_stick=3} },
+    { output="jtt_rope",       count=1,  station="workbench", ingredients={jtt_stick=3, jtt_jungle_root=1} },
+    { output="jtt_cloth",      count=1,  station="workbench", ingredients={jtt_rabbit_fur=3, jtt_rope=1} },
+    { output="jtt_leather",    count=1,  station="tannery",   ingredients={jtt_boar_hide=2} },
+    { output="jtt_iron_bar",   count=1,  station="forge",     ingredients={jtt_iron_ore=2} },
+    { output="jtt_iron_bolt",  count=5,  station="forge",     ingredients={jtt_iron_bar=1} },
+    { output="jtt_gunpowder",  count=1,  station="workbench", ingredients={jtt_charcoal=2, jtt_spider_venom=1, jtt_flint=2} },
+
+    -- ── Tier 1 weapons / gear ───────────────────────────────
+    { output="jtt_bone_club",     count=1, station="workbench", ingredients={jtt_bone=2, jtt_stick=1} },
+    { output="jtt_flint_dagger",  count=1, station="workbench", ingredients={jtt_flint=2, jtt_rope=1} },
+    { output="jtt_stone_hatchet", count=1, station="workbench", ingredients={jtt_stone_item=2, jtt_stick=2} },
+    { output="jtt_wooden_bow",    count=1, station="workbench", ingredients={jtt_stick=4, jtt_rope=2} },
+    { output="jtt_stone_arrow",   count=5, station="workbench", ingredients={jtt_flint=2, jtt_stick=3} },
+    { output="jtt_harpoon",       count=1, station="forge",     ingredients={jtt_iron_bar=1, jtt_rope=2, jtt_bone=1} },
+
+    -- ── Tier 1 food / potions ───────────────────────────────
+    { output="jtt_cooked_meat",  count=1, station="campfire", ingredients={jtt_raw_meat=1} },
+    { output="jtt_cooked_fish",  count=1, station="campfire", ingredients={jtt_raw_fish=1} },
+    { output="jtt_stew",         count=1, station="campfire", ingredients={jtt_raw_meat=1, jtt_jungle_root=1, jtt_salt=1} },
+    { output="jtt_omelette",     count=1, station="campfire", ingredients={jtt_egg=2, jtt_salt=1} },
+    { output="jtt_tribal_brew",  count=1, station="cauldron", ingredients={jtt_jungle_berry=3, jtt_jungle_root=1} },
+    { output="jtt_cure_wound",   count=1, station="cauldron", ingredients={jtt_jungle_mushroom=2, jtt_jungle_root=1} },
+    { output="jtt_antidote",     count=1, station="cauldron", ingredients={jtt_snake_venom=1, jtt_jungle_berry=2} },
+    { output="jtt_hunters_tonic",count=1, station="cauldron", ingredients={jtt_bird_feather=3, jtt_jungle_berry=1} },
+    { output="jtt_stamina_boost",count=1, station="cauldron", ingredients={jtt_jungle_root=2, jtt_egg=1} },
+    { output="jtt_strong_liquor",count=1, station="cauldron", ingredients={jtt_jungle_berry=4, jtt_tinder=1} },
+
+    -- ── Tier 1 voodoo ───────────────────────────────────────
+    { output="jtt_hex_bag",    count=1, station="voodoo_hut", ingredients={jtt_spider_venom=1, jtt_snake_venom=1, jtt_bone=1, jtt_cloth=1} },
+    { output="jtt_voodoo_doll",count=1, station="voodoo_hut", ingredients={jtt_bone=2, jtt_cloth=1, jtt_skull=1} },
+
+    -- ── Tier 2 weapons / potions ────────────────────────────
+    { output="jtt_iron_axe",       count=1, station="forge",     ingredients={jtt_iron_bar=2, jtt_stick=2} },
+    { output="jtt_iron_spear",     count=1, station="forge",     ingredients={jtt_iron_bar=2, jtt_stick=3, jtt_rope=1} },
+    { output="jtt_iron_arrow",     count=5, station="forge",     ingredients={jtt_iron_bar=1, jtt_stick=3} },
+    { output="jtt_vine_whip",      count=1, station="workbench", ingredients={jtt_rope=3, jtt_spider_silk=2} },
+    { output="jtt_war_maul",       count=1, station="forge",     ingredients={jtt_iron_bar=3, jtt_stick=2} },
+    { output="jtt_berserker_blood",count=1, station="cauldron",  ingredients={jtt_panther_fang=1, jtt_jungle_mushroom=2, jtt_salt=1} },
+    { output="jtt_voodoo_potion",  count=1, station="cauldron",  ingredients={jtt_jungle_mushroom=1, jtt_croc_scale=1, jtt_snake_venom=1} },
+    { output="jtt_frenzy_elixir",  count=1, station="cauldron",  ingredients={jtt_berserker_blood=1, jtt_strong_liquor=1} },
+    { output="jtt_spirit_blessing",count=1, station="voodoo_hut",ingredients={jtt_spirit_totem=1, jtt_jungle_mushroom=2, jtt_bird_feather=3} },
+
+    -- ── Tier 3 (dungeon ingredients required) ───────────────
+    { output="jtt_sniper_rifle",  count=1, station="forge",
+      ingredients={jtt_iron_bar=3, jtt_gunpowder=2, jtt_oil=1} },
+    { output="jtt_flamethrower",  count=1, station="forge",
+      ingredients={jtt_iron_bar=2, jtt_oil=3, jtt_cloth=2} },
+    { output="jtt_golem",         count=1, station="voodoo_hut",
+      ingredients={jtt_skull=3, jtt_iron_bar=2, jtt_spirit_totem=1, jtt_ancient_core=1} },
+    { output="jtt_obsidian_spear",count=1, station="forge",
+      ingredients={jtt_iron_bar=1, jtt_stick=3, jtt_stone_item=3} },
+}
+
+-- Build lookup: station → list of recipes
+local RECIPES_BY_STATION = {}
+for _, r in ipairs(RECIPES) do
+    local s = r.station
+    RECIPES_BY_STATION[s] = RECIPES_BY_STATION[s] or {}
+    table.insert(RECIPES_BY_STATION[s], r)
+end
+
+local function playerHas(player, itemId, count)
+    local inv = types.Actor.inventory(player)
+    local have = 0
+    for _, item in ipairs(inv:getAll()) do
+        if tostring(item.recordId):lower() == itemId then
+            have = have + item.count
+        end
+    end
+    return have >= count
+end
+
+local function removeFromPlayer(player, itemId, count)
+    local inv = types.Actor.inventory(player)
+    local left = count
+    for _, item in ipairs(inv:getAll()) do
+        if left <= 0 then break end
+        if tostring(item.recordId):lower() == itemId then
+            local take = math.min(left, item.count)
+            inv:remove(item.recordId, take)
+            left = left - take
+        end
+    end
+end
+
+local function onJTTCraft(data)
+    local recipeIdx = data.recipe_idx
+    local recipe    = RECIPES[recipeIdx]
+    if not recipe then return end
+
+    local player = world.players[1]
+
+    -- Check ingredients
+    for itemId, count in pairs(recipe.ingredients) do
+        if not playerHas(player, itemId, count) then
+            core.sendGlobalEvent("JTT_Notify", { msg = "Missing: " .. itemId:gsub("jtt_",""):gsub("_"," ") })
+            return
+        end
+    end
+
+    -- Consume ingredients
+    for itemId, count in pairs(recipe.ingredients) do
+        removeFromPlayer(player, itemId, count)
+    end
+
+    -- Special case: crafting a golem spawns the creature and gives the spell
+    if recipe.output == "jtt_golem" then
+        local pos = player.position + util.vector3(0, 200, 0)
+        local golem = world.createObject("jtt_golem", 1)
+        golem:teleport(player.cell.name, pos, util.transform.identity)
+        -- Store golem handle so we can watch for death
+        JTT_ActiveGolem = golem
+        -- Give player the summon spell as a marker
+        types.Actor.spells(player):add("jtt_summon_golem")
+        core.sendGlobalEvent("JTT_Notify", { msg = "The Stone Golem rises to serve you." })
+        return
+    end
+
+    -- Normal recipe: give output items
+    local obj = world.createObject(recipe.output, recipe.count)
+    obj:moveInto(player)
+    local name = recipe.output:gsub("jtt_",""):gsub("_"," ")
+    core.sendGlobalEvent("JTT_Notify", { msg = "Crafted: " .. recipe.count .. "× " .. name })
+end
+
+-- ============================================================
+-- GOLEM COMPANION SYSTEM
+-- ============================================================
+
+JTT_ActiveGolem = nil
+
+local function checkGolemAlive(dt)
+    if not JTT_ActiveGolem then return end
+    if not JTT_ActiveGolem:isValid() then
+        -- Golem died — remove summon spell from player
+        local player = world.players[1]
+        local spells  = types.Actor.spells(player)
+        for _, sp in ipairs(spells:getAll()) do
+            if tostring(sp.id):lower() == "jtt_summon_golem" then
+                spells:remove("jtt_summon_golem")
+                break
+            end
+        end
+        JTT_ActiveGolem = nil
+        core.sendGlobalEvent("JTT_Notify", { msg = "Your Stone Golem has been destroyed." })
+    end
+end
+
+local function onJTTResummonGolem(data)
+    if not types.Actor.spells(world.players[1]):has("jtt_summon_golem") then
+        core.sendGlobalEvent("JTT_Notify", { msg = "You have no golem to resummon." })
+        return
+    end
+    if JTT_ActiveGolem and JTT_ActiveGolem:isValid() then
+        core.sendGlobalEvent("JTT_Notify", { msg = "Your golem is still alive." })
+        return
+    end
+    local player = world.players[1]
+    local pos    = player.position + util.vector3(0, 200, 0)
+    local golem  = world.createObject("jtt_golem", 1)
+    golem:teleport(player.cell.name, pos, util.transform.identity)
+    JTT_ActiveGolem = golem
+    core.sendGlobalEvent("JTT_Notify", { msg = "The Stone Golem answers your call." })
+end
+
+-- ============================================================
+-- NOTIFICATION HELPER
+-- ============================================================
+
+local function onJTTNotify(data)
+    -- Routed back to player script for ui.showMessage (global scripts can't call ui)
+end
+
+-- ============================================================
 -- DUNGEON SYSTEM
 -- ============================================================
 
@@ -316,6 +538,7 @@ end
 return {
     engineHandlers = {
         onUpdate = function(dt)
+            checkGolemAlive(dt)
             local globals = world.mwscript.getGlobalVariables()
             if globals.JTT_EnterCave == 1 then
                 globals.JTT_EnterCave = 0
@@ -345,5 +568,9 @@ return {
         JTT_EnterDungeon     = onJTTEnterDungeon,
         JTT_PopulateDungeon  = onJTTPopulateDungeon,
         JTT_ExitDungeon      = onJTTExitDungeon,
+        JTT_HarvestNode      = onJTTHarvestNode,
+        JTT_Craft            = onJTTCraft,
+        JTT_ResummonGolem    = onJTTResummonGolem,
+        JTT_Notify           = onJTTNotify,
     }
 }

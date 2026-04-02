@@ -169,6 +169,48 @@
   },
   {
     "rec_type": "ENCH",
+    "record_id": "jtt_ench_flamethrower",
+    "ench_type": 3,
+    "cost": 12,
+    "charge": 800,
+    "ench_flags": 0,
+    "effects": [
+      {
+        "effect_id": 22,
+        "skill": -1,
+        "attribute": -1,
+        "range": 1,
+        "area": 120,
+        "duration": 2,
+        "mmin": 20,
+        "mmax": 35
+      }
+    ],
+    "flags": 0
+  },
+  {
+    "rec_type": "SPEL",
+    "record_id": "jtt_summon_golem",
+    "name": "Summon Stone Golem",
+    "spell_type": 2,
+    "cost": 0,
+    "spell_flags": 6,
+    "effects": [
+      {
+        "effect_id": 17,
+        "skill": -1,
+        "attribute": 0,
+        "range": 0,
+        "area": 0,
+        "duration": 1,
+        "mmin": 1,
+        "mmax": 1
+      }
+    ],
+    "flags": 0
+  },
+  {
+    "rec_type": "ENCH",
     "record_id": "jtt_ench_shaman_staff",
     "ench_type": 3,
     "cost": 8,

@@ -1,9 +1,16 @@
-local core = require('openmw.core')
-local self = require('openmw.self')
-local ui = require('openmw.ui')
+local core   = require('openmw.core')
+local self   = require('openmw.self')
+local ui     = require('openmw.ui')
+local nearby = require('openmw.nearby')
 local types = require('openmw.types')
 
 local spawned = false
+
+local HARVEST_NODES = {
+    jtt_herb_node=true, jtt_mushroom_patch=true, jtt_tidal_pool=true,
+    jtt_spider_web=true, jtt_iron_vein=true, jtt_rock=true,
+    jtt_tree_oak=true, jtt_tree_pine=true, jtt_tree_palm=true, jtt_tree_dead=true,
+}
 
 local DEBUG_PARTS = {
     "jtt_cave_room_a", "jtt_cave_room_b", "jtt_cave_room_c",
@@ -38,6 +45,15 @@ return {
                 debugIdx = 0
                 core.sendGlobalEvent('JTT_DebugRemove', {})
             end
+            if key.symbol == 'g' and not key.withShift and not key.withCtrl and not key.withAlt then
+                core.sendGlobalEvent('JTT_ResummonGolem', {})
+            end
+        end,
+        onActivate = function(object)
+            local rid = tostring(object.recordId):lower()
+            if HARVEST_NODES[rid] then
+                core.sendGlobalEvent('JTT_HarvestNode', { node_type = rid })
+            end
         end,
         onUpdate = function(dt)
             if not spawned then
@@ -45,6 +61,10 @@ return {
                 core.sendGlobalEvent('JTT_SpawnWorld', {})
             end
         end,
-        onActivate = onActivate,
-    }
+    },
+    eventHandlers = {
+        JTT_Notify = function(data)
+            ui.showMessage(data.msg)
+        end,
+    },
 }

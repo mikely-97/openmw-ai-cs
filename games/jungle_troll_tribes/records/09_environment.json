@@ -486,5 +486,37 @@
     "script": "",
     "sound": "",
     "flags": 0
+  },
+  {
+    "rec_type": "CONT",
+    "record_id": "jtt_loot_small",
+    "name": "Bone Cache",
+    "mesh": "jtt\\tribal_chest.dae",
+    "capacity": 100.0,
+    "cont_flags": 8,
+    "script": "",
+    "inventory": [
+      {"count": 2, "item_id": "jtt_bone"},
+      {"count": 1, "item_id": "jtt_shell_token"},
+      {"count": 1, "item_id": "jtt_jungle_berry"}
+    ],
+    "flags": 0
+  },
+  {
+    "rec_type": "CONT",
+    "record_id": "jtt_loot_medium",
+    "name": "Trophy Cache",
+    "mesh": "jtt\\tribal_chest.dae",
+    "capacity": 200.0,
+    "cont_flags": 8,
+    "script": "",
+    "inventory": [
+      {"count": 3, "item_id": "jtt_bone"},
+      {"count": 1, "item_id": "jtt_skull"},
+      {"count": 2, "item_id": "jtt_shell_token"},
+      {"count": 1, "item_id": "jtt_wolf_pelt"},
+      {"count": 1, "item_id": "jtt_oil"}
+    ],
+    "flags": 0
   }
 ]
