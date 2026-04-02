@@ -1,4 +1,4 @@
 PLAYER: scripts/jtt/player.lua
 PLAYER: scripts/jtt/craft_menu.lua
 GLOBAL: scripts/jtt/global.lua
-ACTIVATORS: scripts/jtt/cave_portal.lua
+ACTIVATOR: scripts/jtt/cave_portal.lua

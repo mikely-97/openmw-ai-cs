@@ -68,12 +68,6 @@ return {
                 core.sendGlobalEvent('JTT_ResummonGolem', {})
             end
         end,
-        onActivate = function(object)
-            -- NOTE: in OpenMW 0.50 this fires when the player IS activated,
-            -- not when the player activates something. Real activation handling
-            -- lives in cave_portal.lua (ACTIVATORS:) and will be routed here
-            -- via events (JTT_Notify etc.) as needed.
-        end,
         onUpdate = function(dt)
             if not spawned then
                 spawned = true
