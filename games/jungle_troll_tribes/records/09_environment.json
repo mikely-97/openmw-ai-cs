@@ -382,7 +382,7 @@
     "record_id": "jtt_bear_den",
     "name": "Bear Den",
     "mesh": "jtt\\bear_den.dae",
-    "script": "JTT_BearDenNode",
+    "script": "",
     "flags": 0
   },
   {
@@ -496,9 +496,18 @@
     "cont_flags": 8,
     "script": "",
     "inventory": [
-      {"count": 2, "item_id": "jtt_bone"},
-      {"count": 1, "item_id": "jtt_shell_token"},
-      {"count": 1, "item_id": "jtt_jungle_berry"}
+      {
+        "count": 2,
+        "item_id": "jtt_bone"
+      },
+      {
+        "count": 1,
+        "item_id": "jtt_shell_token"
+      },
+      {
+        "count": 1,
+        "item_id": "jtt_jungle_berry"
+      }
     ],
     "flags": 0
   },
@@ -511,11 +520,26 @@
     "cont_flags": 8,
     "script": "",
     "inventory": [
-      {"count": 3, "item_id": "jtt_bone"},
-      {"count": 1, "item_id": "jtt_skull"},
-      {"count": 2, "item_id": "jtt_shell_token"},
-      {"count": 1, "item_id": "jtt_wolf_pelt"},
-      {"count": 1, "item_id": "jtt_oil"}
+      {
+        "count": 3,
+        "item_id": "jtt_bone"
+      },
+      {
+        "count": 1,
+        "item_id": "jtt_skull"
+      },
+      {
+        "count": 2,
+        "item_id": "jtt_shell_token"
+      },
+      {
+        "count": 1,
+        "item_id": "jtt_wolf_pelt"
+      },
+      {
+        "count": 1,
+        "item_id": "jtt_oil"
+      }
     ],
     "flags": 0
   }
