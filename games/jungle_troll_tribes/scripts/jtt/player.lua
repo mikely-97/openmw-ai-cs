@@ -69,17 +69,10 @@ return {
             end
         end,
         onActivate = function(object)
-            local rid = tostring(object.recordId):lower()
-            ui.showMessage("DBG onActivate: " .. rid)
-            if HARVEST_NODES[rid] then
-                core.sendGlobalEvent('JTT_HarvestNode', { node_type = rid })
-            elseif CRAFTING_STATIONS[rid] then
-                core.sendGlobalEvent('JTT_OpenCraftMenu', { station = CRAFTING_STATIONS[rid] })
-            elseif DUNGEON_ENTRANCES[rid] then
-                core.sendGlobalEvent('JTT_EnterDungeon', { dungeon_type = DUNGEON_ENTRANCES[rid] })
-            elseif DUNGEON_EXITS[rid] then
-                core.sendGlobalEvent('JTT_ExitDungeon', { cell_id = self.cell.name })
-            end
+            -- NOTE: in OpenMW 0.50 this fires when the player IS activated,
+            -- not when the player activates something. Real activation handling
+            -- lives in cave_portal.lua (ACTIVATORS:) and will be routed here
+            -- via events (JTT_Notify etc.) as needed.
         end,
         onUpdate = function(dt)
             if not spawned then

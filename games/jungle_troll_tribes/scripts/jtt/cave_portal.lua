@@ -1,49 +1,40 @@
 local core = require('openmw.core')
 local self = require('openmw.self')
-local ui = require('openmw.ui')
-
-local DEBUG_PORTALS = {
-    jtt_debug_portal_0 = { cell='jtt_bear_den_0', x=2816.0, y=4864.0, z=50.0 },
-    jtt_debug_portal_1 = { cell='jtt_bear_den_1', x=1536.0, y=4608.0, z=50.0 },
-    jtt_debug_portal_2 = { cell='jtt_bear_den_2', x=2816.0, y=5632.0, z=50.0 },
-    jtt_debug_portal_3 = { cell='jtt_bear_den_3', x=5632.0, y=4608.0, z=50.0 },
-    jtt_debug_portal_4 = { cell='jtt_bear_den_4', x=1280.0, y=1280.0, z=50.0 },
-    jtt_debug_portal_5 = { cell='jtt_bear_den_5', x=1536.0, y=3584.0, z=50.0 },
-    jtt_debug_portal_6 = { cell='jtt_bear_den_6', x=1792.0, y=6144.0, z=50.0 },
-    jtt_debug_portal_7 = { cell='jtt_bear_den_7', x=1024.0, y=1280.0, z=50.0 },
-}
+local util = require('openmw.util')
 
 local DUNGEON_ENTRANCES = {
-    jtt_cave_portal     = 'bear_den',
-    jtt_bear_den        = 'bear_den',
+    jtt_cave_portal  = 'bear_den',
+    jtt_bear_den     = 'bear_den',
 }
 
 local DUNGEON_EXITS = {
-    jtt_dungeon_exit     = true,
-    jtt_dungeon_entrance = true,  -- entrance portal also exits (back to surface)
+    jtt_dungeon_exit      = true,
+    jtt_dungeon_entrance  = true,
+}
+
+local HARVEST_NODES = {
+    jtt_herb_node=true, jtt_mushroom_patch=true, jtt_tidal_pool=true,
+    jtt_spider_web=true, jtt_iron_vein=true, jtt_rock=true,
+    jtt_tree_oak=true, jtt_tree_pine=true, jtt_tree_palm=true, jtt_tree_dead=true,
+}
+
+local CRAFTING_STATIONS = {
+    jtt_workbench  = "workbench",
+    jtt_campfire   = "campfire",
+    jtt_forge      = "forge",
+    jtt_tannery    = "tannery",
+    jtt_cauldron   = "cauldron",
+    jtt_voodoo_hut = "voodoo_hut",
 }
 
 local recordId = tostring(self.recordId):lower()
-
-ui.showMessage('LUA LOAD: id=' .. recordId)
-
-local dbg = DEBUG_PORTALS[recordId]
-if dbg then
-    return {
-        engineHandlers = {
-            onActivate = function(activator)
-                core.sendGlobalEvent('JTT_EnterDungeonDirect',
-                    { cell=dbg.cell, x=dbg.x, y=dbg.y, z=dbg.z })
-            end
-        }
-    }
-end
+util.log("JTT cave_portal load: " .. recordId)
 
 if DUNGEON_EXITS[recordId] then
     return {
         engineHandlers = {
             onActivate = function(activator)
-                ui.showMessage('LUA: exit activated')
+                util.log("JTT: exit activated in cell " .. tostring(self.cell.name))
                 core.sendGlobalEvent('JTT_ExitDungeon', { cell_id = self.cell.name })
             end
         }
@@ -55,12 +46,33 @@ if dungeonType then
     return {
         engineHandlers = {
             onActivate = function(activator)
-                ui.showMessage('LUA: entering ' .. dungeonType)
+                util.log("JTT: entering " .. dungeonType)
                 core.sendGlobalEvent('JTT_EnterDungeon', { dungeon_type = dungeonType })
             end
         }
     }
 end
 
-ui.showMessage('LUA: no handler for ' .. recordId)
+if HARVEST_NODES[recordId] then
+    return {
+        engineHandlers = {
+            onActivate = function(activator)
+                core.sendGlobalEvent('JTT_HarvestNode', { node_type = recordId })
+            end
+        }
+    }
+end
+
+local stationKey = CRAFTING_STATIONS[recordId]
+if stationKey then
+    return {
+        engineHandlers = {
+            onActivate = function(activator)
+                core.sendGlobalEvent('JTT_OpenCraftMenu', { station = stationKey })
+            end
+        }
+    }
+end
+
+util.log("JTT cave_portal: no handler for " .. recordId)
 return {}
