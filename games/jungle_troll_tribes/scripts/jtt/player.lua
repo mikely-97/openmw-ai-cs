@@ -70,6 +70,7 @@ return {
         end,
         onActivate = function(object)
             local rid = tostring(object.recordId):lower()
+            ui.showMessage("DBG onActivate: " .. rid)
             if HARVEST_NODES[rid] then
                 core.sendGlobalEvent('JTT_HarvestNode', { node_type = rid })
             elseif CRAFTING_STATIONS[rid] then

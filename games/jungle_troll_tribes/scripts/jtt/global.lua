@@ -480,8 +480,12 @@ end
 
 local function onJTTEnterDungeon(data)
     local typeName = data.dungeon_type
+    util.log("JTT_EnterDungeon fired: " .. tostring(typeName))
     local cfg = loadDungeonConfig(typeName)
-    if not cfg then return end
+    if not cfg then
+        util.log("JTT: loadDungeonConfig failed for " .. tostring(typeName))
+        return
+    end
 
     local variants = cfg.variants
     local idx = math.random(1, #variants)
