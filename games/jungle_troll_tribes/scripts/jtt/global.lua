@@ -1,6 +1,8 @@
-local core = require('openmw.core')
-local world = require('openmw.world')
-local util = require('openmw.util')
+local core       = require('openmw.core')
+local world      = require('openmw.world')
+local util       = require('openmw.util')
+local types      = require('openmw.types')
+local interfaces = require('openmw.interfaces')
 
 local DEBUG_CELL_ENTRANCES = {
     [0] = { cell='jtt_bear_den_0', x=2816.0, y=4864.0, z=50.0 },
@@ -583,6 +585,52 @@ local function onJTTExitDungeon(data)
 
     JTT_DungeonState[cellId] = nil
 end
+
+-- ============================================================
+-- ACTIVATION HANDLER (OpenMW 0.50: use I.Activation interface)
+-- ============================================================
+
+local ACT_DUNGEON_ENTRANCES = {
+    jtt_cave_portal = 'bear_den',
+    jtt_bear_den    = 'bear_den',
+}
+local ACT_DUNGEON_EXITS = {
+    jtt_dungeon_exit     = true,
+    jtt_dungeon_entrance = true,
+}
+local ACT_HARVEST_NODES = {
+    jtt_herb_node=true, jtt_mushroom_patch=true, jtt_tidal_pool=true,
+    jtt_spider_web=true, jtt_iron_vein=true, jtt_rock=true,
+    jtt_tree_oak=true, jtt_tree_pine=true, jtt_tree_palm=true, jtt_tree_dead=true,
+}
+local ACT_CRAFTING_STATIONS = {
+    jtt_workbench  = "workbench",
+    jtt_campfire   = "campfire",
+    jtt_forge      = "forge",
+    jtt_tannery    = "tannery",
+    jtt_cauldron   = "cauldron",
+    jtt_voodoo_hut = "voodoo_hut",
+}
+
+interfaces.Activation.addHandlerForType(types.Activator, function(obj, actor)
+    local rid = tostring(obj.recordId):lower()
+    if ACT_DUNGEON_EXITS[rid] then
+        onJTTExitDungeon({ cell_id = obj.cell.name })
+        return false
+    elseif ACT_DUNGEON_ENTRANCES[rid] then
+        onJTTEnterDungeon({ dungeon_type = ACT_DUNGEON_ENTRANCES[rid] })
+        return false
+    elseif ACT_HARVEST_NODES[rid] then
+        onJTTHarvestNode({ node_type = rid })
+        return false
+    else
+        local stationKey = ACT_CRAFTING_STATIONS[rid]
+        if stationKey then
+            onJTTOpenCraftMenu({ station = stationKey })
+            return false
+        end
+    end
+end)
 
 return {
     engineHandlers = {
