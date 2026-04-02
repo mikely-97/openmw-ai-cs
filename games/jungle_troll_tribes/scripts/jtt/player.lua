@@ -12,6 +12,15 @@ local HARVEST_NODES = {
     jtt_tree_oak=true, jtt_tree_pine=true, jtt_tree_palm=true, jtt_tree_dead=true,
 }
 
+local CRAFTING_STATIONS = {
+    jtt_workbench  = "workbench",
+    jtt_campfire   = "campfire",
+    jtt_forge      = "forge",
+    jtt_tannery    = "tannery",
+    jtt_cauldron   = "cauldron",
+    jtt_voodoo_hut = "voodoo_hut",
+}
+
 local DEBUG_PARTS = {
     "jtt_cave_room_a", "jtt_cave_room_b", "jtt_cave_room_c",
     "jtt_cave_room_d", "jtt_cave_room_e", "jtt_cave_room_f",
@@ -24,7 +33,19 @@ return {
     engineHandlers = {
         onKeyPress = function(key)
             if key.symbol == 'b' and not key.withShift and not key.withCtrl and not key.withAlt then
-                core.sendGlobalEvent('JTT_Build', {})
+                local found = nil
+                for _, obj in ipairs(nearby.activators()) do
+                    local rid = tostring(obj.recordId):lower()
+                    if CRAFTING_STATIONS[rid] then
+                        found = CRAFTING_STATIONS[rid]
+                        break
+                    end
+                end
+                if found then
+                    core.sendGlobalEvent('JTT_OpenCraftMenu', { station = found })
+                else
+                    ui.showMessage("Activate a crafting station to craft.")
+                end
             end
             if key.symbol == 'n' and not key.withShift and not key.withCtrl and not key.withAlt then
                 core.sendGlobalEvent('JTT_Quest', {})
@@ -53,6 +74,8 @@ return {
             local rid = tostring(object.recordId):lower()
             if HARVEST_NODES[rid] then
                 core.sendGlobalEvent('JTT_HarvestNode', { node_type = rid })
+            elseif CRAFTING_STATIONS[rid] then
+                core.sendGlobalEvent('JTT_OpenCraftMenu', { station = CRAFTING_STATIONS[rid] })
             end
         end,
         onUpdate = function(dt)

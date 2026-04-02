@@ -412,6 +412,49 @@ local function onJTTResummonGolem(data)
 end
 
 -- ============================================================
+-- CRAFT MENU DISPATCH
+-- ============================================================
+
+local STATION_NAMES = {
+    workbench  = "Workbench",
+    campfire   = "Campfire",
+    forge      = "Forge",
+    tannery    = "Tannery",
+    cauldron   = "Cauldron",
+    voodoo_hut = "Voodoo Hut",
+}
+
+local function onJTTOpenCraftMenu(data)
+    local stationKey  = data.station
+    local stationName = STATION_NAMES[stationKey] or stationKey
+    local list = {}
+    for i, r in ipairs(RECIPES) do
+        if r.station == stationKey then
+            local outName = r.output:gsub("jtt_",""):gsub("_"," ")
+            outName = outName:sub(1,1):upper() .. outName:sub(2)
+            local ingParts = {}
+            for itemId, count in pairs(r.ingredients) do
+                local iname = itemId:gsub("jtt_",""):gsub("_"," ")
+                table.insert(ingParts, count .. "\xC3\x97" .. iname)
+            end
+            table.sort(ingParts)
+            local label = outName
+            if r.count > 1 then label = label .. " \xC3\x97" .. r.count end
+            label = label .. "  [" .. table.concat(ingParts, ", ") .. "]"
+            table.insert(list, { idx = i, label = label })
+        end
+    end
+    if #list == 0 then
+        core.sendGlobalEvent("JTT_Notify", { msg = "No recipes for " .. stationName .. "." })
+        return
+    end
+    world.players[1]:sendEvent("JTT_ShowCraftMenu", {
+        station_name = stationName,
+        recipes      = list,
+    })
+end
+
+-- ============================================================
 -- NOTIFICATION HELPER
 -- ============================================================
 
@@ -569,6 +612,7 @@ return {
         JTT_PopulateDungeon  = onJTTPopulateDungeon,
         JTT_ExitDungeon      = onJTTExitDungeon,
         JTT_HarvestNode      = onJTTHarvestNode,
+        JTT_OpenCraftMenu    = onJTTOpenCraftMenu,
         JTT_Craft            = onJTTCraft,
         JTT_ResummonGolem    = onJTTResummonGolem,
         JTT_Notify           = onJTTNotify,
