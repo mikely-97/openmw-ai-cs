@@ -21,6 +21,16 @@ local CRAFTING_STATIONS = {
     jtt_voodoo_hut = "voodoo_hut",
 }
 
+local DUNGEON_ENTRANCES = {
+    jtt_bear_den   = 'bear_den',
+    jtt_cave_portal = 'bear_den',
+}
+
+local DUNGEON_EXITS = {
+    jtt_dungeon_entrance = true,
+    jtt_dungeon_exit     = true,
+}
+
 local DEBUG_PARTS = {
     "jtt_cave_room_a", "jtt_cave_room_b", "jtt_cave_room_c",
     "jtt_cave_room_d", "jtt_cave_room_e", "jtt_cave_room_f",
@@ -64,6 +74,10 @@ return {
                 core.sendGlobalEvent('JTT_HarvestNode', { node_type = rid })
             elseif CRAFTING_STATIONS[rid] then
                 core.sendGlobalEvent('JTT_OpenCraftMenu', { station = CRAFTING_STATIONS[rid] })
+            elseif DUNGEON_ENTRANCES[rid] then
+                core.sendGlobalEvent('JTT_EnterDungeon', { dungeon_type = DUNGEON_ENTRANCES[rid] })
+            elseif DUNGEON_EXITS[rid] then
+                core.sendGlobalEvent('JTT_ExitDungeon', { cell_id = self.cell.name })
             end
         end,
         onUpdate = function(dt)
