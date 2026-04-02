@@ -1,6 +1,5 @@
 local core = require('openmw.core')
 local self = require('openmw.self')
-local util = require('openmw.util')
 
 local DUNGEON_ENTRANCES = {
     jtt_cave_portal  = 'bear_den',
@@ -28,13 +27,11 @@ local CRAFTING_STATIONS = {
 }
 
 local recordId = tostring(self.recordId):lower()
-util.log("JTT cave_portal load: " .. recordId)
 
 if DUNGEON_EXITS[recordId] then
     return {
         engineHandlers = {
             onActivate = function(activator)
-                util.log("JTT: exit activated in cell " .. tostring(self.cell.name))
                 core.sendGlobalEvent('JTT_ExitDungeon', { cell_id = self.cell.name })
             end
         }
@@ -46,7 +43,6 @@ if dungeonType then
     return {
         engineHandlers = {
             onActivate = function(activator)
-                util.log("JTT: entering " .. dungeonType)
                 core.sendGlobalEvent('JTT_EnterDungeon', { dungeon_type = dungeonType })
             end
         }
@@ -74,5 +70,4 @@ if stationKey then
     }
 end
 
-util.log("JTT cave_portal: no handler for " .. recordId)
 return {}
