@@ -542,5 +542,45 @@
       }
     ],
     "flags": 0
+  },
+  {
+    "rec_type": "CONT",
+    "record_id": "jtt_loot_large",
+    "name": "Ancient Cache",
+    "mesh": "jtt\\tribal_chest.dae",
+    "capacity": 400.0,
+    "cont_flags": 8,
+    "script": "",
+    "inventory": [
+      {
+        "count": 2,
+        "item_id": "jtt_skull"
+      },
+      {
+        "count": 1,
+        "item_id": "jtt_ancient_core"
+      },
+      {
+        "count": 3,
+        "item_id": "jtt_iron_ore"
+      },
+      {
+        "count": 1,
+        "item_id": "jtt_oil"
+      },
+      {
+        "count": 3,
+        "item_id": "jtt_shell_token"
+      }
+    ],
+    "flags": 0
+  },
+  {
+    "rec_type": "ACTI",
+    "record_id": "jtt_spider_cave",
+    "name": "Spider Cave",
+    "mesh": "jtt\\spider_web.dae",
+    "script": "",
+    "flags": 0
   }
 ]

@@ -615,7 +615,7 @@
     "rec_type": "CREA",
     "record_id": "jtt_jungle_snake",
     "name": "Jungle Snake",
-    "mesh": "jtt\\spider.dae",
+    "mesh": "jtt\\\\snake.dae",
     "sound_template": "",
     "script": "",
     "crea_type": 0,
@@ -819,6 +819,64 @@
     "ai_hello": 0,
     "ai_fight": 0,
     "ai_flee": 20,
+    "ai_alarm": 0,
+    "ai_services": 0,
+    "ai_packages": [
+      {
+        "type": "AI_W",
+        "raw_hex": "00010800000000000a0000000100"
+      }
+    ],
+    "transport": [],
+    "flags": 0
+  },
+  {
+    "rec_type": "CREA",
+    "record_id": "jtt_spider",
+    "name": "Spider",
+    "mesh": "jtt\\\\spider.dae",
+    "sound_template": "",
+    "script": "",
+    "crea_type": 0,
+    "level": 2,
+    "strength": 20,
+    "intelligence": 8,
+    "willpower": 15,
+    "agility": 65,
+    "speed": 60,
+    "endurance": 20,
+    "personality": 5,
+    "luck": 25,
+    "health": 20,
+    "mana": 0,
+    "fatigue": 60,
+    "soul": 25,
+    "combat": 40,
+    "magic": 0,
+    "stealth": 55,
+    "attack1_min": 2,
+    "attack1_max": 5,
+    "attack2_min": 2,
+    "attack2_max": 5,
+    "attack3_min": 2,
+    "attack3_max": 6,
+    "gold": 0,
+    "crea_flags": 72,
+    "scale": 0.4,
+    "inventory": [
+      {
+        "count": 1,
+        "item": "jtt_spider_silk"
+      },
+      {
+        "count": 1,
+        "item": "jtt_spider_venom"
+      }
+    ],
+    "spells": [],
+    "ai_hello": 0,
+    "ai_fight": 0,
+    "ai_flee": 120,
     "ai_alarm": 0,
     "ai_services": 0,
     "ai_packages": [

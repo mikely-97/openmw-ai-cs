@@ -188,6 +188,7 @@ local function onJTTSpawnWorld(data)
 
     -- East Jungle (1,0)
     spawnBiome(8192 + 4096, 4096, z, 'east')
+    spawn('jtt_spider_cave', 8192 + 4096 + randRange(-800, 800), 4096 + randRange(-800, 800), z)
 
     -- North Ridge (0,1)
     spawnBiome(4096, 8192 + 4096, z, 'ridge')
@@ -591,8 +592,9 @@ end
 -- ============================================================
 
 local ACT_DUNGEON_ENTRANCES = {
-    jtt_cave_portal = 'bear_den',
-    jtt_bear_den    = 'bear_den',
+    jtt_cave_portal  = 'bear_den',
+    jtt_bear_den     = 'bear_den',
+    jtt_spider_cave  = 'spider_cave',
 }
 local ACT_DUNGEON_EXITS = {
     jtt_dungeon_exit     = true,

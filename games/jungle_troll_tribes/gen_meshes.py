@@ -651,6 +651,31 @@ def mk_spider():
     export("spider.dae")
 
 
+def mk_snake():
+    clear()
+    m_body  = mat("snake_body",  0.18, 0.38, 0.12)
+    m_belly = mat("snake_belly", 0.72, 0.65, 0.48)
+    m_head  = mat("snake_head",  0.22, 0.45, 0.15)
+    # Body: flat coiled S-shape using scaled spheres
+    offsets = [(-40, 0), (-22, 8), (-6, 12), (10, 8), (26, 0), (40, -8), (52, -12)]
+    for i, (x, y) in enumerate(offsets):
+        r = 9 - i * 0.6
+        bpy.ops.mesh.primitive_uv_sphere_add(segments=8, ring_count=6,
+                                              radius=max(r, 5), location=(x, y, 6))
+        obj = bpy.context.active_object
+        obj.scale = (1.1, 1.0, 0.55)
+        bpy.ops.object.transform_apply(scale=True)
+        apply_mat(obj, m_body if i % 2 == 0 else m_belly)
+    # Head
+    bpy.ops.mesh.primitive_uv_sphere_add(segments=8, ring_count=6,
+                                          radius=11, location=(62, -14, 8))
+    obj = bpy.context.active_object
+    obj.scale = (1.3, 0.8, 0.6)
+    bpy.ops.object.transform_apply(scale=True)
+    apply_mat(obj, m_head)
+    export("snake.dae")
+
+
 def mk_boar():
     clear()
     m_body = mat("boar_body", 0.44, 0.30, 0.20)
@@ -1303,6 +1328,7 @@ print("Creatures:")
 mk_panther()
 mk_croc()
 mk_spider()
+mk_snake()
 mk_boar()
 
 print("Troll body parts (for NPC rendering):")
