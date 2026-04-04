@@ -52,7 +52,11 @@ end
 
 local function spawn(recordId, x, y, z, count)
     count = count or 1
-    local obj = world.createObject(recordId, count)
+    local ok, obj = pcall(world.createObject, recordId, count)
+    if not ok then
+        util.log("JTT: spawn failed for unknown record: " .. tostring(recordId))
+        return nil
+    end
     obj:teleport('', util.vector3(x, y, z))
     table.insert(placed, {x=x, y=y})
     return obj
