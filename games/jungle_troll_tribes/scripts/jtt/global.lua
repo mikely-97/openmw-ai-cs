@@ -54,7 +54,7 @@ local function spawn(recordId, x, y, z, count)
     count = count or 1
     local ok, obj = pcall(world.createObject, recordId, count)
     if not ok then
-        util.log("JTT: spawn failed for unknown record: " .. tostring(recordId))
+        print("JTT: spawn failed for unknown record: " .. tostring(recordId))
         return nil
     end
     obj:teleport('', util.vector3(x, y, z))
@@ -179,8 +179,10 @@ local function onJTTSpawnWorld(data)
     -- Use MW global to persist across save/load (but resets on new game)
     local globals = world.mwscript.getGlobalVariables()
     if globals.JTT_WorldSpawned == 1 then
+        print("JTT: world already spawned, skipping")
         return
     end
+    print("JTT: spawning world...")
     globals.JTT_WorldSpawned = 1
 
     local z = 16  -- normal terrain (base_height=2, 2*8=16)
@@ -478,15 +480,21 @@ local JTT_DungeonState = {}
 local function loadDungeonConfig(typeName)
     local ok, dungeons_tbl = pcall(require, "scripts.jungle_troll_tribes.dungeon_config_" .. typeName)
     if not ok then
-        util.log("JTT: dungeon config not found: " .. typeName)
+        print("JTT: dungeon config not found: " .. typeName .. " err=" .. tostring(dungeons_tbl))
         return nil
     end
-    -- dungeons_tbl is JTT_Dungeons = { bear_den = { variants=..., creatures=... }, ... }
-    return dungeons_tbl and dungeons_tbl[typeName] or nil
+    local cfg = dungeons_tbl and dungeons_tbl[typeName] or nil
+    if not cfg then
+        print("JTT: dungeon config loaded but key '" .. typeName .. "' missing")
+    else
+        print("JTT: dungeon config ok, variants=" .. #cfg.variants)
+    end
+    return cfg
 end
 
 local function onJTTEnterDungeon(data)
     local typeName = data.dungeon_type
+    print("JTT: onJTTEnterDungeon type=" .. tostring(typeName))
     local cfg = loadDungeonConfig(typeName)
     if not cfg then return end
 
@@ -495,6 +503,7 @@ local function onJTTEnterDungeon(data)
     local variant = variants[idx]
     local player = world.players[1]
 
+    print("JTT: teleporting to cell=" .. variant.cell_id)
     local pos = util.vector3(variant.entrance_pos.x, variant.entrance_pos.y, variant.entrance_pos.z)
     player:teleport(variant.cell_id, pos, util.transform.identity)
 
@@ -620,21 +629,27 @@ local ACT_CRAFTING_STATIONS = {
 
 interfaces.Activation.addHandlerForType(types.Activator, function(obj, actor)
     local rid = tostring(obj.recordId):lower()
+    print("JTT: activation rid=" .. rid)
     if ACT_DUNGEON_EXITS[rid] then
+        print("JTT: -> exit dungeon, cell=" .. tostring(obj.cell.name))
         onJTTExitDungeon({ cell_id = obj.cell.name })
         return false
     elseif ACT_DUNGEON_ENTRANCES[rid] then
+        print("JTT: -> enter dungeon type=" .. ACT_DUNGEON_ENTRANCES[rid])
         onJTTEnterDungeon({ dungeon_type = ACT_DUNGEON_ENTRANCES[rid] })
         return false
     elseif ACT_HARVEST_NODES[rid] then
+        print("JTT: -> harvest node=" .. rid)
         onJTTHarvestNode({ node_type = rid })
         return false
     else
         local stationKey = ACT_CRAFTING_STATIONS[rid]
         if stationKey then
+            print("JTT: -> craft station=" .. stationKey)
             onJTTOpenCraftMenu({ station = stationKey })
             return false
         end
+        print("JTT: -> unhandled activator")
     end
 end)
 

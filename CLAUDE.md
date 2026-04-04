@@ -20,7 +20,7 @@ grep -r '"record_id": "jtt_spider"' games/jungle_troll_tribes/records/
 ```
 If it returns nothing, the record does not exist. Create it first or fix the ID.
 
-**Every non-trivial Lua branch must have a `util.log` call.**
+**Every non-trivial Lua branch must have a `print` call.**
 Silent failures are invisible. Log at every fork so one test cycle = one diagnosis.
 Never remove log lines — they're cheap and invaluable.
 
@@ -114,6 +114,9 @@ Dungeon configs return a table:
 ## Record conventions (critical — re-read before writing new records)
 
 - **Mesh paths**: NO `meshes\` prefix. `"jtt\\spider.dae"` not `"meshes\\jtt\\spider.dae"`.
+- **Python mesh path escaping**: in Python source use ONE backslash: `r['mesh'] = 'jtt\\spider.dae'` → JSON `"jtt\\spider.dae"` → OpenMW `jtt/spider.dae`. Two backslashes (`'jtt\\\\spider.dae'`) → `jtt//spider.dae` → broken.
+- **Dungeon JSON files** must have numeric prefixes (e.g. `20_dungeons_bear_den.json`) — build.sh only imports `[0-9]*.json`.
+- **Lua logging**: use `print()`, not `util.log()`. `util.log` is nil in global script context.
 - **CONT records**: `cont_flags: 8` always (bit 0x08 = normal container).
 - **CREA inventory**: key is `"item"` not `"item_id"`. NPC_ inventory uses `"item_id"`.
 - **AI_W raw_hex**: must be 28 hex chars (14 bytes). Append `00` if 26 chars.
@@ -140,11 +143,11 @@ Check log for: `Not supported handler` or `unknown identifier` or `attempt to ca
 Check log for: `Cell reference "X" is not found` or `Failed to load mesh`.
 
 ### Activation doing nothing
-Add to the handler: `util.log("JTT: activation rid=" .. rid)`
+Add to the handler: `print("JTT: activation rid=" .. rid)`
 Then check log after clicking the object.
 
 ### Dungeon entry failing
-Add: `util.log("JTT: enterDungeon type=" .. typeName .. " cfg=" .. tostring(cfg))`
+Add: `print("JTT: enterDungeon type=" .. typeName .. " cfg=" .. tostring(cfg))`
 Common causes: dungeon config not found (require path wrong), creature ID doesn't exist.
 
 ---
