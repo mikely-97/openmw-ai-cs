@@ -39,3 +39,7 @@ htmlcov/
 # Local Claude Code permission settings (user-specific, not project config)
 .claude/settings.local.json
 JungleTrolls_7.0.2.w3x
+.maieutic/
+games/jungle_troll_tribes/games/
+games/jungle_troll_tribes/records/tmp_dungeons/
+games/jungle_troll_tribes/*.db
